@@ -1,0 +1,48 @@
+﻿<Window x:Class="QuanLyThuVien.GiaoDien.ViTriWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
+        mc:Ignorable="d"
+        Title="ViTriWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Mã kệ"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Tên kệ"/>
+          
+            <TextBox Grid.Column="1" Grid.Row="2" Name="txtmavitri"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Name="txttenke"/>
+            <WrapPanel Grid.Row="1" Grid.Column="2">
+                <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click" />
+                <RadioButton Content="Sửa" IsChecked="True" Name="rdoSua" Click="RdoSua_Click" />
+                <RadioButton Content="Xóa" IsChecked="True" Name="rdoXoa" Click="RdoXoa_Click" />
+            </WrapPanel>
+            <Button Grid.Column="1" Grid.Row="5" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
+        </Grid>
+        <DataGrid Name="dgViTri" AutoGenerateColumns="False" SelectedValuePath="MaKe" SelectionChanged="DgViTri_SelectionChanged" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã kệ" Binding="{Binding MaKe}"/>
+                <DataGridTextColumn Header="Tên kệ" Binding="{Binding TenKe}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+    </StackPanel>
+</Window>

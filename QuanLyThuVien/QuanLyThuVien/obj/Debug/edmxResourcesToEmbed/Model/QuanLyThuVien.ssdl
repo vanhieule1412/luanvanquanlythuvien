@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UngDungQuanLyThuVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DOCGIA">
+    <Key>
+      <PropertyRef Name="MaDocGia" />
+    </Key>
+    <Property Name="MaDocGia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TenDocGia" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NamSinh" Type="int" Nullable="false" />
+    <Property Name="SoDienThoai" Type="int" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NHAXUATBAN">
+    <Key>
+      <PropertyRef Name="MaNhaXuatBan" />
+    </Key>
+    <Property Name="MaNhaXuatBan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenNhaXuatBan" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PHIEUMUON">
+    <Key>
+      <PropertyRef Name="MaPhieuMuon" />
+    </Key>
+    <Property Name="MaPhieuMuon" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="NgayMuon" Type="datetime" Nullable="false" />
+    <Property Name="SoLuongSachMuon" Type="int" Nullable="false" />
+    <Property Name="NgayTra" Type="datetime" Nullable="false" />
+    <Property Name="TrangThai" Type="bit" Nullable="false" />
+    <Property Name="TienPhat" Type="money" />
+    <Property Name="MaThuThu" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MaDocGia" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SACH">
+    <Key>
+      <PropertyRef Name="MaSach" />
+    </Key>
+    <Property Name="MaSach" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenSach" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="SoLuong" Type="int" Nullable="false" />
+    <Property Name="TacGia" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NamXuatBan" Type="int" Nullable="false" />
+    <Property Name="NguoiDich" Type="nvarchar" MaxLength="255" />
+    <Property Name="Hinh" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MaTheLoai" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MaNhaXuatBan" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MaKe" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SACH_PHIEUMUON">
+    <Key>
+      <PropertyRef Name="MaSachPhieuMuon" />
+    </Key>
+    <Property Name="MaSachPhieuMuon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaSach" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MaPhieuMuon" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="THELOAI">
+    <Key>
+      <PropertyRef Name="MaTheLoai" />
+    </Key>
+    <Property Name="MaTheLoai" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenTheLoai" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="THUTHU">
+    <Key>
+      <PropertyRef Name="MaThuThu" />
+    </Key>
+    <Property Name="MaThuThu" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenThuThu" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="NamSinh" Type="int" Nullable="false" />
+    <Property Name="SoDienThoai" Type="int" Nullable="false" />
+    <Property Name="TenDangNhap" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VITRI">
+    <Key>
+      <PropertyRef Name="MaKe" />
+    </Key>
+    <Property Name="MaKe" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenKe" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FKPHIEUMUON199572">
+    <End Role="THUTHU" Type="Self.THUTHU" Multiplicity="1" />
+    <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THUTHU">
+        <PropertyRef Name="MaThuThu" />
+      </Principal>
+      <Dependent Role="PHIEUMUON">
+        <PropertyRef Name="MaThuThu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKPHIEUMUON746748">
+    <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="1" />
+    <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCGIA">
+        <PropertyRef Name="MaDocGia" />
+      </Principal>
+      <Dependent Role="PHIEUMUON">
+        <PropertyRef Name="MaDocGia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKSACH_PHIEU103951">
+    <End Role="PHIEUMUON" Type="Self.PHIEUMUON" Multiplicity="1" />
+    <End Role="SACH_PHIEUMUON" Type="Self.SACH_PHIEUMUON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUMUON">
+        <PropertyRef Name="MaPhieuMuon" />
+      </Principal>
+      <Dependent Role="SACH_PHIEUMUON">
+        <PropertyRef Name="MaPhieuMuon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKSACH_PHIEU641697">
+    <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+    <End Role="SACH_PHIEUMUON" Type="Self.SACH_PHIEUMUON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MaSach" />
+      </Principal>
+      <Dependent Role="SACH_PHIEUMUON">
+        <PropertyRef Name="MaSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKSACH567542">
+    <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="1" />
+    <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THELOAI">
+        <PropertyRef Name="MaTheLoai" />
+      </Principal>
+      <Dependent Role="SACH">
+        <PropertyRef Name="MaTheLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKSACH752561">
+    <End Role="NHAXUATBAN" Type="Self.NHAXUATBAN" Multiplicity="1" />
+    <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHAXUATBAN">
+        <PropertyRef Name="MaNhaXuatBan" />
+      </Principal>
+      <Dependent Role="SACH">
+        <PropertyRef Name="MaNhaXuatBan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKSACH997343">
+    <End Role="VITRI" Type="Self.VITRI" Multiplicity="1" />
+    <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VITRI">
+        <PropertyRef Name="MaKe" />
+      </Principal>
+      <Dependent Role="SACH">
+        <PropertyRef Name="MaKe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="UngDungQuanLyThuVienModelStoreContainer">
+    <EntitySet Name="DOCGIA" EntityType="Self.DOCGIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHAXUATBAN" EntityType="Self.NHAXUATBAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHIEUMUON" EntityType="Self.PHIEUMUON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SACH_PHIEUMUON" EntityType="Self.SACH_PHIEUMUON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THELOAI" EntityType="Self.THELOAI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THUTHU" EntityType="Self.THUTHU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VITRI" EntityType="Self.VITRI" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FKPHIEUMUON199572" Association="Self.FKPHIEUMUON199572">
+      <End Role="THUTHU" EntitySet="THUTHU" />
+      <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
+    </AssociationSet>
+    <AssociationSet Name="FKPHIEUMUON746748" Association="Self.FKPHIEUMUON746748">
+      <End Role="DOCGIA" EntitySet="DOCGIA" />
+      <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
+    </AssociationSet>
+    <AssociationSet Name="FKSACH_PHIEU103951" Association="Self.FKSACH_PHIEU103951">
+      <End Role="PHIEUMUON" EntitySet="PHIEUMUON" />
+      <End Role="SACH_PHIEUMUON" EntitySet="SACH_PHIEUMUON" />
+    </AssociationSet>
+    <AssociationSet Name="FKSACH_PHIEU641697" Association="Self.FKSACH_PHIEU641697">
+      <End Role="SACH" EntitySet="SACH" />
+      <End Role="SACH_PHIEUMUON" EntitySet="SACH_PHIEUMUON" />
+    </AssociationSet>
+    <AssociationSet Name="FKSACH567542" Association="Self.FKSACH567542">
+      <End Role="THELOAI" EntitySet="THELOAI" />
+      <End Role="SACH" EntitySet="SACH" />
+    </AssociationSet>
+    <AssociationSet Name="FKSACH752561" Association="Self.FKSACH752561">
+      <End Role="NHAXUATBAN" EntitySet="NHAXUATBAN" />
+      <End Role="SACH" EntitySet="SACH" />
+    </AssociationSet>
+    <AssociationSet Name="FKSACH997343" Association="Self.FKSACH997343">
+      <End Role="VITRI" EntitySet="VITRI" />
+      <End Role="SACH" EntitySet="SACH" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
