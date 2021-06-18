@@ -24,6 +24,7 @@ namespace QuanLyThuVien.Model
         public string TenThuThu { get; set; }
         public int NamSinh { get; set; }
         public int SoDienThoai { get; set; }
+        public Nullable<bool> TrangThaiHoatDong { get; set; }
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
     

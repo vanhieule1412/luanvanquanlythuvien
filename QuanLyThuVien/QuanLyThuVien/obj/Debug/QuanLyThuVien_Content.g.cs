@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/quanlythuvien.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/quanlythuvien.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/modelv2.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("model/modelv2.tt")]
 
 

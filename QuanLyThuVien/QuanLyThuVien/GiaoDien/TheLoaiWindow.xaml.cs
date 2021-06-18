@@ -55,6 +55,7 @@ namespace QuanLyThuVien.GiaoDien
                 dc.THELOAIs.Add(tHELOAI);
                 dc.SaveChanges();
                 hienthi();
+                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else if (rdoSua.IsChecked == true)
             {

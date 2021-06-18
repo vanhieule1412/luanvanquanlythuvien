@@ -1,0 +1,63 @@
+﻿<Window x:Class="QuanLyThuVien.GiaoDien.DocGiaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
+        mc:Ignorable="d"
+        Title="DocGiaWindow" Height="450" Width="800" Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        >
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Mã Độc Giả"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Tên Độc Giả"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Năm Sinh"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Số Điện Thoại"/>
+            <TextBlock Grid.Column="0" Grid.Row="6" Text="Mật Khẩu"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Name="txtmadocgia"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Name="txttendocgia"/>
+            <TextBox Grid.Column="1" Grid.Row="4" Name="txtnamsinh"/>
+            <TextBox Grid.Column="1" Grid.Row="5" Name="txtsodienthoai"/>
+            <TextBox Grid.Column="1" Grid.Row="6" Name="txtmatkhau"/>
+            <WrapPanel Grid.Row="1" Grid.Column="2">
+                <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click" />
+                <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click" />
+
+            </WrapPanel>
+        </Grid>
+        <StackPanel>
+            <Button Grid.Column="1" Grid.Row="7" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
+        </StackPanel>
+        <DataGrid Name="dgDocGia" AutoGenerateColumns="False" SelectedValuePath="MaDocGia" SelectionChanged="DgDocGia_SelectionChanged" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã Độc Giả" Binding="{Binding MaDocGia}"/>
+                <DataGridTextColumn Header="Tên Độc Giả" Binding="{Binding TenDocGia}"/>
+                <DataGridTextColumn Header="Năm Sinh" Binding="{Binding NamSinh}"/>
+                <DataGridTextColumn Header="Số Điện Thoại" Binding="{Binding SoDienThoai}"/>
+                <DataGridTextColumn Header="Mật Khẩu" Binding="{Binding MatKhau}"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+    </StackPanel>
+</Window>

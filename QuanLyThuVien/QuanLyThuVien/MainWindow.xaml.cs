@@ -23,6 +23,7 @@ namespace QuanLyThuVien
         public MainWindow()
         {
             InitializeComponent();
+            
         }
         private void Btnquanltheloai_Click(object sender, RoutedEventArgs e)
         {
@@ -34,12 +35,25 @@ namespace QuanLyThuVien
         {
             GiaoDien.NhaXuatBanWindow fnxb = new GiaoDien.NhaXuatBanWindow();
             fnxb.ShowDialog();
+            
         }
 
         private void Btnvitri_Click(object sender, RoutedEventArgs e)
         {
             GiaoDien.ViTriWindow fvitri = new GiaoDien.ViTriWindow();
             fvitri.ShowDialog();
+        }
+
+        private void Btnthuthu_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.ThuThuWindow fthuthu = new GiaoDien.ThuThuWindow();
+            fthuthu.ShowDialog();
+        }
+
+        private void Btndocgia_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.DocGiaWindow fdocgia = new GiaoDien.DocGiaWindow();
+            fdocgia.ShowDialog();
         }
     }
 }

@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
         mc:Ignorable="d"
-        Title="TheLoaiWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="TheLoaiWindow" Height="450" Width="800" Loaded="Window_Loaded"
+         WindowStartupLocation="CenterScreen"
+        >
     <StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -30,11 +32,10 @@
             <Button Grid.Column="2" Grid.Row="0" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
            
         </Grid>
-        <DataGrid Name="dgTheLoai" AutoGenerateColumns="False" SelectedValuePath="MaTheLoai" SelectionChanged="DgTheLoai_SelectionChanged">
+        <DataGrid Name="dgTheLoai" AutoGenerateColumns="False" SelectedValuePath="MaTheLoai" SelectionChanged="DgTheLoai_SelectionChanged" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã thể loại" Binding="{Binding MaTheLoai}"/>
                 <DataGridTextColumn Header="Tên thể loại" Binding="{Binding TenTheLoai}"/>
-                
             </DataGrid.Columns>
         </DataGrid>
 

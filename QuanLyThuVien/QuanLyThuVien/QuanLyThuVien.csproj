@@ -64,6 +64,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="GiaoDien\DocGiaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GiaoDien\NhaXuatBanWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -88,6 +92,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GiaoDien\DocGiaWindow.xaml.cs">
+      <DependentUpon>DocGiaWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GiaoDien\NhaXuatBanWindow.xaml.cs">
       <DependentUpon>NhaXuatBanWindow.xaml</DependentUpon>
     </Compile>
@@ -107,46 +114,46 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\DOCGIA.cs">
-      <DependentUpon>QuanLyThuVien.tt</DependentUpon>
+      <DependentUpon>Modelv2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Modelv2.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelv2.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Modelv2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelv2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Modelv2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modelv2.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\NHAXUATBAN.cs">
-      <DependentUpon>QuanLyThuVien.tt</DependentUpon>
+      <DependentUpon>Modelv2.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\PHIEUMUON.cs">
-      <DependentUpon>QuanLyThuVien.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\QuanLyThuVien.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyThuVien.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\QuanLyThuVien.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyThuVien.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\QuanLyThuVien.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyThuVien.edmx</DependentUpon>
+      <DependentUpon>Modelv2.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SACH.cs">
-      <DependentUpon>QuanLyThuVien.tt</DependentUpon>
+      <DependentUpon>Modelv2.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SACH_PHIEUMUON.cs">
-      <DependentUpon>QuanLyThuVien.tt</DependentUpon>
+      <DependentUpon>Modelv2.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagram.cs">
-      <DependentUpon>QuanLyThuVien.tt</DependentUpon>
+      <DependentUpon>Modelv2.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\THELOAI.cs">
-      <DependentUpon>QuanLyThuVien.tt</DependentUpon>
+      <DependentUpon>Modelv2.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\THUTHU.cs">
-      <DependentUpon>QuanLyThuVien.tt</DependentUpon>
+      <DependentUpon>Modelv2.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\VITRI.cs">
-      <DependentUpon>QuanLyThuVien.tt</DependentUpon>
+      <DependentUpon>Modelv2.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -165,12 +172,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\QuanLyThuVien.edmx">
+    <EntityDeploy Include="Model\Modelv2.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QuanLyThuVien.Designer.cs</LastGenOutput>
+      <LastGenOutput>Modelv2.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\QuanLyThuVien.edmx.diagram">
-      <DependentUpon>QuanLyThuVien.edmx</DependentUpon>
+    <None Include="Model\Modelv2.edmx.diagram">
+      <DependentUpon>Modelv2.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -182,19 +189,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\QuanLyThuVien.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>QuanLyThuVien.Context.cs</LastGenOutput>
-      <DependentUpon>QuanLyThuVien.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model\QuanLyThuVien.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QuanLyThuVien.edmx</DependentUpon>
-      <LastGenOutput>QuanLyThuVien.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Model\Modelv2.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modelv2.edmx</DependentUpon>
+      <LastGenOutput>Modelv2.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\Modelv2.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modelv2.edmx</DependentUpon>
+      <LastGenOutput>Modelv2.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,48 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
         mc:Ignorable="d"
-        Title="NhaXuatBanWindow" Height="450" Width="800" Loaded="Window_Loaded">
-    <StackPanel>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="Mã nhà xuất bản"/>
-            <TextBlock Grid.Column="0" Grid.Row="3" Text="Tên nhà xuất bản"/>
-            <TextBlock Grid.Column="0" Grid.Row="4" Text="Địa chỉ"/>
-            <TextBox Grid.Column="1" Grid.Row="2" Name="txtmanhaxuatban"/>
-            <TextBox Grid.Column="1" Grid.Row="3" Name="txttennhaxuatban"/>
-            <TextBox Grid.Column="1" Grid.Row="4" Name="txtdiachi"/>
-            <WrapPanel Grid.Row="1" Grid.Column="2">
-                <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click" />
-                <RadioButton Content="Sửa" IsChecked="True" Name="rdoSua" Click="RdoSua_Click" />
-                <RadioButton Content="Xóa" IsChecked="True" Name="rdoXoa" Click="RdoXoa_Click"/>
-            </WrapPanel>
-            <Button Grid.Column="1" Grid.Row="5" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
-           
-        </Grid>
-        <DataGrid Name="dgNhaXuatBan" AutoGenerateColumns="False" SelectedValuePath="MaNhaXuatBan" SelectionChanged="DgNhaXuatBan_SelectionChanged" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Mã nhà xuất bản" Binding="{Binding MaNhaXuatBan}"/>
-                <DataGridTextColumn Header="Tên nhà xuất bản" Binding="{Binding TenNhaXuatBan}"/>
-                <DataGridTextColumn Header="Địa chỉ" Binding="{Binding DiaChi}"/>
-
-            </DataGrid.Columns>
-        </DataGrid>
-
-
-
-    </StackPanel>
+        Title="NhaXuatBanWindow" Height="450" Width="800" Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        >
+    <GroupBox>
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Mã nhà xuất bản"/>
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Tên nhà xuất bản"/>
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Địa chỉ"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Name="txtmanhaxuatban"/>
+                <TextBox Grid.Column="1" Grid.Row="3" Name="txttennhaxuatban"/>
+                <TextBox Grid.Column="1" Grid.Row="4" Name="txtdiachi"/>
+                <WrapPanel Grid.Row="1" Grid.Column="2">
+                    <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click"/>
+                    <RadioButton Content="Sửa" IsChecked="True" Name="rdoSua" Click="RdoSua_Click" />
+                    <RadioButton Content="Xóa" IsChecked="True" Name="rdoXoa" Click="RdoXoa_Click"/>
+                </WrapPanel>
+                <Button Grid.Column="1" Grid.Row="5" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
+            </Grid>
+            <DataGrid Name="dgNhaXuatBan" AutoGenerateColumns="False" SelectedValuePath="MaNhaXuatBan" SelectionChanged="DgNhaXuatBan_SelectionChanged" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã nhà xuất bản" Binding="{Binding MaNhaXuatBan}"/>
+                    <DataGridTextColumn Header="Tên nhà xuất bản" Binding="{Binding TenNhaXuatBan}"/>
+                    <DataGridTextColumn Header="Địa chỉ" Binding="{Binding DiaChi}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </GroupBox>
 </Window>

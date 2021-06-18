@@ -84,6 +84,7 @@
           <Property Name="TenThuThu" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="NamSinh" Type="int" Nullable="false" />
           <Property Name="SoDienThoai" Type="int" Nullable="false" />
+          <Property Name="TrangThaiHoatDong" Type="bit" />
           <Property Name="TenDangNhap" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="MatKhau" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
@@ -313,6 +314,7 @@
           <Property Name="TenThuThu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NamSinh" Type="Int32" Nullable="false" />
           <Property Name="SoDienThoai" Type="Int32" Nullable="false" />
+          <Property Name="TrangThaiHoatDong" Type="Boolean" />
           <Property Name="TenDangNhap" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MatKhau" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="PHIEUMUONs" Relationship="Self.FKPHIEUMUON199572" FromRole="THUTHU" ToRole="PHIEUMUON" />
@@ -539,6 +541,7 @@
                 <ScalarProperty Name="TenThuThu" ColumnName="TenThuThu" />
                 <ScalarProperty Name="NamSinh" ColumnName="NamSinh" />
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+                <ScalarProperty Name="TrangThaiHoatDong" ColumnName="TrangThaiHoatDong" />
                 <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
               </MappingFragment>

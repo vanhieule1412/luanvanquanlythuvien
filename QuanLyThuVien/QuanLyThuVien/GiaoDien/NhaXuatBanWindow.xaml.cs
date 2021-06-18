@@ -43,6 +43,7 @@ namespace QuanLyThuVien.GiaoDien
 
         private void RdoThem_Click(object sender, RoutedEventArgs e)
         {
+            
             txtmanhaxuatban.IsReadOnly = false;
             txttennhaxuatban.IsReadOnly = false;
             txtdiachi.IsReadOnly = false;

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
         mc:Ignorable="d"
-        Title="ViTriWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="ViTriWindow" Height="450" Width="800" Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen">
     <StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
