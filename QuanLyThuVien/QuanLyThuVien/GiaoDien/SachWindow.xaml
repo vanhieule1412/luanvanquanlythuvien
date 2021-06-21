@@ -1,0 +1,98 @@
+﻿<Window x:Class="QuanLyThuVien.GiaoDien.SachWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
+        mc:Ignorable="d"
+        Title="SachWindow" Height="950" Width="1000"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        >
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <WrapPanel Grid.Row="0" Grid.Column="1">
+                <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" />
+                <RadioButton Content="Sửa" Name="rdoSua" />
+                <RadioButton Content="Xóa" Name="rdoXoa" />
+            </WrapPanel>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Mã sách"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Tên sách"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Số lượng"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Tác giả"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Năm xuất bản"/>
+            <TextBlock Grid.Column="0" Grid.Row="6" Text="Người dịch"/>
+            <TextBlock Grid.Column="0" Grid.Row="7" Text="Mã thể loại"/>
+            <TextBlock Grid.Column="0" Grid.Row="8" Text="Mã nhà xuất bản"/>
+            <TextBlock Grid.Column="0" Grid.Row="9" Text="Mã kệ"/>
+            <TextBlock Grid.Column="0" Grid.Row="10" Text="Hình"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Name="txtMasach"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Name="txtTensach"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Name="txtsoluong"/>
+            <TextBox Grid.Column="1" Grid.Row="4" Name="txttacgia"/>
+            <TextBox Grid.Column="1" Grid.Row="5" Name="txtnamxuatban"/>
+            <TextBox Grid.Column="1" Grid.Row="6" Name="txtnguoidich"/>
+            <ComboBox Grid.Column="1" Grid.Row="7" Name="cmbMatheloai" SelectedValuePath="MaTheLoai" DisplayMemberPath="MaTheLoai"/>
+            <ComboBox Grid.Column="1" Grid.Row="8" Name="cmbManhaxuatban" SelectedValuePath="MaNhaXuatBan" DisplayMemberPath="MaNhaXuatBan"/>
+            <ComboBox Grid.Column="1" Grid.Row="9" Name="cmbMake" SelectedValuePath="MaKe" DisplayMemberPath="MaKe"/>
+            <Image Grid.Column="1" Grid.Row="10" Name="imghinh" Height="150" Width="130" />
+            <StackPanel Grid.Row="10" Grid.Column="2">
+                <Button Content="Chọn Hình" Name="btnChonhinh" Click="BtnChonhinh_Click" />
+                <Button Content="Bỏ chọn hình" Name="btnBohinh" Click="BtnBohinh_Click" />
+            </StackPanel>
+            <WrapPanel Grid.Column="2" Grid.Row="7">
+                <TextBlock Text="Tên thể loại:"/>
+                <TextBlock Text="{Binding ElementName=cmbMatheloai,Path=SelectedItem.TenTheLoai}"/>
+            </WrapPanel>
+            <WrapPanel Grid.Column="2" Grid.Row="8">
+                <TextBlock Text="Tên nhà xuất bản:"/>
+                <TextBlock Text="{Binding ElementName=cmbManhaxuatban,Path=SelectedItem.TenNhaXuatBan}"/>
+            </WrapPanel>
+            <WrapPanel Grid.Column="2" Grid.Row="9">
+                <TextBlock Text="Tên kệ:"/>
+                <TextBlock Text="{Binding ElementName=cmbMake,Path=SelectedItem.TenKe}"/>
+            </WrapPanel>
+            
+        </Grid>
+        <StackPanel>
+            <Button Content="Thực hiện" Name="btnthuchien" Click="Btnthuchien_Click"/>
+        </StackPanel>
+       
+            <DataGrid Name="dgSach" AutoGenerateColumns="False" SelectedValuePath="MaSach" SelectionChanged="DgSach_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}"/>
+                    <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
+                    <DataGridTextColumn Header="Số Lượng" Binding="{Binding SoLuong}"/>
+                    <DataGridTextColumn Header="Tác Giả" Binding="{Binding TacGia}"/>
+                    <DataGridTextColumn Header="Năm xuất bản" Binding="{Binding NamXuatBan}"/>
+                    <DataGridTextColumn Header="Người dịch" Binding="{Binding NguoiDich}"/>
+                    <DataGridTextColumn Header="Mã thể loại" Binding="{Binding MaTheLoai}"/>
+                    <DataGridTextColumn Header="Mã nhà xuất bản" Binding="{Binding MaNhaXuatBan}"/>
+                    <DataGridTextColumn Header="Mã kệ" Binding="{Binding MaKe}"/>
+                <DataGridTextColumn Header="Tên file hình" Binding="{Binding Hinh}"/>
+
+
+            </DataGrid.Columns>
+            
+        </DataGrid>
+       
+    </StackPanel>
+</Window>

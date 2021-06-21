@@ -72,6 +72,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GiaoDien\SachWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GiaoDien\TheLoaiWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +101,9 @@
     </Compile>
     <Compile Include="GiaoDien\NhaXuatBanWindow.xaml.cs">
       <DependentUpon>NhaXuatBanWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\SachWindow.xaml.cs">
+      <DependentUpon>SachWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GiaoDien\TheLoaiWindow.xaml.cs">
       <DependentUpon>TheLoaiWindow.xaml</DependentUpon>
@@ -202,6 +209,9 @@
       <DependentUpon>Modelv2.edmx</DependentUpon>
       <LastGenOutput>Modelv2.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Hinhanh\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

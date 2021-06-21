@@ -29,3 +29,5 @@ D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\ThuThuWin
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\ThuThuWindow.baml
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\DocGiaWindow.g.cs
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\DocGiaWindow.baml
+D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\SachWindow.g.cs
+D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\SachWindow.baml

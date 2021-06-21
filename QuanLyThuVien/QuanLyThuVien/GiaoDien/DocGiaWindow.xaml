@@ -46,16 +46,18 @@
         <StackPanel>
             <Button Grid.Column="1" Grid.Row="7" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
         </StackPanel>
+    
         <DataGrid Name="dgDocGia" AutoGenerateColumns="False" SelectedValuePath="MaDocGia" SelectionChanged="DgDocGia_SelectionChanged" >
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Độc Giả" Binding="{Binding MaDocGia}"/>
                 <DataGridTextColumn Header="Tên Độc Giả" Binding="{Binding TenDocGia}"/>
                 <DataGridTextColumn Header="Năm Sinh" Binding="{Binding NamSinh}"/>
                 <DataGridTextColumn Header="Số Điện Thoại" Binding="{Binding SoDienThoai}"/>
                 <DataGridTextColumn Header="Mật Khẩu" Binding="{Binding MatKhau}"/>
-                
             </DataGrid.Columns>
         </DataGrid>
+        
 
 
 

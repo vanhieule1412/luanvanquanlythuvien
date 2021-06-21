@@ -12,7 +12,7 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -29,6 +29,7 @@
             <Button Content="Vị trí" Name="btnvitri" Grid.Column="2" Grid.Row="0" Click="Btnvitri_Click"/>
             <Button Content="Quản lý thủ thư" Name="btnthuthu" Grid.Column="3" Grid.Row="0" Click="Btnthuthu_Click"/>
             <Button Content="Quản lý độc giả" Name="btndocgia" Grid.Column="4" Grid.Row="0" Click="Btndocgia_Click"/>
+            <Button Content="Quản lý Sách" Name="btnsach" Grid.Column="5" Grid.Row="0" Click="Btnsach_Click"/>
         </Grid>
     </StackPanel>
 </Window>
