@@ -86,15 +86,22 @@ namespace QuanLyThuVien.GiaoDien
         private void DgThuThu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //if (dgNhaXuatBan.SelectedItem == null) return;
+           
             Model.THUTHU tHUTHU = dgThuThu.SelectedItem as Model.THUTHU;
-            txtmathuthu.Text = tHUTHU.MaThuThu;
-            txttenthuthu.Text = tHUTHU.TenThuThu;
-            txtnamsinh.Text = tHUTHU.NamSinh.ToString();
-            txtsodienthoai.Text = tHUTHU.SoDienThoai.ToString();
-            if (tHUTHU.TrangThaiHoatDong.Value == true) rdohoatdong.IsChecked = true;
-            else rdokhonghoatdong.IsChecked = true;
-            txttendangnhap.Text = tHUTHU.TenDangNhap;
-            txtmatkhau.Text = tHUTHU.MatKhau;
+            if (tHUTHU != null)
+            {
+                txtmathuthu.Text = tHUTHU.MaThuThu;
+                txttenthuthu.Text = tHUTHU.TenThuThu;
+                txtnamsinh.Text = tHUTHU.NamSinh.ToString();
+                txtsodienthoai.Text = tHUTHU.SoDienThoai.ToString();
+                if (tHUTHU.TrangThaiHoatDong.Value == true) rdohoatdong.IsChecked = true;
+                else rdokhonghoatdong.IsChecked = true;
+                txttendangnhap.Text = tHUTHU.TenDangNhap;
+                txtmatkhau.Text = tHUTHU.MatKhau;
+            }
+            else
+                return;
+            
         }
     }
 }

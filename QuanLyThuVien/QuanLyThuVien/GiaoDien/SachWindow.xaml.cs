@@ -34,14 +34,15 @@ namespace QuanLyThuVien.GiaoDien
             cmbMatheloai.ItemsSource = dc.THELOAIs.ToList();
             cmbManhaxuatban.ItemsSource = dc.NHAXUATBANs.ToList();
             cmbMake.ItemsSource = dc.VITRIs.ToList();
+                      
         }
         private void DgSach_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
-            if (dgSach.SelectedItem == null) return;
+
+            //if (dgSach.SelectedItem == null) return;
             Model.SACH s = dgSach.SelectedItem as Model.SACH;
-            
-            
+            if (s != null)
+            {
                 txtMasach.Text = s.MaSach;
                 txtTensach.Text = s.TenSach;
                 txtsoluong.Text = s.SoLuong.ToString();
@@ -74,6 +75,14 @@ namespace QuanLyThuVien.GiaoDien
                 cmbMatheloai.SelectedValue = s.THELOAI.MaTheLoai;
                 cmbManhaxuatban.SelectedValue = s.NHAXUATBAN.MaNhaXuatBan;
                 cmbMake.SelectedValue = s.VITRI.MaKe;
+            }
+            else
+            {
+                return;
+            }
+
+            
+               
             
             
         }
@@ -99,9 +108,74 @@ namespace QuanLyThuVien.GiaoDien
                 hienthi();
             }
             else if (rdoSua.IsChecked == true)
-            { }
+            {
+                string masach = txtMasach.Text;
+                Model.SACH sACH = dc.SACHes.Find(masach);
+                sACH.TenSach = txtTensach.Text;
+                sACH.SoLuong = int.Parse(txtsoluong.Text);
+                sACH.NamXuatBan = int.Parse(txtnamxuatban.Text);
+                sACH.NguoiDich = txtnguoidich.Text;
+                sACH.TacGia = txttacgia.Text;
+                sACH.MaNhaXuatBan = cmbManhaxuatban.SelectedValue.ToString();
+                sACH.MaTheLoai = cmbMatheloai.SelectedValue.ToString();
+                sACH.MaKe = cmbMake.SelectedValue.ToString();
+                if (tenFileHinh == path + sACH.Hinh)
+                {
+                    dc.SaveChanges();
+                    dgSach.ItemsSource = dc.SACHes.ToList();
+                    return;
+                }
+                else
+                {
+                    BitmapImage tempBM = imghinh.Source as BitmapImage;
+                    if (tempBM != null)
+                    {
+                        tempBM.StreamSource.Close();
+                        imghinh.Source = null;
+                    }
+                    File.Delete(path + sACH.Hinh);
+                    if (tenFileHinh != "")
+                    {
+                        FileInfo fi = new FileInfo(tenFileHinh);
+                        sACH.Hinh = sACH.MaSach + fi.Extension;
+                        File.Copy(tenFileHinh, path + sACH.Hinh);
+                    }
+
+                    else
+                    {
+                        sACH.Hinh = "";
+                    }
+
+                    dc.SaveChanges();
+                    hienthi();
+                }
+            }
             else if (rdoXoa.IsChecked == true)
-            { }
+            {
+                if (dgSach.SelectedItem == null) return;
+                else
+                {
+                    string masach = dgSach.SelectedValue.ToString();
+                    Model.SACH sACH = dc.SACHes.Find(masach);
+                    if (sACH != null)
+                    {
+
+                        if (sACH.Hinh != "")
+                        {
+                            BitmapImage tempBM = imghinh.Source as BitmapImage;
+                            if (tempBM != null)
+                            {
+                                tempBM.StreamSource.Close();
+                                imghinh.Source = null;
+                            }
+                            File.Delete(path + sACH.Hinh);
+                        }
+                        dc.SACHes.Remove(sACH);
+                        dc.SaveChanges();
+                        hienthi();
+                    }
+                }
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -111,6 +185,21 @@ namespace QuanLyThuVien.GiaoDien
             di = di.Parent;
             path = di.FullName + @"\Hinhanh\";
             hienthi();
+            //var kq = dc.SACHes.Select(x => new {
+            //    MaSach = x.MaSach,
+            //    TenSach = x.TenSach,
+            //    SoLuong = x.SoLuong,
+            //    NamXuatBan = x.NamXuatBan,
+            //    TacGia = x.TacGia,
+            //    NguoiDich = x.NguoiDich,
+            //    TenTheLoai = x.THELOAI.TenTheLoai,
+            //    TenNhaXuatBan = x.NHAXUATBAN.TenNhaXuatBan,
+            //    TenKe = x.VITRI.TenKe,
+            //});
+            //dgSach.ItemsSource = kq.ToList();
+
+
+
         }
 
         private void BtnChonhinh_Click(object sender, RoutedEventArgs e)
@@ -146,6 +235,15 @@ namespace QuanLyThuVien.GiaoDien
             }
             tenFileHinh = "";
             imghinh.Source = null;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            var filtered =dc.SACHes.Where(x => x.MaSach.);
+
+            dgSach.ItemsSource = filtered;
+            hienthi();
         }
     }
 }

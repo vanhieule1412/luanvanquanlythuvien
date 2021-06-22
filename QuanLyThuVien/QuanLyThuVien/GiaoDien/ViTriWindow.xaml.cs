@@ -31,6 +31,8 @@ namespace QuanLyThuVien.GiaoDien
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             hienthi();
+            
+           
         }
         private void RdoThem_Click(object sender, RoutedEventArgs e)
         {
@@ -88,11 +90,21 @@ namespace QuanLyThuVien.GiaoDien
 
         private void DgViTri_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dgViTri.SelectedItem == null) return;
             Model.VITRI vITRI = dgViTri.SelectedItem as Model.VITRI;
-            txtmavitri.Text = vITRI.MaKe;
-            txttenke.Text = vITRI.TenKe;
-           
+
+            if (vITRI != null)
+            {
+                txtmavitri.Text = vITRI.MaKe;
+                txttenke.Text = vITRI.TenKe;
+            }
+            else
+            {
+
+                return;
+            }
+
+
+
         }
 
         private void RdoXoa_Click(object sender, RoutedEventArgs e)
@@ -101,5 +113,7 @@ namespace QuanLyThuVien.GiaoDien
             txttenke.IsReadOnly = true;
            
         }
+
+       
     }
 }

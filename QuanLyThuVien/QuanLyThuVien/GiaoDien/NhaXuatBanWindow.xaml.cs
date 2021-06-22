@@ -30,11 +30,19 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void DgNhaXuatBan_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dgNhaXuatBan.SelectedItem == null) return;
+            //if (dgNhaXuatBan.SelectedItem == null) return;
             Model.NHAXUATBAN nHAXUATBAN = dgNhaXuatBan.SelectedItem as Model.NHAXUATBAN;
-            txtmanhaxuatban.Text = nHAXUATBAN.MaNhaXuatBan;
-            txttennhaxuatban.Text = nHAXUATBAN.TenNhaXuatBan;
-            txtdiachi.Text = nHAXUATBAN.DiaChi;
+            if (nHAXUATBAN != null)
+            {
+                txtmanhaxuatban.Text = nHAXUATBAN.MaNhaXuatBan;
+                txttennhaxuatban.Text = nHAXUATBAN.TenNhaXuatBan;
+                txtdiachi.Text = nHAXUATBAN.DiaChi;
+            }
+            else
+            {
+                return;
+            }
+            
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

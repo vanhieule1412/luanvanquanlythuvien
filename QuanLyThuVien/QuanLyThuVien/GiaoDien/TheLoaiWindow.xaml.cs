@@ -40,10 +40,17 @@ namespace QuanLyThuVien.GiaoDien
 
         private void DgTheLoai_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dgTheLoai.SelectedItem == null) return;
+            //if (dgTheLoai.SelectedItem == null) return;
             Model.THELOAI tl = dgTheLoai.SelectedItem as Model.THELOAI;
-            txtmatheloai.Text = tl.MaTheLoai;
-            txttentheloai.Text = tl.TenTheLoai;         
+            if (tl != null)
+            {
+                txtmatheloai.Text = tl.MaTheLoai;
+                txttentheloai.Text = tl.TenTheLoai;
+            }
+            else {
+                return;
+            }
+     
         }
         private void Btnthuchien_Click(object sender, RoutedEventArgs e)
         {

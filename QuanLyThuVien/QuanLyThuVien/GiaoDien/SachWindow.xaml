@@ -67,7 +67,7 @@
                 <TextBlock Text="{Binding ElementName=cmbManhaxuatban,Path=SelectedItem.TenNhaXuatBan}"/>
             </WrapPanel>
             <WrapPanel Grid.Column="2" Grid.Row="9">
-                <TextBlock Text="Tên kệ:"/>
+                <TextBlock Text="Tên kệ:" Name="tbltenke"/>
                 <TextBlock Text="{Binding ElementName=cmbMake,Path=SelectedItem.TenKe}"/>
             </WrapPanel>
             
@@ -75,6 +75,11 @@
         <StackPanel>
             <Button Content="Thực hiện" Name="btnthuchien" Click="Btnthuchien_Click"/>
         </StackPanel>
+        <WrapPanel>
+            <Button Content="Find" HorizontalAlignment="Right" Click="Button_Click"/>
+            <TextBox Name="txtfind" Width="200" HorizontalAlignment="Left"/>
+            
+        </WrapPanel>
        
             <DataGrid Name="dgSach" AutoGenerateColumns="False" SelectedValuePath="MaSach" SelectionChanged="DgSach_SelectionChanged">
                 <DataGrid.Columns>
@@ -85,11 +90,12 @@
                     <DataGridTextColumn Header="Năm xuất bản" Binding="{Binding NamXuatBan}"/>
                     <DataGridTextColumn Header="Người dịch" Binding="{Binding NguoiDich}"/>
                     <DataGridTextColumn Header="Mã thể loại" Binding="{Binding MaTheLoai}"/>
+                    <DataGridTextColumn Header="Tên thể loại" Binding="{Binding TenTheLoai}"/>
                     <DataGridTextColumn Header="Mã nhà xuất bản" Binding="{Binding MaNhaXuatBan}"/>
+                    <DataGridTextColumn Header="Tên nhà xuất bản" Binding="{Binding TenNhaXuatBan}"/>
                     <DataGridTextColumn Header="Mã kệ" Binding="{Binding MaKe}"/>
-                <DataGridTextColumn Header="Tên file hình" Binding="{Binding Hinh}"/>
-
-
+                    <DataGridTextColumn Header="Tên kệ" Binding="{Binding TenKe}"/>
+                    <DataGridTextColumn Header="Tên file hình" Binding="{Binding Hinh}"/>
             </DataGrid.Columns>
             
         </DataGrid>

@@ -80,13 +80,21 @@ namespace QuanLyThuVien.GiaoDien
 
         private void DgDocGia_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dgDocGia.SelectedItem == null) return;
+            //if (dgDocGia.SelectedItem == null) return;
             Model.DOCGIA dOCGIA = dgDocGia.SelectedItem as Model.DOCGIA;
-            txtmadocgia.Text = dOCGIA.MaDocGia;
-            txttendocgia.Text = dOCGIA.TenDocGia;
-            txtnamsinh.Text = dOCGIA.NamSinh.ToString();
-            txtsodienthoai.Text = dOCGIA.SoDienThoai.ToString();
-            txtmatkhau.Text = dOCGIA.MatKhau;
+            if (dOCGIA != null)
+            {
+                txtmadocgia.Text = dOCGIA.MaDocGia;
+                txttendocgia.Text = dOCGIA.TenDocGia;
+                txtnamsinh.Text = dOCGIA.NamSinh.ToString();
+                txtsodienthoai.Text = dOCGIA.SoDienThoai.ToString();
+                txtmatkhau.Text = dOCGIA.MatKhau;
+            }
+            else
+            {
+                return;
+            }
+            
         }
     }
 }
