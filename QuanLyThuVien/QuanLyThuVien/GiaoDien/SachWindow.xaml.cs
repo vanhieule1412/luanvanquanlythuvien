@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,12 +22,14 @@ namespace QuanLyThuVien.GiaoDien
     /// </summary>
     public partial class SachWindow : Window
     {
-        private Model.UngDungQuanLyThuVienEntities dc = new Model.UngDungQuanLyThuVienEntities();
+        private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         private string path = "";
         private string tenFileHinh = "";
+        
         public SachWindow()
         {
             InitializeComponent();
+           
         }
         private void hienthi()
         {
@@ -34,13 +37,25 @@ namespace QuanLyThuVien.GiaoDien
             cmbMatheloai.ItemsSource = dc.THELOAIs.ToList();
             cmbManhaxuatban.ItemsSource = dc.NHAXUATBANs.ToList();
             cmbMake.ItemsSource = dc.VITRIs.ToList();
-                      
+            //var kq = dc.SACHes.Select(x => new
+            //{
+            //    MaSach = x.MaSach,
+            //    TenSach = x.TenSach,
+            //    SoLuong = x.SoLuong,
+            //    NamXuatBan = x.NamXuatBan,
+            //    TacGia = x.TacGia,
+            //    NguoiDich = x.NguoiDich,
+            //    TenTheLoai = x.THELOAI.TenTheLoai,
+            //    TenNhaXuatBan = x.NHAXUATBAN.TenNhaXuatBan,
+            //    TenKe = x.VITRI.TenKe,
+            //});
+            //dgSach.ItemsSource = kq.ToList();
+
         }
         private void DgSach_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             //if (dgSach.SelectedItem == null) return;
-            Model.SACH s = dgSach.SelectedItem as Model.SACH;
+            SACH s = dgSach.SelectedItem as SACH;
             if (s != null)
             {
                 txtMasach.Text = s.MaSach;
@@ -90,7 +105,7 @@ namespace QuanLyThuVien.GiaoDien
         {
             if (rdoThem.IsChecked == true)
             {
-                Model.SACH sACH = new Model.SACH();
+                SACH sACH = new SACH();
                 sACH.MaSach = txtMasach.Text;
                 sACH.TenSach = txtTensach.Text;
                 sACH.SoLuong = int.Parse(txtsoluong.Text);
@@ -110,7 +125,7 @@ namespace QuanLyThuVien.GiaoDien
             else if (rdoSua.IsChecked == true)
             {
                 string masach = txtMasach.Text;
-                Model.SACH sACH = dc.SACHes.Find(masach);
+                SACH sACH = dc.SACHes.Find(masach);
                 sACH.TenSach = txtTensach.Text;
                 sACH.SoLuong = int.Parse(txtsoluong.Text);
                 sACH.NamXuatBan = int.Parse(txtnamxuatban.Text);
@@ -156,7 +171,7 @@ namespace QuanLyThuVien.GiaoDien
                 else
                 {
                     string masach = dgSach.SelectedValue.ToString();
-                    Model.SACH sACH = dc.SACHes.Find(masach);
+                    SACH sACH = dc.SACHes.Find(masach);
                     if (sACH != null)
                     {
 
@@ -237,13 +252,27 @@ namespace QuanLyThuVien.GiaoDien
             imghinh.Source = null;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+       
+
+        private void TxtName_TextChanged(object sender, TextChangedEventArgs e)
         {
-
-            var filtered =dc.SACHes.Where(x => x.MaSach.);
-
-            dgSach.ItemsSource = filtered;
-            hienthi();
+            TextBox t = (TextBox)sender;
+            string filter = t.Text;
+            ICollectionView cv = CollectionViewSource.GetDefaultView(dgSach.ItemsSource);
+            if (filter == "")
+                cv.Filter = null;
+            else
+            {
+                cv.Filter = o =>
+                {
+                    SACH p = o as SACH;
+                    if (t.Name == "txtId")
+                        return p.MaSach.StartsWith(filter);
+                    return (p.TenSach.StartsWith(filter));
+                };
+            }
         }
+
+        
     }
 }

@@ -7,34 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QuanLyThuVien.Model
+namespace QuanLyThuVien
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class SACH
+    public partial class PHIEUMUON
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SACH()
+        public PHIEUMUON()
         {
             this.SACH_PHIEUMUON = new HashSet<SACH_PHIEUMUON>();
         }
     
-        public string MaSach { get; set; }
-        public string TenSach { get; set; }
-        public int SoLuong { get; set; }
-        public string TacGia { get; set; }
-        public int NamXuatBan { get; set; }
-        public string NguoiDich { get; set; }
-        public string Hinh { get; set; }
-        public string MaTheLoai { get; set; }
-        public string MaNhaXuatBan { get; set; }
-        public string MaKe { get; set; }
+        public string MaPhieuMuon { get; set; }
+        public System.DateTime NgayMuon { get; set; }
+        public System.DateTime NgayTra { get; set; }
+        public bool TrangThai { get; set; }
+        public Nullable<decimal> TienPhat { get; set; }
+        public string MaThuThu { get; set; }
+        public string MaDocGia { get; set; }
     
-        public virtual NHAXUATBAN NHAXUATBAN { get; set; }
+        public virtual DOCGIA DOCGIA { get; set; }
+        public virtual THUTHU THUTHU { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SACH_PHIEUMUON> SACH_PHIEUMUON { get; set; }
-        public virtual THELOAI THELOAI { get; set; }
-        public virtual VITRI VITRI { get; set; }
     }
 }

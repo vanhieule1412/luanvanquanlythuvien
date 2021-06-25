@@ -75,26 +75,40 @@
         <StackPanel>
             <Button Content="Thực hiện" Name="btnthuchien" Click="Btnthuchien_Click"/>
         </StackPanel>
-        <WrapPanel>
-            <Button Content="Find" HorizontalAlignment="Right" Click="Button_Click"/>
-            <TextBox Name="txtfind" Width="200" HorizontalAlignment="Left"/>
-            
-        </WrapPanel>
-       
-            <DataGrid Name="dgSach" AutoGenerateColumns="False" SelectedValuePath="MaSach" SelectionChanged="DgSach_SelectionChanged">
+        <DataGrid Name="dgSach" AutoGenerateColumns="False" SelectedValuePath="MaSach" SelectionChanged="DgSach_SelectionChanged" >                 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}"/>
-                    <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
+                <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Content, RelativeSource=
+                                         {RelativeSource Mode=TemplatedParent}}"/>
+                                <TextBox x:Name="txtId" Width="100" TextChanged="TxtName_TextChanged"  />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}">
+                    <DataGridTextColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Content, RelativeSource=
+                                         {RelativeSource Mode=TemplatedParent}}"/>
+                                <TextBox x:Name="txtName" Width="100" TextChanged="TxtName_TextChanged"  />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTextColumn.HeaderTemplate>
+                </DataGridTextColumn>
                     <DataGridTextColumn Header="Số Lượng" Binding="{Binding SoLuong}"/>
                     <DataGridTextColumn Header="Tác Giả" Binding="{Binding TacGia}"/>
                     <DataGridTextColumn Header="Năm xuất bản" Binding="{Binding NamXuatBan}"/>
                     <DataGridTextColumn Header="Người dịch" Binding="{Binding NguoiDich}"/>
                     <DataGridTextColumn Header="Mã thể loại" Binding="{Binding MaTheLoai}"/>
-                    <DataGridTextColumn Header="Tên thể loại" Binding="{Binding TenTheLoai}"/>
+                    <!--<DataGridTextColumn Header="Tên thể loại" Binding="{Binding TenTheLoai}"/>-->
                     <DataGridTextColumn Header="Mã nhà xuất bản" Binding="{Binding MaNhaXuatBan}"/>
-                    <DataGridTextColumn Header="Tên nhà xuất bản" Binding="{Binding TenNhaXuatBan}"/>
+                    <!--<DataGridTextColumn Header="Tên nhà xuất bản" Binding="{Binding TenNhaXuatBan}"/>-->
                     <DataGridTextColumn Header="Mã kệ" Binding="{Binding MaKe}"/>
-                    <DataGridTextColumn Header="Tên kệ" Binding="{Binding TenKe}"/>
+                    <!--<DataGridTextColumn Header="Tên kệ" Binding="{Binding TenKe}"/>-->
                     <DataGridTextColumn Header="Tên file hình" Binding="{Binding Hinh}"/>
             </DataGrid.Columns>
             

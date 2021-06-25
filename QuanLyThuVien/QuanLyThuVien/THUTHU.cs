@@ -7,23 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QuanLyThuVien.Model
+namespace QuanLyThuVien
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class VITRI
+    public partial class THUTHU
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public VITRI()
+        public THUTHU()
         {
-            this.SACHes = new HashSet<SACH>();
+            this.PHIEUMUONs = new HashSet<PHIEUMUON>();
         }
     
-        public string MaKe { get; set; }
-        public string TenKe { get; set; }
+        public string MaThuThu { get; set; }
+        public string TenThuThu { get; set; }
+        public int NamSinh { get; set; }
+        public int SoDienThoai { get; set; }
+        public Nullable<bool> TrangThaiHoatDong { get; set; }
+        public string TenDangNhap { get; set; }
+        public string MatKhau { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SACH> SACHes { get; set; }
+        public virtual ICollection<PHIEUMUON> PHIEUMUONs { get; set; }
     }
 }

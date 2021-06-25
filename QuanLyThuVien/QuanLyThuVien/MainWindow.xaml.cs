@@ -87,5 +87,14 @@ namespace QuanLyThuVien
             fsach.Close();
             this.ShowDialog();
         }
+
+        private void Btnphieumuon_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.DanhSachPhieuMuonWindow fdanhsachphieumuon = new GiaoDien.DanhSachPhieuMuonWindow();
+            this.Hide();
+            fdanhsachphieumuon.ShowDialog();
+            fdanhsachphieumuon.Close();
+            this.ShowDialog();
+        }
     }
 }

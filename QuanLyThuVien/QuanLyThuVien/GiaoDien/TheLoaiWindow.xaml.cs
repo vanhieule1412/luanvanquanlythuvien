@@ -19,7 +19,7 @@ namespace QuanLyThuVien.GiaoDien
     /// </summary>
     public partial class TheLoaiWindow : Window
     {
-        private Model.UngDungQuanLyThuVienEntities dc = new Model.UngDungQuanLyThuVienEntities();
+        private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         public TheLoaiWindow()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace QuanLyThuVien.GiaoDien
         private void DgTheLoai_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //if (dgTheLoai.SelectedItem == null) return;
-            Model.THELOAI tl = dgTheLoai.SelectedItem as Model.THELOAI;
+           THELOAI tl = dgTheLoai.SelectedItem as THELOAI;
             if (tl != null)
             {
                 txtmatheloai.Text = tl.MaTheLoai;
@@ -56,7 +56,7 @@ namespace QuanLyThuVien.GiaoDien
         {
             if (rdoThem.IsChecked == true)
             {
-                Model.THELOAI tHELOAI = new Model.THELOAI();
+                THELOAI tHELOAI = new THELOAI();
                 tHELOAI.MaTheLoai = txtmatheloai.Text;
                 tHELOAI.TenTheLoai = txttentheloai.Text;
                 dc.THELOAIs.Add(tHELOAI);
@@ -67,7 +67,7 @@ namespace QuanLyThuVien.GiaoDien
             else if (rdoSua.IsChecked == true)
             {
                 string matheloai = txtmatheloai.Text;
-                Model.THELOAI tHELOAI = dc.THELOAIs.Find(matheloai);
+                THELOAI tHELOAI = dc.THELOAIs.Find(matheloai);
                 if (matheloai != null)
                 {
                     tHELOAI.TenTheLoai = txttentheloai.Text;
@@ -81,7 +81,7 @@ namespace QuanLyThuVien.GiaoDien
                 else
                 {
                     string matheloai = dgTheLoai.SelectedValue.ToString();
-                    Model.THELOAI tHELOAI = dc.THELOAIs.Find(matheloai);
+                    THELOAI tHELOAI = dc.THELOAIs.Find(matheloai);
                     if (tHELOAI != null)
                     {
                         dc.THELOAIs.Remove(tHELOAI);

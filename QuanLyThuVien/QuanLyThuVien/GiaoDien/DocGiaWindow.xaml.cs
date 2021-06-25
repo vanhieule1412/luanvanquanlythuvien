@@ -19,7 +19,7 @@ namespace QuanLyThuVien.GiaoDien
     /// </summary>
     public partial class DocGiaWindow : Window
     {
-        private Model.UngDungQuanLyThuVienEntities dc = new Model.UngDungQuanLyThuVienEntities();
+        private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         public DocGiaWindow()
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace QuanLyThuVien.GiaoDien
         {
             if (rdoThem.IsChecked == true)
             {
-                Model.DOCGIA dOCGIA = new Model.DOCGIA();
+                DOCGIA dOCGIA = new DOCGIA();
                 dOCGIA.MaDocGia = txtmadocgia.Text;
                 dOCGIA.TenDocGia = txttendocgia.Text;
                 dOCGIA.NamSinh = int.Parse(txtnamsinh.Text);
@@ -50,7 +50,7 @@ namespace QuanLyThuVien.GiaoDien
             else if (rdoSua.IsChecked == true)
             {
                 string madocgia = txtmadocgia.Text;
-                Model.DOCGIA dOCGIA = dc.DOCGIAs.Find(madocgia);
+                DOCGIA dOCGIA = dc.DOCGIAs.Find(madocgia);
                 if (madocgia != null)
                 {
                     dOCGIA.TenDocGia = txttendocgia.Text;
@@ -81,7 +81,7 @@ namespace QuanLyThuVien.GiaoDien
         private void DgDocGia_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //if (dgDocGia.SelectedItem == null) return;
-            Model.DOCGIA dOCGIA = dgDocGia.SelectedItem as Model.DOCGIA;
+            DOCGIA dOCGIA = dgDocGia.SelectedItem as DOCGIA;
             if (dOCGIA != null)
             {
                 txtmadocgia.Text = dOCGIA.MaDocGia;

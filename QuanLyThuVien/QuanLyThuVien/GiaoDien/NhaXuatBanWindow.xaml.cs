@@ -19,7 +19,7 @@ namespace QuanLyThuVien.GiaoDien
     /// </summary>
     public partial class NhaXuatBanWindow : Window
     {
-        private Model.UngDungQuanLyThuVienEntities dc = new Model.UngDungQuanLyThuVienEntities();
+        private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         public NhaXuatBanWindow()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace QuanLyThuVien.GiaoDien
         private void DgNhaXuatBan_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //if (dgNhaXuatBan.SelectedItem == null) return;
-            Model.NHAXUATBAN nHAXUATBAN = dgNhaXuatBan.SelectedItem as Model.NHAXUATBAN;
+            NHAXUATBAN nHAXUATBAN = dgNhaXuatBan.SelectedItem as NHAXUATBAN;
             if (nHAXUATBAN != null)
             {
                 txtmanhaxuatban.Text = nHAXUATBAN.MaNhaXuatBan;
@@ -76,7 +76,7 @@ namespace QuanLyThuVien.GiaoDien
         {
             if (rdoThem.IsChecked == true)
             {
-                Model.NHAXUATBAN nHAXUATBAN = new Model.NHAXUATBAN();
+                NHAXUATBAN nHAXUATBAN = new NHAXUATBAN();
                 nHAXUATBAN.MaNhaXuatBan = txtmanhaxuatban.Text;
                 nHAXUATBAN.TenNhaXuatBan = txttennhaxuatban.Text;
                 nHAXUATBAN.DiaChi = txtdiachi.Text;
@@ -87,7 +87,7 @@ namespace QuanLyThuVien.GiaoDien
             else if (rdoSua.IsChecked == true)
             {
                 string manhanxuatban = txtmanhaxuatban.Text;
-                Model.NHAXUATBAN nHAXUATBAN = dc.NHAXUATBANs.Find(manhanxuatban);
+                NHAXUATBAN nHAXUATBAN = dc.NHAXUATBANs.Find(manhanxuatban);
                 if (manhanxuatban != null)
                 {
                     nHAXUATBAN.TenNhaXuatBan = txttennhaxuatban.Text;
@@ -102,7 +102,7 @@ namespace QuanLyThuVien.GiaoDien
                 else
                 {
                     string manhanxuatban = dgNhaXuatBan.SelectedValue.ToString();
-                    Model.NHAXUATBAN nHAXUATBAN = dc.NHAXUATBANs.Find(manhanxuatban);
+                    NHAXUATBAN nHAXUATBAN = dc.NHAXUATBANs.Find(manhanxuatban);
                     if (nHAXUATBAN != null)
                     {
                         dc.NHAXUATBANs.Remove(nHAXUATBAN);

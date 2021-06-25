@@ -19,7 +19,7 @@ namespace QuanLyThuVien.GiaoDien
     /// </summary>
     public partial class ThuThuWindow : Window
     {
-        private Model.UngDungQuanLyThuVienEntities dc = new Model.UngDungQuanLyThuVienEntities();
+        private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         
         public ThuThuWindow()
         {
@@ -48,7 +48,7 @@ namespace QuanLyThuVien.GiaoDien
         {
             if (rdoThem.IsChecked == true)
             {
-                Model.THUTHU tHUTHU = new Model.THUTHU();
+                THUTHU tHUTHU = new THUTHU();
                 tHUTHU.MaThuThu = txtmathuthu.Text;
                 tHUTHU.TenThuThu = txttenthuthu.Text;
                 tHUTHU.NamSinh = int.Parse(txtnamsinh.Text);
@@ -63,7 +63,7 @@ namespace QuanLyThuVien.GiaoDien
             else if (rdoSua.IsChecked == true)
             {
                 string mathuthu = txtmathuthu.Text;
-                Model.THUTHU tHUTHU = dc.THUTHUs.Find(mathuthu);
+                THUTHU tHUTHU = dc.THUTHUs.Find(mathuthu);
                 if (mathuthu != null)
                 {
                     tHUTHU.TenThuThu = txttenthuthu.Text;
@@ -87,7 +87,7 @@ namespace QuanLyThuVien.GiaoDien
         {
             //if (dgNhaXuatBan.SelectedItem == null) return;
            
-            Model.THUTHU tHUTHU = dgThuThu.SelectedItem as Model.THUTHU;
+            THUTHU tHUTHU = dgThuThu.SelectedItem as THUTHU;
             if (tHUTHU != null)
             {
                 txtmathuthu.Text = tHUTHU.MaThuThu;

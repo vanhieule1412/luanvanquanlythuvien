@@ -29,7 +29,6 @@
           </Key>
           <Property Name="MaPhieuMuon" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="NgayMuon" Type="datetime" Nullable="false" />
-          <Property Name="SoLuongSachMuon" Type="int" Nullable="false" />
           <Property Name="NgayTra" Type="datetime" Nullable="false" />
           <Property Name="TrangThai" Type="bit" Nullable="false" />
           <Property Name="TienPhat" Type="money" />
@@ -58,6 +57,7 @@
           <Property Name="MaSachPhieuMuon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaSach" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="MaPhieuMuon" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="SoLuongSachMuon" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -249,7 +249,6 @@
           </Key>
           <Property Name="MaPhieuMuon" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="NgayMuon" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SoLuongSachMuon" Type="Int32" Nullable="false" />
           <Property Name="NgayTra" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TrangThai" Type="Boolean" Nullable="false" />
           <Property Name="TienPhat" Type="Decimal" Precision="19" Scale="4" />
@@ -285,6 +284,7 @@
           <Property Name="MaSachPhieuMuon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaSach" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MaPhieuMuon" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SoLuongSachMuon" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PHIEUMUON" Relationship="Self.FKSACH_PHIEU103951" FromRole="SACH_PHIEUMUON" ToRole="PHIEUMUON" />
           <NavigationProperty Name="SACH" Relationship="Self.FKSACH_PHIEU641697" FromRole="SACH_PHIEUMUON" ToRole="SACH" />
         </EntityType>
@@ -481,7 +481,6 @@
               <MappingFragment StoreEntitySet="PHIEUMUON">
                 <ScalarProperty Name="MaPhieuMuon" ColumnName="MaPhieuMuon" />
                 <ScalarProperty Name="NgayMuon" ColumnName="NgayMuon" />
-                <ScalarProperty Name="SoLuongSachMuon" ColumnName="SoLuongSachMuon" />
                 <ScalarProperty Name="NgayTra" ColumnName="NgayTra" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="TienPhat" ColumnName="TienPhat" />
@@ -512,6 +511,7 @@
                 <ScalarProperty Name="MaSachPhieuMuon" ColumnName="MaSachPhieuMuon" />
                 <ScalarProperty Name="MaSach" ColumnName="MaSach" />
                 <ScalarProperty Name="MaPhieuMuon" ColumnName="MaPhieuMuon" />
+                <ScalarProperty Name="SoLuongSachMuon" ColumnName="SoLuongSachMuon" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

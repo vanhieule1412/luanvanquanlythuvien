@@ -19,7 +19,7 @@ namespace QuanLyThuVien.GiaoDien
     /// </summary>
     public partial class ViTriWindow : Window
     {
-        private Model.UngDungQuanLyThuVienEntities dc = new Model.UngDungQuanLyThuVienEntities();
+        private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         public ViTriWindow()
         {
             InitializeComponent();
@@ -52,7 +52,7 @@ namespace QuanLyThuVien.GiaoDien
         {
             if (rdoThem.IsChecked == true)
             {
-                Model.VITRI vITRI = new Model.VITRI();
+                VITRI vITRI = new VITRI();
                 vITRI.MaKe = txtmavitri.Text;
                 vITRI.TenKe = txttenke.Text;
                 dc.VITRIs.Add(vITRI);
@@ -62,7 +62,7 @@ namespace QuanLyThuVien.GiaoDien
             else if (rdoSua.IsChecked == true)
             {
                 string make = txtmavitri.Text;
-                Model.VITRI vITRI = dc.VITRIs.Find(make);
+                VITRI vITRI = dc.VITRIs.Find(make);
                 if (make != null)
                 {
                     vITRI.TenKe = txttenke.Text;
@@ -76,7 +76,7 @@ namespace QuanLyThuVien.GiaoDien
                 else
                 {
                     string make = dgViTri.SelectedValue.ToString();
-                    Model.VITRI vITRI = dc.VITRIs.Find(make);
+                    VITRI vITRI = dc.VITRIs.Find(make);
                     if (vITRI != null)
                     {
                         dc.VITRIs.Remove(vITRI);
@@ -90,7 +90,7 @@ namespace QuanLyThuVien.GiaoDien
 
         private void DgViTri_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Model.VITRI vITRI = dgViTri.SelectedItem as Model.VITRI;
+            VITRI vITRI = dgViTri.SelectedItem as VITRI;
 
             if (vITRI != null)
             {

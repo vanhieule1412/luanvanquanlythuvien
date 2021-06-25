@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QuanLyThuVien.Model
+namespace QuanLyThuVien
 {
     using System;
     using System.Collections.Generic;

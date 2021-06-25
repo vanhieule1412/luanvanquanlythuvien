@@ -7,23 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QuanLyThuVien.Model
+namespace QuanLyThuVien
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class THELOAI
+    public partial class DOCGIA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public THELOAI()
+        public DOCGIA()
         {
-            this.SACHes = new HashSet<SACH>();
+            this.PHIEUMUONs = new HashSet<PHIEUMUON>();
         }
     
-        public string MaTheLoai { get; set; }
-        public string TenTheLoai { get; set; }
+        public string MaDocGia { get; set; }
+        public string TenDocGia { get; set; }
+        public int NamSinh { get; set; }
+        public Nullable<int> SoDienThoai { get; set; }
+        public string MatKhau { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SACH> SACHes { get; set; }
+        public virtual ICollection<PHIEUMUON> PHIEUMUONs { get; set; }
     }
 }

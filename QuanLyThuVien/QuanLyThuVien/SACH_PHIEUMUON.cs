@@ -7,17 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QuanLyThuVien.Model
+namespace QuanLyThuVien
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class SACH_PHIEUMUON
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int MaSachPhieuMuon { get; set; }
+        public string MaSach { get; set; }
+        public string MaPhieuMuon { get; set; }
+        public int SoLuongSachMuon { get; set; }
+    
+        public virtual PHIEUMUON PHIEUMUON { get; set; }
+        public virtual SACH SACH { get; set; }
     }
 }
