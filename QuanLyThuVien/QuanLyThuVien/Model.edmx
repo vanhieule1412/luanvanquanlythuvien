@@ -30,8 +30,8 @@
           <Property Name="MaPhieuMuon" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="NgayMuon" Type="datetime" Nullable="false" />
           <Property Name="NgayTra" Type="datetime" Nullable="false" />
-          <Property Name="TrangThai" Type="bit" Nullable="false" />
-          <Property Name="TienPhat" Type="money" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="10" />
+          <Property Name="TienPhat" Type="smallmoney" />
           <Property Name="MaThuThu" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="MaDocGia" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -250,8 +250,8 @@
           <Property Name="MaPhieuMuon" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="NgayMuon" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NgayTra" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
-          <Property Name="TienPhat" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TrangThai" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TienPhat" Type="Decimal" Precision="10" Scale="4" />
           <Property Name="MaThuThu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MaDocGia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="DOCGIA" Relationship="Self.FKPHIEUMUON746748" FromRole="PHIEUMUON" ToRole="DOCGIA" />

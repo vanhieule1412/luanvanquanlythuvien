@@ -12,24 +12,17 @@
     <StackPanel>
         <Button Content="Lập Phiếu Mượn" Name="btnlap" Click="Btnlap_Click"/>
         <GroupBox Header="Danh sách phiếu mượn">
-            <DataGrid Name="dgphieumuon" AutoGenerateColumns="False" Height="230" LoadingRowDetails="Dgphieumuon_LoadingRowDetails" >
+            <DataGrid Name="dgphieumuon" AutoGenerateColumns="False" Height="230" LoadingRowDetails="Dgphieumuon_LoadingRowDetails" SelectedValuePath="MaPhieuMuon" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã phiếu mượn" Binding="{Binding MaPhieuMuon}"/>
                     <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon,StringFormat='dd/MM/yyyy'}"/>
                     <DataGridTextColumn Header="Ngày trả" Binding="{Binding NgayTra,StringFormat='dd/MM/yyyy'}"/>
-                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding TrangThai}"/>
+                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding TrangThai }"/>
                     <DataGridTextColumn Header="Tiền phạt" Binding="{Binding TienPhat}"/>
                     <DataGridTextColumn Header="Mã thủ thư" Binding="{Binding MaThuThu}"/>
-                    <DataGridTextColumn Header="Tên thủ thư" Binding="{Binding TenThuThu}" />
+                    <DataGridTextColumn Header="Tên thủ thư" Binding="{Binding THUTHU.TenThuThu}" />
                     <DataGridTextColumn Header="Mã độc giả" Binding="{Binding MaDocGia}"/>
-                    <DataGridTextColumn Header="Tên độc giả" Binding="{Binding TenDocGia}"/>
-                    <!--<DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Xóa" Name="btnXoa" Click="BtnXoa_Click"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>-->
+                    <DataGridTextColumn Header="Tên độc giả" Binding="{Binding DOCGIA.TenDocGia}"/>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -40,10 +33,6 @@
                 </DataGrid.Columns>
                 <DataGrid.RowDetailsTemplate>
                     <DataTemplate>
-                        <!--<StackPanel>
-                            <TextBox Text="{Binding MaSach}"/>
-                            <TextBox Text="{Binding TenSach}"/> 
-                        </StackPanel>-->
                         <Expander>
                             <StackPanel>
                                 <DataGrid Name="dgsachphieumuon" AutoGenerateColumns="False" >

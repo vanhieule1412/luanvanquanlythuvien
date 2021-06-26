@@ -26,45 +26,18 @@ namespace QuanLyThuVien.GiaoDien
         {
             InitializeComponent();
         }
-        private void hienthi()
-        {
-            //var kq = dc.PHIEUMUONs.Select(x => new
-            //{
-            //    MaPhieuMuon = x.MaPhieuMuon,
-            //    NgayMuon = x.NgayMuon,
-            //    NgayTra = x.NgayTra,
-            //    TrangThai = x.TrangThai ? "Chưa Trả" : "Đã trả",
-            //    TienPhat = x.TienPhat,
-            //    MaDocGia = x.DOCGIA.MaDocGia,
-            //    TenDocGia = x.DOCGIA.TenDocGia,
-            //    MaThuThu = x.THUTHU.MaThuThu,
-            //    TenThuThu = x.THUTHU.TenThuThu,
-            //});
-            //dgphieumuon.ItemsSource = kq.ToList();
-            //dgphieumuon.ItemsSource = dc.DOCGIAs.ToList();
-            //dgphieumuon.ItemsSource = dc.THUTHUs.ToList();
-
-            dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
-
-
-
-        }
+        
    
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            hienthi();
-
-
+            dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
             
-
         }
        
         private void Dgphieumuon_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
         {
            
-                PHIEUMUON pHIEUMUON = e.Row.Item as PHIEUMUON;
-            
+                PHIEUMUON pHIEUMUON = e.Row.Item as PHIEUMUON;            
                 DataGrid dg = e.DetailsElement.FindName("dgsachphieumuon") as DataGrid;
                 var kq = pHIEUMUON.SACH_PHIEUMUON.ToList().Select(x => new
                 {
@@ -75,10 +48,7 @@ namespace QuanLyThuVien.GiaoDien
                     SoLuongSachMuon = x.SoLuongSachMuon,
                 });
                 dg.ItemsSource = kq.ToList();
-            
            
-
-
         }
 
         private void BtnXoa_Click(object sender, RoutedEventArgs e)
@@ -88,7 +58,25 @@ namespace QuanLyThuVien.GiaoDien
 
         private void BtnSua_Click(object sender, RoutedEventArgs e)
         {
-
+            GiaoDien.PhieuMuonWindow f = new PhieuMuonWindow();
+            f.pheptoan = KieuPhepToan.Sua;
+            f.pHIEUMUON = dc.PHIEUMUONs.Find(dgphieumuon.SelectedValue.ToString());
+            if (f.ShowDialog() == true)
+            {
+                PHIEUMUON hIEUMUON = dc.PHIEUMUONs.Find(f.pHIEUMUON.MaPhieuMuon);
+                if (hIEUMUON != null)
+                {               
+                    ////hIEUMUON.MaThuThu = f.pHIEUMUON.MaThuThu;
+                    ////hIEUMUON.MaDocGia = f.pHIEUMUON.MaDocGia;
+                    //hIEUMUON.NgayMuon = f.pHIEUMUON.NgayMuon;
+                    //hIEUMUON.NgayTra = f.pHIEUMUON.NgayTra;
+                    hIEUMUON.TrangThai = f.pHIEUMUON.TrangThai;
+                    hIEUMUON.TienPhat = f.pHIEUMUON.TienPhat;
+                    //hIEUMUON.SACH_PHIEUMUON = f.pHIEUMUON.SACH_PHIEUMUON;
+                    dc.SaveChanges();
+                    dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
+                }
+            }
         }
 
         private void Btnlap_Click(object sender, RoutedEventArgs e)
@@ -96,16 +84,7 @@ namespace QuanLyThuVien.GiaoDien
             GiaoDien.PhieuMuonWindow fphieumuon = new PhieuMuonWindow();
             fphieumuon.pheptoan = KieuPhepToan.Them;
             if (fphieumuon.ShowDialog() == true)
-            {
-                //foreach (Model.SACH_PHIEUMUON t in pHIEUMUON.SACH_PHIEUMUON)
-                //{
-                //    Model.SACH_PHIEUMUON ct = new Model.SACH_PHIEUMUON();
-
-                //    ct.MaPhieuMuon = t.MaPhieuMuon;
-                //    ct.MaSach = t.MaSach;
-                //    ct.SoLuongSachMuon = t.SoLuongSachMuon;
-                //    pHIEUMUON.SACH_PHIEUMUON.Add(ct);
-                //}         
+            {        
                 foreach (SACH_PHIEUMUON t in fphieumuon.HIEUMUON.SACH_PHIEUMUON)
                 {
                     SACH_PHIEUMUON ct = new SACH_PHIEUMUON();
@@ -116,13 +95,11 @@ namespace QuanLyThuVien.GiaoDien
                 }
                 dc.PHIEUMUONs.Add(fphieumuon.pHIEUMUON);
                 dc.SaveChanges();
-                hienthi();
-                
-
-
-
+                dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
             }
+            
         }
+        
 
       
     }

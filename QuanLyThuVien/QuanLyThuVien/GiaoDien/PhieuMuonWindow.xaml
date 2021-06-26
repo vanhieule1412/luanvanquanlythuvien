@@ -39,12 +39,10 @@
                 <ComboBox Grid.Column="1" Grid.Row="2" Name="cmbMaDocGia" SelectedValuePath="MaDocGia" DisplayMemberPath="MaDocGia"/>
                 <DatePicker Grid.Column="1" Grid.Row="6" Name="dpNgayMuon" Height="24" VerticalAlignment="Top"/>
                 <DatePicker Grid.Column="1" Grid.Row="7" Name="dpNgayTra"/>
-                <GroupBox Grid.Column="1" Grid.Row="3">
-                    <WrapPanel>
-                        <RadioButton Name="rdodatra" Content="Đã Trả" />
-                        <RadioButton Name="rdochuatra" Content="Chưa Trả" IsChecked="True"/>
-                    </WrapPanel>
-                </GroupBox>
+                <ComboBox Grid.Column="1" Grid.Row="3" Name="cmbtrangthai" SelectedItem="TrangThai">
+                    <ComboBoxItem Content="Đã Trả"  />
+                    <ComboBoxItem Content="Chưa Trả" IsSelected="True"/>
+                </ComboBox>
                 <TextBox Grid.Column="1" Grid.Row="4" Name="txttienphat"/>
                 <WrapPanel Grid.Column="2" Grid.Row="1">
                     <TextBlock Text="Tên thủ thư: "/>

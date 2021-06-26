@@ -23,7 +23,7 @@ namespace QuanLyThuVien
         public string MaPhieuMuon { get; set; }
         public System.DateTime NgayMuon { get; set; }
         public System.DateTime NgayTra { get; set; }
-        public bool TrangThai { get; set; }
+        public string TrangThai { get; set; }
         public Nullable<decimal> TienPhat { get; set; }
         public string MaThuThu { get; set; }
         public string MaDocGia { get; set; }

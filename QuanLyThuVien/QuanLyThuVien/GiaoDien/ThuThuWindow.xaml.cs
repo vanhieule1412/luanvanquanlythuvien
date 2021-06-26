@@ -85,8 +85,7 @@ namespace QuanLyThuVien.GiaoDien
 
         private void DgThuThu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //if (dgNhaXuatBan.SelectedItem == null) return;
-           
+            //if (dgNhaXuatBan.SelectedItem == null) return;          
             THUTHU tHUTHU = dgThuThu.SelectedItem as THUTHU;
             if (tHUTHU != null)
             {

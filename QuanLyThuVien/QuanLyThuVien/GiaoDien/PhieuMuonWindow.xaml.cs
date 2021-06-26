@@ -36,6 +36,21 @@ namespace QuanLyThuVien.GiaoDien
             cmbMaThuThu.ItemsSource = dc.THUTHUs.ToList();
             cmbMasach.ItemsSource = dc.SACHes.ToList();
             cmbMaDocGia.ItemsSource = dc.DOCGIAs.ToList();
+            if (pheptoan == KieuPhepToan.Sua)
+            {
+                txtmaphieumuon.Text = pHIEUMUON.MaPhieuMuon;
+                cmbMaThuThu.SelectedValue = pHIEUMUON.THUTHU.MaThuThu;
+                cmbMaDocGia.SelectedValue = pHIEUMUON.DOCGIA.MaDocGia;
+                dpNgayMuon.SelectedDate = pHIEUMUON.NgayMuon;
+                dpNgayTra.SelectedDate = pHIEUMUON.NgayTra;
+                cmbtrangthai.SelectedItem = pHIEUMUON.TrangThai;
+                if (cmbtrangthai.SelectedItem.ToString() == "Đã Trả" )
+                    cmbtrangthai.SelectedItem = "Đã Trả";
+                else
+                    cmbtrangthai.SelectedItem = "Chưa Trả";
+
+                dgChitiet.ItemsSource = pHIEUMUON.SACH_PHIEUMUON;               
+            }
         }
 
         private void Btnchon_Click(object sender, RoutedEventArgs e)
@@ -69,19 +84,11 @@ namespace QuanLyThuVien.GiaoDien
                 temp.SoLuongSachMuon += int.Parse(txtSoluong.Text);
             }
 
-            //var kq = hd.chitiethoadons.ToList().Select(x => new {
-            //    mahang = x.mahang,
-            //    tenhang = x.hanghoa.tenhang,
-            //    dvt = x.hanghoa.dvt,
-            //    dongia = x.dongia,
-            //    soluong = x.soluong,
-            //    thanhtien = x.soluong.Value * x.dongia.Value
-            //});
+           
             var kq = getChitietphieumuon(HIEUMUON);
 
             dgChitiet.ItemsSource = kq.ToList();
-            //txtThanhtien.Text = kq.Sum(x => x.thanhtien).ToString();
-            //txtThanhtien.Text = getthanhtien(hd).ToString();
+           
         }
         private IEnumerable<object> getChitietphieumuon(PHIEUMUON pHIEUMUON)
         {
@@ -118,9 +125,9 @@ namespace QuanLyThuVien.GiaoDien
             pHIEUMUON.MaDocGia = cmbMaDocGia.SelectedValue.ToString();
             pHIEUMUON.NgayMuon = dpNgayMuon.SelectedDate.Value;
             pHIEUMUON.NgayTra = dpNgayTra.SelectedDate.Value;
-            pHIEUMUON.TrangThai = rdodatra.IsChecked.Value;
+            pHIEUMUON.TrangThai = cmbtrangthai.SelectionBoxItem.ToString();
             // x.TienPhat = int.Parse(txttienphat.Text);
-
+            
             this.DialogResult = true;
             this.Close();
         }
