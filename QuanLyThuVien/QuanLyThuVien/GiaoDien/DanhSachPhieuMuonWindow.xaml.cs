@@ -66,8 +66,8 @@ namespace QuanLyThuVien.GiaoDien
                 PHIEUMUON hIEUMUON = dc.PHIEUMUONs.Find(f.pHIEUMUON.MaPhieuMuon);
                 if (hIEUMUON != null)
                 {               
-                    ////hIEUMUON.MaThuThu = f.pHIEUMUON.MaThuThu;
-                    ////hIEUMUON.MaDocGia = f.pHIEUMUON.MaDocGia;
+                    //hIEUMUON.MaThuThu = f.pHIEUMUON.MaThuThu;
+                    //hIEUMUON.MaDocGia = f.pHIEUMUON.MaDocGia;
                     //hIEUMUON.NgayMuon = f.pHIEUMUON.NgayMuon;
                     //hIEUMUON.NgayTra = f.pHIEUMUON.NgayTra;
                     hIEUMUON.TrangThai = f.pHIEUMUON.TrangThai;
