@@ -17,16 +17,21 @@ namespace QuanLyThuVien
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DOCGIA()
         {
-            this.PHIEUMUONs = new HashSet<PHIEUMUON>();
+            this.TAIKHOANDOCGIAs = new HashSet<TAIKHOANDOCGIA>();
         }
     
         public string MaDocGia { get; set; }
         public string TenDocGia { get; set; }
         public int NamSinh { get; set; }
         public Nullable<int> SoDienThoai { get; set; }
-        public string MatKhau { get; set; }
+        public string Email { get; set; }
+        public string GioiTinh { get; set; }
+        public Nullable<int> CMND { get; set; }
+        public string DiaChi { get; set; }
+        public int MaTaiKhoai { get; set; }
     
+        public virtual TAIKHOANTHUTHU TAIKHOANTHUTHU { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUMUON> PHIEUMUONs { get; set; }
+        public virtual ICollection<TAIKHOANDOCGIA> TAIKHOANDOCGIAs { get; set; }
     }
 }

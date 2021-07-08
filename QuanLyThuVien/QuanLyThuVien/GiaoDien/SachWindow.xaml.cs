@@ -33,10 +33,10 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void hienthi()
         {
-            dgSach.ItemsSource = dc.SACHes.ToList();
-            cmbMatheloai.ItemsSource = dc.THELOAIs.ToList();
-            cmbManhaxuatban.ItemsSource = dc.NHAXUATBANs.ToList();
-            cmbMake.ItemsSource = dc.VITRIs.ToList();
+            //dgSach.ItemsSource = dc.SACHes.ToList();
+            //cmbMatheloai.ItemsSource = dc.THELOAIs.ToList();
+            //cmbManhaxuatban.ItemsSource = dc.NHAXUATBANs.ToList();
+            //cmbMake.ItemsSource = dc.VITRIs.ToList();
             //var kq = dc.SACHes.Select(x => new
             //{
             //    MaSach = x.MaSach,
@@ -55,46 +55,46 @@ namespace QuanLyThuVien.GiaoDien
         private void DgSach_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //if (dgSach.SelectedItem == null) return;
-            SACH s = dgSach.SelectedItem as SACH;
-            if (s != null)
-            {
-                txtMasach.Text = s.MaSach;
-                txtTensach.Text = s.TenSach;
-                txtsoluong.Text = s.SoLuong.ToString();
-                txttacgia.Text = s.TacGia;
-                txtnamxuatban.Text = s.NamXuatBan.ToString();
-                txtnguoidich.Text = s.NguoiDich;
-                BitmapImage tempBM = imghinh.Source as BitmapImage;
-                if (tempBM != null)
-                {
-                    tempBM.StreamSource.Close();
-                    imghinh.Source = null;
-                }
-                if (s.Hinh != "")
-                {
-                    string tenfile = path + s.Hinh;
-                    tenFileHinh = tenfile;
-                    if (File.Exists(tenfile))
-                    {
-                        BitmapImage tm = new BitmapImage();
-                        tm.BeginInit();
-                        tm.StreamSource = new FileStream(tenfile, FileMode.Open);
-                        tm.EndInit();
-                        imghinh.Source = tm;
-                    }
-                }
-                else
-                {
-                    imghinh.Source = null;
-                }
-                cmbMatheloai.SelectedValue = s.THELOAI.MaTheLoai;
-                cmbManhaxuatban.SelectedValue = s.NHAXUATBAN.MaNhaXuatBan;
-                cmbMake.SelectedValue = s.VITRI.MaKe;
-            }
-            else
-            {
-                return;
-            }
+            //SACH s = dgSach.SelectedItem as SACH;
+            //if (s != null)
+            //{
+            //    txtMasach.Text = s.MaSach;
+            //    txtTensach.Text = s.TenSach;
+            //    txtsoluong.Text = s.SoLuong.ToString();
+            //    txttacgia.Text = s.TacGia;
+            //    txtnamxuatban.Text = s.NamXuatBan.ToString();
+            //    txtnguoidich.Text = s.NguoiDich;
+            //    BitmapImage tempBM = imghinh.Source as BitmapImage;
+            //    if (tempBM != null)
+            //    {
+            //        tempBM.StreamSource.Close();
+            //        imghinh.Source = null;
+            //    }
+            //    if (s.Hinh != "")
+            //    {
+            //        string tenfile = path + s.Hinh;
+            //        tenFileHinh = tenfile;
+            //        if (File.Exists(tenfile))
+            //        {
+            //            BitmapImage tm = new BitmapImage();
+            //            tm.BeginInit();
+            //            tm.StreamSource = new FileStream(tenfile, FileMode.Open);
+            //            tm.EndInit();
+            //            imghinh.Source = tm;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        imghinh.Source = null;
+            //    }
+            //    cmbMatheloai.SelectedValue = s.THELOAI.MaTheLoai;
+            //    cmbManhaxuatban.SelectedValue = s.NHAXUATBAN.MaNhaXuatBan;
+            //    cmbMake.SelectedValue = s.VITRI.MaKe;
+            //}
+            //else
+            //{
+            //    return;
+            //}
 
             
                
@@ -103,94 +103,94 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void Btnthuchien_Click(object sender, RoutedEventArgs e)
         {
-            if (rdoThem.IsChecked == true)
-            {
-                SACH sACH = new SACH();
-                sACH.MaSach = txtMasach.Text;
-                sACH.TenSach = txtTensach.Text;
-                sACH.SoLuong = int.Parse(txtsoluong.Text);
-                sACH.TacGia = txttacgia.Text;
-                sACH.NamXuatBan =int.Parse(txtnamxuatban.Text);
-                sACH.NguoiDich = txtnguoidich.Text;
-                sACH.MaTheLoai = cmbMatheloai.SelectedValue.ToString();
-                sACH.MaNhaXuatBan = cmbManhaxuatban.SelectedValue.ToString();
-                sACH.MaKe = cmbMake.SelectedValue.ToString();
-                FileInfo fi = new FileInfo(tenFileHinh);
-                sACH.Hinh = sACH.MaSach + fi.Extension;
-                File.Copy(tenFileHinh, path + sACH.Hinh);
-                dc.SACHes.Add(sACH);
-                dc.SaveChanges();
-                hienthi();
-            }
-            else if (rdoSua.IsChecked == true)
-            {
-                string masach = txtMasach.Text;
-                SACH sACH = dc.SACHes.Find(masach);
-                sACH.TenSach = txtTensach.Text;
-                sACH.SoLuong = int.Parse(txtsoluong.Text);
-                sACH.NamXuatBan = int.Parse(txtnamxuatban.Text);
-                sACH.NguoiDich = txtnguoidich.Text;
-                sACH.TacGia = txttacgia.Text;
-                sACH.MaNhaXuatBan = cmbManhaxuatban.SelectedValue.ToString();
-                sACH.MaTheLoai = cmbMatheloai.SelectedValue.ToString();
-                sACH.MaKe = cmbMake.SelectedValue.ToString();
-                if (tenFileHinh == path + sACH.Hinh)
-                {
-                    dc.SaveChanges();
-                    dgSach.ItemsSource = dc.SACHes.ToList();
-                    return;
-                }
-                else
-                {
-                    BitmapImage tempBM = imghinh.Source as BitmapImage;
-                    if (tempBM != null)
-                    {
-                        tempBM.StreamSource.Close();
-                        imghinh.Source = null;
-                    }
-                    File.Delete(path + sACH.Hinh);
-                    if (tenFileHinh != "")
-                    {
-                        FileInfo fi = new FileInfo(tenFileHinh);
-                        sACH.Hinh = sACH.MaSach + fi.Extension;
-                        File.Copy(tenFileHinh, path + sACH.Hinh);
-                    }
+            //if (rdoThem.IsChecked == true)
+            //{
+            //    SACH sACH = new SACH();
+            //    sACH.MaSach = txtMasach.Text;
+            //    sACH.TenSach = txtTensach.Text;
+            //    sACH.SoLuong = int.Parse(txtsoluong.Text);
+            //    sACH.TacGia = txttacgia.Text;
+            //    sACH.NamXuatBan =int.Parse(txtnamxuatban.Text);
+            //    sACH.NguoiDich = txtnguoidich.Text;
+            //    sACH.MaTheLoai = cmbMatheloai.SelectedValue.ToString();
+            //    sACH.MaNhaXuatBan = cmbManhaxuatban.SelectedValue.ToString();
+            //    sACH.MaKe = cmbMake.SelectedValue.ToString();
+            //    FileInfo fi = new FileInfo(tenFileHinh);
+            //    sACH.Hinh = sACH.MaSach + fi.Extension;
+            //    File.Copy(tenFileHinh, path + sACH.Hinh);
+            //    dc.SACHes.Add(sACH);
+            //    dc.SaveChanges();
+            //    hienthi();
+            //}
+            //else if (rdoSua.IsChecked == true)
+            //{
+            //    string masach = txtMasach.Text;
+            //    SACH sACH = dc.SACHes.Find(masach);
+            //    sACH.TenSach = txtTensach.Text;
+            //    sACH.SoLuong = int.Parse(txtsoluong.Text);
+            //    sACH.NamXuatBan = int.Parse(txtnamxuatban.Text);
+            //    sACH.NguoiDich = txtnguoidich.Text;
+            //    sACH.TacGia = txttacgia.Text;
+            //    sACH.MaNhaXuatBan = cmbManhaxuatban.SelectedValue.ToString();
+            //    sACH.MaTheLoai = cmbMatheloai.SelectedValue.ToString();
+            //    sACH.MaKe = cmbMake.SelectedValue.ToString();
+            //    if (tenFileHinh == path + sACH.Hinh)
+            //    {
+            //        dc.SaveChanges();
+            //        dgSach.ItemsSource = dc.SACHes.ToList();
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        BitmapImage tempBM = imghinh.Source as BitmapImage;
+            //        if (tempBM != null)
+            //        {
+            //            tempBM.StreamSource.Close();
+            //            imghinh.Source = null;
+            //        }
+            //        File.Delete(path + sACH.Hinh);
+            //        if (tenFileHinh != "")
+            //        {
+            //            FileInfo fi = new FileInfo(tenFileHinh);
+            //            sACH.Hinh = sACH.MaSach + fi.Extension;
+            //            File.Copy(tenFileHinh, path + sACH.Hinh);
+            //        }
 
-                    else
-                    {
-                        sACH.Hinh = "";
-                    }
+            //        else
+            //        {
+            //            sACH.Hinh = "";
+            //        }
 
-                    dc.SaveChanges();
-                    hienthi();
-                }
-            }
-            else if (rdoXoa.IsChecked == true)
-            {
-                if (dgSach.SelectedItem == null) return;
-                else
-                {
-                    string masach = dgSach.SelectedValue.ToString();
-                    SACH sACH = dc.SACHes.Find(masach);
-                    if (sACH != null)
-                    {
+            //        dc.SaveChanges();
+            //        hienthi();
+            //    }
+            //}
+            //else if (rdoXoa.IsChecked == true)
+            //{
+            //    if (dgSach.SelectedItem == null) return;
+            //    else
+            //    {
+            //        string masach = dgSach.SelectedValue.ToString();
+            //        SACH sACH = dc.SACHes.Find(masach);
+            //        if (sACH != null)
+            //        {
 
-                        if (sACH.Hinh != "")
-                        {
-                            BitmapImage tempBM = imghinh.Source as BitmapImage;
-                            if (tempBM != null)
-                            {
-                                tempBM.StreamSource.Close();
-                                imghinh.Source = null;
-                            }
-                            File.Delete(path + sACH.Hinh);
-                        }
-                        dc.SACHes.Remove(sACH);
-                        dc.SaveChanges();
-                        hienthi();
-                    }
-                }
-            }
+            //            if (sACH.Hinh != "")
+            //            {
+            //                BitmapImage tempBM = imghinh.Source as BitmapImage;
+            //                if (tempBM != null)
+            //                {
+            //                    tempBM.StreamSource.Close();
+            //                    imghinh.Source = null;
+            //                }
+            //                File.Delete(path + sACH.Hinh);
+            //            }
+            //            dc.SACHes.Remove(sACH);
+            //            dc.SaveChanges();
+            //            hienthi();
+            //        }
+            //    }
+            //}
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

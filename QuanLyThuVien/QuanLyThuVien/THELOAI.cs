@@ -22,6 +22,7 @@ namespace QuanLyThuVien
     
         public string MaTheLoai { get; set; }
         public string TenTheLoai { get; set; }
+        public string MoTaTheLoai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SACH> SACHes { get; set; }

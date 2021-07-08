@@ -1,0 +1,19 @@
+﻿<Window x:Class="QuanLyThuVien.GiaoDien.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        >
+    <StackPanel>
+        <TextBlock Text="Tài khoản"/>
+        <TextBox Name="txttaikhoan"/>
+        <TextBlock Text="Mật khẩu"/>
+        <TextBox Name="txtmatkhau"/>
+        <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click"/>
+    </StackPanel>
+</Window>

@@ -17,7 +17,7 @@ namespace QuanLyThuVien
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SACH()
         {
-            this.SACH_PHIEUMUON = new HashSet<SACH_PHIEUMUON>();
+            this.SACH_PHIEUMUONTRA = new HashSet<SACH_PHIEUMUONTRA>();
         }
     
         public string MaSach { get; set; }
@@ -26,15 +26,16 @@ namespace QuanLyThuVien
         public string TacGia { get; set; }
         public int NamXuatBan { get; set; }
         public string NguoiDich { get; set; }
-        public string Hinh { get; set; }
         public string MaTheLoai { get; set; }
         public string MaNhaXuatBan { get; set; }
         public string MaKe { get; set; }
+        public string NoiDungTomTat { get; set; }
+        public string HinhAnh { get; set; }
     
+        public virtual KE KE { get; set; }
         public virtual NHAXUATBAN NHAXUATBAN { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SACH_PHIEUMUON> SACH_PHIEUMUON { get; set; }
+        public virtual ICollection<SACH_PHIEUMUONTRA> SACH_PHIEUMUONTRA { get; set; }
         public virtual THELOAI THELOAI { get; set; }
-        public virtual VITRI VITRI { get; set; }
     }
 }

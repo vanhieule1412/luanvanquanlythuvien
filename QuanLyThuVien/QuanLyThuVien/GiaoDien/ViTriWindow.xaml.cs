@@ -26,7 +26,7 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void hienthi()
         {
-            dgViTri.ItemsSource = dc.VITRIs.ToList();
+            dgViTri.ItemsSource = dc.KEs.ToList();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -52,20 +52,20 @@ namespace QuanLyThuVien.GiaoDien
         {
             if (rdoThem.IsChecked == true)
             {
-                VITRI vITRI = new VITRI();
-                vITRI.MaKe = txtmavitri.Text;
-                vITRI.TenKe = txttenke.Text;
-                dc.VITRIs.Add(vITRI);
+                KE kE = new KE();
+                kE.MaKe = txtmavitri.Text;
+                kE.TenKe = txttenke.Text;
+                dc.KEs.Add(kE);
                 dc.SaveChanges();
                 hienthi();
             }
             else if (rdoSua.IsChecked == true)
             {
                 string make = txtmavitri.Text;
-                VITRI vITRI = dc.VITRIs.Find(make);
+                KE kE = dc.KEs.Find(make);
                 if (make != null)
                 {
-                    vITRI.TenKe = txttenke.Text;
+                    kE.TenKe = txttenke.Text;
                     dc.SaveChanges();
                 }
                 hienthi();
@@ -76,10 +76,10 @@ namespace QuanLyThuVien.GiaoDien
                 else
                 {
                     string make = dgViTri.SelectedValue.ToString();
-                    VITRI vITRI = dc.VITRIs.Find(make);
-                    if (vITRI != null)
+                    KE kE = dc.KEs.Find(make);
+                    if (kE != null)
                     {
-                        dc.VITRIs.Remove(vITRI);
+                        dc.KEs.Remove(kE);
                         dc.SaveChanges();
                         hienthi();
                     }
@@ -90,12 +90,12 @@ namespace QuanLyThuVien.GiaoDien
 
         private void DgViTri_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            VITRI vITRI = dgViTri.SelectedItem as VITRI;
+            KE kE = dgViTri.SelectedItem as KE;
 
-            if (vITRI != null)
+            if (kE != null)
             {
-                txtmavitri.Text = vITRI.MaKe;
-                txttenke.Text = vITRI.TenKe;
+                txtmavitri.Text = kE.MaKe;
+                txttenke.Text = kE.TenKe;
             }
             else
             {

@@ -31,6 +31,7 @@
             <Button Content="Quản lý độc giả" Name="btndocgia" Grid.Column="4" Grid.Row="0" Click="Btndocgia_Click"/>
             <Button Content="Quản lý Sách" Name="btnsach" Grid.Column="5" Grid.Row="0" Click="Btnsach_Click"/>
             <Button Content="Quản lý Phiếu mượn" Name="btnphieumuon" Grid.Column="6" Grid.Row="0" Click="Btnphieumuon_Click"/>
+            <Button Content="Quản lý Khu" Name="btnkhu" Grid.Column="7" Grid.Row="0" Click="Btnkhu_Click"/>
         </Grid>
     </StackPanel>
 </Window>

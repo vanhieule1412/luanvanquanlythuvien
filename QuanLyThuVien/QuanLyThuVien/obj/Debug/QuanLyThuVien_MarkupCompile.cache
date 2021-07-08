@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\
+E:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\
 QuanLyThuVien
 none
 false
 DEBUG;TRACE
-D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\App.xaml
-9-2053919455
-2-1881755278
-25734685782
-18-309011391
-GiaoDien\DanhSachPhieuMuonWindow.xaml;GiaoDien\DocGiaWindow.xaml;GiaoDien\NhaXuatBanWindow.xaml;GiaoDien\PhieuMuonWindow.xaml;GiaoDien\SachWindow.xaml;GiaoDien\TheLoaiWindow.xaml;GiaoDien\ThuThuWindow.xaml;GiaoDien\ViTriWindow.xaml;MainWindow.xaml;
+E:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\App.xaml
+12-1103760701
+21750853300
+361100766254
+18-1574771020
+GiaoDien\DanhSachPhieuMuonWindow.xaml;GiaoDien\DocGiaWindow.xaml;GiaoDien\KhuWindow.xaml;GiaoDien\LoginWindow.xaml;GiaoDien\NhaXuatBanWindow.xaml;GiaoDien\PhieuMuonWindow.xaml;GiaoDien\SachWindow.xaml;GiaoDien\TheLoaiWindow.xaml;GiaoDien\ThuThuWindow.xaml;GiaoDien\userWindow.xaml;GiaoDien\ViTriWindow.xaml;MainWindow.xaml;
 
-False
+True
 

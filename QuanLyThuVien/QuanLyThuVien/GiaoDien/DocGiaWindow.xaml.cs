@@ -35,32 +35,32 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Btnthuchien_Click(object sender, RoutedEventArgs e)
         {
-            if (rdoThem.IsChecked == true)
-            {
-                DOCGIA dOCGIA = new DOCGIA();
-                dOCGIA.MaDocGia = txtmadocgia.Text;
-                dOCGIA.TenDocGia = txttendocgia.Text;
-                dOCGIA.NamSinh = int.Parse(txtnamsinh.Text);
-                dOCGIA.SoDienThoai = int.Parse(txtsodienthoai.Text);
-                dOCGIA.MatKhau = txtmatkhau.Text;
-                dc.DOCGIAs.Add(dOCGIA);
-                dc.SaveChanges();
-                hienthi();
-            }
-            else if (rdoSua.IsChecked == true)
-            {
-                string madocgia = txtmadocgia.Text;
-                DOCGIA dOCGIA = dc.DOCGIAs.Find(madocgia);
-                if (madocgia != null)
-                {
-                    dOCGIA.TenDocGia = txttendocgia.Text;
-                    dOCGIA.NamSinh = int.Parse(txtnamsinh.Text);
-                    dOCGIA.SoDienThoai = int.Parse(txtsodienthoai.Text);
-                    dOCGIA.MatKhau = txtmatkhau.Text;
-                    dc.SaveChanges();
-                }
-                hienthi();
-            }
+            //if (rdoThem.IsChecked == true)
+            //{
+            //    DOCGIA dOCGIA = new DOCGIA();
+            //    dOCGIA.MaDocGia = txtmadocgia.Text;
+            //    dOCGIA.TenDocGia = txttendocgia.Text;
+            //    dOCGIA.NamSinh = int.Parse(txtnamsinh.Text);
+            //    dOCGIA.SoDienThoai = int.Parse(txtsodienthoai.Text);
+            //    dOCGIA.MatKhau = txtmatkhau.Text;
+            //    dc.DOCGIAs.Add(dOCGIA);
+            //    dc.SaveChanges();
+            //    hienthi();
+            //}
+            //else if (rdoSua.IsChecked == true)
+            //{
+            //    string madocgia = txtmadocgia.Text;
+            //    DOCGIA dOCGIA = dc.DOCGIAs.Find(madocgia);
+            //    if (madocgia != null)
+            //    {
+            //        dOCGIA.TenDocGia = txttendocgia.Text;
+            //        dOCGIA.NamSinh = int.Parse(txtnamsinh.Text);
+            //        dOCGIA.SoDienThoai = int.Parse(txtsodienthoai.Text);
+            //        dOCGIA.MatKhau = txtmatkhau.Text;
+            //        dc.SaveChanges();
+            //    }
+            //    hienthi();
+            //}
         }
 
         private void RdoThem_Click(object sender, RoutedEventArgs e)
@@ -81,19 +81,19 @@ namespace QuanLyThuVien.GiaoDien
         private void DgDocGia_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //if (dgDocGia.SelectedItem == null) return;
-            DOCGIA dOCGIA = dgDocGia.SelectedItem as DOCGIA;
-            if (dOCGIA != null)
-            {
-                txtmadocgia.Text = dOCGIA.MaDocGia;
-                txttendocgia.Text = dOCGIA.TenDocGia;
-                txtnamsinh.Text = dOCGIA.NamSinh.ToString();
-                txtsodienthoai.Text = dOCGIA.SoDienThoai.ToString();
-                txtmatkhau.Text = dOCGIA.MatKhau;
-            }
-            else
-            {
-                return;
-            }
+            //DOCGIA dOCGIA = dgDocGia.SelectedItem as DOCGIA;
+            //if (dOCGIA != null)
+            //{
+            //    txtmadocgia.Text = dOCGIA.MaDocGia;
+            //    txttendocgia.Text = dOCGIA.TenDocGia;
+            //    txtnamsinh.Text = dOCGIA.NamSinh.ToString();
+            //    txtsodienthoai.Text = dOCGIA.SoDienThoai.ToString();
+            //    txtmatkhau.Text = dOCGIA.MatKhau;
+            //}
+            //else
+            //{
+            //    return;
+            //}
             
         }
     }

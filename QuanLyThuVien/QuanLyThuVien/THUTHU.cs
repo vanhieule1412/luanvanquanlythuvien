@@ -17,18 +17,18 @@ namespace QuanLyThuVien
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public THUTHU()
         {
-            this.PHIEUMUONs = new HashSet<PHIEUMUON>();
+            this.TAIKHOANTHUTHUs = new HashSet<TAIKHOANTHUTHU>();
         }
     
         public string MaThuThu { get; set; }
         public string TenThuThu { get; set; }
         public int NamSinh { get; set; }
         public int SoDienThoai { get; set; }
-        public Nullable<bool> TrangThaiHoatDong { get; set; }
-        public string TenDangNhap { get; set; }
-        public string MatKhau { get; set; }
+        public string GioiTinh { get; set; }
+        public string Email { get; set; }
+        public Nullable<int> CMND { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUMUON> PHIEUMUONs { get; set; }
+        public virtual ICollection<TAIKHOANTHUTHU> TAIKHOANTHUTHUs { get; set; }
     }
 }

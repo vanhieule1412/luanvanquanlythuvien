@@ -96,5 +96,14 @@ namespace QuanLyThuVien
             fdanhsachphieumuon.Close();
             this.ShowDialog();
         }
+
+        private void Btnkhu_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.KhuWindow fkhu = new GiaoDien.KhuWindow();
+            this.Hide();
+            fkhu.ShowDialog();
+            fkhu.Close();
+            this.ShowDialog();
+        }
     }
 }
