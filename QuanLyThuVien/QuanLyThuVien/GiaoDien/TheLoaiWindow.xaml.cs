@@ -46,8 +46,12 @@ namespace QuanLyThuVien.GiaoDien
             {
                 txtmatheloai.Text = tl.MaTheLoai;
                 txttentheloai.Text = tl.TenTheLoai;
+                txtmota.Text = tl.MoTaTheLoai;
             }
             else {
+                txtmatheloai.Text = "";
+                txttentheloai.Text = "";
+                txtmota.Text = "";
                 return;
             }
      
@@ -56,9 +60,16 @@ namespace QuanLyThuVien.GiaoDien
         {
             if (rdoThem.IsChecked == true)
             {
+                THELOAI k = dc.THELOAIs.Find(txtmatheloai.Text);
+                if (k != null)
+                {
+                    MessageBox.Show("Trùng mã");
+                    return;
+                }
                 THELOAI tHELOAI = new THELOAI();
                 tHELOAI.MaTheLoai = txtmatheloai.Text;
                 tHELOAI.TenTheLoai = txttentheloai.Text;
+                tHELOAI.MoTaTheLoai = txtmota.Text;
                 dc.THELOAIs.Add(tHELOAI);
                 dc.SaveChanges();
                 hienthi();
@@ -71,6 +82,7 @@ namespace QuanLyThuVien.GiaoDien
                 if (matheloai != null)
                 {
                     tHELOAI.TenTheLoai = txttentheloai.Text;
+                    tHELOAI.MoTaTheLoai = txtmota.Text;
                     dc.SaveChanges();
                 }
                 hienthi();

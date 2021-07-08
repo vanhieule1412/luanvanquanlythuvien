@@ -26,6 +26,8 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void hienthi()
         {
+            
+            cmbmakhu.ItemsSource = dc.KHUs.ToList();
             dgViTri.ItemsSource = dc.KEs.ToList();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -52,9 +54,16 @@ namespace QuanLyThuVien.GiaoDien
         {
             if (rdoThem.IsChecked == true)
             {
+                KE k = dc.KEs.Find(txtmavitri.Text);
+                if (k != null)
+                {
+                    MessageBox.Show("Trùng mã");
+                    return;
+                }
                 KE kE = new KE();
                 kE.MaKe = txtmavitri.Text;
                 kE.TenKe = txttenke.Text;
+                kE.MaKhu = cmbmakhu.SelectedValue.ToString();
                 dc.KEs.Add(kE);
                 dc.SaveChanges();
                 hienthi();
@@ -66,6 +75,7 @@ namespace QuanLyThuVien.GiaoDien
                 if (make != null)
                 {
                     kE.TenKe = txttenke.Text;
+                    kE.MaKhu = cmbmakhu.SelectedValue.ToString();
                     dc.SaveChanges();
                 }
                 hienthi();
@@ -91,15 +101,18 @@ namespace QuanLyThuVien.GiaoDien
         private void DgViTri_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             KE kE = dgViTri.SelectedItem as KE;
-
             if (kE != null)
             {
                 txtmavitri.Text = kE.MaKe;
                 txttenke.Text = kE.TenKe;
+                hienthi();
+                cmbmakhu.SelectedValue = kE.KHU.MaKhu;
             }
             else
             {
-
+                txtmavitri.Text = "";
+                txttenke.Text = "";
+                cmbmakhu.SelectedValue = null;
                 return;
             }
 
@@ -110,8 +123,7 @@ namespace QuanLyThuVien.GiaoDien
         private void RdoXoa_Click(object sender, RoutedEventArgs e)
         {
             txtmavitri.IsReadOnly = true;
-            txttenke.IsReadOnly = true;
-           
+            txttenke.IsReadOnly = true;          
         }
 
        

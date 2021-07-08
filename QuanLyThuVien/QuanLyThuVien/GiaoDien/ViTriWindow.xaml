@@ -26,9 +26,14 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Mã kệ"/>
             <TextBlock Grid.Column="0" Grid.Row="3" Text="Tên kệ"/>
-          
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Mã khu"/>
             <TextBox Grid.Column="1" Grid.Row="2" Name="txtmavitri"/>
             <TextBox Grid.Column="1" Grid.Row="3" Name="txttenke"/>
+            <ComboBox Grid.Column="1" Grid.Row="4" Name="cmbmakhu" SelectedValuePath="MaKhu" DisplayMemberPath="MaKhu"/>
+            <WrapPanel Grid.Column="2" Grid.Row="4">
+                <TextBlock Text="Tên Khu: "/>
+                <TextBlock Text="{Binding ElementName=cmbmakhu,Path=SelectedItem.TenKhu}"/>
+            </WrapPanel>
             <WrapPanel Grid.Row="1" Grid.Column="2">
                 <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click" />
                 <RadioButton Content="Sửa" IsChecked="True" Name="rdoSua" Click="RdoSua_Click" />
@@ -41,6 +46,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã kệ" Binding="{Binding MaKe}"/>
                 <DataGridTextColumn Header="Tên kệ" Binding="{Binding TenKe}"/>
+                <DataGridTextColumn Header="Mã khu" Binding="{Binding KHU.MaKhu}"/>
+                <DataGridTextColumn Header="Tên khu" Binding="{Binding KHU.TenKhu}"/>
             </DataGrid.Columns>
         </DataGrid>
 

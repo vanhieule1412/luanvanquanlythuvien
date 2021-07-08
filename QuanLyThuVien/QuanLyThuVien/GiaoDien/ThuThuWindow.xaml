@@ -27,25 +27,23 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="Mã Thủ Thư"/>
-            <TextBlock Grid.Column="0" Grid.Row="3" Text="Tên Thủ Thư"/>
-            <TextBlock Grid.Column="0" Grid.Row="4" Text="Năm Sinh"/>
-            <TextBlock Grid.Column="0" Grid.Row="5" Text="Số Điện Thoại"/>
-            <TextBlock Grid.Column="0" Grid.Row="6" Text="Trạng Thái Hoạt Động"/>
-            <TextBlock Grid.Column="0" Grid.Row="7" Text="Tên Đăng Nhập"/>
-            <TextBlock Grid.Column="0" Grid.Row="8" Text="Mật Khẩu"/>
-            <TextBox Grid.Column="1" Grid.Row="2" Name="txtmathuthu"/>
-            <TextBox Grid.Column="1" Grid.Row="3" Name="txttenthuthu"/>
-            <TextBox Grid.Column="1" Grid.Row="4" Name="txtnamsinh"/>
-            <TextBox Grid.Column="1" Grid.Row="5" Name="txtsodienthoai"/>
-            <GroupBox Grid.Column="1" Grid.Row="6" >
-                <WrapPanel>
-                    <RadioButton Name="rdohoatdong" Content="Hoạt Động" IsChecked="True"/>
-                    <RadioButton Name="rdokhonghoatdong" Content="Không Hoạt Động"/>
-                </WrapPanel>
-            </GroupBox>
-            <TextBox Grid.Column="1" Grid.Row="7" Name="txttendangnhap"/>
-            <TextBox Grid.Column="1" Grid.Row="8" Name="txtmatkhau"/>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Mã Thủ Thư"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Tên Thủ Thư"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Năm Sinh"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Số Điện Thoại"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Giới tính"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Email"/>
+            <TextBlock Grid.Column="0" Grid.Row="6" Text="CMND"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Name="txtmathuthu"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Name="txttenthuthu"/>
+            <DatePicker Grid.Column="1" Grid.Row="2" Name="dpnamsinh"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Name="txtsodienthoai"/>
+            <ComboBox Grid.Column="1" Grid.Row="4" Name="cmbgioitinh" SelectedItem="GioiTinh" DisplayMemberPath="GioiTinh">
+                <ComboBoxItem IsSelected="True" Content="Nam"/>
+                <ComboBoxItem Content="Nữ"/>
+            </ComboBox>
+            <TextBox Grid.Column="1" Grid.Row="5" Name="txtemail"/>
+            <TextBox Grid.Column="1" Grid.Row="6" Name="txtcmnd"/>
             <WrapPanel Grid.Row="1" Grid.Column="2">
                 <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click"/>
                 <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click"/>
@@ -60,9 +58,9 @@
                 <DataGridTextColumn Header="Tên Thủ Thư" Binding="{Binding TenThuThu}"/>
                 <DataGridTextColumn Header="Năm Sinh" Binding="{Binding NamSinh}"/>
                 <DataGridTextColumn Header="Số Điện Thoại" Binding="{Binding SoDienThoai}"/>
-                <DataGridCheckBoxColumn Header="Trạng Thái Hoạt Động" Binding="{Binding TrangThaiHoatDong,UpdateSourceTrigger=PropertyChanged}"/>
-                <DataGridTextColumn Header="Tên Đăng Nhập" Binding="{Binding TenDangNhap}"/>
-                <DataGridTextColumn Header="Mật Khẩu" Binding="{Binding MatKhau}"/>
+                <DataGridTextColumn Header="Giới tính" Binding="{Binding GioiTinh}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="CMND" Binding="{Binding CMND}"/>
             </DataGrid.Columns>
         </DataGrid>
 

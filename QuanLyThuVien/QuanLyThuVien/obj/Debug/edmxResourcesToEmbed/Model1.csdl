@@ -6,7 +6,7 @@
     </Key>
     <Property Name="MaDocGia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TenDocGia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="NamSinh" Type="Int32" Nullable="false" />
+    <Property Name="NamSinh" Type="DateTime" Precision="3" />
     <Property Name="SoDienThoai" Type="Int32" />
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
@@ -165,7 +165,7 @@
     </Key>
     <Property Name="MaThuThu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TenThuThu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="NamSinh" Type="Int32" Nullable="false" />
+    <Property Name="NamSinh" Type="DateTime" Precision="3" />
     <Property Name="SoDienThoai" Type="Int32" Nullable="false" />
     <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />

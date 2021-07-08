@@ -19,12 +19,15 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Column="0" Grid.Row="0" Text="Mã thể loại"/>
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Tên thể loại"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Mô tả"/>
             <TextBox Grid.Column="1" Grid.Row="0" Name="txtmatheloai"/>
             <TextBox Grid.Column="1" Grid.Row="1" Name="txttentheloai"/>
-            <WrapPanel Grid.Row="2" Grid.Column="1">
+            <TextBox Name="txtmota" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"/>
+            <WrapPanel Grid.Row="3" Grid.Column="1">
                 <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click"/>
                 <RadioButton Content="Sửa" IsChecked="True" Name="rdoSua" Click="RdoSua_Click"/>
                 <RadioButton Content="Xóa" IsChecked="True" Name="rdoXoa" Click="RdoXoa_Click"/>
@@ -36,6 +39,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã thể loại" Binding="{Binding MaTheLoai}"/>
                 <DataGridTextColumn Header="Tên thể loại" Binding="{Binding TenTheLoai}"/>
+                <DataGridTextColumn Header="Mô tả" Width="200" Binding="{Binding MoTaTheLoai}"/>
             </DataGrid.Columns>
         </DataGrid>
 

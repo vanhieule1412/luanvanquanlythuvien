@@ -11,7 +11,7 @@
           </Key>
           <Property Name="MaDocGia" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TenDocGia" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="NamSinh" Type="int" Nullable="false" />
+          <Property Name="NamSinh" Type="datetime" />
           <Property Name="SoDienThoai" Type="int" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" Nullable="false" />
@@ -143,7 +143,7 @@
           </Key>
           <Property Name="MaThuThu" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="TenThuThu" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="NamSinh" Type="int" Nullable="false" />
+          <Property Name="NamSinh" Type="datetime" />
           <Property Name="SoDienThoai" Type="int" Nullable="false" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
@@ -399,7 +399,7 @@
           </Key>
           <Property Name="MaDocGia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenDocGia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NamSinh" Type="Int32" Nullable="false" />
+          <Property Name="NamSinh" Type="DateTime" Precision="3" />
           <Property Name="SoDienThoai" Type="Int32" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
@@ -558,7 +558,7 @@
           </Key>
           <Property Name="MaThuThu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenThuThu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NamSinh" Type="Int32" Nullable="false" />
+          <Property Name="NamSinh" Type="DateTime" Precision="3" />
           <Property Name="SoDienThoai" Type="Int32" Nullable="false" />
           <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />

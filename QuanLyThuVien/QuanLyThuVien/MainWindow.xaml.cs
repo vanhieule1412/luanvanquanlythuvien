@@ -20,6 +20,7 @@ namespace QuanLyThuVien
     /// </summary>
     public partial class MainWindow : Window
     {
+        private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
        public MainWindow()
         {
             InitializeComponent();
@@ -104,6 +105,11 @@ namespace QuanLyThuVien
             fkhu.ShowDialog();
             fkhu.Close();
             this.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+           
         }
     }
 }

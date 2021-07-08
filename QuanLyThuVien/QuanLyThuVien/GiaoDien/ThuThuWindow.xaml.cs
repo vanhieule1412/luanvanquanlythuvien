@@ -27,12 +27,13 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void hienthi()
         {
-         
+            
             dgThuThu.ItemsSource = dc.THUTHUs.ToList();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             hienthi();
+
         }
         private void RdoThem_Click(object sender, RoutedEventArgs e)
         {
@@ -46,61 +47,68 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Btnthuchien_Click(object sender, RoutedEventArgs e)
         {
-            //if (rdoThem.IsChecked == true)
-            //{
-            //    THUTHU tHUTHU = new THUTHU();
-            //    tHUTHU.MaThuThu = txtmathuthu.Text;
-            //    tHUTHU.TenThuThu = txttenthuthu.Text;
-            //    tHUTHU.NamSinh = int.Parse(txtnamsinh.Text);
-            //    tHUTHU.SoDienThoai = int.Parse(txtnamsinh.Text);
-            //    tHUTHU.TrangThaiHoatDong = rdohoatdong.IsChecked;
-            //    tHUTHU.TenDangNhap = txttendangnhap.Text;
-            //    tHUTHU.MatKhau = txtmatkhau.Text;
-            //    dc.THUTHUs.Add(tHUTHU);
-            //    dc.SaveChanges();
-            //    hienthi();
-            //}
-            //else if (rdoSua.IsChecked == true)
-            //{
-            //    string mathuthu = txtmathuthu.Text;
-            //    THUTHU tHUTHU = dc.THUTHUs.Find(mathuthu);
-            //    if (mathuthu != null)
-            //    {
-            //        tHUTHU.TenThuThu = txttenthuthu.Text;
-            //        tHUTHU.NamSinh = int.Parse(txtnamsinh.Text);
-            //        tHUTHU.SoDienThoai = int.Parse(txtsodienthoai.Text);
-            //        if (rdohoatdong.IsChecked == true && rdokhonghoatdong.IsChecked == false)
-            //            tHUTHU.TrangThaiHoatDong=true;
-            //        else if (rdohoatdong.IsChecked == false && rdokhonghoatdong.IsChecked == true)
-            //        {
-            //            tHUTHU.TrangThaiHoatDong=false;
-            //        }
-            //        tHUTHU.TenDangNhap = txttendangnhap.Text;
-            //        tHUTHU.MatKhau = txtmatkhau.Text;
-            //        dc.SaveChanges();
-            //    }
-            //    hienthi();
-            //}
+            if (rdoThem.IsChecked == true)
+            {
+                THUTHU hUTHU = dc.THUTHUs.Find(txtmathuthu.Text);
+                if (hUTHU != null)
+                {
+                    MessageBox.Show("Trùng mã");
+                    return;
+                }
+                THUTHU tHUTHU = new THUTHU();
+                tHUTHU.MaThuThu = txtmathuthu.Text;
+                tHUTHU.TenThuThu = txttenthuthu.Text;
+                tHUTHU.NamSinh = dpnamsinh.SelectedDate;
+                tHUTHU.SoDienThoai = int.Parse(txtsodienthoai.Text);
+                tHUTHU.GioiTinh = cmbgioitinh.SelectionBoxItem.ToString();
+                tHUTHU.Email = txtemail.Text;
+                tHUTHU.CMND = int.Parse(txtcmnd.Text);
+                dc.THUTHUs.Add(tHUTHU);
+                dc.SaveChanges();
+                hienthi();
+            }
+            else if (rdoSua.IsChecked == true)
+            {
+                string mathuthu = txtmathuthu.Text;
+                THUTHU tHUTHU = dc.THUTHUs.Find(mathuthu);
+                if (mathuthu != null)
+                {
+                    tHUTHU.TenThuThu = txttenthuthu.Text;
+                    tHUTHU.NamSinh = dpnamsinh.SelectedDate;
+                    tHUTHU.SoDienThoai = int.Parse(txtsodienthoai.Text);
+                    cmbgioitinh.SelectedValue = tHUTHU.GioiTinh;
+
+                    if (cmbgioitinh.SelectedItem.ToString() == "Nam")
+                        cmbgioitinh.SelectedItem = "Nam";
+                    else
+                        cmbgioitinh.SelectedItem = "Nữ";
+                    cmbgioitinh.SelectedItem = tHUTHU.GioiTinh;
+                    tHUTHU.Email = txtemail.Text;
+                    tHUTHU.CMND =int.Parse(txtcmnd.Text);
+                    dc.SaveChanges();
+                }
+                hienthi();
+            }
         }
 
         private void DgThuThu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //if (dgNhaXuatBan.SelectedItem == null) return;          
-            //THUTHU tHUTHU = dgThuThu.SelectedItem as THUTHU;
-            //if (tHUTHU != null)
-            //{
-            //    txtmathuthu.Text = tHUTHU.MaThuThu;
-            //    txttenthuthu.Text = tHUTHU.TenThuThu;
-            //    txtnamsinh.Text = tHUTHU.NamSinh.ToString();
-            //    txtsodienthoai.Text = tHUTHU.SoDienThoai.ToString();
-            //    if (tHUTHU.TrangThaiHoatDong.Value == true) rdohoatdong.IsChecked = true;
-            //    else rdokhonghoatdong.IsChecked = true;
-            //    txttendangnhap.Text = tHUTHU.TenDangNhap;
-            //    txtmatkhau.Text = tHUTHU.MatKhau;
-            //}
-            //else
-            //    return;
-            
+            if (dgThuThu.SelectedItem == null) return;
+            THUTHU tHUTHU = dgThuThu.SelectedItem as THUTHU;
+            if (tHUTHU != null)
+            {
+                txtmathuthu.Text = tHUTHU.MaThuThu;
+                txttenthuthu.Text = tHUTHU.TenThuThu;
+                dpnamsinh.SelectedDate = tHUTHU.NamSinh;
+                txtsodienthoai.Text = tHUTHU.SoDienThoai.ToString();
+                if (tHUTHU.GioiTinh == "Nam") cmbgioitinh.SelectedItem = "Nam";
+                else cmbgioitinh.SelectedItem = "Nữ";
+                txtemail.Text = tHUTHU.Email;
+                txtcmnd.Text = tHUTHU.CMND.ToString();
+            }
+            else
+                return;
+
         }
     }
 }

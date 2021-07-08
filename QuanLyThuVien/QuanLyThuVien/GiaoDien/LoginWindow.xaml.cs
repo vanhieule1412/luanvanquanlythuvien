@@ -21,7 +21,7 @@ namespace QuanLyThuVien.GiaoDien
     public partial class LoginWindow : Window
     {
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
-
+        public static string usename;
         public LoginWindow()
         {
             InitializeComponent();
@@ -36,18 +36,23 @@ namespace QuanLyThuVien.GiaoDien
         {
             if (txttaikhoan.Text == "admin" && txtmatkhau.Text == "admin")
             {
+                usename = txttaikhoan.Text;
                 MainWindow mainf = new MainWindow();
                 mainf.Show();
+                mainf.tbltentaikhoan.Text = "admin";
                 this.Close();
             }
             else
             {
                 foreach (var a in dc.TAIKHOANTHUTHUs)
                 {
+                    
                     if (txttaikhoan.Text == a.TenTaiKhoai && txtmatkhau.Text == a.MatKhau)
                     {
+                        usename = txttaikhoan.Text;
                         MainWindow formmain = new MainWindow();
                         formmain.Show();
+                        formmain.tbltentaikhoan.Text = usename;
                         this.Close();
                     }
                     else

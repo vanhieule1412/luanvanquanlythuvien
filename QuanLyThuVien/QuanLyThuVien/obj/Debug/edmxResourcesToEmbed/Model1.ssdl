@@ -6,7 +6,7 @@
     </Key>
     <Property Name="MaDocGia" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="TenDocGia" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="NamSinh" Type="int" Nullable="false" />
+    <Property Name="NamSinh" Type="datetime" />
     <Property Name="SoDienThoai" Type="int" />
     <Property Name="Email" Type="varchar" MaxLength="100" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" Nullable="false" />
@@ -138,7 +138,7 @@
     </Key>
     <Property Name="MaThuThu" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="TenThuThu" Type="nvarchar" MaxLength="255" Nullable="false" />
-    <Property Name="NamSinh" Type="int" Nullable="false" />
+    <Property Name="NamSinh" Type="datetime" />
     <Property Name="SoDienThoai" Type="int" Nullable="false" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="100" />
