@@ -38,12 +38,13 @@
             <TextBox Grid.Column="1" Grid.Row="1" Name="txttenthuthu"/>
             <DatePicker Grid.Column="1" Grid.Row="2" Name="dpnamsinh"/>
             <TextBox Grid.Column="1" Grid.Row="3" Name="txtsodienthoai"/>
-            <ComboBox Grid.Column="1" Grid.Row="4" Name="cmbgioitinh" SelectedItem="GioiTinh" DisplayMemberPath="GioiTinh">
+            <ComboBox Grid.Column="1" Grid.Row="4" Name="cmbgioitinh" SelectedItem="GioiTinh">
                 <ComboBoxItem IsSelected="True" Content="Nam"/>
                 <ComboBoxItem Content="Nữ"/>
             </ComboBox>
             <TextBox Grid.Column="1" Grid.Row="5" Name="txtemail"/>
             <TextBox Grid.Column="1" Grid.Row="6" Name="txtcmnd"/>
+            <Button Grid.Column="2" Grid.Row="6" Content="Tạo tài khoản độc giả" Name="txttaotaikhoan" Click="Txttaotaikhoan_Click"/>
             <WrapPanel Grid.Row="1" Grid.Column="2">
                 <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click"/>
                 <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click"/>

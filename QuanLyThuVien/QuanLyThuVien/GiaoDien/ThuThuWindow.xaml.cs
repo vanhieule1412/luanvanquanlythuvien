@@ -26,8 +26,7 @@ namespace QuanLyThuVien.GiaoDien
             InitializeComponent();
         }
         private void hienthi()
-        {
-            
+        {            
             dgThuThu.ItemsSource = dc.THUTHUs.ToList();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -76,13 +75,7 @@ namespace QuanLyThuVien.GiaoDien
                     tHUTHU.TenThuThu = txttenthuthu.Text;
                     tHUTHU.NamSinh = dpnamsinh.SelectedDate;
                     tHUTHU.SoDienThoai = int.Parse(txtsodienthoai.Text);
-                    cmbgioitinh.SelectedValue = tHUTHU.GioiTinh;
-
-                    if (cmbgioitinh.SelectedItem.ToString() == "Nam")
-                        cmbgioitinh.SelectedItem = "Nam";
-                    else
-                        cmbgioitinh.SelectedItem = "Nữ";
-                    cmbgioitinh.SelectedItem = tHUTHU.GioiTinh;
+                    tHUTHU.GioiTinh = cmbgioitinh.SelectionBoxItem.ToString();
                     tHUTHU.Email = txtemail.Text;
                     tHUTHU.CMND =int.Parse(txtcmnd.Text);
                     dc.SaveChanges();
@@ -108,6 +101,11 @@ namespace QuanLyThuVien.GiaoDien
             }
             else
                 return;
+
+        }
+
+        private void Txttaotaikhoan_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }
