@@ -32,6 +32,8 @@ namespace QuanLyThuVien.GiaoDien
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             hienthi();
+            txttaotaikhoan.Visibility = Visibility.Hidden;
+
 
         }
         private void RdoThem_Click(object sender, RoutedEventArgs e)
@@ -96,6 +98,7 @@ namespace QuanLyThuVien.GiaoDien
                 txtsodienthoai.Text = tHUTHU.SoDienThoai.ToString();
                 if (tHUTHU.GioiTinh == "Nam") cmbgioitinh.SelectedItem = "Nam";
                 else cmbgioitinh.SelectedItem = "Nữ";
+                cmbgioitinh.SelectedItem = tHUTHU.GioiTinh;
                 txtemail.Text = tHUTHU.Email;
                 txtcmnd.Text = tHUTHU.CMND.ToString();
             }
@@ -106,7 +109,16 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Txttaotaikhoan_Click(object sender, RoutedEventArgs e)
         {
+           
 
+        }
+
+        private void RdoTaotk_Click(object sender, RoutedEventArgs e)
+        {
+            if (rdoTaotk.IsChecked == true)
+            {
+                txttaotaikhoan.Visibility = Visibility.Visible;
+            }
         }
     }
 }

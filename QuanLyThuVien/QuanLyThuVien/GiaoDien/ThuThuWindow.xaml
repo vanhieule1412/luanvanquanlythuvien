@@ -48,6 +48,7 @@
             <WrapPanel Grid.Row="1" Grid.Column="2">
                 <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click"/>
                 <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click"/>
+                <RadioButton Content="Tạo tài khoản" Name="rdoTaotk" Click="RdoTaotk_Click"/>
             </WrapPanel>
         </Grid>
         <StackPanel>

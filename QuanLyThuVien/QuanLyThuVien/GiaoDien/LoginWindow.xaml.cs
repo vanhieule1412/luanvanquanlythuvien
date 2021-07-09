@@ -34,7 +34,7 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Btndangnhap_Click(object sender, RoutedEventArgs e)
         {
-            if (txttaikhoan.Text == "admin" && txtmatkhau.Text == "admin")
+            if (txttaikhoan.Text == "admin" && txtmatkhau.Password == "admin")
             {
                 usename = txttaikhoan.Text;
                 MainWindow mainf = new MainWindow();
@@ -47,7 +47,7 @@ namespace QuanLyThuVien.GiaoDien
                 foreach (var a in dc.TAIKHOANTHUTHUs)
                 {
                     
-                    if (txttaikhoan.Text == a.TenTaiKhoai && txtmatkhau.Text == a.MatKhau)
+                    if (txttaikhoan.Text == a.TenTaiKhoai && txtmatkhau.Password == a.MatKhau)
                     {
                         usename = txttaikhoan.Text;
                         MainWindow formmain = new MainWindow();
@@ -62,7 +62,7 @@ namespace QuanLyThuVien.GiaoDien
                 }
                 foreach (var b in dc.TAIKHOANDOCGIAs)
                 {
-                    if (txttaikhoan.Text == b.TenTaiKhoan && txtmatkhau.Text == b.MatKhau)
+                    if (txttaikhoan.Text == b.TenTaiKhoan && txtmatkhau.Password == b.MatKhau)
                     {
                         MainWindow formmain = new MainWindow();
                         formmain.Show();

@@ -13,7 +13,7 @@
         <TextBlock Text="Tài khoản"/>
         <TextBox Name="txttaikhoan"/>
         <TextBlock Text="Mật khẩu"/>
-        <TextBox Name="txtmatkhau"/>
+        <PasswordBox Name="txtmatkhau"/>
         <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click"/>
     </StackPanel>
 </Window>
