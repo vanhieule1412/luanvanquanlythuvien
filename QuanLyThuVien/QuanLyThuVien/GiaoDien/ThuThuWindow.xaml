@@ -36,8 +36,8 @@
             <TextBlock Grid.Column="0" Grid.Row="6" Text="CMND"/>
             <TextBox Grid.Column="1" Grid.Row="0" Name="txtmathuthu"/>
             <TextBox Grid.Column="1" Grid.Row="1" Name="txttenthuthu"/>
-            <DatePicker Grid.Column="1" Grid.Row="2" Name="dpnamsinh"/>
-            <TextBox Grid.Column="1" Grid.Row="3" Name="txtsodienthoai"/>
+            <DatePicker SelectedDateFormat="Short" Grid.Column="1" Grid.Row="2" Name="dpnamsinh"  />
+            <TextBox Grid.Column="1" Grid.Row="3" Name="txtsodienthoai"/> 
             <ComboBox Grid.Column="1" Grid.Row="4" Name="cmbgioitinh" SelectedItem="GioiTinh">
                 <ComboBoxItem IsSelected="True" Content="Nam"/>
                 <ComboBoxItem Content="Nữ"/>
@@ -54,11 +54,12 @@
         <StackPanel>
             <Button Grid.Column="1" Grid.Row="9" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click" />
         </StackPanel>
-        <DataGrid Name="dgThuThu" AutoGenerateColumns="False" SelectedValuePath="MaThuThu" SelectionChanged="DgThuThu_SelectionChanged">
+        
+        <DataGrid Name="dgThuThu" Height="200" AutoGenerateColumns="False" SelectedValuePath="MaThuThu" SelectionChanged="DgThuThu_SelectionChanged" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Thủ thư" Binding="{Binding MaThuThu}"/>
                 <DataGridTextColumn Header="Tên Thủ Thư" Binding="{Binding TenThuThu}"/>
-                <DataGridTextColumn Header="Năm Sinh" Binding="{Binding NamSinh}"/>
+                <DataGridTextColumn Header="Năm Sinh" Binding="{Binding NamSinh ,StringFormat='dd/MM/yyyy hh:mm:ss'}"/>
                 <DataGridTextColumn Header="Số Điện Thoại" Binding="{Binding SoDienThoai}"/>
                 <DataGridTextColumn Header="Giới tính" Binding="{Binding GioiTinh}"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>

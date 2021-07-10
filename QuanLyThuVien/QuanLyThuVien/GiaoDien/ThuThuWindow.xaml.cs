@@ -56,9 +56,11 @@ namespace QuanLyThuVien.GiaoDien
                     MessageBox.Show("Trùng mã");
                     return;
                 }
+            
+                
                 THUTHU tHUTHU = new THUTHU();
                 tHUTHU.MaThuThu = txtmathuthu.Text;
-                tHUTHU.TenThuThu = txttenthuthu.Text;
+                tHUTHU.TenThuThu = txttenthuthu.Text;            
                 tHUTHU.NamSinh = dpnamsinh.SelectedDate;
                 tHUTHU.SoDienThoai = int.Parse(txtsodienthoai.Text);
                 tHUTHU.GioiTinh = cmbgioitinh.SelectionBoxItem.ToString();
