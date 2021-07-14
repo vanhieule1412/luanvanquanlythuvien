@@ -32,18 +32,20 @@ namespace QuanLyThuVien.GiaoDien
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             hienthi();
-            txttaotaikhoan.Visibility = Visibility.Hidden;
+            //txttaotaikhoan.Visibility = Visibility.Hidden;
 
 
         }
         private void RdoThem_Click(object sender, RoutedEventArgs e)
         {
-          
+            txtmathuthu.IsReadOnly = false;
+            txttenthuthu.IsReadOnly = false;
         }
 
         private void RdoSua_Click(object sender, RoutedEventArgs e)
         {
-
+            txtmathuthu.IsReadOnly = true;
+            txttenthuthu.IsReadOnly = true;
         }
 
         private void Btnthuchien_Click(object sender, RoutedEventArgs e)
@@ -56,12 +58,10 @@ namespace QuanLyThuVien.GiaoDien
                     MessageBox.Show("Trùng mã");
                     return;
                 }
-            
-                
                 THUTHU tHUTHU = new THUTHU();
                 tHUTHU.MaThuThu = txtmathuthu.Text;
                 tHUTHU.TenThuThu = txttenthuthu.Text;            
-                tHUTHU.NamSinh = dpnamsinh.SelectedDate;
+                tHUTHU.NamSinh = dpnamsinh.SelectedDate.Value;
                 tHUTHU.SoDienThoai = int.Parse(txtsodienthoai.Text);
                 tHUTHU.GioiTinh = cmbgioitinh.SelectionBoxItem.ToString();
                 tHUTHU.Email = txtemail.Text;
@@ -77,7 +77,7 @@ namespace QuanLyThuVien.GiaoDien
                 if (mathuthu != null)
                 {
                     tHUTHU.TenThuThu = txttenthuthu.Text;
-                    tHUTHU.NamSinh = dpnamsinh.SelectedDate;
+                    tHUTHU.NamSinh = dpnamsinh.SelectedDate.Value;
                     tHUTHU.SoDienThoai = int.Parse(txtsodienthoai.Text);
                     tHUTHU.GioiTinh = cmbgioitinh.SelectionBoxItem.ToString();
                     tHUTHU.Email = txtemail.Text;
@@ -98,29 +98,71 @@ namespace QuanLyThuVien.GiaoDien
                 txttenthuthu.Text = tHUTHU.TenThuThu;
                 dpnamsinh.SelectedDate = tHUTHU.NamSinh;
                 txtsodienthoai.Text = tHUTHU.SoDienThoai.ToString();
-                if (tHUTHU.GioiTinh == "Nam") cmbgioitinh.SelectedItem = "Nam";
-                else cmbgioitinh.SelectedItem = "Nữ";
-                cmbgioitinh.SelectedItem = tHUTHU.GioiTinh;
+                //if (tHUTHU.GioiTinh == "Nam") cmbgioitinh.SelectedItem = "Nam";
+                //else cmbgioitinh.SelectedItem = "Nữ";
+                if (tHUTHU.GioiTinh == "Nam")
+                {
+                    cmbnam.IsSelected = true;
+                }
+                else if (tHUTHU.GioiTinh == "Nữ")
+                {
+                    cmbnu.IsSelected = true;
+                }
+
                 txtemail.Text = tHUTHU.Email;
                 txtcmnd.Text = tHUTHU.CMND.ToString();
             }
             else
+            {
+                txtmathuthu.Text ="";
+                txttenthuthu.Text = "";
+                dpnamsinh.SelectedDate = null;
+                txtsodienthoai.Text = "";
+                cmbgioitinh.SelectedItem = "";
+                txtemail.Text = "";
+                txtcmnd.Text = "";
                 return;
+         
+            }
+                
 
         }
+
+        //private void RdoTaotk_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (rdoTaotk.IsChecked == true)
+        //    {
+        //        txttaotaikhoan.Visibility = Visibility.Visible;
+        //        txtmathuthu.Clear();
+        //        txttenthuthu.Clear();
+        //        dpnamsinh.SelectedDate = null;
+        //        txtsodienthoai.Clear() ;
+        //        cmbgioitinh.SelectedItem.ToString();
+        //        txtemail.Clear();
+        //        txtcmnd.Clear();
+        //    }
+        //}
 
         private void Txttaotaikhoan_Click(object sender, RoutedEventArgs e)
         {
-           
-
-        }
-
-        private void RdoTaotk_Click(object sender, RoutedEventArgs e)
-        {
-            if (rdoTaotk.IsChecked == true)
-            {
-                txttaotaikhoan.Visibility = Visibility.Visible;
+            //GiaoDien.TaiKhoanThuThuWindow ftaikhoan = new TaiKhoanThuThuWindow();
+            //ftaikhoan.chucnang = KieuChucNang.Them;
+            //ftaikhoan.tAIKHOANTHUTHU = dc.TAIKHOANTHUTHUs.Find(dgThuThu.SelectedValue.ToString());
+            //if (ftaikhoan.ShowDialog() == true)
+            //{
+            //    dc.TAIKHOANTHUTHUs.Add(ftaikhoan.tAIKHOANTHUTHU);
+            //    dc.SaveChanges();
+            //    hienthi();
+            //}
+            GiaoDien.TaiKhoanThuThuWindow ftaikhoan = new TaiKhoanThuThuWindow();
+            ftaikhoan.chucnang = KieuChucNang.Them;
+            ftaikhoan.THUTHU = dc.THUTHUs.Find(dgThuThu.SelectedValue.ToString());
+            if (ftaikhoan.ShowDialog() == true)
+            {                
+                dc.TAIKHOANTHUTHUs.Add(ftaikhoan.tAIKHOANTHUTHU);
+                dc.SaveChanges();               
             }
+
         }
     }
 }

@@ -23,8 +23,8 @@ namespace QuanLyThuVien.GiaoDien
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         public KieuPhepToan pheptoan;
         //public Model.SACH sACH;
-        public PHIEUMUONTRA pHIEUMUON ;
-        public PHIEUMUONTRA HIEUMUON = new PHIEUMUONTRA();
+        public PHIEUMUON pHIEUMUON ;
+        public PHIEUMUON HIEUMUON = new PHIEUMUON();
         //public Model.SACH_PHIEUMUON sACH_PHIEUMUON;
         public PhieuMuonWindow()
         {

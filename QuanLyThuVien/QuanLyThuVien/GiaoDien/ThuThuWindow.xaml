@@ -39,16 +39,14 @@
             <DatePicker SelectedDateFormat="Short" Grid.Column="1" Grid.Row="2" Name="dpnamsinh"  />
             <TextBox Grid.Column="1" Grid.Row="3" Name="txtsodienthoai"/> 
             <ComboBox Grid.Column="1" Grid.Row="4" Name="cmbgioitinh" SelectedItem="GioiTinh">
-                <ComboBoxItem IsSelected="True" Content="Nam"/>
-                <ComboBoxItem Content="Nữ"/>
+                <ComboBoxItem Name="cmbnam" IsSelected="True" Content="Nam"/>
+                <ComboBoxItem Name="cmbnu" Content="Nữ"/>
             </ComboBox>
             <TextBox Grid.Column="1" Grid.Row="5" Name="txtemail"/>
             <TextBox Grid.Column="1" Grid.Row="6" Name="txtcmnd"/>
-            <Button Grid.Column="2" Grid.Row="6" Content="Tạo tài khoản độc giả" Name="txttaotaikhoan" Click="Txttaotaikhoan_Click"/>
             <WrapPanel Grid.Row="1" Grid.Column="2">
                 <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click"/>
                 <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click"/>
-                <RadioButton Content="Tạo tài khoản" Name="rdoTaotk" Click="RdoTaotk_Click"/>
             </WrapPanel>
         </Grid>
         <StackPanel>
@@ -64,6 +62,13 @@
                 <DataGridTextColumn Header="Giới tính" Binding="{Binding GioiTinh}"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="CMND" Binding="{Binding CMND}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Tạo tài khoản độc giả" Name="txttaotaikhoan" Click="Txttaotaikhoan_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 

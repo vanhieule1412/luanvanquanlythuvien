@@ -1,6 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="UngDungQuanLyThuVienModelStoreContainer" CdmEntityContainer="UngDungQuanLyThuVienEntities">
+    <EntitySetMapping Name="CHITIETPHIEUMUONs">
+      <EntityTypeMapping TypeName="UngDungQuanLyThuVienModel.CHITIETPHIEUMUON">
+        <MappingFragment StoreEntitySet="CHITIETPHIEUMUON">
+          <ScalarProperty Name="MaMuonTra" ColumnName="MaMuonTra" />
+          <ScalarProperty Name="MaSach" ColumnName="MaSach" />
+          <ScalarProperty Name="MaPhieuMuon" ColumnName="MaPhieuMuon" />
+          <ScalarProperty Name="NgayTraThat" ColumnName="NgayTraThat" />
+          <ScalarProperty Name="TienPhat" ColumnName="TienPhat" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="DOCGIAs">
       <EntityTypeMapping TypeName="UngDungQuanLyThuVienModel.DOCGIA">
         <MappingFragment StoreEntitySet="DOCGIA">
@@ -45,9 +57,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PHIEUMUONTRAs">
-      <EntityTypeMapping TypeName="UngDungQuanLyThuVienModel.PHIEUMUONTRA">
-        <MappingFragment StoreEntitySet="PHIEUMUONTRA">
+    <EntitySetMapping Name="PHIEUMUONs">
+      <EntityTypeMapping TypeName="UngDungQuanLyThuVienModel.PHIEUMUON">
+        <MappingFragment StoreEntitySet="PHIEUMUON">
           <ScalarProperty Name="MaPhieuMuon" ColumnName="MaPhieuMuon" />
           <ScalarProperty Name="NgayMuon" ColumnName="NgayMuon" />
           <ScalarProperty Name="SoLuongSachMuon" ColumnName="SoLuongSachMuon" />
@@ -74,29 +86,7 @@
           <ScalarProperty Name="MaKe" ColumnName="MaKe" />
           <ScalarProperty Name="NoiDungTomTat" ColumnName="NoiDungTomTat" />
           <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SACH_PHIEUMUONTRA">
-      <EntityTypeMapping TypeName="UngDungQuanLyThuVienModel.SACH_PHIEUMUONTRA">
-        <MappingFragment StoreEntitySet="SACH_PHIEUMUONTRA">
-          <ScalarProperty Name="MaMuonTra" ColumnName="MaMuonTra" />
-          <ScalarProperty Name="MaSach" ColumnName="MaSach" />
-          <ScalarProperty Name="MaPhieuMuon" ColumnName="MaPhieuMuon" />
-          <ScalarProperty Name="NgayTraThat" ColumnName="NgayTraThat" />
-          <ScalarProperty Name="TienPhat" ColumnName="TienPhat" />
-          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="UngDungQuanLyThuVienModel.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="Gia" ColumnName="Gia" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

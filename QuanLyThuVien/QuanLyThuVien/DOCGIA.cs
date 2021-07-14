@@ -22,7 +22,7 @@ namespace QuanLyThuVien
     
         public string MaDocGia { get; set; }
         public string TenDocGia { get; set; }
-        public Nullable<System.DateTime> NamSinh { get; set; }
+        public System.DateTime NamSinh { get; set; }
         public Nullable<int> SoDienThoai { get; set; }
         public string Email { get; set; }
         public string GioiTinh { get; set; }

@@ -25,14 +25,13 @@ namespace QuanLyThuVien
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<CHITIETPHIEUMUON> CHITIETPHIEUMUONs { get; set; }
         public virtual DbSet<DOCGIA> DOCGIAs { get; set; }
         public virtual DbSet<KE> KEs { get; set; }
         public virtual DbSet<KHU> KHUs { get; set; }
         public virtual DbSet<NHAXUATBAN> NHAXUATBANs { get; set; }
-        public virtual DbSet<PHIEUMUONTRA> PHIEUMUONTRAs { get; set; }
+        public virtual DbSet<PHIEUMUON> PHIEUMUONs { get; set; }
         public virtual DbSet<SACH> SACHes { get; set; }
-        public virtual DbSet<SACH_PHIEUMUONTRA> SACH_PHIEUMUONTRA { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TAIKHOANDOCGIA> TAIKHOANDOCGIAs { get; set; }
         public virtual DbSet<TAIKHOANTHUTHU> TAIKHOANTHUTHUs { get; set; }
         public virtual DbSet<THEDOCGIA> THEDOCGIAs { get; set; }

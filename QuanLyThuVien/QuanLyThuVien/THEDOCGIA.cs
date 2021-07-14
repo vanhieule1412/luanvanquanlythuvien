@@ -17,7 +17,7 @@ namespace QuanLyThuVien
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public THEDOCGIA()
         {
-            this.PHIEUMUONTRAs = new HashSet<PHIEUMUONTRA>();
+            this.PHIEUMUONs = new HashSet<PHIEUMUON>();
         }
     
         public string MaTheDocGia { get; set; }
@@ -29,7 +29,7 @@ namespace QuanLyThuVien
         public Nullable<int> MaTaiKhoai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUMUONTRA> PHIEUMUONTRAs { get; set; }
+        public virtual ICollection<PHIEUMUON> PHIEUMUONs { get; set; }
         public virtual TAIKHOANDOCGIA TAIKHOANDOCGIA { get; set; }
         public virtual TAIKHOANTHUTHU TAIKHOANTHUTHU { get; set; }
     }

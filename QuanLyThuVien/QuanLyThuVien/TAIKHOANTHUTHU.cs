@@ -18,7 +18,7 @@ namespace QuanLyThuVien
         public TAIKHOANTHUTHU()
         {
             this.DOCGIAs = new HashSet<DOCGIA>();
-            this.PHIEUMUONTRAs = new HashSet<PHIEUMUONTRA>();
+            this.PHIEUMUONs = new HashSet<PHIEUMUON>();
             this.TAIKHOANDOCGIAs = new HashSet<TAIKHOANDOCGIA>();
             this.THEDOCGIAs = new HashSet<THEDOCGIA>();
         }
@@ -32,7 +32,7 @@ namespace QuanLyThuVien
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DOCGIA> DOCGIAs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUMUONTRA> PHIEUMUONTRAs { get; set; }
+        public virtual ICollection<PHIEUMUON> PHIEUMUONs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TAIKHOANDOCGIA> TAIKHOANDOCGIAs { get; set; }
         public virtual THUTHU THUTHU { get; set; }
