@@ -32,9 +32,6 @@ namespace QuanLyThuVien.GiaoDien
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             hienthi();
-            //txttaotaikhoan.Visibility = Visibility.Hidden;
-
-
         }
         private void RdoThem_Click(object sender, RoutedEventArgs e)
         {
@@ -124,10 +121,7 @@ namespace QuanLyThuVien.GiaoDien
                 return;
          
             }
-                
-
         }
-
         //private void RdoTaotk_Click(object sender, RoutedEventArgs e)
         //{
         //    if (rdoTaotk.IsChecked == true)
@@ -155,14 +149,28 @@ namespace QuanLyThuVien.GiaoDien
             //    hienthi();
             //}
             GiaoDien.TaiKhoanThuThuWindow ftaikhoan = new TaiKhoanThuThuWindow();
-            ftaikhoan.chucnang = KieuChucNang.Them;
+            ftaikhoan.chucnang = KieuChucNang.Them;            
             ftaikhoan.THUTHU = dc.THUTHUs.Find(dgThuThu.SelectedValue.ToString());
-            if (ftaikhoan.ShowDialog() == true)
-            {                
-                dc.TAIKHOANTHUTHUs.Add(ftaikhoan.tAIKHOANTHUTHU);
-                dc.SaveChanges();               
-            }
+            string mathuthu = dgThuThu.SelectedValue.ToString();
+            var ds = dc.TAIKHOANTHUTHUs.Where(x => x.MaThuThu == mathuthu).ToList();
+            if (ds.Count > 0)
+            {
+                MessageBox.Show("Thủ thư này đã có tài khoản");
+                return;
+            }          
+                if (ftaikhoan.ShowDialog() == true)
+                {
+                    dc.TAIKHOANTHUTHUs.Add(ftaikhoan.tAIKHOANTHUTHU);
+                    dc.SaveChanges();
 
-        }
+                }
+          
+           
+           
+
+
+
+
+        }     
     }
 }

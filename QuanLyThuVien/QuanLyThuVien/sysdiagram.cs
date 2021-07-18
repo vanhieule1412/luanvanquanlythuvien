@@ -12,16 +12,12 @@ namespace QuanLyThuVien
     using System;
     using System.Collections.Generic;
     
-    public partial class CHITIETPHIEUMUON
+    public partial class sysdiagram
     {
-        public int MaMuonTra { get; set; }
-        public string MaSach { get; set; }
-        public string MaPhieuMuon { get; set; }
-        public Nullable<System.DateTime> NgayTraThat { get; set; }
-        public Nullable<float> TienPhat { get; set; }
-        public string TinhTrang { get; set; }
-    
-        public virtual SACH SACH { get; set; }
-        public virtual PHIEUMUON PHIEUMUON { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

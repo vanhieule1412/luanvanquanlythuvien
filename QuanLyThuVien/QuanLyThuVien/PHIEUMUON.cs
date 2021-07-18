@@ -24,10 +24,10 @@ namespace QuanLyThuVien
         public System.DateTime NgayMuon { get; set; }
         public int SoLuongSachMuon { get; set; }
         public bool TrangThai { get; set; }
-        public Nullable<double> TienPhatTong { get; set; }
+        public Nullable<float> TienPhatTong { get; set; }
         public System.DateTime NgayTraDukien { get; set; }
         public Nullable<bool> DaTra { get; set; }
-        public int MaTaiKhoai { get; set; }
+        public Nullable<int> MaTaiKhoai { get; set; }
         public string MaTheDocGia { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

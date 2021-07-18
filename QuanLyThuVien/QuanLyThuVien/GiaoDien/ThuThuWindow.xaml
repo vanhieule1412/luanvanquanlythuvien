@@ -52,8 +52,8 @@
         <StackPanel>
             <Button Grid.Column="1" Grid.Row="9" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click" />
         </StackPanel>
-        
-        <DataGrid Name="dgThuThu" Height="200" AutoGenerateColumns="False" SelectedValuePath="MaThuThu" SelectionChanged="DgThuThu_SelectionChanged" >
+
+        <DataGrid Name="dgThuThu" Height="200" AutoGenerateColumns="False" SelectedValuePath="MaThuThu" SelectionChanged="DgThuThu_SelectionChanged"  CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Thủ thư" Binding="{Binding MaThuThu}"/>
                 <DataGridTextColumn Header="Tên Thủ Thư" Binding="{Binding TenThuThu}"/>
@@ -65,7 +65,7 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Tạo tài khoản độc giả" Name="txttaotaikhoan" Click="Txttaotaikhoan_Click"/>
+                            <Button Content="Tạo tài khoản thủ thư" Name="btntaotaikhoan" Click="Txttaotaikhoan_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

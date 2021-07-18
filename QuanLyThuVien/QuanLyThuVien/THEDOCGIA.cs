@@ -24,7 +24,7 @@ namespace QuanLyThuVien
         public System.DateTime NgayTheDuocTao { get; set; }
         public System.DateTime NgayTheDuocGiaHan { get; set; }
         public string TenDocGia { get; set; }
-        public Nullable<int> NamSinh { get; set; }
+        public Nullable<System.DateTime> NamSinh { get; set; }
         public int MaTaiKhoaiDocGia { get; set; }
         public Nullable<int> MaTaiKhoai { get; set; }
     

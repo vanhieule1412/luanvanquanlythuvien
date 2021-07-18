@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
         mc:Ignorable="d"
-        Title="DocGiaWindow" Height="450" Width="800" Loaded="Window_Loaded"
+        Title="DocGiaWindow" Height="450" Width="900" Loaded="Window_Loaded"
         WindowStartupLocation="CenterScreen"
         >
     <StackPanel>
@@ -27,16 +27,31 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="Mã Độc Giả"/>
-            <TextBlock Grid.Column="0" Grid.Row="3" Text="Tên Độc Giả"/>
-            <TextBlock Grid.Column="0" Grid.Row="4" Text="Năm Sinh"/>
-            <TextBlock Grid.Column="0" Grid.Row="5" Text="Số Điện Thoại"/>
-            <TextBlock Grid.Column="0" Grid.Row="6" Text="Mật Khẩu"/>
-            <TextBox Grid.Column="1" Grid.Row="2" Name="txtmadocgia"/>
-            <TextBox Grid.Column="1" Grid.Row="3" Name="txttendocgia"/>
-            <TextBox Grid.Column="1" Grid.Row="4" Name="txtnamsinh"/>
-            <TextBox Grid.Column="1" Grid.Row="5" Name="txtsodienthoai"/>
-            <TextBox Grid.Column="1" Grid.Row="6" Name="txtmatkhau"/>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Mã Độc Giả"/>
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Tên Độc Giả"/>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Năm Sinh"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Số Điện Thoại"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Email"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Giới tính"/>
+            <TextBlock Grid.Column="0" Grid.Row="6" Text="Địa chi"/>
+            <TextBlock Grid.Column="0" Grid.Row="7" Text="CMND"/>
+            <TextBlock Grid.Column="0" Grid.Row="8" Text="Mã tài khoản thủ thư"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Name="txtmadocgia"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Name="txttendocgia"/>
+            <DatePicker Grid.Column="1" Grid.Row="2" Name="dtpnamsinh"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Name="txtsodienthoai"/>
+            <TextBox Grid.Column="1" Grid.Row="4" Name="txtemail"/>
+            <ComboBox Grid.Column="1" Grid.Row="5" Name="cmbgioitinh" SelectedItem="GioiTinh">
+                <ComboBoxItem Name="cmbnam" IsSelected="True" Content="Nam"/>
+                <ComboBoxItem Name="cmbnu" Content="Nữ"/>
+            </ComboBox>
+            <TextBox Grid.Column="1" Grid.Row="6" Name="txtdiachi"/>
+            <TextBox Grid.Column="1" Grid.Row="7" Name="txtcmnd"/>
+            <ComboBox Grid.Column="1" Grid.Row="8" Name="cmbmataikhoanthuthu" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="MaTaiKhoai"/>
+            <WrapPanel Grid.Column="2" Grid.Row="8">
+                <TextBlock Text="Tên tài khoản: "/>
+                <TextBlock Text="{Binding ElementName=cmbmataikhoanthuthu,Path=SelectedItem.TenTaiKhoai}"/>
+            </WrapPanel>
             <WrapPanel Grid.Row="1" Grid.Column="2">
                 <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click" />
                 <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click" />
@@ -46,18 +61,28 @@
         <StackPanel>
             <Button Grid.Column="1" Grid.Row="7" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
         </StackPanel>
-    
-        <DataGrid Name="dgDocGia" AutoGenerateColumns="False" SelectedValuePath="MaDocGia" SelectionChanged="DgDocGia_SelectionChanged" >
-            
+        <DataGrid Name="dgDocGia" AutoGenerateColumns="False" SelectedValuePath="MaDocGia" SelectionChanged="DgDocGia_SelectionChanged" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Độc Giả" Binding="{Binding MaDocGia}"/>
                 <DataGridTextColumn Header="Tên Độc Giả" Binding="{Binding TenDocGia}"/>
                 <DataGridTextColumn Header="Năm Sinh" Binding="{Binding NamSinh}"/>
                 <DataGridTextColumn Header="Số Điện Thoại" Binding="{Binding SoDienThoai}"/>
-                <DataGridTextColumn Header="Mật Khẩu" Binding="{Binding MatKhau}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Giới tính" Binding="{Binding GioiTinh}"/>
+                <DataGridTextColumn Header="CMND" Binding="{Binding CMND}"/>
+                <DataGridTextColumn Header="Mã tài khoản thủ thư" Binding="{Binding TAIKHOANTHUTHU.MaTaiKhoai}"/>
+                <DataGridTextColumn Header="Tên tài khoản thủ thư" Binding="{Binding TAIKHOANTHUTHU.TenTaiKhoai}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Tạo tài khoản độc giả" Name="btntaotaikhoandocgia" Click="Btntaotaikhoandocgia_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        
+
+
 
 
 
