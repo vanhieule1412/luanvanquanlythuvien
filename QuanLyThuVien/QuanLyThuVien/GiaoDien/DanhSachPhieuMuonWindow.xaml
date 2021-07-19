@@ -12,17 +12,18 @@
     <StackPanel>
         <Button Content="Lập Phiếu Mượn" Name="btnlap" Click="Btnlap_Click"/>
         <GroupBox Header="Danh sách phiếu mượn">
-            <DataGrid Name="dgphieumuon" AutoGenerateColumns="False" Height="230" LoadingRowDetails="Dgphieumuon_LoadingRowDetails" SelectedValuePath="MaPhieuMuon" >
+            <DataGrid Name="dgphieumuon" AutoGenerateColumns="False" Height="230" LoadingRowDetails="Dgphieumuon_LoadingRowDetails" SelectedValuePath="MaPhieuMuon" CanUserAddRows="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã phiếu mượn" Binding="{Binding MaPhieuMuon}"/>
-                    <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon,StringFormat='dd/MM/yyyy'}"/>
-                    <DataGridTextColumn Header="Ngày trả" Binding="{Binding NgayTra,StringFormat='dd/MM/yyyy'}"/>
-                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding TrangThai }"/>
-                    <DataGridTextColumn Header="Tiền phạt" Binding="{Binding TienPhat}"/>
-                    <DataGridTextColumn Header="Mã thủ thư" Binding="{Binding MaThuThu}"/>
-                    <DataGridTextColumn Header="Tên thủ thư" Binding="{Binding THUTHU.TenThuThu}" />
-                    <DataGridTextColumn Header="Mã độc giả" Binding="{Binding MaDocGia}"/>
-                    <DataGridTextColumn Header="Tên độc giả" Binding="{Binding DOCGIA.TenDocGia}"/>
+                    <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon }"/>
+                    <DataGridTextColumn Header="Ngày trả dự kiến" Binding="{Binding NgayTraDuKien}"/>
+                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding TrangThai}"/>
+                    <DataGridTextColumn Header="Tiền phạt tổng" Binding="{Binding TienPhatTong}"/>
+                    <DataGridTextColumn Header="Đã trả" Binding="{Binding DaTra}"/>
+                    <DataGridTextColumn Header="Mã tài khoản thủ thư" Binding="{Binding PHIEUMUON.TAIKHOANTHUTHU.MaTaiKhoai}"/>
+                    <DataGridTextColumn Header="Tên tài khoản thủ thư" Binding="{Binding PHIEUMUON.TAIKHOANTHUTHU.TenTaiKhoai}"/>
+                    <DataGridTextColumn Header="Mã thẻ độc giả" Binding="{Binding PHIEUMUON.THEDOCGIA.MaTheDocGia}"/>
+                    <DataGridTextColumn Header="Tên thẻ độc giả" Binding="{Binding PHIEUMUON.THEDOCGIA.TenDocGia}"/>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -41,6 +42,9 @@
                                         <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
                                         <DataGridTextColumn Header="Tác giả" Binding="{Binding TacGia}"/>
                                         <DataGridTextColumn Header="Người dịch" Binding="{Binding NguoiDich}"/>
+                                        <DataGridTextColumn Header="Tiền phạt" Binding="{Binding TienPhat}"/>
+                                        <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat}"/>
+                                        <DataGridTextColumn Header="Tình trạng" Binding="{Binding TinhTrang}"/>
                                         <DataGridTextColumn Header="Số lượng sách mượn" Binding="{Binding SoLuongSachMuon}"/>
                                     </DataGrid.Columns>
                                 </DataGrid>

@@ -37,11 +37,11 @@ namespace QuanLyThuVien.GiaoDien
                 txtmanhaxuatban.Text = nHAXUATBAN.MaNhaXuatBan;
                 txttennhaxuatban.Text = nHAXUATBAN.TenNhaXuatBan;
                 txtdiachi.Text = nHAXUATBAN.DiaChi;
+                txtemail.Text = nHAXUATBAN.Email;
+                txtdiachiweb.Text = nHAXUATBAN.DiaChiWebsite;
+                txtsodienthoai.Text = nHAXUATBAN.SoDienThoai.ToString();
             }
-            else
-            {
-                return;
-            }
+           
             
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -80,6 +80,9 @@ namespace QuanLyThuVien.GiaoDien
                 nHAXUATBAN.MaNhaXuatBan = txtmanhaxuatban.Text;
                 nHAXUATBAN.TenNhaXuatBan = txttennhaxuatban.Text;
                 nHAXUATBAN.DiaChi = txtdiachi.Text;
+                nHAXUATBAN.Email = txtemail.Text;
+                nHAXUATBAN.DiaChiWebsite = txtdiachiweb.Text;
+                nHAXUATBAN.SoDienThoai = int.Parse(txtsodienthoai.Text);
                 dc.NHAXUATBANs.Add(nHAXUATBAN);
                 dc.SaveChanges();
                 hienthi();
@@ -92,6 +95,9 @@ namespace QuanLyThuVien.GiaoDien
                 {
                     nHAXUATBAN.TenNhaXuatBan = txttennhaxuatban.Text;
                     nHAXUATBAN.DiaChi = txtdiachi.Text;
+                    nHAXUATBAN.Email = txtemail.Text;
+                    nHAXUATBAN.DiaChiWebsite = txtdiachiweb.Text;
+                    nHAXUATBAN.SoDienThoai = int.Parse(txtsodienthoai.Text);
                     dc.SaveChanges();
                 }
                 hienthi();

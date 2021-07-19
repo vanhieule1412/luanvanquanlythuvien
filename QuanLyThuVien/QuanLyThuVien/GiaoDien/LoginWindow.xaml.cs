@@ -53,6 +53,7 @@ namespace QuanLyThuVien.GiaoDien
                         MainWindow formmain = new MainWindow();
                         formmain.Show();
                         formmain.tbltentaikhoan.Text = usename;
+
                         this.Close();
                     }
                     else

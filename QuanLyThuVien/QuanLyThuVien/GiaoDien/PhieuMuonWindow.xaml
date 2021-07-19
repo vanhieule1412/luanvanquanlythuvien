@@ -29,28 +29,30 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="0" Grid.Row="6" Text="Ngày mượn"/>
-                <TextBlock Grid.Column="0" Grid.Row="7" Text="Ngày trả"/>
+                <TextBlock Grid.Column="0" Grid.Row="7" Text="Ngày trả dự kiện"/>
                 <TextBlock Grid.Column="0" Grid.Row="3" Text="Trạng thái"/>
-                <TextBlock Grid.Column="0" Grid.Row="4" Text="Tiền phạt"/>
+                <TextBlock Grid.Column="0" Grid.Row="4" Text="Tiền phạt tổng"/>
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="Mã thủ thư"/>
                 <TextBlock Grid.Column="0" Grid.Row="2" Text="Mã độc giả"/>
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="Mã Phiếu mượn"/>
-                <ComboBox Grid.Column="1" Grid.Row="1" Name="cmbMaThuThu" SelectedValuePath="MaThuThu" DisplayMemberPath="MaThuThu"/>
-                <ComboBox Grid.Column="1" Grid.Row="2" Name="cmbMaDocGia" SelectedValuePath="MaDocGia" DisplayMemberPath="MaDocGia"/>
+                <TextBlock Grid.Column="0" Grid.Row="8" Text="Đã trả"/>
+                <ComboBox Grid.Column="1" Grid.Row="1" Name="cmbMaThuThu" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="MaTaiKhoai"/>
+                <ComboBox Grid.Column="1" Grid.Row="2" Name="cmbMaDocGia" SelectedValuePath="MaTheDocGia" DisplayMemberPath="MaTheDocGia"/>
                 <DatePicker Grid.Column="1" Grid.Row="6" Name="dpNgayMuon" Height="24" VerticalAlignment="Top"/>
                 <DatePicker Grid.Column="1" Grid.Row="7" Name="dpNgayTra"/>
                 <ComboBox Grid.Column="1" Grid.Row="3" Name="cmbtrangthai" SelectedItem="TrangThai">
-                    <ComboBoxItem Content="Đã Trả"  />
-                    <ComboBoxItem Content="Chưa Trả" IsSelected="True"/>
+                    <ComboBoxItem Content="Được mượn"  />
+                    <ComboBoxItem Content="Không được mượn" IsSelected="True"/>
                 </ComboBox>
-                <TextBox Grid.Column="1" Grid.Row="4" Name="txttienphat"/>
+                <CheckBox Name="ckbdatra" Grid.Column="1" Grid.Row="8"/>
+                <TextBox Grid.Column="1" Grid.Row="4" Name="txttienphattong"/>
                 <WrapPanel Grid.Column="2" Grid.Row="1">
                     <TextBlock Text="Tên thủ thư: "/>
-                    <TextBlock Text="{Binding ElementName=cmbMaThuThu,Path=SelectedItem.TenThuThu}"/>
+                    <TextBlock Text="{Binding ElementName=cmbMaThuThu,Path=SelectedItem.TenTaiKhoai}"/>
                 </WrapPanel>
                 <WrapPanel Grid.Column="2" Grid.Row="2">
                     <TextBlock Text="Tên độc giả: "/>
-                    <TextBlock Text="{Binding ElementName=cmbMaDocGia,Path=SelectedItem.TenDocGia}"/>
+                    <TextBlock Text="{Binding ElementName=cmbMaDocGia,Path=SelectedItem.TenTaiKhoan}"/>
                 </WrapPanel>
                 <TextBox Grid.Column="1" Grid.Row="0" Name="txtmaphieumuon"/>
             </Grid>
@@ -68,6 +70,10 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -77,14 +83,23 @@
                     <TextBlock Grid.Row="0" Grid.Column="1" Text="Tên Sách"/>
                     <TextBlock Grid.Row="0" Grid.Column="2" Text="Tác giả"/>
                     <TextBlock Grid.Row="0" Grid.Column="3" Text="Người dịch"/>
-                    <TextBlock Grid.Row="0" Grid.Column="4" Text="Số lượng sách mượn"/>
-                    <Button Grid.Row="1" Grid.Column="5" Content="Chọn hàng sách" Name="btnchon" Click="Btnchon_Click"/>
+                    <TextBlock Grid.Row="0" Grid.Column="4" Text="Ngày trả thật"/>
+                    <TextBlock Grid.Row="0" Grid.Column="5" Text="Tiền phạt"/>
+                    <TextBlock Grid.Row="0" Grid.Column="6" Text="Tình trạng"/>
+                    <TextBlock Grid.Row="0" Grid.Column="7" Text="Số lượng sách mượn"/>
+                    <Button Grid.Row="1" Grid.Column="8" Content="Chọn hàng sách" Name="btnchon" Click="Btnchon_Click"/>
                     <ComboBox Grid.Row="1" Grid.Column="0" Name="cmbMasach" SelectedValuePath="MaSach" DisplayMemberPath="MaSach"/>
                     <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding ElementName=cmbMasach,Path=SelectedItem.TenSach}"/>
                     <TextBox Grid.Row="1" Grid.Column="2" IsReadOnly="True" Text="{Binding ElementName=cmbMasach,Path=SelectedItem.TacGia}"/>
                     <TextBox Grid.Row="1" Grid.Column="3" IsReadOnly="True" Text="{Binding ElementName=cmbMasach,Path=SelectedItem.NguoiDich}"/>
-                    <TextBox Grid.Row="1" Grid.Column="4" Name="txtSoluong" Text="1"/>
-
+                    <DatePicker Grid.Row="1" Grid.Column="4" />
+                    <TextBox Grid.Row="1" Grid.Column="5" IsReadOnly="True"/>
+                    <ComboBox Grid.Row="1" Grid.Column="6" Name="cmbtinhtrang" SelectedItem="TinhTrang">
+                        <ComboBoxItem Name="cmbhoanchinh" Content="Hoàn chỉnh" IsSelected="True"/>
+                        <ComboBoxItem Name="cmbbimat" Content="Bị mất" />
+                        <ComboBoxItem Name="cmbbihuhai" Content="Bị hư hại"/>
+                    </ComboBox>
+                    <TextBox Grid.Row="1" Grid.Column="7" Name="txtSoluong" Text="1"/>
                 </Grid>
                 <DataGrid Name="dgChitiet" AutoGenerateColumns="False" SelectedValuePath="MaSach">
                     <DataGrid.Columns>
@@ -92,6 +107,9 @@
                         <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
                         <DataGridTextColumn Header="Tác Giả" Binding="{Binding TacGia}"/>
                         <DataGridTextColumn Header="Người Dịch" Binding="{Binding NguoiDich}"/>
+                        <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat}"/>
+                        <DataGridTextColumn Header="Tiền phạt" Binding="{Binding TienPhat}"/>
+                        <DataGridTextColumn Header="Tình Trạng" Binding="{Binding TinhTrang}"/>
                         <DataGridTextColumn Header="Số lượng" Binding="{Binding SoLuongSachMuon}"/>
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>

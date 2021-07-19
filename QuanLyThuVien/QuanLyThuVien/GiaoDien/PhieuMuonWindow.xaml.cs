@@ -22,10 +22,10 @@ namespace QuanLyThuVien.GiaoDien
     {
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         public KieuPhepToan pheptoan;
-        //public Model.SACH sACH;
+        public SACH sACH;
         public PHIEUMUON pHIEUMUON ;
         public PHIEUMUON HIEUMUON = new PHIEUMUON();
-        //public Model.SACH_PHIEUMUON sACH_PHIEUMUON;
+        public CHITIETPHIEUMUON sACH_PHIEUMUON;
         public PhieuMuonWindow()
         {
             InitializeComponent();
@@ -33,29 +33,37 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            cmbMaThuThu.ItemsSource = dc.THUTHUs.ToList();
+            cmbMaThuThu.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
             cmbMasach.ItemsSource = dc.SACHes.ToList();
-            cmbMaDocGia.ItemsSource = dc.DOCGIAs.ToList();
+            cmbMaDocGia.ItemsSource = dc.THEDOCGIAs.ToList();
             if (pheptoan == KieuPhepToan.Sua)
             {
                 txtmaphieumuon.Text = pHIEUMUON.MaPhieuMuon;
-                //cmbMaThuThu.SelectedValue = pHIEUMUON.THUTHU.MaThuThu;
-                //cmbMaDocGia.SelectedValue = pHIEUMUON.DOCGIA.MaDocGia;
-                dpNgayMuon.SelectedDate = pHIEUMUON.NgayMuon;
-               // dpNgayTra.SelectedDate = pHIEUMUON.NgayTra;
-                cmbtrangthai.SelectedItem = pHIEUMUON.TrangThai;
+                cmbMaThuThu.SelectedValue = pHIEUMUON.TAIKHOANTHUTHU.MaTaiKhoai;
+                cmbMaDocGia.SelectedValue = pHIEUMUON.THEDOCGIA.MaTheDocGia;
+                //dpNgayMuon.SelectedDate = pHIEUMUON.NgayMuon;
+                dpNgayTra.SelectedDate = pHIEUMUON.NgayTraDukien;
                 if (cmbtrangthai.SelectedItem.ToString() == "Đã Trả" )
                     cmbtrangthai.SelectedItem = "Đã Trả";
                 else
                     cmbtrangthai.SelectedItem = "Chưa Trả";
+                if (pHIEUMUON.DaTra.ToString() == "Đã Trả")
+                {
+                    ckbdatra.IsChecked = true;
+                }
+                else
+                {
+                    ckbdatra.IsChecked = false;
+                }
+                txttienphattong.Text = pHIEUMUON.TienPhatTong.ToString();
 
-               // dgChitiet.ItemsSource = pHIEUMUON.SACH_PHIEUMUON;               
+               dgChitiet.ItemsSource = pHIEUMUON.CHITIETPHIEUMUONs;               
             }
         }
 
         private void Btnchon_Click(object sender, RoutedEventArgs e)
         {
-          //  SACH_PHIEUMUON temp = null;
+            CHITIETPHIEUMUON temp = null;
            
             if (cmbMasach.SelectedItem == null)
             {
@@ -64,73 +72,84 @@ namespace QuanLyThuVien.GiaoDien
             }
 
             if (cmbMasach.SelectedItem == null) return;
-            //foreach (SACH_PHIEUMUON t in HIEUMUON.SACH_PHIEUMUON.Where(x => x.MaSach == cmbMasach.SelectedValue.ToString()))
-            //{
-            //    temp = t;
-            //    break;
-            //}
-            //if (temp == null)
-            //{
+            foreach (CHITIETPHIEUMUON t in HIEUMUON.CHITIETPHIEUMUONs.Where(x => x.MaSach == cmbMasach.SelectedValue.ToString()))
+            {
+                temp = t;
+                break;
+            }
+            if (temp == null)
+            {
 
-            //    SACH_PHIEUMUON ct = new SACH_PHIEUMUON();
-            //    ct.SACH = cmbMasach.SelectedItem as SACH;
-            //    ct.MaSach = ct.SACH.MaSach;
-            //    ct.SoLuongSachMuon = int.Parse(txtSoluong.Text);
-            //    HIEUMUON.SACH_PHIEUMUON.Add(ct);
+                CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
+                ct.SACH = cmbMasach.SelectedItem as SACH;
+                ct.MaSach = ct.SACH.MaSach;
+                ct.TinhTrang = ct.TinhTrang;
+                ct.SoLuongSachMuon = int.Parse(txtSoluong.Text);
+                HIEUMUON.CHITIETPHIEUMUONs.Add(ct);
 
-            //}
-            //else
-            //{
-            //    temp.SoLuongSachMuon += int.Parse(txtSoluong.Text);
-            //}
+            }
+            else
+            {
+                temp.SoLuongSachMuon += int.Parse(txtSoluong.Text);
+            }
 
-           
-            //var kq = getChitietphieumuon(HIEUMUON);
 
-            //dgChitiet.ItemsSource = kq.ToList();
-           
+            var kq = getChitietphieumuon(HIEUMUON);
+
+            dgChitiet.ItemsSource = kq.ToList();
+
         }
-        //private IEnumerable<object> getChitietphieumuon(PHIEUMUONTRA pHIEUMUON)
-        //{
-        //    //var kq = pHIEUMUON.SACH_PHIEUMUON.ToList().Select(x => new
-        //    //{
-        //    //    MaSach = x.MaSach,
-        //    //    TenSach = x.SACH.TenSach,
-        //    //    TacGia = x.SACH.TacGia,
-        //    //    NguoiDich = x.SACH.NguoiDich,
-        //    //    SoLuongSachMuon = x.SoLuongSachMuon,
+        private IEnumerable<object> getChitietphieumuon(PHIEUMUON pHIEUMUON)
+        {
+            var kq = pHIEUMUON.CHITIETPHIEUMUONs.ToList().Select(x => new
+            {
+                MaSach = x.MaSach,
+                TenSach = x.SACH.TenSach,
+                TacGia = x.SACH.TacGia,
+                NguoiDich = x.SACH.NguoiDich,
+                NgayTraThat=x.NgayTraThat,
+                TienPhat=x.TienPhat,
+                TinhTrang=x.TinhTrang,
+                SoLuongSachMuon = x.SoLuongSachMuon,
 
-        //    //});
-        //    //return kq.ToList();
-        //}
+            });
+            return kq.ToList();
+        }
 
         private void BtnXoa_Click(object sender, RoutedEventArgs e)
         {
-            //string masach = dgChitiet.SelectedValue.ToString();
-            //foreach (SACH_PHIEUMUON t in HIEUMUON.SACH_PHIEUMUON.Where(x => x.MaSach == masach))
-            //{
-            //    HIEUMUON.SACH_PHIEUMUON.Remove(t);
-            //    break;
-            //}
-            //var kq = getChitietphieumuon(HIEUMUON);
-            //dgChitiet.ItemsSource = kq.ToList();
+            string masach = dgChitiet.SelectedValue.ToString();
+            foreach (CHITIETPHIEUMUON t in HIEUMUON.CHITIETPHIEUMUONs.Where(x => x.MaSach == masach))
+            {
+                HIEUMUON.CHITIETPHIEUMUONs.Remove(t);
+                break;
+            }
+            var kq = getChitietphieumuon(HIEUMUON);
+            dgChitiet.ItemsSource = kq.ToList();
 
         }
 
         private void Btnlapphieumuon_Click(object sender, RoutedEventArgs e)
         {
-            //pHIEUMUON = new PHIEUMUON();
-            ////Model.PHIEUMUON x = new Model.PHIEUMUON();
-            //pHIEUMUON.MaPhieuMuon = txtmaphieumuon.Text;
-            //pHIEUMUON.MaThuThu = cmbMaThuThu.SelectedValue.ToString();
-            //pHIEUMUON.MaDocGia = cmbMaDocGia.SelectedValue.ToString();
-            //pHIEUMUON.NgayMuon = dpNgayMuon.SelectedDate.Value;
-            //pHIEUMUON.NgayTra = dpNgayTra.SelectedDate.Value;
-            //pHIEUMUON.TrangThai = cmbtrangthai.SelectionBoxItem.ToString();
-            //// x.TienPhat = int.Parse(txttienphat.Text);
+            pHIEUMUON = new PHIEUMUON();
+            
+            pHIEUMUON.MaPhieuMuon = txtmaphieumuon.Text;
+            pHIEUMUON.MaTaiKhoai =int.Parse(cmbMaThuThu.SelectedValue.ToString());
+            pHIEUMUON.MaTheDocGia = cmbMaDocGia.SelectedValue.ToString();
+            pHIEUMUON.NgayMuon = dpNgayMuon.SelectedDate.Value.ToLongDateString().ToString();
+            pHIEUMUON.NgayTraDukien = dpNgayTra.SelectedDate.Value.Date;
+            if (cmbtrangthai.SelectedItem.ToString() == "Không được mượn")
+            {
+                pHIEUMUON.TrangThai = false;
+            }
+            else
+            {
+                pHIEUMUON.TrangThai = true;
+            }
+            // x.TienPhat = int.Parse(txttienphat.Text);
 
-            //this.DialogResult = true;
-            //this.Close();
+            this.DialogResult = true;
+            this.Close();
         }
     }
 }

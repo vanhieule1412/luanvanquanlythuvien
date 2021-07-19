@@ -36,10 +36,6 @@ namespace QuanLyThuVien
             f.ShowDialog();
             f.Close();
             this.ShowDialog();
-            
-
-
-
         }
 
         private void Btnquanlnhaxuatban_Click(object sender, RoutedEventArgs e)
@@ -110,6 +106,15 @@ namespace QuanLyThuVien
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
            
+        }
+
+        private void Btnthedocgia_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.TheDocGiaWindow fthedocgia = new GiaoDien.TheDocGiaWindow();
+            this.Hide();
+            fthedocgia.ShowDialog();
+            fthedocgia.Close();
+            this.ShowDialog();
         }
     }
 }

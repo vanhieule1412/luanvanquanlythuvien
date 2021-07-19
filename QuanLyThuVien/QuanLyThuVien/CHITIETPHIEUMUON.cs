@@ -20,6 +20,7 @@ namespace QuanLyThuVien
         public Nullable<System.DateTime> NgayTraThat { get; set; }
         public Nullable<float> TienPhat { get; set; }
         public string TinhTrang { get; set; }
+        public int SoLuongSachMuon { get; set; }
     
         public virtual SACH SACH { get; set; }
         public virtual PHIEUMUON PHIEUMUON { get; set; }

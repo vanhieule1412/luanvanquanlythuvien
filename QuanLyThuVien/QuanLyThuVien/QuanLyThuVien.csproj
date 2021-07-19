@@ -82,8 +82,8 @@
     <Compile Include="GiaoDien\TaiKhoanThuThuWindow.xaml.cs">
       <DependentUpon>TaiKhoanThuThuWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GiaoDien\userWindow.xaml.cs">
-      <DependentUpon>userWindow.xaml</DependentUpon>
+    <Compile Include="GiaoDien\TheDocGiaWindow.xaml.cs">
+      <DependentUpon>TheDocGiaWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="KE.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -103,12 +103,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="SACH.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
@@ -165,15 +159,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GiaoDien\TheDocGiaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GiaoDien\TheLoaiWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GiaoDien\ThuThuWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GiaoDien\userWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

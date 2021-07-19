@@ -120,10 +120,7 @@ namespace QuanLyThuVien.GiaoDien
             {
                 return;
             }
-          
-
         }
-
         private void Btntaotaikhoandocgia_Click(object sender, RoutedEventArgs e)
         {
             GiaoDien.TaiKhoanDocGiaWindow ftaikhoan = new TaiKhoanDocGiaWindow();

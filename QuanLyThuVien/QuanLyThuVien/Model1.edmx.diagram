@@ -4,20 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a14966b5b23d4cf98c91cc2956f39e84" Name="Diagram1">
-        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.CHITIETPHIEUMUON" Width="1.5" PointX="14.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.DOCGIA" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.KE" Width="1.5" PointX="9.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.KHU" Width="1.5" PointX="7.5" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.NHAXUATBAN" Width="1.5" PointX="9.75" PointY="10.25" IsExpanded="true" />
+      <Diagram DiagramId="a953c9584bae48ea943d404c065504a4" Name="Diagram1">
+        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.CHITIETPHIEUMUON" Width="1.5" PointX="14.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.DOCGIA" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.KE" Width="1.5" PointX="9.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.KHU" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.NHAXUATBAN" Width="1.5" PointX="9.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.PHIEUMUON" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.SACH" Width="1.5" PointX="12" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.SACH" Width="1.5" PointX="12" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.sysdiagram" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.TAIKHOANDOCGIA" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.TAIKHOANDOCGIA" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.TAIKHOANTHUTHU" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.THEDOCGIA" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.THELOAI" Width="1.5" PointX="9.75" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.THUTHU" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.THELOAI" Width="1.5" PointX="9.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UngDungQuanLyThuVienModel.THUTHU" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="UngDungQuanLyThuVienModel.FKCHITIETPHI151328" ManuallyRouted="false" />
         <AssociationConnector Association="UngDungQuanLyThuVienModel.FKCHITIETPHI594320" ManuallyRouted="false" />
         <AssociationConnector Association="UngDungQuanLyThuVienModel.FKDOCGIA564624" ManuallyRouted="false" />
