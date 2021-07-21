@@ -17,54 +17,96 @@ namespace QuanLyThuVien.GiaoDien
     /// <summary>
     /// Interaction logic for PhieuMuonWindow.xaml
     /// </summary>
-    public enum KieuPhepToan {Them,Sua }
     public partial class PhieuMuonWindow : Window
     {
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
-        public KieuPhepToan pheptoan;
-        public SACH sACH;
-        public PHIEUMUON pHIEUMUON ;
-        public PHIEUMUON HIEUMUON = new PHIEUMUON();
-        public CHITIETPHIEUMUON sACH_PHIEUMUON;
+        private PHIEUMUON PM = new PHIEUMUON();
         public PhieuMuonWindow()
         {
             InitializeComponent();
         }
+        private void hienthi()
+        {
+            //var kq = dc.PHIEUMUONs.ToList().Select(x => new {
+            //    MaPhieuMuon = x.MaPhieuMuon,
+            //    NgayMuon = x.NgayMuon,
+            //    NgayTraDukien = x.NgayTraDukien,
+            //    TrangThai = x.TrangThai ? "Được mượn" : "Không Được Mượn",
+            //    TienPhatTong = x.TienPhatTong,
+            //    DaTra = x.DaTra.Value ? "Đã Trả" : "Chưa Trả",
+            //    MaTaiKhoai = x.MaTaiKhoai.Value,
+            //    MaTheDocGia = x.MaTheDocGia,
+            //}).ToList();
+            //dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
+            cmbMasach.ItemsSource = dc.SACHes.ToList();
+            cmbmataikhoan.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
+            cmbthedocgia.ItemsSource = dc.THEDOCGIAs.ToList();
+            
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            cmbMaThuThu.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
-            cmbMasach.ItemsSource = dc.SACHes.ToList();
-            cmbMaDocGia.ItemsSource = dc.THEDOCGIAs.ToList();
-            if (pheptoan == KieuPhepToan.Sua)
-            {
-                txtmaphieumuon.Text = pHIEUMUON.MaPhieuMuon;
-                cmbMaThuThu.SelectedValue = pHIEUMUON.TAIKHOANTHUTHU.MaTaiKhoai;
-                cmbMaDocGia.SelectedValue = pHIEUMUON.THEDOCGIA.MaTheDocGia;
-                //dpNgayMuon.SelectedDate = pHIEUMUON.NgayMuon;
-                dpNgayTra.SelectedDate = pHIEUMUON.NgayTraDukien;
-                if (cmbtrangthai.SelectedItem.ToString() == "Đã Trả" )
-                    cmbtrangthai.SelectedItem = "Đã Trả";
-                else
-                    cmbtrangthai.SelectedItem = "Chưa Trả";
-                if (pHIEUMUON.DaTra.ToString() == "Đã Trả")
-                {
-                    ckbdatra.IsChecked = true;
-                }
-                else
-                {
-                    ckbdatra.IsChecked = false;
-                }
-                txttienphattong.Text = pHIEUMUON.TienPhatTong.ToString();
+            hienthi();
+           
+            
+        }
 
-               dgChitiet.ItemsSource = pHIEUMUON.CHITIETPHIEUMUONs;               
+        private void BtnLapPM_Click(object sender, RoutedEventArgs e)
+        {
+            PHIEUMUON k = dc.PHIEUMUONs.Find(txtmaphieumuon.Text);
+            if (k != null)
+            {
+                MessageBox.Show("Trùng mã");
+                return;
             }
+            PHIEUMUON x = new PHIEUMUON();
+            x.MaPhieuMuon = txtmaphieumuon.Text;
+            x.NgayMuon = dpNgaymuon.SelectedDate.Value ;
+            x.NgayTraDukien = dpNgaytradukien.SelectedDate.Value;
+            if (rdbduocmuon.IsChecked == true)
+            {
+                x.TrangThai = true;
+            }
+            else
+            {
+                x.TrangThai = false;
+            }
+            if (rdbdatra.IsChecked == true)
+            {
+                x.DaTra = true;
+            }
+            else
+            {
+                x.DaTra = false;
+            }
+            x.TienPhatTong = int.Parse(txttienphattong.Text.ToString());
+            x.MaTaiKhoai =int.Parse(cmbmataikhoan.SelectedValue.ToString());
+            x.MaTheDocGia = cmbthedocgia.SelectedValue.ToString();
+            foreach (CHITIETPHIEUMUON t in PM.CHITIETPHIEUMUONs)
+            {
+                CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
+
+                ct.MaPhieuMuon = t.MaPhieuMuon;
+                ct.MaSach = t.MaSach;
+                ct.TinhTrang = t.TinhTrang;
+                ct.SoLuongSachMuon  = t.SoLuongSachMuon;
+                x.CHITIETPHIEUMUONs.Add(ct);
+            }
+            dc.PHIEUMUONs.Add(x);
+            dc.SaveChanges();
+            hienthi();
+            MessageBox.Show("Thêm thành công");
+            //GiaoDien.DanhSachPhieuMuonWindow giaodiendanhsach = new DanhSachPhieuMuonWindow();
+            //giaodiendanhsach.ShowDialog();
+       
+
+           
+
         }
 
         private void Btnchon_Click(object sender, RoutedEventArgs e)
         {
             CHITIETPHIEUMUON temp = null;
-           
             if (cmbMasach.SelectedItem == null)
             {
                 MessageBox.Show("Chưa chọn sách");
@@ -72,7 +114,7 @@ namespace QuanLyThuVien.GiaoDien
             }
 
             if (cmbMasach.SelectedItem == null) return;
-            foreach (CHITIETPHIEUMUON t in HIEUMUON.CHITIETPHIEUMUONs.Where(x => x.MaSach == cmbMasach.SelectedValue.ToString()))
+            foreach (CHITIETPHIEUMUON t in PM.CHITIETPHIEUMUONs.Where(x => x.MaSach == cmbMasach.SelectedValue.ToString()))
             {
                 temp = t;
                 break;
@@ -83,73 +125,64 @@ namespace QuanLyThuVien.GiaoDien
                 CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
                 ct.SACH = cmbMasach.SelectedItem as SACH;
                 ct.MaSach = ct.SACH.MaSach;
-                ct.TinhTrang = ct.TinhTrang;
-                ct.SoLuongSachMuon = int.Parse(txtSoluong.Text);
-                HIEUMUON.CHITIETPHIEUMUONs.Add(ct);
+                ct.TinhTrang = cmbtinhtrang.SelectionBoxItem.ToString();
+                ct.SoLuongSachMuon = int.Parse(txtSoluongsachmuon.Text);
+                PM.CHITIETPHIEUMUONs.Add(ct);
 
             }
             else
             {
-                temp.SoLuongSachMuon += int.Parse(txtSoluong.Text);
+                temp.SoLuongSachMuon += int.Parse(txtSoluongsachmuon.Text);
             }
 
-
-            var kq = getChitietphieumuon(HIEUMUON);
+            
+            var kq = getChitietphieumuon(PM);
 
             dgChitiet.ItemsSource = kq.ToList();
-
         }
         private IEnumerable<object> getChitietphieumuon(PHIEUMUON pHIEUMUON)
         {
-            var kq = pHIEUMUON.CHITIETPHIEUMUONs.ToList().Select(x => new
-            {
+            var kq = pHIEUMUON.CHITIETPHIEUMUONs.ToList().Select(x => new {
                 MaSach = x.MaSach,
                 TenSach = x.SACH.TenSach,
                 TacGia = x.SACH.TacGia,
-                NguoiDich = x.SACH.NguoiDich,
-                NgayTraThat=x.NgayTraThat,
-                TienPhat=x.TienPhat,
-                TinhTrang=x.TinhTrang,
+                NamXuatBan = x.SACH.NamXuatBan,
+                TinhTrang = x.TinhTrang,
+                NgayTraThat = x.NgayTraThat,
+                TienPhat = x.TienPhat,
                 SoLuongSachMuon = x.SoLuongSachMuon,
-
+                
             });
             return kq.ToList();
         }
 
         private void BtnXoa_Click(object sender, RoutedEventArgs e)
         {
-            string masach = dgChitiet.SelectedValue.ToString();
-            foreach (CHITIETPHIEUMUON t in HIEUMUON.CHITIETPHIEUMUONs.Where(x => x.MaSach == masach))
-            {
-                HIEUMUON.CHITIETPHIEUMUONs.Remove(t);
-                break;
-            }
-            var kq = getChitietphieumuon(HIEUMUON);
-            dgChitiet.ItemsSource = kq.ToList();
 
         }
 
-        private void Btnlapphieumuon_Click(object sender, RoutedEventArgs e)
+        private void Dgphieumuon_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
         {
-            pHIEUMUON = new PHIEUMUON();
-            
-            pHIEUMUON.MaPhieuMuon = txtmaphieumuon.Text;
-            pHIEUMUON.MaTaiKhoai =int.Parse(cmbMaThuThu.SelectedValue.ToString());
-            pHIEUMUON.MaTheDocGia = cmbMaDocGia.SelectedValue.ToString();
-            pHIEUMUON.NgayMuon = dpNgayMuon.SelectedDate.Value.ToLongDateString().ToString();
-            pHIEUMUON.NgayTraDukien = dpNgayTra.SelectedDate.Value.Date;
-            if (cmbtrangthai.SelectedItem.ToString() == "Không được mượn")
-            {
-                pHIEUMUON.TrangThai = false;
-            }
-            else
-            {
-                pHIEUMUON.TrangThai = true;
-            }
-            // x.TienPhat = int.Parse(txttienphat.Text);
+            PM = e.Row.Item as PHIEUMUON;
+            DataGrid dg = e.DetailsElement.FindName("dgCTPM") as DataGrid;
+            var kq = PM.CHITIETPHIEUMUONs.ToList().Select(x => new {
+                MaSach = x.MaSach,
+                TenSach = x.SACH.TenSach,
+                TacGia = x.SACH.TacGia,
+                NamXuatBan = x.SACH.NamXuatBan,
+                TinhTrang = x.TinhTrang,
+                NgayTraThat = x.NgayTraThat,
+                TienPhat = x.TienPhat,
+                SoLuongSachMuon = x.SoLuongSachMuon,
+            });
+            dg.ItemsSource = kq.ToList();
+        }
 
-            this.DialogResult = true;
-            this.Close();
+        private void Btnreset_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+
         }
     }
 }

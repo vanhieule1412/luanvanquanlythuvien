@@ -1,0 +1,75 @@
+﻿<Window x:Class="QuanLyThuVien.GiaoDien.SuachitietphieumuonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
+        mc:Ignorable="d"
+        Title="SuachitietphieumuonWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        >
+
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0" Grid.Column="2" Name="txttim" TextChanged="Txttim_TextChanged" 
+                     />
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Mã Sách"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Mã Phiếu Mượn"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Ngày trả thật"/>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Tiền phạt"/>
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Tình trạng"/>
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Số lượng sách mượn"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Name="txtmasach"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="txtmaphieumuon"/>
+            <DatePicker Grid.Row="2" Grid.Column="1" Name="dpngaytrathat"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Name="txttienphat"/>
+            <ComboBox Grid.Row="4" Grid.Column="1" Name="cmbtinhtrang" SelectedItem="TinhTrang">
+                <ComboBoxItem Name="cmbhoanchinh" Content="Hoàn chỉnh"/>
+                <ComboBoxItem Name="cmbbihu" Content="Bị hư hại"/>
+                <ComboBoxItem Name="cmbbimat" Content="Bị mất"/>
+            </ComboBox>
+            <TextBox Grid.Row="5" Grid.Column="1" Name="txtsoluongchitiet"/>
+           
+        </Grid>
+        <Button Name="btnthuchienchitiet" Content="Thực hiện" Click="Btnthuchienchitiet_Click"/>
+        <DataGrid Name="dgchitietphieumuon" AutoGenerateColumns="False" SelectedValuePath="MaMuonTra">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}"/>
+                <DataGridTextColumn Header="Tên Sách" Binding="{Binding SACH.TenSach}"/>
+                <DataGridTextColumn Header="Mã phiếu mượn" Binding="{Binding MaPhieuMuon}"/>
+                <DataGridTextColumn Header="Tình trạng" Binding="{Binding TinhTrang}"/>
+                <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat}"/>
+                <DataGridTextColumn Header="Tiền Phạt" Binding="{Binding TienPhat}"/>
+                <DataGridTextColumn Header="Số lượng sách mượn" Binding="{Binding SoLuongSachMuon}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnsuachitiet" Content="Sửa chi tiết" Click="Btnsuachitiet_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</Window>

@@ -164,13 +164,6 @@ namespace QuanLyThuVien.GiaoDien
                     dc.SaveChanges();
 
                 }
-          
-           
-           
-
-
-
-
         }     
     }
 }

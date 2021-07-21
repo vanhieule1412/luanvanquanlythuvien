@@ -7,7 +7,7 @@
     <Property Name="MaMuonTra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="MaSach" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="MaPhieuMuon" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="NgayTraThat" Type="datetime" />
+    <Property Name="NgayTraThat" Type="date" />
     <Property Name="TienPhat" Type="real" />
     <Property Name="TinhTrang" Type="nvarchar" MaxLength="100" />
     <Property Name="SoLuongSachMuon" Type="int" Nullable="false" />
@@ -57,10 +57,10 @@
       <PropertyRef Name="MaPhieuMuon" />
     </Key>
     <Property Name="MaPhieuMuon" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="NgayMuon" Type="datetime" Nullable="false" />
+    <Property Name="NgayMuon" Type="date" Nullable="false" />
+    <Property Name="NgayTraDukien" Type="date" Nullable="false" />
     <Property Name="TrangThai" Type="bit" Nullable="false" />
     <Property Name="TienPhatTong" Type="real" />
-    <Property Name="NgayTraDukien" Type="datetime" Nullable="false" />
     <Property Name="DaTra" Type="bit" />
     <Property Name="MaTaiKhoai" Type="int" />
     <Property Name="MaTheDocGia" Type="varchar" MaxLength="50" Nullable="false" />
@@ -81,16 +81,6 @@
     <Property Name="NoiDungTomTat" Type="nvarchar" MaxLength="255" />
     <Property Name="HinhAnh" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Gia" Type="real" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="TAIKHOANDOCGIA">
     <Key>
@@ -118,8 +108,8 @@
       <PropertyRef Name="MaTheDocGia" />
     </Key>
     <Property Name="MaTheDocGia" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="NgayTheDuocTao" Type="datetime" Nullable="false" />
-    <Property Name="NgayTheDuocGiaHan" Type="datetime" Nullable="false" />
+    <Property Name="NgayTheDuocTao" Type="date" Nullable="false" />
+    <Property Name="NgayTheDuocGiaHan" Type="date" Nullable="false" />
     <Property Name="TenDocGia" Type="nvarchar" MaxLength="100" />
     <Property Name="NamSinh" Type="date" />
     <Property Name="MaTaiKhoaiDocGia" Type="int" Nullable="false" />
@@ -321,7 +311,6 @@
     <EntitySet Name="NHAXUATBAN" EntityType="Self.NHAXUATBAN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUMUON" EntityType="Self.PHIEUMUON" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TAIKHOANDOCGIA" EntityType="Self.TAIKHOANDOCGIA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TAIKHOANTHUTHU" EntityType="Self.TAIKHOANTHUTHU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THEDOCGIA" EntityType="Self.THEDOCGIA" Schema="dbo" store:Type="Tables" />

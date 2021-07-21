@@ -7,7 +7,7 @@
     <Property Name="MaMuonTra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="MaSach" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="MaPhieuMuon" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="NgayTraThat" Type="DateTime" Precision="3" />
+    <Property Name="NgayTraThat" Type="DateTime" Precision="0" />
     <Property Name="TienPhat" Type="Single" />
     <Property Name="TinhTrang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="SoLuongSachMuon" Type="Int32" Nullable="false" />
@@ -65,10 +65,10 @@
       <PropertyRef Name="MaPhieuMuon" />
     </Key>
     <Property Name="MaPhieuMuon" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="NgayMuon" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NgayMuon" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NgayTraDukien" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="TrangThai" Type="Boolean" Nullable="false" />
     <Property Name="TienPhatTong" Type="Single" />
-    <Property Name="NgayTraDukien" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="DaTra" Type="Boolean" />
     <Property Name="MaTaiKhoai" Type="Int32" />
     <Property Name="MaTheDocGia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -96,16 +96,6 @@
     <NavigationProperty Name="KE" Relationship="Self.FKSACH318768" FromRole="SACH" ToRole="KE" />
     <NavigationProperty Name="NHAXUATBAN" Relationship="Self.FKSACH752561" FromRole="SACH" ToRole="NHAXUATBAN" />
     <NavigationProperty Name="THELOAI" Relationship="Self.FKSACH567542" FromRole="SACH" ToRole="THELOAI" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="TAIKHOANDOCGIA">
     <Key>
@@ -141,8 +131,8 @@
       <PropertyRef Name="MaTheDocGia" />
     </Key>
     <Property Name="MaTheDocGia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="NgayTheDuocTao" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="NgayTheDuocGiaHan" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NgayTheDuocTao" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="NgayTheDuocGiaHan" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="TenDocGia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="NamSinh" Type="DateTime" Precision="0" />
     <Property Name="MaTaiKhoaiDocGia" Type="Int32" Nullable="false" />
@@ -349,7 +339,6 @@
     <EntitySet Name="NHAXUATBANs" EntityType="Self.NHAXUATBAN" />
     <EntitySet Name="PHIEUMUONs" EntityType="Self.PHIEUMUON" />
     <EntitySet Name="SACHes" EntityType="Self.SACH" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="TAIKHOANDOCGIAs" EntityType="Self.TAIKHOANDOCGIA" />
     <EntitySet Name="TAIKHOANTHUTHUs" EntityType="Self.TAIKHOANTHUTHU" />
     <EntitySet Name="THEDOCGIAs" EntityType="Self.THEDOCGIA" />

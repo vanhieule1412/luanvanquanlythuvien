@@ -24,6 +24,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -39,6 +41,7 @@
             <Button Content="Quản lý Phiếu mượn" Name="btnphieumuon" Grid.Column="6" Grid.Row="0" Click="Btnphieumuon_Click"/>
             <Button Content="Quản lý Khu" Name="btnkhu" Grid.Column="7" Grid.Row="0" Click="Btnkhu_Click"/>
             <Button Content="Quản lý Thẻ độc giả" Name="btnthedocgia" Grid.Column="8" Grid.Row="0" Click="Btnthedocgia_Click"/>
+            <Button Content="Phiếu trả" Name="btnphieutra" Grid.Column="9" Grid.Row="0" Click="Btnphieutra_Click"/>
         </Grid>
     </StackPanel>
 </Window>

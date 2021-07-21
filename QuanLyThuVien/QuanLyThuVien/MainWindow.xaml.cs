@@ -116,5 +116,15 @@ namespace QuanLyThuVien
             fthedocgia.Close();
             this.ShowDialog();
         }
+
+        private void Btnphieutra_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.PhieuTraWindow phieuTraWindow = new GiaoDien.PhieuTraWindow();
+            this.Hide();
+            phieuTraWindow.ShowDialog();
+            phieuTraWindow.Close();
+            this.ShowDialog();
+                
+        }
     }
 }

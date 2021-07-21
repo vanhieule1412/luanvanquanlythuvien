@@ -51,7 +51,7 @@ namespace QuanLyThuVien.GiaoDien
                 tHEDOCGIA.MaTheDocGia = txtmathedocgia.Text.Trim().ToUpper();
                 tHEDOCGIA.NgayTheDuocTao = dtpngaytao.SelectedDate.Value.Date;
                 tHEDOCGIA.NgayTheDuocGiaHan = dtpngayhethan.SelectedDate.Value.Date;
-                tHEDOCGIA.TAIKHOANDOCGIA.DOCGIA.MaDocGia = txttendocgia.Text;
+                tHEDOCGIA.TenDocGia = txttendocgia.Text;
                 tHEDOCGIA.NamSinh = dtpnamsinh.SelectedDate.Value.Date;
                 tHEDOCGIA.MaTaiKhoai = int.Parse(cmbmataikhoanthuthu.SelectedValue.ToString());
                 tHEDOCGIA.MaTaiKhoaiDocGia = int.Parse(cmbmataikhoandocgia.SelectedValue.ToString());

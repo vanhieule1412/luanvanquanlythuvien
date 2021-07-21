@@ -11,27 +11,34 @@ namespace QuanLyThuVien
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class PHIEUMUON
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    public partial class PHIEUMUON : INotifyPropertyChanged
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PHIEUMUON()
         {
             this.CHITIETPHIEUMUONs = new HashSet<CHITIETPHIEUMUON>();
         }
-    
-        public string MaPhieuMuon { get; set; }
+        //private string _maphieumuon = string.Empty;
+        public string MaPhieuMuon { get;/*{ return _maphieumuon; }*/  set ; /*{ _maphieumuon = value; OnPropertyChanged(); }*/ }
         public System.DateTime NgayMuon { get; set; }
+        public System.DateTime NgayTraDukien { get; set; }
         public bool TrangThai { get; set; }
         public Nullable<float> TienPhatTong { get; set; }
-        public System.DateTime NgayTraDukien { get; set; }
         public Nullable<bool> DaTra { get; set; }
         public Nullable<int> MaTaiKhoai { get; set; }
         public string MaTheDocGia { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    protected void OnPropertyChanged([CallerMemberName] string name = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETPHIEUMUON> CHITIETPHIEUMUONs { get; set; }
         public virtual TAIKHOANTHUTHU TAIKHOANTHUTHU { get; set; }
         public virtual THEDOCGIA THEDOCGIA { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

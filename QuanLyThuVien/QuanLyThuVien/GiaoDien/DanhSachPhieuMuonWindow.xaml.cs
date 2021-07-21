@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace QuanLyThuVien.GiaoDien
     {
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
        
+
         public DanhSachPhieuMuonWindow()
         {
             InitializeComponent();
@@ -30,15 +32,16 @@ namespace QuanLyThuVien.GiaoDien
    
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
-            
+            dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
         }
-       
+
+      
+
         private void Dgphieumuon_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
         {
 
             PHIEUMUON pHIEUMUON = e.Row.Item as PHIEUMUON;
-            DataGrid dg = e.DetailsElement.FindName("dgsachphieumuon") as DataGrid;
+            DataGrid dg = e.DetailsElement.FindName("dgCTPM") as DataGrid;
             var kq = pHIEUMUON.CHITIETPHIEUMUONs.ToList().Select(x => new
             {
                 MaSach = x.MaSach,
@@ -54,57 +57,37 @@ namespace QuanLyThuVien.GiaoDien
              
 
         }
-
-        private void BtnXoa_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnSua_Click(object sender, RoutedEventArgs e)
-        {
-            //GiaoDien.PhieuMuonWindow f = new PhieuMuonWindow();
-            //f.pheptoan = KieuPhepToan.Sua;
-            //f.pHIEUMUON = dc.PHIEUMUONs.Find(dgphieumuon.SelectedValue.ToString());
-            //if (f.ShowDialog() == true)
-            //{
-            //    PHIEUMUON hIEUMUON = dc.PHIEUMUONs.Find(f.pHIEUMUON.MaPhieuMuon);
-            //    if (hIEUMUON != null)
-            //    {               
-            //        //hIEUMUON.MaThuThu = f.pHIEUMUON.MaThuThu;
-            //        //hIEUMUON.MaDocGia = f.pHIEUMUON.MaDocGia;
-            //        //hIEUMUON.NgayMuon = f.pHIEUMUON.NgayMuon;
-            //        //hIEUMUON.NgayTra = f.pHIEUMUON.NgayTra;
-            //        hIEUMUON.TrangThai = f.pHIEUMUON.TrangThai;
-            //        hIEUMUON.TienPhat = f.pHIEUMUON.TienPhat;
-            //        //hIEUMUON.SACH_PHIEUMUON = f.pHIEUMUON.SACH_PHIEUMUON;
-            //        dc.SaveChanges();
-            //        dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
-            //    }
-            //}
-        }
-
         private void Btnlap_Click(object sender, RoutedEventArgs e)
         {
-            GiaoDien.PhieuMuonWindow fphieumuon = new PhieuMuonWindow();
-            fphieumuon.pheptoan = KieuPhepToan.Them;
-            if (fphieumuon.ShowDialog() == true)
-            {
-                foreach (CHITIETPHIEUMUON t in fphieumuon.HIEUMUON.CHITIETPHIEUMUONs)
-                {
-                    CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
-                    ct.MaPhieuMuon = t.MaPhieuMuon;
-                    ct.MaSach = t.MaSach;
-                    ct.SoLuongSachMuon = t.SoLuongSachMuon;
-                    fphieumuon.pHIEUMUON.CHITIETPHIEUMUONs.Add(ct);
-                }
-                dc.PHIEUMUONs.Add(fphieumuon.pHIEUMUON);
-                dc.SaveChanges();
-                dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
-            }
+            //GiaoDien.PhieuMuonWindow fphieumuon = new PhieuMuonWindow();
+            //fphieumuon.pheptoan = KieuPhepToan.Them;
+            //if (fphieumuon.ShowDialog() == true)
+            //{
+            //    foreach (CHITIETPHIEUMUON t in fphieumuon.HIEUMUON.CHITIETPHIEUMUONs)
+            //    {
+            //        CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
+            //        ct.MaPhieuMuon = t.MaPhieuMuon;
+            //        ct.MaSach = t.MaSach;
+            //        ct.SoLuongSachMuon = t.SoLuongSachMuon;
+            //        fphieumuon.pHIEUMUON.CHITIETPHIEUMUONs.Add(ct);
+            //    }
+            //    dc.PHIEUMUONs.Add(fphieumuon.pHIEUMUON);
+            //    dc.SaveChanges();
+            //    dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
+            //}
+
 
         }
-        
 
+        private void Btnmolapphieu_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.PhieuMuonWindow phieuMuon = new PhieuMuonWindow();
+            this.Hide();
+            phieuMuon.ShowDialog();          
+            phieuMuon.Close();
+            dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
+            this.ShowDialog();
+        }
       
     }
 }

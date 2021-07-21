@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\App.xaml
-14-967132529
+16-1497868212
 21750853300
-34849696517
+35-1101990101
 18-309011391
-GiaoDien\DanhSachPhieuMuonWindow.xaml;GiaoDien\DocGiaWindow.xaml;GiaoDien\KhuWindow.xaml;GiaoDien\LoginWindow.xaml;GiaoDien\NhaXuatBanWindow.xaml;GiaoDien\PhieuMuonWindow.xaml;GiaoDien\SachWindow.xaml;GiaoDien\TaiKhoanDocGiaWindow.xaml;GiaoDien\TaiKhoanThuThuWindow.xaml;GiaoDien\TheDocGiaWindow.xaml;GiaoDien\TheLoaiWindow.xaml;GiaoDien\ThuThuWindow.xaml;GiaoDien\ViTriWindow.xaml;MainWindow.xaml;
+GiaoDien\DanhSachPhieuMuonWindow.xaml;GiaoDien\DocGiaWindow.xaml;GiaoDien\KhuWindow.xaml;GiaoDien\LoginWindow.xaml;GiaoDien\NhaXuatBanWindow.xaml;GiaoDien\PhieuMuonWindow.xaml;GiaoDien\PhieuTraWindow.xaml;GiaoDien\SachWindow.xaml;GiaoDien\SuachitietphieumuonWindow.xaml;GiaoDien\TaiKhoanDocGiaWindow.xaml;GiaoDien\TaiKhoanThuThuWindow.xaml;GiaoDien\TheDocGiaWindow.xaml;GiaoDien\TheLoaiWindow.xaml;GiaoDien\ThuThuWindow.xaml;GiaoDien\ViTriWindow.xaml;MainWindow.xaml;
 
-True
+False
 
