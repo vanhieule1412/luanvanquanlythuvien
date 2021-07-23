@@ -42,6 +42,7 @@
             <Button Content="Quản lý Khu" Name="btnkhu" Grid.Column="7" Grid.Row="0" Click="Btnkhu_Click"/>
             <Button Content="Quản lý Thẻ độc giả" Name="btnthedocgia" Grid.Column="8" Grid.Row="0" Click="Btnthedocgia_Click"/>
             <Button Content="Phiếu trả" Name="btnphieutra" Grid.Column="9" Grid.Row="0" Click="Btnphieutra_Click"/>
+            <Button Content="Tìm kiếm" Name="btntimkiem" Grid.Column="10" Grid.Row="0" Click="Btntimkiem_Click"/>
         </Grid>
     </StackPanel>
 </Window>

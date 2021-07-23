@@ -88,10 +88,8 @@
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>
-
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>
-
             </DataGrid>
         </GroupBox>
     </StackPanel>

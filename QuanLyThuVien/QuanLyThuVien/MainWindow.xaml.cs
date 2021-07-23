@@ -126,5 +126,14 @@ namespace QuanLyThuVien
             this.ShowDialog();
                 
         }
+
+        private void Btntimkiem_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.HeThongTimKiemWindow f = new GiaoDien.HeThongTimKiemWindow();
+            this.Hide();
+            f.ShowDialog();
+            f.Close();
+            this.ShowDialog();
+        }
     }
 }

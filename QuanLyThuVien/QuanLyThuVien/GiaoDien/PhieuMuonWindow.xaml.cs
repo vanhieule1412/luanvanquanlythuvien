@@ -177,12 +177,5 @@ namespace QuanLyThuVien.GiaoDien
             });
             dg.ItemsSource = kq.ToList();
         }
-
-        private void Btnreset_Click(object sender, RoutedEventArgs e)
-        {
-            
-
-
-        }
     }
 }

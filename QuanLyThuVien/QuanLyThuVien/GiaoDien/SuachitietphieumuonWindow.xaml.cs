@@ -47,7 +47,21 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Btnsuachitiet_Click(object sender, RoutedEventArgs e)
         {
-
+            GiaoDien.SuaPhieuTraWindow f = new GiaoDien.SuaPhieuTraWindow();
+            f.ChucNang = ChucNang.Sua;
+            f.phieutra = dc.CHITIETPHIEUMUONs.Find(dgchitietphieumuon.SelectedValue);
+            if (f.ShowDialog() == true)
+            {
+                CHITIETPHIEUMUON pm = dc.CHITIETPHIEUMUONs.Find(f.phieutra.MaMuonTra);
+                if (pm != null)
+                {
+                    pm.TienPhat = f.phieutra.TienPhat;
+                    pm.TinhTrang = f.phieutra.TinhTrang;
+                    pm.NgayTraThat = f.phieutra.NgayTraThat;
+                    dc.SaveChanges();
+                    dgchitietphieumuon.ItemsSource = dc.CHITIETPHIEUMUONs.ToList();
+                }
+            }
         }
        
         private void Txttim_TextChanged(object sender, TextChangedEventArgs e)

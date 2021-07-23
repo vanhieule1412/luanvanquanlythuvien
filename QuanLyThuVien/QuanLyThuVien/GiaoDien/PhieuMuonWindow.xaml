@@ -52,7 +52,6 @@
                 <ComboBox Grid.Column="1" Grid.Row="6" Name="cmbmataikhoan" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="MaTaiKhoai"/>
                 <ComboBox Grid.Column="1" Grid.Row="7" Name="cmbthedocgia" SelectedValuePath="MaTheDocGia" DisplayMemberPath="MaTheDocGia"/>
                 <Button Grid.Column="2" Grid.Row="0" Name="btnLapPM" Content="Lập phiếu mượn" Click="BtnLapPM_Click" Height="21" VerticalAlignment="Top"/>
-                <Button Grid.Column="2" Grid.Row="1" Name="btnreset" Content="Rerset" Click="Btnreset_Click" Height="21" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Chi Tiết Phiếu Mượn">
