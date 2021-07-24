@@ -11,8 +11,18 @@
         >
     <StackPanel>
         <Grid>
-            <TextBlock Name="tbltentaikhoan" />
+            <TextBlock Name="tbltentaikhoan"  />
+            <TextBlock Name="tbltenthuthu"  />
         </Grid>
+        <WrapPanel HorizontalAlignment="Right">
+            <Grid>
+                <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click"/>
+            </Grid>
+            <Grid>
+                <Button Name="btndangxuat" Content="Đăng xuất" Click="Btndangxuat_Click"/>
+            </Grid>
+        </WrapPanel>
+        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -31,7 +41,15 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Tìm kiếm"/>
+            <TextBox Grid.Column="0" Grid.Row="3" Name="txttimkiem" TextChanged="Txttimkiem_TextChanged"/>
+            <ComboBox Grid.Column="1" Grid.Row="3">
+                <ComboBoxItem Name="cmbtimten" IsSelected="True" Content="Tìm theo tên sách"/>
+                <ComboBoxItem Name="cmbtimnamxuatban" Content="Tìm theo năm xuất bản"/>
+            </ComboBox>
             <Button Content="Quản lý thể loại" Name="btnquanltheloai" Grid.Column="0" Grid.Row="0" Click="Btnquanltheloai_Click"/>
             <Button Content="Quản lý nhà xuất bản" Name="btnquanlnhaxuatban" Grid.Column="1" Grid.Row="0" Click="Btnquanlnhaxuatban_Click"/>
             <Button Content="Vị trí" Name="btnvitri" Grid.Column="2" Grid.Row="0" Click="Btnvitri_Click"/>
@@ -44,5 +62,26 @@
             <Button Content="Phiếu trả" Name="btnphieutra" Grid.Column="9" Grid.Row="0" Click="Btnphieutra_Click"/>
             <Button Content="Tìm kiếm" Name="btntimkiem" Grid.Column="10" Grid.Row="0" Click="Btntimkiem_Click"/>
         </Grid>
+        <DataGrid Name="dgtimkiem" AutoGenerateColumns="False" SelectedValuePath="MaSach" SelectionChanged="Dgtimkiem_SelectionChanged" CanUserAddRows="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}" />
+                <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
+                <DataGridTextColumn Header="Số Lượng" Binding="{Binding SoLuong}"/>
+                <DataGridTextColumn Header="Tác Giả" Binding="{Binding TacGia}"/>
+                <DataGridTextColumn Header="Năm xuất bản" Binding="{Binding NamXuatBan}"/>
+                <DataGridTextColumn Header="Người dịch" Binding="{Binding NguoiDich}"/>
+                <DataGridTextColumn Header="Mã thể loại" Binding="{Binding MaTheLoai}"/>
+                <DataGridTextColumn Header="Tên thể loại" Binding="{Binding THELOAI.TenTheLoai}"/>
+                <DataGridTextColumn Header="Mã nhà xuất bản" Binding="{Binding MaNhaXuatBan}"/>
+                <DataGridTextColumn Header="Tên nhà xuất bản" Binding="{Binding NHAXUATBAN.TenNhaXuatBan}"/>
+                <DataGridTextColumn Header="Mã kệ" Binding="{Binding MaKe}"/>
+                <DataGridTextColumn Header="Tên kệ" Binding="{Binding KE.TenKe}"/>
+                <DataGridTextColumn Header="Tên khu" Binding="{Binding KE.KHU.TenKhu}"/>
+                <DataGridTextColumn Header="Nội dung tóm tắt" Binding="{Binding NoiDungTomTat}"/>
+                <DataGridTextColumn Header="Giá" Binding="{Binding Gia}"/>
+                <DataGridTextColumn Header="Tên file hình" Binding="{Binding HinhAnh}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
     </StackPanel>
 </Window>

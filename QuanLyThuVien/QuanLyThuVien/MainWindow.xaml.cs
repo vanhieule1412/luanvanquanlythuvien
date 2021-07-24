@@ -20,11 +20,12 @@ namespace QuanLyThuVien
     /// </summary>
     public partial class MainWindow : Window
     {
+
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
+      
        public MainWindow()
         {
             InitializeComponent();
-            
             
         }
 
@@ -105,7 +106,7 @@ namespace QuanLyThuVien
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           
+            dgtimkiem.ItemsSource = dc.SACHes.ToList();
         }
 
         private void Btnthedocgia_Click(object sender, RoutedEventArgs e)
@@ -134,6 +135,55 @@ namespace QuanLyThuVien
             f.ShowDialog();
             f.Close();
             this.ShowDialog();
+        }
+
+        private void Txttimkiem_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txttimkiem.Text != "" && cmbtimten.IsSelected)
+            {
+                var filteredsach = dc.SACHes.Where(x => x.TenSach.ToLower().Contains(txttimkiem.Text.ToLower()));
+
+                dgtimkiem.ItemsSource = null;
+                dgtimkiem.ItemsSource = filteredsach.ToList();
+
+            }
+            else if (txttimkiem.Text != "" && cmbtimnamxuatban.IsSelected)
+            {
+                var filterednamxuatban = dc.SACHes.Where(x => x.NamXuatBan.ToString().Contains(txttimkiem.Text.ToString()));
+
+                dgtimkiem.ItemsSource = null;
+                dgtimkiem.ItemsSource = filterednamxuatban.ToList();
+
+
+            }
+            else
+            {
+
+                dgtimkiem.ItemsSource = dc.SACHes.ToList();
+            }
+        }
+
+        private void Btndangnhap_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.LoginWindow login = new GiaoDien.LoginWindow();
+            this.Close();
+            login.ShowDialog();
+            
+        }
+
+        private void Btndangxuat_Click(object sender, RoutedEventArgs e)
+        {
+            //btndangxuat.Visibility = Visibility.Collapsed;
+        }
+
+        private void Dgtimkiem_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Tbltentaikhoan_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+
         }
     }
 }

@@ -34,27 +34,40 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Btndangnhap_Click(object sender, RoutedEventArgs e)
         {
+           
             if (txttaikhoan.Text == "admin" && txtmatkhau.Password == "admin")
             {
                 usename = txttaikhoan.Text;
                 MainWindow mainf = new MainWindow();
-                mainf.Show();
                 mainf.tbltentaikhoan.Text = "admin";
                 this.Close();
             }
             else
             {
+                //var a = dc.TAIKHOANTHUTHUs.FirstOrDefault(x => x.TenTaiKhoai == txttaikhoan.ToString() && x.MatKhau == txtmatkhau.ToString());
+                //if (a == null)
+                //{
+                //    MessageBox.Show("Không có tài khoản này ");
+                //}
+                //else
+                //{
+                //    var role = a.TenTaiKhoai.FirstOrDefault();
+                //    this.Close();
+                //}
                 foreach (var a in dc.TAIKHOANTHUTHUs)
                 {
-                    
+
                     if (txttaikhoan.Text == a.TenTaiKhoai && txtmatkhau.Password == a.MatKhau)
                     {
                         usename = txttaikhoan.Text;
                         MainWindow formmain = new MainWindow();
-                        formmain.Show();
-                        formmain.tbltentaikhoan.Text = usename;
-
                         this.Close();
+                        formmain.tbltentaikhoan.Text = usename;
+                        formmain.tbltenthuthu.Text = a.THUTHU.TenThuThu;
+
+                        formmain.ShowDialog();
+                      
+                        
                     }
                     else
                     {
