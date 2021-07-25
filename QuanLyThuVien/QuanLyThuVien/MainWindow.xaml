@@ -10,18 +10,29 @@
         Loaded="Window_Loaded"
         >
     <StackPanel>
-        <Grid>
-            <TextBlock Name="tbltentaikhoan"  />
-            <TextBlock Name="tbltenthuthu"  />
-        </Grid>
         <WrapPanel HorizontalAlignment="Right">
             <Grid>
-                <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click"/>
-            </Grid>
-            <Grid>
-                <Button Name="btndangxuat" Content="Đăng xuất" Click="Btndangxuat_Click"/>
+                <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click" Visibility="Visible"/>
             </Grid>
         </WrapPanel>
+        <Menu HorizontalAlignment="Right" Visibility="Collapsed" Name="menu">
+            <MenuItem>
+                <MenuItem.Icon>
+                    <WrapPanel>
+                        <Image Source="usericon.png"/>
+                        <TextBlock Name="tbltentaikhoan"  />
+                    </WrapPanel>
+                </MenuItem.Icon>
+                <MenuItem>
+                    <StackPanel>
+
+                        <TextBlock Name="tbltenthuthu"  />
+                    </StackPanel>
+                </MenuItem>
+            </MenuItem>
+            <Button Name="btndangxuat" Content="Đăng xuất" Click="Btndangxuat_Click"/>
+            
+        </Menu>
         
         <Grid>
             <Grid.ColumnDefinitions>

@@ -106,6 +106,7 @@ namespace QuanLyThuVien
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+          
             dgtimkiem.ItemsSource = dc.SACHes.ToList();
         }
 
@@ -168,7 +169,8 @@ namespace QuanLyThuVien
             GiaoDien.LoginWindow login = new GiaoDien.LoginWindow();
             this.Close();
             login.ShowDialog();
-            
+          
+
         }
 
         private void Btndangxuat_Click(object sender, RoutedEventArgs e)

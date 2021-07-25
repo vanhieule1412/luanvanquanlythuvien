@@ -40,6 +40,8 @@ namespace QuanLyThuVien.GiaoDien
                 usename = txttaikhoan.Text;
                 MainWindow mainf = new MainWindow();
                 mainf.tbltentaikhoan.Text = "admin";
+                mainf.btndangnhap.Visibility = Visibility.Collapsed;
+                mainf.menu.Visibility = Visibility.Visible;
                 this.Close();
             }
             else
@@ -64,7 +66,8 @@ namespace QuanLyThuVien.GiaoDien
                         this.Close();
                         formmain.tbltentaikhoan.Text = usename;
                         formmain.tbltenthuthu.Text = a.THUTHU.TenThuThu;
-
+                        formmain.btndangnhap.Visibility = Visibility.Collapsed;
+                        formmain.menu.Visibility = Visibility.Visible;
                         formmain.ShowDialog();
                       
                         
