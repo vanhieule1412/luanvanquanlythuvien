@@ -70,6 +70,12 @@
     <Compile Include="DOCGIA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="GiaoDien\DanhSachTaiKhoanDocGiaWindow.xaml.cs">
+      <DependentUpon>DanhSachTaiKhoanDocGiaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\DanhsachtaikhoanthuthuWindow.xaml.cs">
+      <DependentUpon>DanhsachtaikhoanthuthuWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GiaoDien\HeThongTimKiemWindow.xaml.cs">
       <DependentUpon>HeThongTimKiemWindow.xaml</DependentUpon>
     </Compile>
@@ -136,6 +142,14 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Page Include="GiaoDien\DanhSachPhieuMuonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\DanhSachTaiKhoanDocGiaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\DanhsachtaikhoanthuthuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -288,6 +302,7 @@
     <Folder Include="Hinhanh\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="iconslogout.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

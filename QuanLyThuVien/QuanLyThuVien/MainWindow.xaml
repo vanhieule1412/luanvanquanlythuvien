@@ -10,40 +10,80 @@
         Loaded="Window_Loaded"
         >
     <StackPanel>
-        <WrapPanel HorizontalAlignment="Right">
-            <Grid>
-                <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click" Visibility="Visible"/>
-            </Grid>
-        </WrapPanel>
-        <Menu HorizontalAlignment="Right" Visibility="Collapsed" Name="menu">
-            <MenuItem>
-                <MenuItem.Icon>
-                    <WrapPanel>
-                        <Image Source="usericon.png"/>
-                        <TextBlock Name="tbltentaikhoan"  />
-                    </WrapPanel>
-                </MenuItem.Icon>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <WrapPanel HorizontalAlignment="Right" Grid.Column="1">
+                <Grid>
+                    <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click" Visibility="Visible"/>
+                </Grid>
+            </WrapPanel>
+            <Menu HorizontalAlignment="Right" Visibility="Collapsed" Name="menu" Grid.Column="1">
                 <MenuItem>
-                    <StackPanel>
-
-                        <TextBlock Name="tbltenthuthu"  />
-                    </StackPanel>
+                    <MenuItem.Icon>
+                        <Image Source="usericon.png"/>
+                    </MenuItem.Icon>
+                    <MenuItem >
+                        <MenuItem.Icon>
+                            <Image Source="usericon.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem.Header>
+                            <TextBlock Name="tbltentaikhoan" />
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Header="Mã tài khoản thủ thư">
+                        <TextBlock Name="tblmataikhoan"/>
+                    </MenuItem>
+                    <MenuItem Header="Đăng xuất" Click="Btndangxuat_Click">
+                        <MenuItem.Icon>
+                            <Image Source="iconslogout.png"/>
+                        </MenuItem.Icon>
+                        <!--<Button Name="btndangxuat" Content="Đăng xuất" Click="Btndangxuat_Click" />-->
+                    </MenuItem>
+                    <MenuItem Click="MenuItem_Click">
+                        <MenuItem.Header>
+                            <!--<TextBlock Name="tbltenthuthu"/>-->
+                            <TextBox Name="tbltenthuthu" IsEnabled="False" />
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Name="mnthongtincanhan" Header="Thông tin cá nhân" Click="thongtincanhan_Click"/>
+                    <Button Name="btnluu" Content="Lưu" Visibility="Collapsed" Click="Btnluu_Click"/>
                 </MenuItem>
-            </MenuItem>
-            <Button Name="btndangxuat" Content="Đăng xuất" Click="Btndangxuat_Click"/>
-            
-        </Menu>
-        
+            </Menu>
+            <DockPanel Grid.Column="0"  Name="menuquanly" HorizontalAlignment="Left" Visibility="Collapsed">
+                <Menu DockPanel.Dock="Top" >
+                    <MenuItem Header="Sách" Name="mnsach" Visibility="Collapsed">
+                        <MenuItem Header="Quản lý sách" Click="Btnsach_Click"/>
+                        <MenuItem Header="Nhà Xuất Bản" Click="Btnquanlnhaxuatban_Click"/>
+                        <MenuItem Header="Thể Loại" Click="Btnquanltheloai_Click" />
+                    </MenuItem>
+                    <MenuItem Header="Vị trí" Name="mnvitri" Visibility="Collapsed">
+                        <MenuItem Header="Kệ" Click="Btnvitri_Click"/>
+                        <MenuItem Header="Khu" Click="Btnkhu_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Độc giả" Name="mndocgia" Visibility="Collapsed">
+                        <MenuItem Header="Thông tin các độc giả" Click="Btndocgia_Click"/>
+                        <MenuItem Header="Thông tin các tài khoản độc giả" Click="Btndanhsachtaikhoandocgia_Click"/>
+                        <MenuItem Header="Thông tin thẻ của các độc giả" Click="Btnthedocgia_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Thủ thư" Name="mnthuthu" Visibility="Collapsed">
+                        <MenuItem Header="Thông tin các thủ thư" Click="Btnthuthu_Click" />
+                        <MenuItem Header="Danh sách tài khoản của thủ thư" Click="Danhsachtaikhoanthuthu_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Phiếu mượn" Click="Btnphieumuon_Click" Name="mnphieumuon" Visibility="Visible"/>
+                    <MenuItem Header="Phiếu trả" Click="Btnphieutra_Click" Name="mnphieutra" Visibility="Visible"/>
+                </Menu>
+            </DockPanel>
+        </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -61,17 +101,6 @@
                 <ComboBoxItem Name="cmbtimten" IsSelected="True" Content="Tìm theo tên sách"/>
                 <ComboBoxItem Name="cmbtimnamxuatban" Content="Tìm theo năm xuất bản"/>
             </ComboBox>
-            <Button Content="Quản lý thể loại" Name="btnquanltheloai" Grid.Column="0" Grid.Row="0" Click="Btnquanltheloai_Click"/>
-            <Button Content="Quản lý nhà xuất bản" Name="btnquanlnhaxuatban" Grid.Column="1" Grid.Row="0" Click="Btnquanlnhaxuatban_Click"/>
-            <Button Content="Vị trí" Name="btnvitri" Grid.Column="2" Grid.Row="0" Click="Btnvitri_Click"/>
-            <Button Content="Quản lý thủ thư" Name="btnthuthu" Grid.Column="3" Grid.Row="0" Click="Btnthuthu_Click"/>
-            <Button Content="Quản lý độc giả" Name="btndocgia" Grid.Column="4" Grid.Row="0" Click="Btndocgia_Click"/>
-            <Button Content="Quản lý Sách" Name="btnsach" Grid.Column="5" Grid.Row="0" Click="Btnsach_Click"/>
-            <Button Content="Quản lý Phiếu mượn" Name="btnphieumuon" Grid.Column="6" Grid.Row="0" Click="Btnphieumuon_Click"/>
-            <Button Content="Quản lý Khu" Name="btnkhu" Grid.Column="7" Grid.Row="0" Click="Btnkhu_Click"/>
-            <Button Content="Quản lý Thẻ độc giả" Name="btnthedocgia" Grid.Column="8" Grid.Row="0" Click="Btnthedocgia_Click"/>
-            <Button Content="Phiếu trả" Name="btnphieutra" Grid.Column="9" Grid.Row="0" Click="Btnphieutra_Click"/>
-            <Button Content="Tìm kiếm" Name="btntimkiem" Grid.Column="10" Grid.Row="0" Click="Btntimkiem_Click"/>
         </Grid>
         <DataGrid Name="dgtimkiem" AutoGenerateColumns="False" SelectedValuePath="MaSach" SelectionChanged="Dgtimkiem_SelectionChanged" CanUserAddRows="False" >
             <DataGrid.Columns>
@@ -92,7 +121,6 @@
                 <DataGridTextColumn Header="Giá" Binding="{Binding Gia}"/>
                 <DataGridTextColumn Header="Tên file hình" Binding="{Binding HinhAnh}"/>
             </DataGrid.Columns>
-
         </DataGrid>
     </StackPanel>
 </Window>

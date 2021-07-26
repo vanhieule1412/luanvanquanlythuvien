@@ -35,6 +35,13 @@ namespace QuanLyThuVien.GiaoDien
             {
                 txtmathuthu.Text = THUTHU.MaThuThu;
             }
+            else if(chucnang ==KieuChucNang.Sua)
+            {
+                txttenthuthu.Text = tAIKHOANTHUTHU.TenTaiKhoai;
+                txtmatkhau.Text = tAIKHOANTHUTHU.MatKhau;
+                txtmathuthu.Text = tAIKHOANTHUTHU.MaThuThu;
+
+            }
         }
 
         private void Txttaotaikhoan_Click(object sender, RoutedEventArgs e)

@@ -175,7 +175,11 @@ namespace QuanLyThuVien
 
         private void Btndangxuat_Click(object sender, RoutedEventArgs e)
         {
-            //btndangxuat.Visibility = Visibility.Collapsed;
+            tbltentaikhoan.Text = null;
+            tbltenthuthu.Text = null;
+            menu.Visibility = Visibility.Collapsed;
+            btndangnhap.Visibility = Visibility.Visible;
+            menuquanly.Visibility = Visibility.Collapsed;
         }
 
         private void Dgtimkiem_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -186,6 +190,61 @@ namespace QuanLyThuVien
         private void Tbltentaikhoan_TargetUpdated(object sender, DataTransferEventArgs e)
         {
 
+        }
+
+        private void Btndanhsachtaikhoandocgia_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.DanhSachTaiKhoanDocGiaWindow f = new GiaoDien.DanhSachTaiKhoanDocGiaWindow();
+            this.Hide();
+            f.ShowDialog();
+            f.Close();
+            this.ShowDialog();
+        }
+
+        private void Danhsachtaikhoanthuthu_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.DanhsachtaikhoanthuthuWindow f = new GiaoDien.DanhsachtaikhoanthuthuWindow();
+            this.Hide();
+            f.ShowDialog();
+            f.Close();
+            this.ShowDialog();
+        }
+
+        private void thongtincanhan_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+      
+        private void Tbltenthuthu_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            tbltenthuthu.IsEnabled = true;
+            string ma = tblmataikhoan.Text;
+            THUTHU tHUTHU = dc.THUTHUs.Find(ma);
+            if (ma != null)
+            {
+                tHUTHU.TenThuThu = tbltenthuthu.Text;
+                dc.SaveChanges();
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            tbltenthuthu.IsEnabled = true;
+            btnluu.Visibility = Visibility.Visible;
+           
+        }
+
+        private void Btnluu_Click(object sender, RoutedEventArgs e)
+        {
+            TAIKHOANTHUTHU tAIKHOANTHUTHU = dc.TAIKHOANTHUTHUs.Find(int.Parse(tblmataikhoan.Text));
+            if (tblmataikhoan.Text != null)
+            {
+                tAIKHOANTHUTHU.THUTHU.TenThuThu = tbltenthuthu.Text;
+                dc.SaveChanges();
+            }
+            tbltenthuthu.IsEnabled = false;
+            btnluu.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿<Window x:Class="QuanLyThuVien.GiaoDien.DanhsachtaikhoanthuthuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
+        mc:Ignorable="d"
+        Title="DanhsachtaikhoanthuthuWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        >
+    <StackPanel>
+        <DataGrid Name="dgtaikhoanthuthu" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã tài khoản thủ thư" Binding="{Binding MaTaiKhoai}"/>
+                <DataGridTextColumn Header="Tên tài khoản thủ thư" Binding="{Binding TenTaiKhoai}"/>
+                <DataGridTextColumn Header="Mật khẩu" Binding="{Binding MatKhau}"/>
+                <DataGridTextColumn Header="Trạng Thái" Binding="{Binding TrangThai}"/>
+                <DataGridTextColumn Header="Mã thủ thư" Binding="{Binding MaThuThu}"/>
+                <DataGridTextColumn Header="Tên thủ thư" Binding="{Binding THUTHU.TenThuThu}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</Window>

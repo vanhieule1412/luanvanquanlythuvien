@@ -22,6 +22,7 @@ namespace QuanLyThuVien.GiaoDien
     {
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         public static string usename;
+        public static string ma;
         public LoginWindow()
         {
             InitializeComponent();
@@ -39,35 +40,36 @@ namespace QuanLyThuVien.GiaoDien
             {
                 usename = txttaikhoan.Text;
                 MainWindow mainf = new MainWindow();
+                this.Close();
                 mainf.tbltentaikhoan.Text = "admin";
+                mainf.tbltenthuthu.Text = "admin";
                 mainf.btndangnhap.Visibility = Visibility.Collapsed;
                 mainf.menu.Visibility = Visibility.Visible;
-                this.Close();
+                mainf.menuquanly.Visibility = Visibility.Visible;
+                mainf.mnthuthu.Visibility = Visibility.Visible;
+                mainf.mnphieumuon.Visibility = Visibility.Collapsed;
+                mainf.mnphieutra.Visibility = Visibility.Collapsed;
+                mainf.ShowDialog();
             }
             else
             {
-                //var a = dc.TAIKHOANTHUTHUs.FirstOrDefault(x => x.TenTaiKhoai == txttaikhoan.ToString() && x.MatKhau == txtmatkhau.ToString());
-                //if (a == null)
-                //{
-                //    MessageBox.Show("Không có tài khoản này ");
-                //}
-                //else
-                //{
-                //    var role = a.TenTaiKhoai.FirstOrDefault();
-                //    this.Close();
-                //}
                 foreach (var a in dc.TAIKHOANTHUTHUs)
                 {
-
                     if (txttaikhoan.Text == a.TenTaiKhoai && txtmatkhau.Password == a.MatKhau)
                     {
+
                         usename = txttaikhoan.Text;
                         MainWindow formmain = new MainWindow();
                         this.Close();
                         formmain.tbltentaikhoan.Text = usename;
+                        formmain.tblmataikhoan.Text = a.MaTaiKhoai.ToString();
                         formmain.tbltenthuthu.Text = a.THUTHU.TenThuThu;
                         formmain.btndangnhap.Visibility = Visibility.Collapsed;
                         formmain.menu.Visibility = Visibility.Visible;
+                        formmain.menuquanly.Visibility = Visibility.Visible;
+                        formmain.mndocgia.Visibility = Visibility.Visible;
+                        formmain.mnsach.Visibility = Visibility.Visible;
+                        formmain.mnvitri.Visibility = Visibility.Visible;
                         formmain.ShowDialog();
                       
                         
@@ -81,9 +83,15 @@ namespace QuanLyThuVien.GiaoDien
                 {
                     if (txttaikhoan.Text == b.TenTaiKhoan && txtmatkhau.Password == b.MatKhau)
                     {
+                        usename = txttaikhoan.Text;
                         MainWindow formmain = new MainWindow();
-                        formmain.Show();
                         this.Close();
+                        formmain.tbltentaikhoan.Text = usename;
+                        formmain.tbltenthuthu.Text = b.DOCGIA.TenDocGia;
+                        formmain.btndangnhap.Visibility = Visibility.Collapsed;
+                        formmain.menu.Visibility = Visibility.Visible;
+                        formmain.menuquanly.Visibility = Visibility.Visible;
+                        formmain.ShowDialog();
                     }
                     else
                     {
