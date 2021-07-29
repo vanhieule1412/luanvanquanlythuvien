@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,12 +20,13 @@ namespace QuanLyThuVien
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window 
     {
 
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
+
       
-       public MainWindow()
+        public MainWindow()
         {
             InitializeComponent();
             
@@ -92,6 +95,7 @@ namespace QuanLyThuVien
             this.Hide();
             fdanhsachphieumuon.ShowDialog();
             fdanhsachphieumuon.Close();
+
             this.ShowDialog();
         }
 
@@ -106,8 +110,10 @@ namespace QuanLyThuVien
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+           
           
             dgtimkiem.ItemsSource = dc.SACHes.ToList();
+            
         }
 
         private void Btnthedocgia_Click(object sender, RoutedEventArgs e)
@@ -209,13 +215,6 @@ namespace QuanLyThuVien
             f.Close();
             this.ShowDialog();
         }
-
-        private void thongtincanhan_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-      
         private void Tbltenthuthu_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             tbltenthuthu.IsEnabled = true;
@@ -245,6 +244,30 @@ namespace QuanLyThuVien
             }
             tbltenthuthu.IsEnabled = false;
             btnluu.Visibility = Visibility.Collapsed;
+        }
+
+        private void MnduyetPM_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.DanhsachphieumuonthuthuWindow f = new GiaoDien.DanhsachphieumuonthuthuWindow();
+            this.Hide();
+            f.ShowDialog();
+            f.Close();
+            this.ShowDialog();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnlapPMDG_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.PhieuMuonDocGiaWindow f = new GiaoDien.PhieuMuonDocGiaWindow();
+            this.Hide();
+            f.ShowDialog();
+            f.Close();
+            this.ShowDialog();
+
         }
     }
 }

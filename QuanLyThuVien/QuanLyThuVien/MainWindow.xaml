@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="850"
+        Title="MainWindow" Height="450" Width="800"
          WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
+        ResizeMode="CanResizeWithGrip"      
         >
     <StackPanel>
         <Grid>
@@ -20,7 +21,11 @@
             </Grid.RowDefinitions>
             <WrapPanel HorizontalAlignment="Right" Grid.Column="1">
                 <Grid>
-                    <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click" Visibility="Visible"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="49*"/>
+                        <ColumnDefinition Width="13*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click" Visibility="Visible" Grid.ColumnSpan="2"/>
                 </Grid>
             </WrapPanel>
             <Menu HorizontalAlignment="Right" Visibility="Collapsed" Name="menu" Grid.Column="1">
@@ -33,7 +38,7 @@
                             <Image Source="usericon.png"/>
                         </MenuItem.Icon>
                         <MenuItem.Header>
-                            <TextBlock Name="tbltentaikhoan" />
+                            <TextBlock Name="tbltentaikhoan"/>
                         </MenuItem.Header>
                     </MenuItem>
                     <MenuItem Header="Mã tài khoản thủ thư">
@@ -51,7 +56,7 @@
                             <TextBox Name="tbltenthuthu" IsEnabled="False" />
                         </MenuItem.Header>
                     </MenuItem>
-                    <MenuItem Name="mnthongtincanhan" Header="Thông tin cá nhân" Click="thongtincanhan_Click"/>
+
                     <Button Name="btnluu" Content="Lưu" Visibility="Collapsed" Click="Btnluu_Click"/>
                 </MenuItem>
             </Menu>
@@ -75,7 +80,12 @@
                         <MenuItem Header="Thông tin các thủ thư" Click="Btnthuthu_Click" />
                         <MenuItem Header="Danh sách tài khoản của thủ thư" Click="Danhsachtaikhoanthuthu_Click"/>
                     </MenuItem>
-                    <MenuItem Header="Phiếu mượn" Click="Btnphieumuon_Click" Name="mnphieumuon" Visibility="Visible"/>
+                    <MenuItem Header="Phiếu mượn" Name="mnphieumuon" Visibility="Visible">
+                        <MenuItem Name="mnduyetPM" Header="Duyệt phiếu mượn" Click="MnduyetPM_Click" Visibility="Visible"/>
+                        <MenuItem Name="mnlapPM" Header="Lập phiếu mượn" Click="Btnphieumuon_Click" Visibility="Visible"/>
+                        <MenuItem Name="mnlapPMDG" Header="Lập phiếu mượn" Click="btnlapPMDG_Click" Visibility="Visible"/>
+
+                    </MenuItem>
                     <MenuItem Header="Phiếu trả" Click="Btnphieutra_Click" Name="mnphieutra" Visibility="Visible"/>
                 </Menu>
             </DockPanel>
@@ -106,7 +116,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}" />
                 <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
-                <DataGridTextColumn Header="Số Lượng" Binding="{Binding SoLuong}"/>
+                <DataGridTextColumn Header="Số Lượng" Binding="{Binding SoLuong , UpdateSourceTrigger=PropertyChanged}"/>
                 <DataGridTextColumn Header="Tác Giả" Binding="{Binding TacGia}"/>
                 <DataGridTextColumn Header="Năm xuất bản" Binding="{Binding NamXuatBan}"/>
                 <DataGridTextColumn Header="Người dịch" Binding="{Binding NguoiDich}"/>

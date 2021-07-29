@@ -70,6 +70,9 @@
     <Compile Include="DOCGIA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="GiaoDien\DanhsachphieumuonthuthuWindow.xaml.cs">
+      <DependentUpon>DanhsachphieumuonthuthuWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GiaoDien\DanhSachTaiKhoanDocGiaWindow.xaml.cs">
       <DependentUpon>DanhSachTaiKhoanDocGiaWindow.xaml</DependentUpon>
     </Compile>
@@ -84,6 +87,9 @@
     </Compile>
     <Compile Include="GiaoDien\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\PhieuMuonDocGiaWindow.xaml.cs">
+      <DependentUpon>PhieuMuonDocGiaWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GiaoDien\PhieuMuonWindow.xaml.cs">
       <DependentUpon>PhieuMuonWindow.xaml</DependentUpon>
@@ -141,6 +147,10 @@
     <Compile Include="THUTHU.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="GiaoDien\DanhsachphieumuonthuthuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GiaoDien\DanhSachPhieuMuonWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GiaoDien\NhaXuatBanWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\PhieuMuonDocGiaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

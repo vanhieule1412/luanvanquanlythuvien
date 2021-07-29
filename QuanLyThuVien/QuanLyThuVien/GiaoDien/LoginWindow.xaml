@@ -5,15 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800"
+        Title="Đăng nhập" Height="150" Width="250"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
         >
     <StackPanel>
-        <TextBlock Text="Tài khoản"/>
-        <TextBox Name="txttaikhoan"/>
-        <TextBlock Text="Mật khẩu"/>
-        <PasswordBox Name="txtmatkhau"/>
-        <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click"/>
+        <TextBlock Text="Tài khoản" Width="200"/>
+        <TextBox Name="txttaikhoan" Width="200"/>
+        <TextBlock Text="Mật khẩu" Width="200"/>
+        <PasswordBox Name="txtmatkhau" Width="200"/>
+        <WrapPanel HorizontalAlignment="Center">
+            <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click"/>
+            
+            <Button Name="btntrolai" Content="Trở lại" Click="Btntrolai_Click" />
+        </WrapPanel>
+        
     </StackPanel>
 </Window>

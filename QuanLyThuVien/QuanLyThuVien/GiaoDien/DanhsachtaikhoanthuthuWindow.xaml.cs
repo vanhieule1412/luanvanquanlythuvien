@@ -27,8 +27,8 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+                dgtaikhoanthuthu.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
             
-            dgtaikhoanthuthu.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
 
         }
     }

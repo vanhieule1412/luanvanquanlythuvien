@@ -11,18 +11,25 @@ namespace QuanLyThuVien
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class SACH
+    using System.ComponentModel;
+
+    public partial class SACH :INotifyPropertyChanged
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SACH()
         {
             this.CHITIETPHIEUMUONs = new HashSet<CHITIETPHIEUMUON>();
         }
-    
+        private void Method_OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
         public string MaSach { get; set; }
         public string TenSach { get; set; }
-        public int SoLuong { get; set; }
+        public int SoLuong { get; set;  }
         public string TacGia { get; set; }
         public int NamXuatBan { get; set; }
         public string NguoiDich { get; set; }
@@ -32,11 +39,13 @@ namespace QuanLyThuVien
         public string NoiDungTomTat { get; set; }
         public string HinhAnh { get; set; }
         public Nullable<float> Gia { get; set; }
-    
+      
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETPHIEUMUON> CHITIETPHIEUMUONs { get; set; }
         public virtual KE KE { get; set; }
         public virtual NHAXUATBAN NHAXUATBAN { get; set; }
         public virtual THELOAI THELOAI { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

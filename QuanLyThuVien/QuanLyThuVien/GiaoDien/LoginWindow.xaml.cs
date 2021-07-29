@@ -70,6 +70,7 @@ namespace QuanLyThuVien.GiaoDien
                         formmain.mndocgia.Visibility = Visibility.Visible;
                         formmain.mnsach.Visibility = Visibility.Visible;
                         formmain.mnvitri.Visibility = Visibility.Visible;
+                        formmain.mnlapPMDG.Visibility = Visibility.Collapsed;
                         formmain.ShowDialog();
                       
                         
@@ -86,11 +87,16 @@ namespace QuanLyThuVien.GiaoDien
                         usename = txttaikhoan.Text;
                         MainWindow formmain = new MainWindow();
                         this.Close();
+
                         formmain.tbltentaikhoan.Text = usename;
+                        formmain.tblmataikhoan.Text = b.DOCGIA.MaTaiKhoai.ToString();
                         formmain.tbltenthuthu.Text = b.DOCGIA.TenDocGia;
                         formmain.btndangnhap.Visibility = Visibility.Collapsed;
+                        formmain.mnduyetPM.Visibility = Visibility.Collapsed;
                         formmain.menu.Visibility = Visibility.Visible;
                         formmain.menuquanly.Visibility = Visibility.Visible;
+                        formmain.mnlapPM.Visibility = Visibility.Collapsed;
+                        formmain.mnphieutra.Visibility = Visibility.Collapsed;
                         formmain.ShowDialog();
                     }
                     else
@@ -99,6 +105,14 @@ namespace QuanLyThuVien.GiaoDien
                     }
                 }
             }
+        }
+
+        private void Btntrolai_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow f = new MainWindow();
+            this.Hide();
+            f.ShowDialog();
+            f.Close();
         }
     }
 }

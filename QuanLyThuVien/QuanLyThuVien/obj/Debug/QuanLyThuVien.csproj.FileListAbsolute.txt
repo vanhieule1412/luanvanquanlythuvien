@@ -42,8 +42,8 @@ E:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\userWindo
 E:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\KhuWindow.g.cs
 E:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\KhuWindow.baml
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\bin\Debug\QuanLyThuVien.exe
-D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\bin\Debug\EntityFramework.dll
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\bin\Debug\QuanLyThuVien.exe.config
+D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\bin\Debug\EntityFramework.dll
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\bin\Debug\EntityFramework.SqlServer.dll
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\bin\Debug\EntityFramework.xml
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\bin\Debug\EntityFramework.SqlServer.xml
@@ -98,5 +98,9 @@ D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\QuanLyThuVien.cspr
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\QuanLyThuVien.csproj.CopyComplete
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\QuanLyThuVien.exe
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\QuanLyThuVien.pdb
-D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\QuanLyThuVien.csprojAssemblyReference.cache
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\bin\Debug\QuanLyThuVien.pdb
+D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\QuanLyThuVien.csprojAssemblyReference.cache
+D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\DanhsachphieumuonthuthuWindow.g.cs
+D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\DanhsachphieumuonthuthuWindow.baml
+D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\PhieuMuonDocGiaWindow.g.cs
+D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\PhieuMuonDocGiaWindow.baml

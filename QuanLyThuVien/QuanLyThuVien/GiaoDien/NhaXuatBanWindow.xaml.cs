@@ -82,7 +82,7 @@ namespace QuanLyThuVien.GiaoDien
                 nHAXUATBAN.DiaChi = txtdiachi.Text;
                 nHAXUATBAN.Email = txtemail.Text;
                 nHAXUATBAN.DiaChiWebsite = txtdiachiweb.Text;
-                nHAXUATBAN.SoDienThoai = int.Parse(txtsodienthoai.Text);
+                nHAXUATBAN.SoDienThoai = int.Parse(txtsodienthoai.Text.ToString());
                 dc.NHAXUATBANs.Add(nHAXUATBAN);
                 dc.SaveChanges();
                 hienthi();

@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.ComponentModel;
 namespace QuanLyThuVien.GiaoDien
 {
     /// <summary>
@@ -21,6 +21,8 @@ namespace QuanLyThuVien.GiaoDien
     {
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         private PHIEUMUON PM = new PHIEUMUON();
+
+       
         public PhieuMuonWindow()
         {
             InitializeComponent();
@@ -46,9 +48,7 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            hienthi();
-           
-            
+            hienthi();            
         }
 
         private void BtnLapPM_Click(object sender, RoutedEventArgs e)
@@ -85,7 +85,6 @@ namespace QuanLyThuVien.GiaoDien
             foreach (CHITIETPHIEUMUON t in PM.CHITIETPHIEUMUONs)
             {
                 CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
-
                 ct.MaPhieuMuon = t.MaPhieuMuon;
                 ct.MaSach = t.MaSach;
                 ct.TinhTrang = t.TinhTrang;
@@ -96,16 +95,16 @@ namespace QuanLyThuVien.GiaoDien
             dc.SaveChanges();
             hienthi();
             MessageBox.Show("Thêm thành công");
+            this.Close();
             //GiaoDien.DanhSachPhieuMuonWindow giaodiendanhsach = new DanhSachPhieuMuonWindow();
             //giaodiendanhsach.ShowDialog();
-       
-
-           
-
         }
 
         private void Btnchon_Click(object sender, RoutedEventArgs e)
         {
+            string ma = cmbMasach.SelectedValue.ToString();
+            SACH sACH = dc.SACHes.Find(ma);
+         
             CHITIETPHIEUMUON temp = null;
             if (cmbMasach.SelectedItem == null)
             {
@@ -116,33 +115,41 @@ namespace QuanLyThuVien.GiaoDien
             if (cmbMasach.SelectedItem == null) return;
             foreach (CHITIETPHIEUMUON t in PM.CHITIETPHIEUMUONs.Where(x => x.MaSach == cmbMasach.SelectedValue.ToString()))
             {
+
                 temp = t;
                 break;
             }
             if (temp == null)
             {
-
+            
                 CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
                 ct.SACH = cmbMasach.SelectedItem as SACH;
                 ct.MaSach = ct.SACH.MaSach;
                 ct.TinhTrang = cmbtinhtrang.SelectionBoxItem.ToString();
                 ct.SoLuongSachMuon = int.Parse(txtSoluongsachmuon.Text);
+                sACH.SoLuong -= ct.SoLuongSachMuon;
                 PM.CHITIETPHIEUMUONs.Add(ct);
+                dc.SaveChanges();
 
             }
             else
             {
+                //string ma = cmbMasach.SelectedValue.ToString();
+                //SACH sACH = dc.SACHes.Find(ma);
                 temp.SoLuongSachMuon += int.Parse(txtSoluongsachmuon.Text);
+                //sACH.SoLuong -= temp.SoLuongSachMuon;
+
+
             }
 
-            
             var kq = getChitietphieumuon(PM);
-
+          
             dgChitiet.ItemsSource = kq.ToList();
         }
         private IEnumerable<object> getChitietphieumuon(PHIEUMUON pHIEUMUON)
         {
-            var kq = pHIEUMUON.CHITIETPHIEUMUONs.ToList().Select(x => new {
+            var kq = pHIEUMUON.CHITIETPHIEUMUONs.ToList().Select(x => new
+            {
                 MaSach = x.MaSach,
                 TenSach = x.SACH.TenSach,
                 TacGia = x.SACH.TacGia,
@@ -151,13 +158,21 @@ namespace QuanLyThuVien.GiaoDien
                 NgayTraThat = x.NgayTraThat,
                 TienPhat = x.TienPhat,
                 SoLuongSachMuon = x.SoLuongSachMuon,
-                
+
             });
             return kq.ToList();
         }
 
         private void BtnXoa_Click(object sender, RoutedEventArgs e)
         {
+            string ma = dgChitiet.SelectedValue.ToString();
+            foreach (CHITIETPHIEUMUON t in PM.CHITIETPHIEUMUONs.Where(x => x.MaSach == ma))
+            {
+                PM.CHITIETPHIEUMUONs.Remove(t);
+                break;
+            }
+            var kq = getChitietphieumuon(PM);
+            dgChitiet.ItemsSource = kq.ToList();
 
         }
 

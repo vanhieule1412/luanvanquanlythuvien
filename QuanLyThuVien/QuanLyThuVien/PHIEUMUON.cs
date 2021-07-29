@@ -14,7 +14,7 @@ namespace QuanLyThuVien
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
 
-    public partial class PHIEUMUON : INotifyPropertyChanged
+    public partial class PHIEUMUON 
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PHIEUMUON()
@@ -30,15 +30,12 @@ namespace QuanLyThuVien
         public Nullable<bool> DaTra { get; set; }
         public Nullable<int> MaTaiKhoai { get; set; }
         public string MaTheDocGia { get; set; }
-    protected void OnPropertyChanged([CallerMemberName] string name = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-    }
+  
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETPHIEUMUON> CHITIETPHIEUMUONs { get; set; }
         public virtual TAIKHOANTHUTHU TAIKHOANTHUTHU { get; set; }
         public virtual THEDOCGIA THEDOCGIA { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+       
     }
 }
