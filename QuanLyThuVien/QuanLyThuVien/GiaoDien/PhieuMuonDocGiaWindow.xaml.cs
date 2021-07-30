@@ -136,8 +136,6 @@ namespace QuanLyThuVien.GiaoDien
                 //ct.TinhTrang = cmbtinhtrang.SelectionBoxItem.ToString();
                 ct.SoLuongSachMuon = int.Parse(txtSoluongsachmuon.Text);
                 PM.CHITIETPHIEUMUONs.Add(ct);
-                dc.SaveChanges();
-
             }
             else
             {

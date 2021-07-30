@@ -53,6 +53,7 @@ namespace QuanLyThuVien.GiaoDien
 
         private void BtnLapPM_Click(object sender, RoutedEventArgs e)
         {
+            string s = PhatSinhTuDong(dc);
             PHIEUMUON k = dc.PHIEUMUONs.Find(txtmaphieumuon.Text);
             if (k != null)
             {
@@ -60,6 +61,8 @@ namespace QuanLyThuVien.GiaoDien
                 return;
             }
             PHIEUMUON x = new PHIEUMUON();
+
+            txtmaphieumuon.Text=s;
             x.MaPhieuMuon = txtmaphieumuon.Text;
             x.NgayMuon = dpNgaymuon.SelectedDate.Value ;
             x.NgayTraDukien = dpNgaytradukien.SelectedDate.Value;
@@ -99,6 +102,22 @@ namespace QuanLyThuVien.GiaoDien
             //GiaoDien.DanhSachPhieuMuonWindow giaodiendanhsach = new DanhSachPhieuMuonWindow();
             //giaodiendanhsach.ShowDialog();
         }
+        string PhatSinhTuDong(UngDungQuanLyThuVienEntities dc)
+        {
+            string s = "";
+            var c = dc.PHIEUMUONs.Count();
+            if (c == 0)
+                s = "PM01";
+            else
+            {
+                s = dc.PHIEUMUONs.ToList().ElementAt(c - 1).MaPhieuMuon;
+                string sso = s.Substring(2);
+                var so = int.Parse(sso);
+                so++;
+                s = "PM" + so;
+            }
+            return s;
+        }
 
         private void Btnchon_Click(object sender, RoutedEventArgs e)
         {
@@ -119,8 +138,8 @@ namespace QuanLyThuVien.GiaoDien
                 temp = t;
                 break;
             }
-            if (temp == null)
-            {
+            //if (temp == null)
+            //{
             
                 CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
                 ct.SACH = cmbMasach.SelectedItem as SACH;
@@ -129,18 +148,18 @@ namespace QuanLyThuVien.GiaoDien
                 ct.SoLuongSachMuon = int.Parse(txtSoluongsachmuon.Text);
                 sACH.SoLuong -= ct.SoLuongSachMuon;
                 PM.CHITIETPHIEUMUONs.Add(ct);
-                dc.SaveChanges();
+                //dc.SaveChanges();
 
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 //string ma = cmbMasach.SelectedValue.ToString();
                 //SACH sACH = dc.SACHes.Find(ma);
-                temp.SoLuongSachMuon += int.Parse(txtSoluongsachmuon.Text);
+                //temp.SoLuongSachMuon += int.Parse(txtSoluongsachmuon.Text);
                 //sACH.SoLuong -= temp.SoLuongSachMuon;
 
 
-            }
+            //}
 
             var kq = getChitietphieumuon(PM);
           
