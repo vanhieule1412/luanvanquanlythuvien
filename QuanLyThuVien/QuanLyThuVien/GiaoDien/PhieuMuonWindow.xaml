@@ -28,7 +28,6 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Column="0" Grid.Row="0" Text="Mã phiếu mượn"/>
                 <TextBlock Grid.Column="0" Grid.Row="1" Text="Ngày mượn"/>
                 <TextBlock Grid.Column="0" Grid.Row="2" Text="Ngày trả dự kiến"/>
                 <TextBlock Grid.Column="0" Grid.Row="3" Text="Trạng thái"/>
@@ -36,7 +35,6 @@
                 <TextBlock Grid.Column="0" Grid.Row="5" Text="Đã trả"/>
                 <TextBlock Grid.Column="0" Grid.Row="6" Text="Mã Tài khoản thu thư"/>
                 <TextBlock Grid.Column="0" Grid.Row="7" Text="Mã thẻ độc giả"/>
-                <TextBox Grid.Column="1" Grid.Row="0" Name="txtmaphieumuon"/>
                 <DatePicker Grid.Column="1" Grid.Row="1" Name="dpNgaymuon"/>
                 <DatePicker Grid.Column="1" Grid.Row="2" Name="dpNgaytradukien"/>
                 <WrapPanel Grid.Column="1" Grid.Row="3">

@@ -41,7 +41,7 @@
                             <TextBlock Name="tbltentaikhoan"/>
                         </MenuItem.Header>
                     </MenuItem>
-                    <MenuItem Header="Mã tài khoản thủ thư">
+                    <MenuItem Header="Mã tài khoản ">
                         <TextBlock Name="tblmataikhoan"/>
                     </MenuItem>
                     <MenuItem Header="Đăng xuất" Click="Btndangxuat_Click">

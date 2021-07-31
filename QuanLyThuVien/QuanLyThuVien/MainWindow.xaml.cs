@@ -24,7 +24,6 @@ namespace QuanLyThuVien
     {
 
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
-
       
         public MainWindow()
         {
@@ -262,11 +261,9 @@ namespace QuanLyThuVien
 
         private void btnlapPMDG_Click(object sender, RoutedEventArgs e)
         {
-            GiaoDien.PhieuMuonDocGiaWindow f = new GiaoDien.PhieuMuonDocGiaWindow();
-            this.Hide();
+            GiaoDien.DanhSachPhieuMuonDocGiaWindow f = new GiaoDien.DanhSachPhieuMuonDocGiaWindow();
             f.ShowDialog();
             f.Close();
-            this.ShowDialog();
 
         }
     }

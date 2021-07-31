@@ -89,7 +89,7 @@ namespace QuanLyThuVien.GiaoDien
                         this.Close();
 
                         formmain.tbltentaikhoan.Text = usename;
-                        formmain.tblmataikhoan.Text = b.DOCGIA.MaTaiKhoai.ToString();
+                        formmain.tblmataikhoan.Text = b.MaTaiKhoaiDocGia.ToString();
                         formmain.tbltenthuthu.Text = b.DOCGIA.TenDocGia;
                         formmain.btndangnhap.Visibility = Visibility.Collapsed;
                         formmain.mnduyetPM.Visibility = Visibility.Collapsed;

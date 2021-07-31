@@ -54,16 +54,15 @@ namespace QuanLyThuVien.GiaoDien
         private void BtnLapPM_Click(object sender, RoutedEventArgs e)
         {
             string s = PhatSinhTuDong(dc);
-            PHIEUMUON k = dc.PHIEUMUONs.Find(txtmaphieumuon.Text);
-            if (k != null)
-            {
-                MessageBox.Show("Trùng mã");
-                return;
-            }
+            //PHIEUMUON k = dc.PHIEUMUONs.Find(txtmaphieumuon.Text);
+            //if (k != null)
+            //{
+            //    MessageBox.Show("Trùng mã");
+            //    return;
+            //}
             PHIEUMUON x = new PHIEUMUON();
 
-            txtmaphieumuon.Text=s;
-            x.MaPhieuMuon = txtmaphieumuon.Text;
+            x.MaPhieuMuon=s;
             x.NgayMuon = dpNgaymuon.SelectedDate.Value ;
             x.NgayTraDukien = dpNgaytradukien.SelectedDate.Value;
             if (rdbduocmuon.IsChecked == true)
@@ -99,8 +98,6 @@ namespace QuanLyThuVien.GiaoDien
             hienthi();
             MessageBox.Show("Thêm thành công");
             this.Close();
-            //GiaoDien.DanhSachPhieuMuonWindow giaodiendanhsach = new DanhSachPhieuMuonWindow();
-            //giaodiendanhsach.ShowDialog();
         }
         string PhatSinhTuDong(UngDungQuanLyThuVienEntities dc)
         {

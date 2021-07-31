@@ -70,6 +70,9 @@
     <Compile Include="DOCGIA.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="GiaoDien\DanhSachPhieuMuonDocGiaWindow.xaml.cs">
+      <DependentUpon>DanhSachPhieuMuonDocGiaWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GiaoDien\DanhsachphieumuonthuthuWindow.xaml.cs">
       <DependentUpon>DanhsachphieumuonthuthuWindow.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
     <Compile Include="THUTHU.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="GiaoDien\DanhSachPhieuMuonDocGiaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GiaoDien\DanhsachphieumuonthuthuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
