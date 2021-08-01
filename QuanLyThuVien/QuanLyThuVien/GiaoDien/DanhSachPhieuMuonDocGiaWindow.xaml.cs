@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,27 +28,21 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void hienthi()
         {
-            //MainWindow f = new MainWindow();
-            //string ma = dc.TAIKHOANDOCGIAs.Find(f.tblmataikhoan.Text).ToString();
-            //var kq = pHIEUMUON.CHITIETPHIEUMUONs.ToList().Select(x => new
-            //{
-            //    MaSach = x.MaSach,
-            //    TenSach = x.SACH.TenSach,
-            //    TacGia = x.SACH.TacGia,
-            //    NguoiDich = x.SACH.NguoiDich,
-            //    TienPhat = x.TienPhat,
-            //    NgayTraThat = x.NgayTraThat,
-            //    TinhTrang = x.TinhTrang,
-            //    SoLuongSachMuon = x.SoLuongSachMuon,
-            //});
-            //dg.ItemsSource = kq.ToList();
+
+            
+            //string ma = dc.PHIEUMUONs.Find(f.tblmataikhoan.Text).ToString();
             //var kq = pHIEUMUON.THEDOCGIA.MaTaiKhoai.ToList().Where(x => x. == ma);
             //dgphieumuon.ItemsSource = kq.ToList();
+            dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
 
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            dgphieumuon.Items.SortDescriptions.Clear();
+            dgphieumuon.Items.SortDescriptions.Add(new SortDescription("MaPhieuMuon", ListSortDirection.Descending));
+            dgphieumuon.Items.Refresh();
             hienthi();
+
         }
 
         private void Btnmolapphieu_Click(object sender, RoutedEventArgs e)
@@ -56,6 +51,9 @@ namespace QuanLyThuVien.GiaoDien
             this.Hide();
             phieuMuon.ShowDialog();
             phieuMuon.Close();
+            dgphieumuon.Items.SortDescriptions.Clear();
+            dgphieumuon.Items.SortDescriptions.Add(new SortDescription("MaPhieuMuon", ListSortDirection.Descending));
+            dgphieumuon.Items.Refresh();
             hienthi();
             this.ShowDialog();
 

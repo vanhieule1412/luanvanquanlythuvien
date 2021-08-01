@@ -56,7 +56,6 @@
                             <TextBox Name="tbltenthuthu" IsEnabled="False" />
                         </MenuItem.Header>
                     </MenuItem>
-
                     <Button Name="btnluu" Content="Lưu" Visibility="Collapsed" Click="Btnluu_Click"/>
                 </MenuItem>
             </Menu>

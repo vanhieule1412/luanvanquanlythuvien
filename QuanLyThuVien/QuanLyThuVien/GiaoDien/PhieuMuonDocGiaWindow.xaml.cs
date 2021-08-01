@@ -110,6 +110,7 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void Btnchon_Click(object sender, RoutedEventArgs e)
         {
+            int soluong = 0;
             string ma = cmbMasach.SelectedValue.ToString();
             SACH sACH = dc.SACHes.Find(ma);
 
@@ -126,24 +127,20 @@ namespace QuanLyThuVien.GiaoDien
                 temp = t;
                 break;
             }
-            if (temp == null)
-            {
 
+            if (soluong == 0)
+            {
                 CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
                 ct.SACH = cmbMasach.SelectedItem as SACH;
                 ct.MaSach = ct.SACH.MaSach;
-                //ct.TinhTrang = cmbtinhtrang.SelectionBoxItem.ToString();
                 ct.SoLuongSachMuon = int.Parse(txtSoluongsachmuon.Text);
+                sACH.SoLuong -= ct.SoLuongSachMuon;
                 PM.CHITIETPHIEUMUONs.Add(ct);
             }
-            else
-            {
-                temp.SoLuongSachMuon += int.Parse(txtSoluongsachmuon.Text);
-                sACH.SoLuong -= temp.SoLuongSachMuon;
-
+            else {
+                sACH.SoLuong += temp.SoLuongSachMuon;
             }
             var kq = getChitietphieumuon(PM);
-
             dgChitiet.ItemsSource = kq.ToList();
         }
 

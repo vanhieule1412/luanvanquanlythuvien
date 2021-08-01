@@ -32,6 +32,9 @@ namespace QuanLyThuVien.GiaoDien
    
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            dgphieumuon.Items.SortDescriptions.Clear();
+            dgphieumuon.Items.SortDescriptions.Add(new SortDescription("MaPhieuMuon", ListSortDirection.Descending));
+            dgphieumuon.Items.Refresh();
             dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
         }
 
@@ -85,6 +88,9 @@ namespace QuanLyThuVien.GiaoDien
             this.Hide();
             phieuMuon.ShowDialog();          
             phieuMuon.Close();
+            dgphieumuon.Items.SortDescriptions.Clear();
+            dgphieumuon.Items.SortDescriptions.Add(new SortDescription("MaPhieuMuon", ListSortDirection.Descending));
+            dgphieumuon.Items.Refresh();
             dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
             this.ShowDialog();
         }

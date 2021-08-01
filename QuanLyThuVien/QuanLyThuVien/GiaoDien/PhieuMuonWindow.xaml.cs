@@ -96,7 +96,7 @@ namespace QuanLyThuVien.GiaoDien
             dc.PHIEUMUONs.Add(x);
             dc.SaveChanges();
             hienthi();
-            MessageBox.Show("Thêm thành công");
+            MessageBox.Show(s+"Thêm thành công");
             this.Close();
         }
         string PhatSinhTuDong(UngDungQuanLyThuVienEntities dc)
@@ -118,6 +118,7 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Btnchon_Click(object sender, RoutedEventArgs e)
         {
+            int soluong = 0;
             string ma = cmbMasach.SelectedValue.ToString();
             SACH sACH = dc.SACHes.Find(ma);
          
@@ -137,7 +138,8 @@ namespace QuanLyThuVien.GiaoDien
             }
             //if (temp == null)
             //{
-            
+            if (soluong == 0)
+            {
                 CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
                 ct.SACH = cmbMasach.SelectedItem as SACH;
                 ct.MaSach = ct.SACH.MaSach;
@@ -146,17 +148,12 @@ namespace QuanLyThuVien.GiaoDien
                 sACH.SoLuong -= ct.SoLuongSachMuon;
                 PM.CHITIETPHIEUMUONs.Add(ct);
                 //dc.SaveChanges();
-
-            //}
-            //else
-            //{
-                //string ma = cmbMasach.SelectedValue.ToString();
-                //SACH sACH = dc.SACHes.Find(ma);
-                //temp.SoLuongSachMuon += int.Parse(txtSoluongsachmuon.Text);
-                //sACH.SoLuong -= temp.SoLuongSachMuon;
-
-
-            //}
+            }
+            else
+            {
+               
+                sACH.SoLuong += temp.SoLuongSachMuon;
+            }
 
             var kq = getChitietphieumuon(PM);
           

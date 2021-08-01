@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,9 +31,13 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            dgphieumuon.Items.SortDescriptions.Clear();
+            dgphieumuon.Items.SortDescriptions.Add(new SortDescription("MaPhieuMuon", ListSortDirection.Descending));
+            dgphieumuon.Items.Refresh();
             dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
             cmbthedocgia.ItemsSource = dc.THEDOCGIAs.ToList();
             cmbmataikhoan.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
+
         }
 
         private void Dgphieumuon_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)

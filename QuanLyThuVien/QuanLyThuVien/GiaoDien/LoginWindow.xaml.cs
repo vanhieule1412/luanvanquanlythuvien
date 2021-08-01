@@ -87,7 +87,6 @@ namespace QuanLyThuVien.GiaoDien
                         usename = txttaikhoan.Text;
                         MainWindow formmain = new MainWindow();
                         this.Close();
-
                         formmain.tbltentaikhoan.Text = usename;
                         formmain.tblmataikhoan.Text = b.MaTaiKhoaiDocGia.ToString();
                         formmain.tbltenthuthu.Text = b.DOCGIA.TenDocGia;
