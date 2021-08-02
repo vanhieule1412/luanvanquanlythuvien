@@ -29,60 +29,97 @@ namespace QuanLyThuVien.GiaoDien
         {
             InitializeComponent();
         }
+        private void hienthi()
+        {
+            var filteredsach = dc.CHITIETPHIEUMUONs.Where(x => x.MaPhieuMuon.Contains(txtmaphieumuon.Text.ToUpper()));
+            dgchitietphieumuon.ItemsSource = null;
+            dgchitietphieumuon.ItemsSource = filteredsach.ToList();
+
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             if (chucnang == ChucNang.Sua)
             {
                 txtmaphieumuon.Text = PHIEUMUON.MaPhieuMuon;
             }
-            dgchitietphieumuon.ItemsSource = dc.CHITIETPHIEUMUONs.ToList();
+            hienthi();
+           
          
 
         }
 
         private void Btnthuchienchitiet_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Btnsuachitiet_Click(object sender, RoutedEventArgs e)
-        {
-            GiaoDien.SuaPhieuTraWindow f = new GiaoDien.SuaPhieuTraWindow();
-            f.ChucNang = ChucNang.Sua;
-            f.phieutra = dc.CHITIETPHIEUMUONs.Find(dgchitietphieumuon.SelectedValue);
-            if (f.ShowDialog() == true)
-            {
-                CHITIETPHIEUMUON pm = dc.CHITIETPHIEUMUONs.Find(f.phieutra.MaMuonTra);
+            //GiaoDien.SuaPhieuTraWindow f = new GiaoDien.SuaPhieuTraWindow();
+            //f.ChucNang = ChucNang.Sua;
+            //f.phieutra = dc.CHITIETPHIEUMUONs.Find(dgchitietphieumuon.SelectedValue);
+            string ma = txtmasach.Text;
+            SACH sACH = dc.SACHes.Find(ma);
+            CHITIETPHIEUMUON pm = dc.CHITIETPHIEUMUONs.Find(int.Parse(txtmact.Text));
                 if (pm != null)
                 {
-                    pm.TienPhat = f.phieutra.TienPhat;
-                    pm.TinhTrang = f.phieutra.TinhTrang;
-                    pm.NgayTraThat = f.phieutra.NgayTraThat;
-                    dc.SaveChanges();
-                    dgchitietphieumuon.ItemsSource = dc.CHITIETPHIEUMUONs.ToList();
+                pm.TinhTrang = cmbtinhtrang.SelectionBoxItem.ToString();
+                    if (pm.TinhTrang == "Bị hư hại" || pm.TinhTrang == "Bị mất")//Bị mất
+                    {
+                        pm.TienPhat = pm.SACH.Gia + 100000;
+                        txttienphat.Text = pm.TienPhat.ToString();
+                    }
+                    pm.NgayTraThat = dpngaytrathat.SelectedDate;
+                if (dpngaytrathat.SelectedDate != null && cmbhoanchinh.IsSelected)
+                {
+                    sACH.SoLuong += pm.SoLuongSachMuon;
                 }
-            }
+                
+                dc.SaveChanges();
+                    hienthi();
+                }
+            GiaoDien.PhieuTraWindow f = new PhieuTraWindow();
+            this.Close();
+            f.ShowDialog();
+            
+
+
+
         }
-       
+
+
         private void Txttim_TextChanged(object sender, TextChangedEventArgs e)
         {
-            txttim.Text = txtmaphieumuon.Text;
-            TextBox t = (TextBox)sender;
-            string filter = t.Text.Trim();
-            ICollectionView cv = CollectionViewSource.GetDefaultView(dgchitietphieumuon.ItemsSource);
-            if (filter == "")
-                cv.Filter = null;
-            else
-            {
-                cv.Filter = o =>
-                {
-                    CHITIETPHIEUMUON p = o as CHITIETPHIEUMUON;
-                    if (t.Name == "txttim")
-                        return p.MaPhieuMuon.StartsWith(filter);
-                    return p.MaPhieuMuon.StartsWith(filter);
-                };
-            }
+                //if (txttim.Text.ToUpper() == txtmaphieumuon.Text)
+                //{
+                //    var filteredsach = dc.CHITIETPHIEUMUONs.Where(x => x.MaPhieuMuon.Contains(txtmaphieumuon.Text.ToUpper()));
 
+                //    dgchitietphieumuon.ItemsSource = null;
+                //    dgchitietphieumuon.ItemsSource = filteredsach.ToList();
+
+                //}
+                //else
+                //{
+                //    dgchitietphieumuon.ItemsSource = dc.CHITIETPHIEUMUONs.ToList();
+                //}
+           
+       
+            
+
+        }
+
+        private void Dgchitietphieumuon_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgchitietphieumuon.SelectedItem == null) return;
+            CHITIETPHIEUMUON ct = dgchitietphieumuon.SelectedItem as CHITIETPHIEUMUON;
+            txtmasach.Text = ct.MaSach;
+            txtsoluongchitiet.Text =ct.SoLuongSachMuon.ToString();
+            txttienphat.Text = ct.TienPhat.ToString();
+            txtmact.Text = ct.MaMuonTra.ToString();
+
+
+        }
+
+        private void Btnback_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.PhieuTraWindow f = new PhieuTraWindow();
+            this.Close();
+            f.ShowDialog();
         }
     }
 }

@@ -31,7 +31,7 @@
             <Menu HorizontalAlignment="Right" Visibility="Collapsed" Name="menu" Grid.Column="1">
                 <MenuItem>
                     <MenuItem.Icon>
-                        <Image Source="usericon.png"/>
+                        <Image Source="usericon.png" />
                     </MenuItem.Icon>
                     <MenuItem >
                         <MenuItem.Icon>

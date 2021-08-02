@@ -88,10 +88,10 @@ namespace QuanLyThuVien.GiaoDien
             this.Hide();
             phieuMuon.ShowDialog();          
             phieuMuon.Close();
+            dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
             dgphieumuon.Items.SortDescriptions.Clear();
             dgphieumuon.Items.SortDescriptions.Add(new SortDescription("MaPhieuMuon", ListSortDirection.Descending));
             dgphieumuon.Items.Refresh();
-            dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
             this.ShowDialog();
         }
       

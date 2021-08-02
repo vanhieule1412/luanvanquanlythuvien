@@ -324,6 +324,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="iconslogout.png" />
+    <Resource Include="back.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

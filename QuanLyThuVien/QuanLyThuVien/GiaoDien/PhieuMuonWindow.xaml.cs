@@ -147,7 +147,6 @@ namespace QuanLyThuVien.GiaoDien
                 ct.SoLuongSachMuon = int.Parse(txtSoluongsachmuon.Text);
                 sACH.SoLuong -= ct.SoLuongSachMuon;
                 PM.CHITIETPHIEUMUONs.Add(ct);
-                //dc.SaveChanges();
             }
             else
             {

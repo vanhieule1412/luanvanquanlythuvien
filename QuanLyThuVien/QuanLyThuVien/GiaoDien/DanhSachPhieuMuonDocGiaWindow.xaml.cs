@@ -33,6 +33,9 @@ namespace QuanLyThuVien.GiaoDien
             //string ma = dc.PHIEUMUONs.Find(f.tblmataikhoan.Text).ToString();
             //var kq = pHIEUMUON.THEDOCGIA.MaTaiKhoai.ToList().Where(x => x. == ma);
             //dgphieumuon.ItemsSource = kq.ToList();
+            // var filteredsach = dc.CHITIETPHIEUMUONs.Where(x => x.MaPhieuMuon.Contains(txtmaphieumuon.Text.ToUpper()));
+            //dgchitietphieumuon.ItemsSource = null;
+            //dgchitietphieumuon.ItemsSource = filteredsach.ToList();
             dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
 
         }
@@ -51,12 +54,11 @@ namespace QuanLyThuVien.GiaoDien
             this.Hide();
             phieuMuon.ShowDialog();
             phieuMuon.Close();
+            hienthi();
             dgphieumuon.Items.SortDescriptions.Clear();
             dgphieumuon.Items.SortDescriptions.Add(new SortDescription("MaPhieuMuon", ListSortDirection.Descending));
             dgphieumuon.Items.Refresh();
-            hienthi();
             this.ShowDialog();
-
         }
 
         private void Dgphieumuon_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)

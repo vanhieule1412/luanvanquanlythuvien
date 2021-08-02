@@ -11,6 +11,9 @@
         >
 
     <StackPanel>
+        <Button HorizontalAlignment="Right" Name="btnback" Click="Btnback_Click">
+            <Image Name="img" Source="back.png" Width="24" Height="24" />
+        </Button>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -32,14 +35,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0" Grid.Column="2" Name="txttim" TextChanged="Txttim_TextChanged" 
-                     />
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Mã Sách"/>
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Mã Phiếu Mượn"/>
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Ngày trả thật"/>
             <TextBlock Grid.Row="3" Grid.Column="0" Text="Tiền phạt"/>
             <TextBlock Grid.Row="4" Grid.Column="0" Text="Tình trạng"/>
             <TextBlock Grid.Row="5" Grid.Column="0" Text="Số lượng sách mượn"/>
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Mã chi tiết"/>
             <TextBox Grid.Row="0" Grid.Column="1" Name="txtmasach"/>
             <TextBox Grid.Row="1" Grid.Column="1" Name="txtmaphieumuon"/>
             <DatePicker Grid.Row="2" Grid.Column="1" Name="dpngaytrathat"/>
@@ -50,10 +52,11 @@
                 <ComboBoxItem Name="cmbbimat" Content="Bị mất"/>
             </ComboBox>
             <TextBox Grid.Row="5" Grid.Column="1" Name="txtsoluongchitiet"/>
+            <TextBox Grid.Row="6" Grid.Column="1" Name="txtmact" IsReadOnly="True"/>
            
         </Grid>
         <Button Name="btnthuchienchitiet" Content="Thực hiện" Click="Btnthuchienchitiet_Click"/>
-        <DataGrid Name="dgchitietphieumuon" AutoGenerateColumns="False" SelectedValuePath="MaMuonTra">
+        <DataGrid Name="dgchitietphieumuon" AutoGenerateColumns="False" SelectedValuePath="MaMuonTra" SelectionChanged="Dgchitietphieumuon_SelectionChanged" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}"/>
                 <DataGridTextColumn Header="Tên Sách" Binding="{Binding SACH.TenSach}"/>
@@ -62,13 +65,13 @@
                 <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat}"/>
                 <DataGridTextColumn Header="Tiền Phạt" Binding="{Binding TienPhat}"/>
                 <DataGridTextColumn Header="Số lượng sách mượn" Binding="{Binding SoLuongSachMuon}"/>
-                <DataGridTemplateColumn>
+                <!--<DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Name="btnsuachitiet" Content="Sửa chi tiết" Click="Btnsuachitiet_Click"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                </DataGridTemplateColumn>-->
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

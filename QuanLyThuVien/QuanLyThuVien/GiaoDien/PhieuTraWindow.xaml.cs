@@ -28,7 +28,11 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void hienthi()
         {
-            dgphieutra.ItemsSource = dc.PHIEUMUONs.ToList();
+
+            var filteredsach = dc.PHIEUMUONs.Where(x => x.DaTra == false);
+            dgphieutra.ItemsSource = null;
+            dgphieutra.ItemsSource = filteredsach.ToList();
+            
             cmbMaDocGia.ItemsSource = dc.THEDOCGIAs.ToList();
             cmbMaThuThu.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
         }
@@ -58,13 +62,32 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Dgphieutra_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //string tong = txttienphattong.Text;
             if (dgphieutra.SelectedItem == null) return;
             PHIEUMUON s = dgphieutra.SelectedItem as PHIEUMUON;
             if (s != null)
             {
+                foreach (var b in dc.CHITIETPHIEUMUONs.Where(x => x.MaPhieuMuon == s.MaPhieuMuon))
+                {
+                    if (b.NgayTraThat != null && b.TienPhat != 0)
+                    {
+                        txttienphattong.Text += b.TienPhat;
+                        s.TienPhatTong =int.Parse( txttienphattong.Text);
+                        btnlapphieutra.Visibility = Visibility.Collapsed;
+                        btnxacnhan.Visibility = Visibility.Visible;
+                    }
+                    else if(b.NgayTraThat != null && b.TienPhat == 0)
+                    {
+                        s.TienPhatTong = 0;
+                        btnlapphieutra.Visibility = Visibility.Visible;
+                        btnxacnhan.Visibility = Visibility.Collapsed;
+                    }
+                    
+                }
+                
                 txtmaphieumuon.Text = s.MaPhieuMuon;
                 dpNgayMuon.SelectedDate = s.NgayMuon;
-                dpNgayTra.SelectedDate = s.NgayTraDukien;
+                dpNgayTra.SelectedDate = s.NgayTraDukien;              
                 cmbMaDocGia.SelectedValue = s.MaTheDocGia;
                 cmbMaThuThu.Text = s.MaTaiKhoai.ToString();
                 if (s.TrangThai.ToString() == "Được mượn")
@@ -85,6 +108,7 @@ namespace QuanLyThuVien.GiaoDien
                     ckbdatra.IsChecked = false;
                 }
             }
+
         }
 
         private void Btnlapphieutra_Click(object sender, RoutedEventArgs e)
@@ -93,13 +117,8 @@ namespace QuanLyThuVien.GiaoDien
             GiaoDien.SuachitietphieumuonWindow f = new SuachitietphieumuonWindow();
             f.chucnang = ChucNang.Sua;
             f.PHIEUMUON = dc.PHIEUMUONs.Find(dgphieutra.SelectedValue.ToString());           
-            this.Hide();
-            f.ShowDialog();
-       
-            f.Close();
-            this.ShowDialog();
-          
-
+            this.Close();
+            f.ShowDialog();      
         }
     }
 }
