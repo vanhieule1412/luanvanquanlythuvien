@@ -11,31 +11,27 @@ namespace QuanLyThuVien
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
-
-    public partial class PHIEUMUON 
+    
+    public partial class PHIEUMUON
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PHIEUMUON()
         {
             this.CHITIETPHIEUMUONs = new HashSet<CHITIETPHIEUMUON>();
         }
-        //private string _maphieumuon = string.Empty;
-        public string MaPhieuMuon { get;/*{ return _maphieumuon; }*/  set ; /*{ _maphieumuon = value; OnPropertyChanged(); }*/ }
+    
+        public string MaPhieuMuon { get; set; }
         public System.DateTime NgayMuon { get; set; }
         public System.DateTime NgayTraDukien { get; set; }
         public bool TrangThai { get; set; }
-        public Nullable<float> TienPhatTong { get; set; }
+        public Nullable<double> TienPhatTong { get; set; }
         public Nullable<bool> DaTra { get; set; }
         public Nullable<int> MaTaiKhoai { get; set; }
         public string MaTheDocGia { get; set; }
-  
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETPHIEUMUON> CHITIETPHIEUMUONs { get; set; }
         public virtual TAIKHOANTHUTHU TAIKHOANTHUTHU { get; set; }
         public virtual THEDOCGIA THEDOCGIA { get; set; }
-
-       
     }
 }

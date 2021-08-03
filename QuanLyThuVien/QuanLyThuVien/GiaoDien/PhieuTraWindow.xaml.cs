@@ -69,20 +69,26 @@ namespace QuanLyThuVien.GiaoDien
             {
                 foreach (var b in dc.CHITIETPHIEUMUONs.Where(x => x.MaPhieuMuon == s.MaPhieuMuon))
                 {
-                    if (b.NgayTraThat != null && b.TienPhat != 0)
+                    double tong =b.TienPhat.Value + b.TienPhat.Value;
+                    if (b.NgayTraThat != null && b.TienPhat != 0 && s.TienPhatTong != tong)
                     {
-                        txttienphattong.Text += b.TienPhat;
-                        s.TienPhatTong =int.Parse( txttienphattong.Text);
                         btnlapphieutra.Visibility = Visibility.Collapsed;
                         btnxacnhan.Visibility = Visibility.Visible;
+                        s.TienPhatTong += b.TienPhat.Value;
+                        txttienphattong.Text = s.TienPhatTong.ToString();
+                        
                     }
-                    else if(b.NgayTraThat != null && b.TienPhat == 0)
+                    else if (b.NgayTraThat == null && b.TienPhat == 0 && s.TienPhatTong == tong)
                     {
-                        s.TienPhatTong = 0;
                         btnlapphieutra.Visibility = Visibility.Visible;
                         btnxacnhan.Visibility = Visibility.Collapsed;
+                        txttienphattong.Text = s.TienPhatTong.ToString();
+
                     }
-                    
+                    else
+                    {
+                        txttienphattong.Text = s.TienPhatTong.ToString();
+                    }
                 }
                 
                 txtmaphieumuon.Text = s.MaPhieuMuon;

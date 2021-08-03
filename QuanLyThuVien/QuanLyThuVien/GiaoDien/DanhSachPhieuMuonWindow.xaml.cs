@@ -28,14 +28,21 @@ namespace QuanLyThuVien.GiaoDien
         {
             InitializeComponent();
         }
-        
-   
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void hienthi()
         {
             dgphieumuon.Items.SortDescriptions.Clear();
             dgphieumuon.Items.SortDescriptions.Add(new SortDescription("MaPhieuMuon", ListSortDirection.Descending));
             dgphieumuon.Items.Refresh();
-            dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
+            var filteredsach = dc.PHIEUMUONs.Where(x => x.TrangThai == false);
+            dgphieumuon.ItemsSource = null;
+            dgphieumuon.ItemsSource = filteredsach.ToList();
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            hienthi();            
+            
         }
 
       
@@ -81,7 +88,6 @@ namespace QuanLyThuVien.GiaoDien
 
 
         }
-
         private void Btnmolapphieu_Click(object sender, RoutedEventArgs e)
         {
             GiaoDien.PhieuMuonWindow phieuMuon = new PhieuMuonWindow();

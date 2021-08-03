@@ -18,7 +18,7 @@ namespace QuanLyThuVien
         public string MaSach { get; set; }
         public string MaPhieuMuon { get; set; }
         public Nullable<System.DateTime> NgayTraThat { get; set; }
-        public Nullable<float> TienPhat { get; set; }
+        public Nullable<double> TienPhat { get; set; }
         public string TinhTrang { get; set; }
         public int SoLuongSachMuon { get; set; }
     

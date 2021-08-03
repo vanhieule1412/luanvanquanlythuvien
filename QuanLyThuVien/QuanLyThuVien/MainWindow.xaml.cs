@@ -266,5 +266,10 @@ namespace QuanLyThuVien
             f.Close();
 
         }
+
+        private void Mnshutdown_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

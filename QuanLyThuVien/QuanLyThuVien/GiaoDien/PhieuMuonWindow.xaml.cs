@@ -40,6 +40,7 @@ namespace QuanLyThuVien.GiaoDien
             //    MaTheDocGia = x.MaTheDocGia,
             //}).ToList();
             //dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
+         
             cmbMasach.ItemsSource = dc.SACHes.ToList();
             cmbmataikhoan.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
             cmbthedocgia.ItemsSource = dc.THEDOCGIAs.ToList();
@@ -53,13 +54,7 @@ namespace QuanLyThuVien.GiaoDien
 
         private void BtnLapPM_Click(object sender, RoutedEventArgs e)
         {
-            string s = PhatSinhTuDong(dc);
-            //PHIEUMUON k = dc.PHIEUMUONs.Find(txtmaphieumuon.Text);
-            //if (k != null)
-            //{
-            //    MessageBox.Show("Trùng mã");
-            //    return;
-            //}
+            string s = PhatSinhTuDong(dc);          
             PHIEUMUON x = new PHIEUMUON();
 
             x.MaPhieuMuon=s;
@@ -96,7 +91,7 @@ namespace QuanLyThuVien.GiaoDien
             dc.PHIEUMUONs.Add(x);
             dc.SaveChanges();
             hienthi();
-            MessageBox.Show(s+"Thêm thành công");
+            MessageBox.Show("Phiếu mượn "+s+" thêm thành công");
             this.Close();
         }
         string PhatSinhTuDong(UngDungQuanLyThuVienEntities dc)

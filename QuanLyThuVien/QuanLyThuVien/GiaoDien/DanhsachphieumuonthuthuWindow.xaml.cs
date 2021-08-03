@@ -27,17 +27,19 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void hienthi()
         {
+            dgphieumuon.Items.SortDescriptions.Clear();
+            dgphieumuon.Items.SortDescriptions.Add(new SortDescription("MaPhieuMuon", ListSortDirection.Descending));
+            dgphieumuon.Items.Refresh();
+            var filteredsach = dc.PHIEUMUONs.Where(x => x.TrangThai == false);
+            dgphieumuon.ItemsSource = null;
+            dgphieumuon.ItemsSource = filteredsach.ToList();
+            cmbthedocgia.ItemsSource = dc.THEDOCGIAs.ToList();
+            cmbmataikhoan.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
 
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            dgphieumuon.Items.SortDescriptions.Clear();
-            dgphieumuon.Items.SortDescriptions.Add(new SortDescription("MaPhieuMuon", ListSortDirection.Descending));
-            dgphieumuon.Items.Refresh();
-            dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
-            cmbthedocgia.ItemsSource = dc.THEDOCGIAs.ToList();
-            cmbmataikhoan.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
-
+            hienthi();
         }
 
         private void Dgphieumuon_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
@@ -77,7 +79,7 @@ namespace QuanLyThuVien.GiaoDien
                 pHIEUMUON.MaTaiKhoai = int.Parse(cmbmataikhoan.SelectedValue.ToString());
 
                 dc.SaveChanges();
-                dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
+                hienthi();
             }
         }
 

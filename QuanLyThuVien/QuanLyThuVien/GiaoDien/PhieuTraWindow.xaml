@@ -46,7 +46,7 @@
                     <ComboBoxItem Name="cmbkhongduocmuon" Content="Không được mượn" IsSelected="True"/>
                 </ComboBox>
                 <CheckBox Name="ckbdatra" Grid.Column="1" Grid.Row="8"/>
-                <TextBox Grid.Column="1" Grid.Row="4" Name="txttienphattong"/>
+                <TextBox Grid.Column="1" Grid.Row="4" Name="txttienphattong" Text="0"/>
                 
                 <WrapPanel Grid.Column="2" Grid.Row="1">
                     <TextBlock Text="Tên thủ thư: "/>
@@ -54,7 +54,7 @@
                 </WrapPanel>
                 <WrapPanel Grid.Column="2" Grid.Row="2">
                     <TextBlock Text="Tên độc giả: "/>
-                    <TextBlock Text="{Binding ElementName=cmbMaDocGia,Path=SelectedItem.TenTaiKhoan}"/>
+                    <TextBlock Text="{Binding ElementName=cmbMaDocGia,Path=SelectedItem.TenDocGia}"/>
                 </WrapPanel>
                 <TextBox Grid.Column="1" Grid.Row="0" Name="txtmaphieumuon"/>
             </Grid>

@@ -56,6 +56,11 @@
                             <TextBox Name="tbltenthuthu" IsEnabled="False" />
                         </MenuItem.Header>
                     </MenuItem>
+                    <MenuItem Header="ShutDown" Name="mnshutdown" Click="Mnshutdown_Click">
+                        <MenuItem.Icon>
+                            <Image Source="shut.png" Width="10" Height="10"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                     <Button Name="btnluu" Content="Lưu" Visibility="Collapsed" Click="Btnluu_Click"/>
                 </MenuItem>
             </Menu>
