@@ -40,12 +40,10 @@ namespace QuanLyThuVien.GiaoDien
         {
             if (chucnang == ChucNang.Sua)
             {
+
                 txtmaphieumuon.Text = PHIEUMUON.MaPhieuMuon;
             }
             hienthi();
-           
-         
-
         }
 
         private void Btnthuchienchitiet_Click(object sender, RoutedEventArgs e)
@@ -54,32 +52,54 @@ namespace QuanLyThuVien.GiaoDien
             //f.ChucNang = ChucNang.Sua;
             //f.phieutra = dc.CHITIETPHIEUMUONs.Find(dgchitietphieumuon.SelectedValue);
             string ma = txtmasach.Text;
+            string mapm = txtmaphieumuon.Text;
             SACH sACH = dc.SACHes.Find(ma);
+            PHIEUMUON pHIEUMUON = dc.PHIEUMUONs.Find(mapm);
             CHITIETPHIEUMUON pm = dc.CHITIETPHIEUMUONs.Find(int.Parse(txtmact.Text));
-                if (pm != null)
-                {
+            if (pm != null)
+            {
+                TimeSpan timepm = pm.PHIEUMUON.NgayMuon - pm.PHIEUMUON.NgayTraDukien;
+                TimeSpan time = dpngaytrathat.SelectedDate.Value - pm.PHIEUMUON.NgayTraDukien;
+                int tong = timepm.Days;
+                int Tongsongay = time.Days;
                 pm.TinhTrang = cmbtinhtrang.SelectionBoxItem.ToString();
-                    if (pm.TinhTrang == "Bị hư hại" || pm.TinhTrang == "Bị mất")//Bị mất
-                    {
-                        pm.TienPhat = pm.SACH.Gia + 100000;
-                        txttienphat.Text = pm.TienPhat.ToString();
-                    }
-                    pm.NgayTraThat = dpngaytrathat.SelectedDate;
+                if ((pm.TinhTrang == "Bị hư hại" || pm.TinhTrang == "Bị mất") && Tongsongay == 0)
+                {
+                    pm.TienPhat = pm.SACH.Gia + 100000;
+                    //txttienphat.Text = pm.TienPhat.ToString();
+                }
+                else if ((pm.TinhTrang == "Bị hư hại" || pm.TinhTrang == "Bị mất") && Tongsongay < 0)
+                {
+                    pm.TienPhat = pm.SACH.Gia + 100000;
+                }
+                else if ((pm.TinhTrang == "Bị hư hại" || pm.TinhTrang == "Bị mất") && Tongsongay > 0)
+                {
+                    pm.TienPhat = (Tongsongay * 10000) + pm.SACH.Gia + 100000;
+                }
+                else if ((pm.TinhTrang == "Hoàn chỉnh") && tong >= 0)
+                {
+                    pm.TienPhat = 0;
+                }
+                else if ((pm.TinhTrang == "Hoàn chỉnh") && Tongsongay == 0)
+                {
+                    pm.TienPhat = 0;
+                }
+                else if((pm.TinhTrang == "Hoàn chỉnh") && Tongsongay > 0)
+                {
+                    pm.TienPhat = Tongsongay * 10000;
+                }              
                 if (dpngaytrathat.SelectedDate != null && cmbhoanchinh.IsSelected)
                 {
                     sACH.SoLuong += pm.SoLuongSachMuon;
                 }
-                
+                pm.NgayTraThat = dpngaytrathat.SelectedDate;
+                txttienphat.Text = pm.TienPhat.ToString();
                 dc.SaveChanges();
-                    hienthi();
-                }
-            GiaoDien.PhieuTraWindow f = new PhieuTraWindow();
-            this.Close();
-            f.ShowDialog();
-            
-
-
-
+                hienthi();
+            }
+            //GiaoDien.PhieuTraWindow f = new PhieuTraWindow();
+            //this.Close();
+            //f.ShowDialog();
         }
 
 

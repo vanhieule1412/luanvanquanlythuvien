@@ -56,11 +56,18 @@
                             <TextBox Name="tbltenthuthu" IsEnabled="False" />
                         </MenuItem.Header>
                     </MenuItem>
+                    <MenuItem Click="Tblthedocgia_Click" >
+                        <MenuItem.Header>
+                            <!--<TextBlock Name="tbltenthuthu"/>-->
+                            <TextBox Name="tblthedocgia" IsEnabled="False" />
+                        </MenuItem.Header>
+                    </MenuItem>
                     <MenuItem Header="ShutDown" Name="mnshutdown" Click="Mnshutdown_Click">
                         <MenuItem.Icon>
                             <Image Source="shut.png" Width="10" Height="10"/>
                         </MenuItem.Icon>
                     </MenuItem>
+                    
                     <Button Name="btnluu" Content="Lưu" Visibility="Collapsed" Click="Btnluu_Click"/>
                 </MenuItem>
             </Menu>
@@ -88,8 +95,8 @@
                         <MenuItem Name="mnduyetPM" Header="Duyệt phiếu mượn" Click="MnduyetPM_Click" Visibility="Visible"/>
                         <MenuItem Name="mnlapPM" Header="Lập phiếu mượn" Click="Btnphieumuon_Click" Visibility="Visible"/>
                         <MenuItem Name="mnlapPMDG" Header="Lập phiếu mượn" Click="btnlapPMDG_Click" Visibility="Visible"/>
-
                     </MenuItem>
+                    <MenuItem Header="Lịch sử mượn" Name="mnlichsu" Visibility="Collapsed" Click="Mnlichsu_Click"/>
                     <MenuItem Header="Phiếu trả" Click="Btnphieutra_Click" Name="mnphieutra" Visibility="Visible"/>
                 </Menu>
             </DockPanel>

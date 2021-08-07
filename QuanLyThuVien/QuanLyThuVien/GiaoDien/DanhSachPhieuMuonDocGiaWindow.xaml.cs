@@ -29,7 +29,7 @@ namespace QuanLyThuVien.GiaoDien
         private void hienthi()
         {
 
-            
+
             //string ma = dc.PHIEUMUONs.Find(f.tblmataikhoan.Text).ToString();
             //var kq = pHIEUMUON.THEDOCGIA.MaTaiKhoai.ToList().Where(x => x. == ma);
             //dgphieumuon.ItemsSource = kq.ToList();
@@ -63,7 +63,20 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Dgphieumuon_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
         {
-
+            PHIEUMUON pHIEUMUON = e.Row.Item as PHIEUMUON;
+            DataGrid dg = e.DetailsElement.FindName("dgCTPM") as DataGrid;
+            var kq = pHIEUMUON.CHITIETPHIEUMUONs.ToList().Select(x => new
+            {
+                MaSach = x.MaSach,
+                TenSach = x.SACH.TenSach,
+                TacGia = x.SACH.TacGia,
+                NguoiDich = x.SACH.NguoiDich,
+                TienPhat = x.TienPhat,
+                NgayTraThat = x.NgayTraThat,
+                TinhTrang = x.TinhTrang,
+                SoLuongSachMuon = x.SoLuongSachMuon,
+            });
+            dg.ItemsSource = kq.ToList();
         }
     }
 }

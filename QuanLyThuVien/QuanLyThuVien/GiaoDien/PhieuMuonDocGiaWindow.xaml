@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
         mc:Ignorable="d"
         Title="PhieuMuonDocGiaWindow" Height="450" Width="800"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
         >
     <StackPanel>
@@ -35,8 +35,8 @@
                 <TextBlock Grid.Column="0" Grid.Row="5" Text="Đã trả"/>
                 <TextBlock Grid.Column="0" Grid.Row="6" Text="Mã Tài khoản thu thư"/>-->
                 <TextBlock Grid.Column="0" Grid.Row="7" Text="Mã thẻ độc giả"/>
-                <DatePicker Grid.Column="1" Grid.Row="1" Name="dpNgaymuon"/>
-                <DatePicker Grid.Column="1" Grid.Row="2" Name="dpNgaytradukien"/>
+                <DatePicker Grid.Column="1" Grid.Row="1" Name="dpNgaymuon"  Text="{Binding Path=SelectedDate,  StringFormat={}{0:dd-MM-yyyy}, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}"/>
+                <DatePicker Grid.Column="1" Grid.Row="2" Name="dpNgaytradukien" Text="{Binding Path=SelectedDate,  StringFormat={}{0:dd-MM-yyyy}, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}"/>
                 <!--<WrapPanel Grid.Column="1" Grid.Row="3">
                     <RadioButton Name="rdbduocmuon" Content="Được mượn" />
                     <RadioButton Name="rdbkhongduocmuon" Content="Không được mượn"  IsChecked="True"/>

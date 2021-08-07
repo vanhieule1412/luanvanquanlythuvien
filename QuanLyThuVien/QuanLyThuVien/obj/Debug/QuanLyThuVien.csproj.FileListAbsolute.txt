@@ -59,7 +59,6 @@ D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\PhieuMuon
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\PhieuTraWindow.g.cs
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\SachWindow.g.cs
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\SuachitietphieumuonWindow.g.cs
-D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\SuaPhieuTraWindow.g.cs
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\TaiKhoanDocGiaWindow.g.cs
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\TaiKhoanThuThuWindow.g.cs
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\TheDocGiaWindow.g.cs
@@ -83,7 +82,6 @@ D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\PhieuMuon
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\PhieuTraWindow.baml
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\SachWindow.baml
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\SuachitietphieumuonWindow.baml
-D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\SuaPhieuTraWindow.baml
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\TaiKhoanDocGiaWindow.baml
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\TaiKhoanThuThuWindow.baml
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\TheDocGiaWindow.baml
@@ -106,3 +104,5 @@ D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\PhieuMuon
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\PhieuMuonDocGiaWindow.baml
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\DanhSachPhieuMuonDocGiaWindow.g.cs
 D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\DanhSachPhieuMuonDocGiaWindow.baml
+D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\LichSuWindow.g.cs
+D:\luanvanquanlythuvien\QuanLyThuVien\QuanLyThuVien\obj\Debug\GiaoDien\LichSuWindow.baml

@@ -44,7 +44,12 @@ namespace QuanLyThuVien.GiaoDien
             cmbMasach.ItemsSource = dc.SACHes.ToList();
             cmbmataikhoan.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
             cmbthedocgia.ItemsSource = dc.THEDOCGIAs.ToList();
-            
+            DateTime ngaymuon = DateTime.Now;
+            dpNgaymuon.SelectedDate = ngaymuon;
+            DateTime ngaytra = ngaymuon.AddDays(30);
+            dpNgaytradukien.SelectedDate = ngaytra;
+
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -84,6 +89,7 @@ namespace QuanLyThuVien.GiaoDien
                 CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
                 ct.MaPhieuMuon = t.MaPhieuMuon;
                 ct.MaSach = t.MaSach;
+                ct.TienPhat = 0;
                 ct.TinhTrang = t.TinhTrang;
                 ct.SoLuongSachMuon  = t.SoLuongSachMuon;
                 x.CHITIETPHIEUMUONs.Add(ct);
@@ -131,8 +137,6 @@ namespace QuanLyThuVien.GiaoDien
                 temp = t;
                 break;
             }
-            //if (temp == null)
-            //{
             if (soluong == 0)
             {
                 CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();

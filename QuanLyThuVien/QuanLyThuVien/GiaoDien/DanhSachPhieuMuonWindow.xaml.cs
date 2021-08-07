@@ -33,9 +33,10 @@ namespace QuanLyThuVien.GiaoDien
             dgphieumuon.Items.SortDescriptions.Clear();
             dgphieumuon.Items.SortDescriptions.Add(new SortDescription("MaPhieuMuon", ListSortDirection.Descending));
             dgphieumuon.Items.Refresh();
-            var filteredsach = dc.PHIEUMUONs.Where(x => x.TrangThai == false);
-            dgphieumuon.ItemsSource = null;
-            dgphieumuon.ItemsSource = filteredsach.ToList();
+            dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
+            //var filteredsach = dc.PHIEUMUONs.Where(x => x.TrangThai == false);
+            //dgphieumuon.ItemsSource = null;
+            //dgphieumuon.ItemsSource = filteredsach.ToList();
 
         }
 

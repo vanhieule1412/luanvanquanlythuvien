@@ -90,9 +90,14 @@ namespace QuanLyThuVien.GiaoDien
                         formmain.tbltentaikhoan.Text = usename;
                         formmain.tblmataikhoan.Text = b.MaTaiKhoaiDocGia.ToString();
                         formmain.tbltenthuthu.Text = b.DOCGIA.TenDocGia;
+                        foreach (var a in dc.THEDOCGIAs)
+                        {
+                            formmain.tblthedocgia.Text = a.MaTheDocGia;
+                        }                        
                         formmain.btndangnhap.Visibility = Visibility.Collapsed;
                         formmain.mnduyetPM.Visibility = Visibility.Collapsed;
                         formmain.menu.Visibility = Visibility.Visible;
+                        formmain.mnlichsu.Visibility = Visibility.Visible;
                         formmain.menuquanly.Visibility = Visibility.Visible;
                         formmain.mnlapPM.Visibility = Visibility.Collapsed;
                         formmain.mnphieutra.Visibility = Visibility.Collapsed;

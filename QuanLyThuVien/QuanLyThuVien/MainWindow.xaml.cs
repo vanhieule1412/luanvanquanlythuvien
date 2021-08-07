@@ -20,11 +20,12 @@ namespace QuanLyThuVien
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    public enum LichSumain { hienthi }
     public partial class MainWindow : Window 
     {
-
+        
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
-      
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -270,6 +271,23 @@ namespace QuanLyThuVien
         private void Mnshutdown_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void Tblthedocgia_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Mnlichsu_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.LichSuWindow f = new GiaoDien.LichSuWindow();
+            f.ls = GiaoDien.LichSu.hienthi;
+            f.PHIEUMUON = dc.PHIEUMUONs.Find(tblthedocgia.Text);
+            this.Hide();
+            f.ShowDialog();
+            f.Close();
+            this.ShowDialog();
+           
         }
     }
 }

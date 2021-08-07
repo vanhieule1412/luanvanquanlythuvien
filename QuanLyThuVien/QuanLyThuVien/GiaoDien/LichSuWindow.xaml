@@ -1,0 +1,50 @@
+﻿<Window x:Class="QuanLyThuVien.GiaoDien.LichSuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
+        mc:Ignorable="d"
+        Title="LichSuWindow" Height="450" Width="800"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        >
+    <StackPanel>
+        <GroupBox Header="Lịch sử phiếu mượn">
+            <DataGrid Name="dgpmls" AutoGenerateColumns="False" Height="230" LoadingRowDetails="Dgpmls_LoadingRowDetails" CanUserAddRows="False" CanUserSortColumns="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã Phiếu Mượn" Binding="{Binding MaPhieuMuon}"/>
+                    <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon}"/>
+                    <DataGridTextColumn Header="Ngày trả dự kiến" Binding="{Binding NgayTraDukien}"/>
+                    <DataGridCheckBoxColumn Header="Trạng thái" Binding="{Binding TrangThai}"/>
+                    <DataGridTextColumn Header="Tiền phạt tổng" Binding="{Binding TienPhatTong}"/>
+                    <DataGridCheckBoxColumn Header="Đã trả" Binding="{Binding DaTra}"/>
+                    <DataGridTextColumn Header="Mã tài khoản thủ thư" Binding="{Binding MaTaiKhoai}"/>
+                    <DataGridTextColumn Header="Tên tài khoản thủ thư" Binding="{Binding TAIKHOANTHUTHU.TenTaiKhoai}"/>
+                    <DataGridTextColumn Header="Mã thẻ độc giả" Binding="{Binding MaTheDocGia}"/>
+                    <DataGridTextColumn Header="Tên độc giả" Binding="{Binding THEDOCGIA.TenDocGia}"/>
+                </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <DataGrid Name="dgCTPM" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}"/>
+                                    <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
+                                    <DataGridTextColumn Header="Tác Giả" Binding="{Binding TacGia}"/>
+                                    <DataGridTextColumn Header="Năm Xuất Bản" Binding="{Binding NamXuatBan}"/>
+                                    <DataGridTextColumn Header="Tình trạng" Binding="{Binding TinhTrang}"/>
+                                    <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat}"/>
+                                    <DataGridTextColumn Header="Tiền Phạt" Binding="{Binding TienPhat}"/>
+                                    <DataGridTextColumn Header="Số lượng sách mượn" Binding="{Binding SoLuongSachMuon}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+
+            </DataGrid>
+        </GroupBox>
+    </StackPanel>
+</Window>

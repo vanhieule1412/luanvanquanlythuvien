@@ -12,7 +12,7 @@
 
     <StackPanel>
         <Button HorizontalAlignment="Right" Name="btnback" Click="Btnback_Click">
-            <Image Name="img" Source="back.png" Width="24" Height="24" />
+            <Image Name="img" Source="back.png" Width="24" Height="24" Opacity="1" />
         </Button>
         <Grid>
             <Grid.ColumnDefinitions>
