@@ -109,11 +109,8 @@ namespace QuanLyThuVien
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-           
-          
-            dgtimkiem.ItemsSource = dc.SACHes.ToList();
-            
+        {          
+            dgtimkiem.ItemsSource = dc.SACHes.ToList();   
         }
 
         private void Btnthedocgia_Click(object sender, RoutedEventArgs e)
@@ -165,7 +162,6 @@ namespace QuanLyThuVien
             }
             else
             {
-
                 dgtimkiem.ItemsSource = dc.SACHes.ToList();
             }
         }
@@ -182,18 +178,12 @@ namespace QuanLyThuVien
         private void Btndangxuat_Click(object sender, RoutedEventArgs e)
         {
             tbltentaikhoan.Text = null;
-            tbltenthuthu.Text = null;
             menu.Visibility = Visibility.Collapsed;
             btndangnhap.Visibility = Visibility.Visible;
             menuquanly.Visibility = Visibility.Collapsed;
         }
 
         private void Dgtimkiem_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void Tbltentaikhoan_TargetUpdated(object sender, DataTransferEventArgs e)
         {
 
         }
@@ -215,36 +205,6 @@ namespace QuanLyThuVien
             f.Close();
             this.ShowDialog();
         }
-        private void Tbltenthuthu_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            tbltenthuthu.IsEnabled = true;
-            string ma = tblmataikhoan.Text;
-            THUTHU tHUTHU = dc.THUTHUs.Find(ma);
-            if (ma != null)
-            {
-                tHUTHU.TenThuThu = tbltenthuthu.Text;
-                dc.SaveChanges();
-            }
-        }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            tbltenthuthu.IsEnabled = true;
-            btnluu.Visibility = Visibility.Visible;
-           
-        }
-
-        private void Btnluu_Click(object sender, RoutedEventArgs e)
-        {
-            TAIKHOANTHUTHU tAIKHOANTHUTHU = dc.TAIKHOANTHUTHUs.Find(int.Parse(tblmataikhoan.Text));
-            if (tblmataikhoan.Text != null)
-            {
-                tAIKHOANTHUTHU.THUTHU.TenThuThu = tbltenthuthu.Text;
-                dc.SaveChanges();
-            }
-            tbltenthuthu.IsEnabled = false;
-            btnluu.Visibility = Visibility.Collapsed;
-        }
 
         private void MnduyetPM_Click(object sender, RoutedEventArgs e)
         {
@@ -255,10 +215,7 @@ namespace QuanLyThuVien
             this.ShowDialog();
         }
 
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+       
 
         private void btnlapPMDG_Click(object sender, RoutedEventArgs e)
         {
@@ -271,23 +228,46 @@ namespace QuanLyThuVien
         private void Mnshutdown_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void Tblthedocgia_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        }     
         private void Mnlichsu_Click(object sender, RoutedEventArgs e)
         {
             GiaoDien.LichSuWindow f = new GiaoDien.LichSuWindow();
             f.ls = GiaoDien.LichSu.hienthi;
-            f.PHIEUMUON = dc.PHIEUMUONs.Find(tblthedocgia.Text);
+            f.HIEUMUON = dc.PHIEUMUONs.Find(tblthedocgia.Text);
             this.Hide();
             f.ShowDialog();
             f.Close();
             this.ShowDialog();
            
+        }
+        private void Mnlichsutra_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.LichsutraWindow f = new GiaoDien.LichsutraWindow();
+            f.PHIEUMUON = dc.PHIEUMUONs.Find(tblthedocgia.Text);
+            this.Hide();
+            f.ShowDialog();
+            f.Close();
+            this.ShowDialog();
+        }
+
+        private void Mnsuattcanhan_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.suathongtincanhanWindow f = new GiaoDien.suathongtincanhanWindow();
+            f.TAIKHOANDOCGIA = dc.TAIKHOANDOCGIAs.Find(int.Parse(tblmataikhoan.Text));
+            this.Hide();
+            f.ShowDialog();
+            f.Close();
+            this.ShowDialog();
+        }
+
+        private void Mnsuattcanhanthuthu_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.SuathongtincanhanthuthuWindow f = new GiaoDien.SuathongtincanhanthuthuWindow();
+            f.TAIKHOANTHUTHU = dc.TAIKHOANTHUTHUs.Find(int.Parse(tblmataikhoan.Text));
+            this.Hide();
+            f.ShowDialog();
+            f.Close();
+            this.ShowDialog();
         }
     }
 }

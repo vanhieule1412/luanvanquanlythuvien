@@ -88,6 +88,9 @@
     <Compile Include="GiaoDien\KhuWindow.xaml.cs">
       <DependentUpon>KhuWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GiaoDien\LichsutraWindow.xaml.cs">
+      <DependentUpon>LichsutraWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GiaoDien\LichSuWindow.xaml.cs">
       <DependentUpon>LichSuWindow.xaml</DependentUpon>
     </Compile>
@@ -105,6 +108,12 @@
     </Compile>
     <Compile Include="GiaoDien\SuachitietphieumuonWindow.xaml.cs">
       <DependentUpon>SuachitietphieumuonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\SuathongtincanhanthuthuWindow.xaml.cs">
+      <DependentUpon>SuathongtincanhanthuthuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoDien\suathongtincanhanWindow.xaml.cs">
+      <DependentUpon>suathongtincanhanWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GiaoDien\TaiKhoanDocGiaWindow.xaml.cs">
       <DependentUpon>TaiKhoanDocGiaWindow.xaml</DependentUpon>
@@ -185,6 +194,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GiaoDien\LichsutraWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GiaoDien\LichSuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -214,6 +227,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GiaoDien\SuachitietphieumuonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\SuathongtincanhanthuthuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\suathongtincanhanWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

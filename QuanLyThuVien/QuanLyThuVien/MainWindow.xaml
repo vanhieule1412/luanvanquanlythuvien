@@ -13,7 +13,7 @@
     <StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -41,8 +41,11 @@
                             <TextBlock Name="tbltentaikhoan"/>
                         </MenuItem.Header>
                     </MenuItem>
-                    <MenuItem Header="Mã tài khoản ">
+                    <MenuItem Header="Mã tài khoản " Name="mnmataikhoan">
                         <TextBlock Name="tblmataikhoan"/>
+                    </MenuItem>
+                    <MenuItem Header="Thẻ độc giả" Visibility="Visible" Name="mnthedocgia">
+                        <TextBlock Name="tblthedocgia"/>
                     </MenuItem>
                     <MenuItem Header="Đăng xuất" Click="Btndangxuat_Click">
                         <MenuItem.Icon>
@@ -50,25 +53,13 @@
                         </MenuItem.Icon>
                         <!--<Button Name="btndangxuat" Content="Đăng xuất" Click="Btndangxuat_Click" />-->
                     </MenuItem>
-                    <MenuItem Click="MenuItem_Click">
-                        <MenuItem.Header>
-                            <!--<TextBlock Name="tbltenthuthu"/>-->
-                            <TextBox Name="tbltenthuthu" IsEnabled="False" />
-                        </MenuItem.Header>
-                    </MenuItem>
-                    <MenuItem Click="Tblthedocgia_Click" >
-                        <MenuItem.Header>
-                            <!--<TextBlock Name="tbltenthuthu"/>-->
-                            <TextBox Name="tblthedocgia" IsEnabled="False" />
-                        </MenuItem.Header>
-                    </MenuItem>
                     <MenuItem Header="ShutDown" Name="mnshutdown" Click="Mnshutdown_Click">
                         <MenuItem.Icon>
                             <Image Source="shut.png" Width="10" Height="10"/>
                         </MenuItem.Icon>
                     </MenuItem>
                     
-                    <Button Name="btnluu" Content="Lưu" Visibility="Collapsed" Click="Btnluu_Click"/>
+                  
                 </MenuItem>
             </Menu>
             <DockPanel Grid.Column="0"  Name="menuquanly" HorizontalAlignment="Left" Visibility="Collapsed">
@@ -96,8 +87,14 @@
                         <MenuItem Name="mnlapPM" Header="Lập phiếu mượn" Click="Btnphieumuon_Click" Visibility="Visible"/>
                         <MenuItem Name="mnlapPMDG" Header="Lập phiếu mượn" Click="btnlapPMDG_Click" Visibility="Visible"/>
                     </MenuItem>
-                    <MenuItem Header="Lịch sử mượn" Name="mnlichsu" Visibility="Collapsed" Click="Mnlichsu_Click"/>
+                    <MenuItem Visibility="Collapsed" Header="Lịch Sử" Name="mnlistlichsu">
+                        <MenuItem Header="Lịch sử mượn" Name="mnlichsu" Visibility="Collapsed" Click="Mnlichsu_Click"/>
+                        <MenuItem Header="Phiếu đã trả" Name="mnlichsutra" Visibility="Collapsed" Click="Mnlichsutra_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Sửa thông tin cá nhân" Click="Mnsuattcanhanthuthu_Click" Name="mnsuattcanhanthuthu" Visibility="Collapsed"/>
+                    <MenuItem Header="Sửa thông tin cá nhân" Click="Mnsuattcanhan_Click" Name="mnsuattcanhan" Visibility="Collapsed"/>
                     <MenuItem Header="Phiếu trả" Click="Btnphieutra_Click" Name="mnphieutra" Visibility="Visible"/>
+                   
                 </Menu>
             </DockPanel>
         </Grid>

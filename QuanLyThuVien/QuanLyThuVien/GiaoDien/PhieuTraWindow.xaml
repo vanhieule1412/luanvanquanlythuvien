@@ -56,11 +56,14 @@
                     <TextBlock Text="Tên độc giả: "/>
                     <TextBlock Text="{Binding ElementName=cmbMaDocGia,Path=SelectedItem.TenDocGia}"/>
                 </WrapPanel>
+                <WrapPanel Grid.Column="2" Grid.Row="4" HorizontalAlignment="Center">
+                    <CheckBox Name="ckbchopheptra" Content="Cho phép trả" Click="Ckbchopheptra_Click"/>
+                </WrapPanel>
                 <TextBox Grid.Column="1" Grid.Row="0" Name="txtmaphieumuon"/>
             </Grid>
         </GroupBox>
         <Button Grid.Column="0" Grid.Row="0" Name="btnlapphieutra" Content="Thông tin chi tiết của phiếu mượn" Visibility="Visible" Click="Btnlapphieutra_Click"/>
-        <Button Grid.Column="0" Grid.Row="0" Name="btnxacnhan" Content="Xác nhận đã trả" Visibility="Collapsed"/>
+        <Button Grid.Column="0" Grid.Row="0" Name="btnxacnhan" Content="Xác nhận đã trả" Visibility="Collapsed" Click="Btnxacnhan_Click"/>
    
         
         <GroupBox Header="Danh sách phiếu trả">

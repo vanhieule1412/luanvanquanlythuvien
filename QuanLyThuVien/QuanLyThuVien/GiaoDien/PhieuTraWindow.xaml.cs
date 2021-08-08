@@ -65,24 +65,14 @@ namespace QuanLyThuVien.GiaoDien
             PHIEUMUON s = dgphieutra.SelectedItem as PHIEUMUON;
             if (s != null)
             {
-                
+             
                 foreach (var b in dc.CHITIETPHIEUMUONs.Where(x => x.MaPhieuMuon == s.MaPhieuMuon))
                 {
                     double tong = b.TienPhat.Value + b.TienPhat.Value;
                     if (b.NgayTraThat != null && b.TienPhat != 0 && s.TienPhatTong != tong)
                     {
-                        btnlapphieutra.Visibility = Visibility.Collapsed;
-                        btnxacnhan.Visibility = Visibility.Visible;
                         s.TienPhatTong += b.TienPhat.Value;
                         txttienphattong.Text = s.TienPhatTong.ToString();
-
-                    }
-                    else if (b.NgayTraThat == null && b.TienPhat == 0 && s.TienPhatTong == tong)
-                    {
-                        btnlapphieutra.Visibility = Visibility.Visible;
-                        btnxacnhan.Visibility = Visibility.Collapsed;
-                        txttienphattong.Text = s.TienPhatTong.ToString();
-
                     }
                     else
                     {
@@ -125,6 +115,33 @@ namespace QuanLyThuVien.GiaoDien
             f.PHIEUMUON = dc.PHIEUMUONs.Find(dgphieutra.SelectedValue.ToString());            
             this.Close();
             f.ShowDialog();      
+        }
+
+        private void Btnxacnhan_Click(object sender, RoutedEventArgs e)
+        {
+            string mapt = txtmaphieumuon.Text;
+            PHIEUMUON pHIEUMUON = dc.PHIEUMUONs.Find(mapt);
+            if (mapt != null)
+            {
+                pHIEUMUON.DaTra = ckbdatra.IsChecked;
+                dc.SaveChanges();
+                MessageBox.Show("Trả thành công");
+            }
+            hienthi();
+        }
+
+        private void Ckbchopheptra_Click(object sender, RoutedEventArgs e)
+        {
+            if (ckbchopheptra.IsChecked == true)
+            {
+                btnlapphieutra.Visibility = Visibility.Collapsed;
+                btnxacnhan.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnlapphieutra.Visibility = Visibility.Visible;
+                btnxacnhan.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

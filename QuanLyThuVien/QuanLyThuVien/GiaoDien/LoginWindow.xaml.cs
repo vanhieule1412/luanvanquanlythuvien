@@ -42,9 +42,10 @@ namespace QuanLyThuVien.GiaoDien
                 MainWindow mainf = new MainWindow();
                 this.Close();
                 mainf.tbltentaikhoan.Text = "admin";
-                mainf.tbltenthuthu.Text = "admin";
                 mainf.btndangnhap.Visibility = Visibility.Collapsed;
                 mainf.menu.Visibility = Visibility.Visible;
+                mainf.mnthedocgia.Visibility = Visibility.Collapsed;
+                mainf.mnmataikhoan.Visibility = Visibility.Collapsed;
                 mainf.menuquanly.Visibility = Visibility.Visible;
                 mainf.mnthuthu.Visibility = Visibility.Visible;
                 mainf.mnphieumuon.Visibility = Visibility.Collapsed;
@@ -62,18 +63,17 @@ namespace QuanLyThuVien.GiaoDien
                         MainWindow formmain = new MainWindow();
                         this.Close();
                         formmain.tbltentaikhoan.Text = usename;
-                        formmain.tblmataikhoan.Text = a.MaTaiKhoai.ToString();
-                        formmain.tbltenthuthu.Text = a.THUTHU.TenThuThu;
+                        formmain.tblmataikhoan.Text = a.MaTaiKhoai.ToString();                      
                         formmain.btndangnhap.Visibility = Visibility.Collapsed;
                         formmain.menu.Visibility = Visibility.Visible;
+                        formmain.mnthedocgia.Visibility = Visibility.Collapsed;
+                        formmain.mnsuattcanhanthuthu.Visibility = Visibility.Visible;
                         formmain.menuquanly.Visibility = Visibility.Visible;
                         formmain.mndocgia.Visibility = Visibility.Visible;
                         formmain.mnsach.Visibility = Visibility.Visible;
                         formmain.mnvitri.Visibility = Visibility.Visible;
                         formmain.mnlapPMDG.Visibility = Visibility.Collapsed;
-                        formmain.ShowDialog();
-                      
-                        
+                        formmain.ShowDialog();                        
                     }
                     else
                     {
@@ -89,14 +89,17 @@ namespace QuanLyThuVien.GiaoDien
                         this.Close();
                         formmain.tbltentaikhoan.Text = usename;
                         formmain.tblmataikhoan.Text = b.MaTaiKhoaiDocGia.ToString();
-                        formmain.tbltenthuthu.Text = b.DOCGIA.TenDocGia;
+                    
                         foreach (var a in dc.THEDOCGIAs)
-                        {
+                        {                           
                             formmain.tblthedocgia.Text = a.MaTheDocGia;
                         }                        
                         formmain.btndangnhap.Visibility = Visibility.Collapsed;
                         formmain.mnduyetPM.Visibility = Visibility.Collapsed;
                         formmain.menu.Visibility = Visibility.Visible;
+                        formmain.mnlistlichsu.Visibility = Visibility.Visible;
+                        formmain.mnlichsutra.Visibility = Visibility.Visible;
+                        formmain.mnsuattcanhan.Visibility = Visibility.Visible;
                         formmain.mnlichsu.Visibility = Visibility.Visible;
                         formmain.menuquanly.Visibility = Visibility.Visible;
                         formmain.mnlapPM.Visibility = Visibility.Collapsed;

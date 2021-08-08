@@ -15,45 +15,32 @@ using System.Windows.Shapes;
 namespace QuanLyThuVien.GiaoDien
 {
     /// <summary>
-    /// Interaction logic for LichSuWindow.xaml
+    /// Interaction logic for LichsutraWindow.xaml
     /// </summary>
-    public enum LichSu { hienthi }
-    public partial class LichSuWindow : Window
+    public partial class LichsutraWindow : Window
     {
-
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
-        public PHIEUMUON HIEUMUON;
-        public LichSu ls;
-        public LichSuWindow()
+        public PHIEUMUON PHIEUMUON;
+        public LichsutraWindow()
         {
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            if (ls == LichSu.hienthi)
-            {
-                var filteredsach = dc.PHIEUMUONs.Where(x => x.MaTheDocGia.Contains(mainWindow.tblthedocgia.Text));
-                //var filteredsach = dc.PHIEUMUONs.Where(x => x.MaTheDocGia.Contains(HIEUMUON.MaTheDocGia));
-                
-                if (filteredsach != null)
-                {
-                    dgpmls.ItemsSource = filteredsach.ToList();
-                }
-                else
-                {
-                    dgpmls.ItemsSource = null;
-                }
-            }
-            
+            //MainWindow mainWindow = new MainWindow();
+            //var filteredsach = dc.PHIEUMUONs.Where(x => x.MaTheDocGia.Contains(mainWindow.tblthedocgia.Text));
+            var filteredsach = dc.PHIEUMUONs.Where(x => x.MaTheDocGia == PHIEUMUON.MaTheDocGia);
+            filteredsach = dc.PHIEUMUONs.Where(x => x.DaTra.Value == true);
+            dgptls.ItemsSource = null;
+            dgptls.ItemsSource = filteredsach.ToList();
         }
 
-        private void Dgpmls_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
+        private void Dgptls_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
         {
-            HIEUMUON = e.Row.Item as PHIEUMUON;
+            PHIEUMUON = e.Row.Item as PHIEUMUON;
             DataGrid dg = e.DetailsElement.FindName("dgCTPM") as DataGrid;
-            var kq = HIEUMUON.CHITIETPHIEUMUONs.ToList().Select(x => new {
+            var kq = PHIEUMUON.CHITIETPHIEUMUONs.ToList().Select(x => new {
                 MaSach = x.MaSach,
                 TenSach = x.SACH.TenSach,
                 TacGia = x.SACH.TacGia,
