@@ -30,5 +30,13 @@ namespace QuanLyThuVien.GiaoDien
             dgtaikhoandocgia.ItemsSource = dc.TAIKHOANDOCGIAs.ToList();
 
         }
+
+        private void BtnTaoTheDocGia_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.TheDocGiaWindow f = new TheDocGiaWindow();
+            f.TAIKHOANDOCGIA = dc.TAIKHOANDOCGIAs.Find(int.Parse(dgtaikhoandocgia.SelectedValue.ToString()));         
+            f.ShowDialog();
+            f.Close();
+        }
     }
 }

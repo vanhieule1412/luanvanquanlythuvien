@@ -25,7 +25,7 @@ namespace QuanLyThuVien
     {
         
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
-        
+        public TAIKHOANTHUTHU TAIKHOANTHUTHU;
         public MainWindow()
         {
             InitializeComponent();
@@ -115,7 +115,7 @@ namespace QuanLyThuVien
 
         private void Btnthedocgia_Click(object sender, RoutedEventArgs e)
         {
-            GiaoDien.TheDocGiaWindow fthedocgia = new GiaoDien.TheDocGiaWindow();
+            GiaoDien.CapNhatTheDocGiaWindow fthedocgia = new GiaoDien.CapNhatTheDocGiaWindow();
             this.Hide();
             fthedocgia.ShowDialog();
             fthedocgia.Close();

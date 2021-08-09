@@ -35,7 +35,7 @@ namespace QuanLyThuVien.GiaoDien
             DateTime ngaytra = ngaymuon.AddDays(30);
             dpNgaytradukien.SelectedDate = ngaytra;
         }
-        string PhatSinhTuDong(UngDungQuanLyThuVienEntities dc)
+        private string PhatSinhTuDong(UngDungQuanLyThuVienEntities dc)
         {
             string s = "";
             var c = dc.PHIEUMUONs.Count();

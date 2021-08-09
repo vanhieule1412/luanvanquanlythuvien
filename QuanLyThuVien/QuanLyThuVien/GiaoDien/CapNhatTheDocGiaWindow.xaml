@@ -1,12 +1,13 @@
-﻿<Window x:Class="QuanLyThuVien.GiaoDien.TheDocGiaWindow"
+﻿<Window x:Class="QuanLyThuVien.GiaoDien.CapNhatTheDocGiaWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
         mc:Ignorable="d"
-        Title="TheDocGiaWindow" Height="450" Width="900"
-        Loaded="Window_Loaded" WindowStartupLocation="CenterScreen"
+        Title="CapNhatTheDocGiaWindow" Height="450" Width="800"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
         >
     <StackPanel>
         <Grid>
@@ -24,12 +25,14 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Mã thẻ độc giả" Name="tblmathe"/>
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Ngày tạo"/>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Ngày hết hạn"/>
             <TextBlock Grid.Column="0" Grid.Row="3" Text="Tên độc giả"/>
             <TextBlock Grid.Column="0" Grid.Row="4" Text="Năm sinh"/>
             <TextBlock Grid.Column="0" Grid.Row="5" Text="Mã tài khoản độc giả"/>
             <TextBlock Grid.Column="0" Grid.Row="6" Text="Tên tài khoản thủ thư"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Name="txtmathedocgia"/>
             <DatePicker Grid.Column="1" Grid.Row="1" Name="dtpngaytao"/>
             <DatePicker Grid.Column="1" Grid.Row="2" Name="dtpngayhethan"/>
             <TextBox Grid.Column="1" Grid.Row="3" Name="txttendocgia"/>
@@ -40,9 +43,12 @@
                 <TextBlock Text="Mã tài khoản thủ thư: "/>
                 <TextBlock Text="{Binding ElementName=cmbmataikhoanthuthu,Path=SelectedItem.MaTaiKhoai}"/>
             </WrapPanel>
+            <WrapPanel Grid.Row="0" Grid.Column="2">
+                <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click" />
+                <RadioButton Content="Xóa" Name="rdoXoa" Click="RdoXoa_Click" />
+            </WrapPanel>
         </Grid>
-        <Button Content="Tạo" Name="btntaotaikhoan" Click="Btntaotaikhoan_Click"/>
-        <!--<Button Content="Cập nhật" Name="btncapnhat" Click="Btncapnhat_Click" Visibility="Collapsed"/>
+        <Button Content="Cập nhật" Name="btncapnhat" Click="Btncapnhat_Click" />
         <DataGrid Name="dgthedocgia" AutoGenerateColumns="False" SelectedValuePath="MaTheDocGia" SelectionChanged="Dgthedocgia_SelectionChanged" CanUserAddRows="False" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã thẻ độc giả" Binding="{Binding MaTheDocGia}"/>
@@ -54,7 +60,7 @@
                 <DataGridTextColumn Header="Tên tài khoản độc giả" Binding="{Binding TAIKHOANDOCGIA.TenTaiKhoan}"/>
                 <DataGridTextColumn Header="Mã tài khoản thủ thư" Binding="{Binding TAIKHOANTHUTHU.MaTaiKhoai}"/>
                 <DataGridTextColumn Header="Tên tài khoản thủ thư" Binding="{Binding TAIKHOANTHUTHU.TenTaiKhoai}"/>
-            </DataGrid.Columns>          
-        </DataGrid>-->
+            </DataGrid.Columns>
+        </DataGrid>
     </StackPanel>
 </Window>

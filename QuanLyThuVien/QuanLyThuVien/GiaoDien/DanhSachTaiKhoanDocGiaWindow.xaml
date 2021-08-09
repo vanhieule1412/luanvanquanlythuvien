@@ -11,7 +11,7 @@
         >
     <StackPanel>
         <GroupBox Header="Danh sách tài khoản độc giả">
-            <DataGrid Name="dgtaikhoandocgia" AutoGenerateColumns="False">
+            <DataGrid Name="dgtaikhoandocgia" AutoGenerateColumns="False" CanUserAddRows="False" SelectedValuePath="MaTaiKhoaiDocGia">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã tài khoản độc giả" Binding="{Binding MaTaiKhoaiDocGia}"/>
                     <DataGridTextColumn Header="Tên tài khoản độc giả" Binding="{Binding TenTaiKhoan}"/>
@@ -20,6 +20,13 @@
                     <DataGridTextColumn Header="Mã độc giả" Binding="{Binding MaDocGia}"/>
                     <DataGridTextColumn Header="Tên độc giả" Binding="{Binding DOCGIA.TenDocGia}"/>
                     <DataGridTextColumn Header="Mã tài khoản của thủ thư" Binding="{Binding MaTaiKhoai}"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btnTaoTheDocGia" Content="Tạo thẻ" Click="BtnTaoTheDocGia_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
