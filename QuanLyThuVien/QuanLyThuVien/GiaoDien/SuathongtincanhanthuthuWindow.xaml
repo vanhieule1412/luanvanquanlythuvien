@@ -34,7 +34,8 @@
             <TextBox Grid.Column="1" Grid.Row="0" Name="txtsodienthoai" />
             <TextBox Grid.Column="1" Grid.Row="1" Name="txtemail" />
             <TextBox Grid.Column="1" Grid.Row="2" Name="txtcmnd" />
-            <TextBox Grid.Column="1" Grid.Row="3" Name="txtmatkhua"/>
+            <Button Grid.Column="1" Grid.Row="3" Content="Đổi mật khẩu" Background="White" FontStyle="Italic" FontWeight="Bold" Click="Button_Click" Name="btndoimatkhau"/>
+            <PasswordBox Grid.Column="1" Grid.Row="3" Name="txtmatkhua" Visibility="Collapsed" />
             <Label Grid.Column="1" Grid.Row="4" />
             <Button Grid.Column="1" Grid.Row="5" Name="btnluu" Content="Lưu" Click="Btnluu_Click"/>
         </Grid>

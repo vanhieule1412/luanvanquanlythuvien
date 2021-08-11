@@ -5,56 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
         mc:Ignorable="d"
-        Title="NhaXuatBanWindow" Height="450" Width="800" Loaded="Window_Loaded"
+        Title="Nhà xuất bản" Height="450" Width="800" Loaded="Window_Loaded"
         WindowStartupLocation="CenterScreen"
         >
-    <GroupBox>
-        <StackPanel>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Column="0" Grid.Row="2" Text="Mã nhà xuất bản"/>
-                <TextBlock Grid.Column="0" Grid.Row="3" Text="Tên nhà xuất bản"/>
-                <TextBlock Grid.Column="0" Grid.Row="4" Text="Địa chỉ"/>
-                <TextBlock Grid.Column="0" Grid.Row="5" Text="Email"/>
-                <TextBlock Grid.Column="0" Grid.Row="6" Text="Địa chỉ Website"/>
-                <TextBlock Grid.Column="0" Grid.Row="7" Text="Số điện thoại"/>
-                <TextBox Grid.Column="1" Grid.Row="2" Name="txtmanhaxuatban"/>
-                <TextBox Grid.Column="1" Grid.Row="3" Name="txttennhaxuatban"/>
-                <TextBox Grid.Column="1" Grid.Row="4" Name="txtdiachi"/>
-                <TextBox Grid.Column="1" Grid.Row="5" Name="txtemail"/>
-                <TextBox Grid.Column="1" Grid.Row="6" Name="txtdiachiweb"/>
-                <TextBox Grid.Column="1" Grid.Row="7" Name="txtsodienthoai"/>
-                <WrapPanel Grid.Row="1" Grid.Column="2">
-                    <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click"/>
-                    <RadioButton Content="Sửa" IsChecked="True" Name="rdoSua" Click="RdoSua_Click" />
-                    <RadioButton Content="Xóa" IsChecked="True" Name="rdoXoa" Click="RdoXoa_Click"/>
-                </WrapPanel>
-            </Grid>
-            <Button Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
-            <DataGrid Name="dgNhaXuatBan" AutoGenerateColumns="False" SelectedValuePath="MaNhaXuatBan" SelectionChanged="DgNhaXuatBan_SelectionChanged" CanUserAddRows="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Mã nhà xuất bản" Binding="{Binding MaNhaXuatBan}"/>
-                    <DataGridTextColumn Header="Tên nhà xuất bản" Binding="{Binding TenNhaXuatBan}"/>
-                    <DataGridTextColumn Header="Địa chỉ" Binding="{Binding DiaChi}"/>
-                    <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
-                    <DataGridTextColumn Header="Địa chỉ Website" Binding="{Binding DiaChiWebsite}"/>
-                    <DataGridTextColumn Header="Số Điện Thoại" Binding="{Binding SoDienThoai}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </StackPanel>
-    </GroupBox>
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="2" Text="Mã nhà xuất bản"/>
+            <TextBlock Grid.Column="0" Grid.Row="3" Text="Tên nhà xuất bản"/>
+            <TextBlock Grid.Column="0" Grid.Row="4" Text="Địa chỉ"/>
+            <TextBlock Grid.Column="0" Grid.Row="5" Text="Email"/>
+            <TextBlock Grid.Column="0" Grid.Row="6" Text="Địa chỉ Website"/>
+            <TextBlock Grid.Column="0" Grid.Row="7" Text="Số điện thoại"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Name="txtmanhaxuatban"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Name="txttennhaxuatban"/>
+            <TextBox Grid.Column="1" Grid.Row="4" Name="txtdiachi"/>
+            <TextBox Grid.Column="1" Grid.Row="5" Name="txtemail"/>
+            <TextBox Grid.Column="1" Grid.Row="6" Name="txtdiachiweb"/>
+            <TextBox Grid.Column="1" Grid.Row="7" Name="txtsodienthoai"/>
+            <WrapPanel Grid.Row="1" Grid.Column="2">
+                <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click"/>
+                <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click" />
+                <RadioButton Content="Xóa" Name="rdoXoa" Click="RdoXoa_Click"/>
+            </WrapPanel>
+        </Grid>
+        <Button Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
+        <DataGrid Name="dgNhaXuatBan" AutoGenerateColumns="False" SelectedValuePath="MaNhaXuatBan" SelectionChanged="DgNhaXuatBan_SelectionChanged" CanUserAddRows="False" Width="805">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã nhà xuất bản" Binding="{Binding MaNhaXuatBan}"/>
+                <DataGridTextColumn Header="Tên nhà xuất bản" Binding="{Binding TenNhaXuatBan}"/>
+                <DataGridTextColumn Header="Địa chỉ" Binding="{Binding DiaChi}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Địa chỉ Website" Binding="{Binding DiaChiWebsite}"/>
+                <DataGridTextColumn Header="Số Điện Thoại" Binding="{Binding SoDienThoai}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
 </Window>

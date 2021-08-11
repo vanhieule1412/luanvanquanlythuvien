@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace QuanLyThuVien.GiaoDien
 {
@@ -32,7 +33,37 @@ namespace QuanLyThuVien.GiaoDien
         {
 
         }
+        public string Encrypt(string decrypted)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
 
+            //compute hash from the bytes of text  
+            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(decrypted));
+
+            //get hash result after compute it  
+            byte[] result = md5.Hash;
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                //change it into 2 hexadecimal digits  
+                //for each byte  
+                strBuilder.Append(result[i].ToString("x2"));
+            }
+
+            return strBuilder.ToString();
+        }
+        public string Decrypt(string encrypted)
+        {
+            var encoder = new System.Text.UTF8Encoding();
+            System.Text.Decoder utf8Decode = encoder.GetDecoder();
+            byte[] todecodeByte = Convert.FromBase64String(encrypted);
+            int charCount = utf8Decode.GetCharCount(todecodeByte, 0, todecodeByte.Length);
+            char[] decodedChar = new char[charCount];
+            utf8Decode.GetChars(todecodeByte, 0, todecodeByte.Length, decodedChar, 0);
+            string result = new String(decodedChar);
+            return result;
+        }
         private void Btndangnhap_Click(object sender, RoutedEventArgs e)
         {
            
@@ -56,9 +87,9 @@ namespace QuanLyThuVien.GiaoDien
             {
                 foreach (var a in dc.TAIKHOANTHUTHUs)
                 {
-                    if (txttaikhoan.Text == a.TenTaiKhoai && txtmatkhau.Password == a.MatKhau)
+                    var mk = Encrypt(txtmatkhau.Password);
+                    if (txttaikhoan.Text == a.TenTaiKhoai && mk == a.MatKhau)
                     {
-
                         usename = txttaikhoan.Text;
                         MainWindow formmain = new MainWindow();
                         this.Close();
@@ -75,14 +106,11 @@ namespace QuanLyThuVien.GiaoDien
                         formmain.mnlapPMDG.Visibility = Visibility.Collapsed;
                         formmain.ShowDialog();                        
                     }
-                    else
-                    {
-                        break;
-                    }
                 }
                 foreach (var b in dc.TAIKHOANDOCGIAs)
                 {
-                    if (txttaikhoan.Text == b.TenTaiKhoan && txtmatkhau.Password == b.MatKhau)
+                    var mk = Encrypt(txtmatkhau.Password);
+                    if (txttaikhoan.Text == b.TenTaiKhoan && mk == b.MatKhau)
                     {
                         usename = txttaikhoan.Text;
                         MainWindow formmain = new MainWindow();
@@ -105,10 +133,6 @@ namespace QuanLyThuVien.GiaoDien
                         formmain.mnlapPM.Visibility = Visibility.Collapsed;
                         formmain.mnphieutra.Visibility = Visibility.Collapsed;
                         formmain.ShowDialog();
-                    }
-                    else
-                    {
-                        break;
                     }
                 }
             }

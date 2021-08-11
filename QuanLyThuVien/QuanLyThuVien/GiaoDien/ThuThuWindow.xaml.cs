@@ -44,19 +44,36 @@ namespace QuanLyThuVien.GiaoDien
             txtmathuthu.IsReadOnly = true;
             txttenthuthu.IsReadOnly = true;
         }
+        private string PhatSinhTuDong(UngDungQuanLyThuVienEntities dc)
+        {
+            string s = "";
+            var c = dc.PHIEUMUONs.Count();
+            if (c == 0)
+                s = "TT01";
+            else
+            {
+                s = dc.PHIEUMUONs.ToList().ElementAt(c - 1).MaPhieuMuon;
+                string sso = s.Substring(2);
+                var so = int.Parse(sso);
+                so++;
+                s = "TT" + so;
+            }
+            return s;
+        }
 
         private void Btnthuchien_Click(object sender, RoutedEventArgs e)
         {
             if (rdoThem.IsChecked == true)
             {
-                THUTHU hUTHU = dc.THUTHUs.Find(txtmathuthu.Text);
-                if (hUTHU != null)
-                {
-                    MessageBox.Show("Trùng mã");
-                    return;
-                }
+                //THUTHU hUTHU = dc.THUTHUs.Find(txtmathuthu.Text);
+                //if (hUTHU != null)
+                //{
+                //    MessageBox.Show("Trùng mã");
+                //    return;
+                //}
+                string s = PhatSinhTuDong(dc);
                 THUTHU tHUTHU = new THUTHU();
-                tHUTHU.MaThuThu = txtmathuthu.Text;
+                tHUTHU.MaThuThu = s;
                 tHUTHU.TenThuThu = txttenthuthu.Text;            
                 tHUTHU.NamSinh = dpnamsinh.SelectedDate.Value;
                 tHUTHU.SoDienThoai = int.Parse(txtsodienthoai.Text);

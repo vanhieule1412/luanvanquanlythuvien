@@ -33,19 +33,30 @@ namespace QuanLyThuVien.GiaoDien
         {
             hienthi();
         }
-
+        private string PhatSinhTuDong(UngDungQuanLyThuVienEntities dc)
+        {
+            string s = "";
+            var c = dc.PHIEUMUONs.Count();
+            if (c == 0)
+                s = "DG01";
+            else
+            {
+                s = dc.PHIEUMUONs.ToList().ElementAt(c - 1).MaPhieuMuon;
+                string sso = s.Substring(2);
+                var so = int.Parse(sso);
+                so++;
+                s = "DG" + so;
+            }
+            return s;
+        }
         private void Btnthuchien_Click(object sender, RoutedEventArgs e)
         {
             if (rdoThem.IsChecked == true)
             {
-                DOCGIA oCGIA = dc.DOCGIAs.Find(txtmadocgia.Text);
-                if (oCGIA != null)
-                {
-                    MessageBox.Show("Trùng mã");
-                    return;
-                }
+                //DOCGIA oCGIA = dc.DOCGIAs.Find(txtmadocgia.Text);
+                string s = PhatSinhTuDong(dc);
                 DOCGIA dOCGIA = new DOCGIA();
-                dOCGIA.MaDocGia = txtmadocgia.Text;
+                dOCGIA.MaDocGia = s;
                 dOCGIA.TenDocGia = txttendocgia.Text;
                 dOCGIA.NamSinh = dtpnamsinh.SelectedDate.Value;
                 dOCGIA.SoDienThoai = int.Parse(txtsodienthoai.Text);

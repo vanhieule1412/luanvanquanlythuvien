@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,7 +27,18 @@ namespace QuanLyThuVien.GiaoDien
         {
             InitializeComponent();
         }
+        public string Encrypt(string decrypted)
+        {
+            byte[] data = UTF8Encoding.UTF8.GetBytes(decrypted);
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            TripleDESCryptoServiceProvider tripDES = new TripleDESCryptoServiceProvider();
+            tripDES.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(decrypted));
+            tripDES.Mode = CipherMode.ECB;
 
+            ICryptoTransform transform = tripDES.CreateEncryptor();
+            byte[] result = transform.TransformFinalBlock(data, 0, data.Length);
+            return Convert.ToBase64String(result);
+        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             txtsodienthoai.Text = TAIKHOANDOCGIA.DOCGIA.SoDienThoai.ToString();
@@ -34,7 +46,6 @@ namespace QuanLyThuVien.GiaoDien
             txtdiachi.Text = TAIKHOANDOCGIA.DOCGIA.DiaChi;
             txtcmnd.Text = TAIKHOANDOCGIA.DOCGIA.CMND.ToString();
             txtsodienthoai.Text = TAIKHOANDOCGIA.DOCGIA.SoDienThoai.ToString();
-            txtmatkhua.Text = TAIKHOANDOCGIA.MatKhau;
 
         }
 
@@ -47,10 +58,17 @@ namespace QuanLyThuVien.GiaoDien
                 aIKHOANDOCGIA.DOCGIA.Email = txtemail.Text;
                 aIKHOANDOCGIA.DOCGIA.DiaChi = txtdiachi.Text;
                 aIKHOANDOCGIA.DOCGIA.CMND = int.Parse(txtcmnd.Text);
-                aIKHOANDOCGIA.MatKhau = txtmatkhua.Text;
+                aIKHOANDOCGIA.MatKhau = Encrypt(txtmatkhua.Password) ;
                 MessageBox.Show("Sửa thành công");
                 dc.SaveChanges();
+                this.Close();
             }
+        }
+
+        private void Btndoimatkhau_Click(object sender, RoutedEventArgs e)
+        {
+            txtmatkhua.Visibility = Visibility.Visible;
+            btndoimatkhau.Visibility = Visibility.Collapsed;
         }
     }
 }
