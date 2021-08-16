@@ -91,7 +91,7 @@
     <Property Name="MaKe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="NoiDungTomTat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="HinhAnh" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Gia" Type="Single" />
+    <Property Name="Gia" Type="Double" />
     <NavigationProperty Name="CHITIETPHIEUMUONs" Relationship="Self.FKCHITIETPHI151328" FromRole="SACH" ToRole="CHITIETPHIEUMUON" />
     <NavigationProperty Name="KE" Relationship="Self.FKSACH318768" FromRole="SACH" ToRole="KE" />
     <NavigationProperty Name="NHAXUATBAN" Relationship="Self.FKSACH752561" FromRole="SACH" ToRole="NHAXUATBAN" />

@@ -31,7 +31,7 @@ namespace QuanLyThuVien
         public string MaKe { get; set; }
         public string NoiDungTomTat { get; set; }
         public string HinhAnh { get; set; }
-        public Nullable<float> Gia { get; set; }
+        public Nullable<double> Gia { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETPHIEUMUON> CHITIETPHIEUMUONs { get; set; }
