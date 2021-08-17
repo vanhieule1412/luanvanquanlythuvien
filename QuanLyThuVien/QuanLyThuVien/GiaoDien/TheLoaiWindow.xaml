@@ -27,14 +27,13 @@
             <TextBox Grid.Column="1" Grid.Row="0" Name="txtmatheloai"/>
             <TextBox Grid.Column="1" Grid.Row="1" Name="txttentheloai"/>
             <TextBox Name="txtmota" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"/>
-            <WrapPanel Grid.Row="3" Grid.Column="1">
+            <WrapPanel Grid.Row="0" Grid.Column="2">
                 <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click"/>
-                <RadioButton Content="Sửa" IsChecked="True" Name="rdoSua" Click="RdoSua_Click"/>
-                <RadioButton Content="Xóa" IsChecked="True" Name="rdoXoa" Click="RdoXoa_Click"/>
+                <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click"/>
+                <RadioButton Content="Xóa" Name="rdoXoa" Click="RdoXoa_Click"/>
             </WrapPanel>
-            <Button Grid.Column="2" Grid.Row="0" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
-           
         </Grid>
+        <Button Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
         <DataGrid Name="dgTheLoai" AutoGenerateColumns="False" SelectedValuePath="MaTheLoai" SelectionChanged="DgTheLoai_SelectionChanged" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã thể loại" Binding="{Binding MaTheLoai}"/>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -51,7 +52,8 @@ namespace QuanLyThuVien.GiaoDien
         }
 
         private void RdoThem_Click(object sender, RoutedEventArgs e)
-        {            
+        {
+            clear();
             txtmanhaxuatban.IsReadOnly = false;
             txttennhaxuatban.IsReadOnly = false;
             txtdiachi.IsReadOnly = false;
@@ -62,7 +64,7 @@ namespace QuanLyThuVien.GiaoDien
 
         private void RdoSua_Click(object sender, RoutedEventArgs e)
         {
-
+            
             txtmanhaxuatban.IsReadOnly = true;
             txttennhaxuatban.IsReadOnly = false;
             txtdiachi.IsReadOnly = false;
@@ -107,25 +109,53 @@ namespace QuanLyThuVien.GiaoDien
         {
             return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
         }
-        private void Btnthuchien_Click(object sender, RoutedEventArgs e)
+        private bool RemoteFileExists(string url)
         {
+            try
+            {
+                //Creating the HttpWebRequest
+                HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+                //Setting the Request method HEAD, you can also use GET too.
+                request.Method = "HEAD";
+                //Getting the Web Response.
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                //Returns TRUE if the Status code == 200
+                response.Close();
+                return (response.StatusCode == HttpStatusCode.OK);
+            }
+            catch
+            {
+                //Any exception will returns false.
+                return false;
+            }
+        }
+
+            private void Btnthuchien_Click(object sender, RoutedEventArgs e)
+            {
             if (rdoThem.IsChecked == true)
-            {              
+            {               
                 NHAXUATBAN hAXUATBAN = dc.NHAXUATBANs.Find(txtmanhaxuatban.Text);
                 Regex trimmer = new Regex(@"\s\s+"); // Xóa khoảng trắng thừa trong chuỗi
                 txttennhaxuatban.Text = trimmer.Replace(txttennhaxuatban.Text, " ");
+                txtdiachi.Text = trimmer.Replace(txtdiachi.Text, " ");
                 var isNumeric = int.TryParse(txtsodienthoai.Text, out int n);
                 if (hAXUATBAN != null)
                 {
                     MessageBox.Show("Mã bị trùng");
                     txtmanhaxuatban.Focus();
-                    txtmanhaxuatban.Select(txtmanhaxuatban.Text.Length, 0);
-                    
+                    txtmanhaxuatban.Select(txtmanhaxuatban.Text.Length, 0);                    
                     return;
                 }
-                if (HasSpecialChars(txtmanhaxuatban.Text))
+                if (RemoteFileExists(txtdiachiweb.Text) == false)
                 {
-                    MessageBox.Show("Mã không được có kí tự đặc biệt");
+                    MessageBox.Show("Website này không tồn tại");
+                    txtdiachiweb.Focus();
+                    txtdiachiweb.Select(txtdiachiweb.Text.Length, 0);
+                    return;
+                }
+                if (HasSpecialChars(txtmanhaxuatban.Text) == true)
+                {
+                    MessageBox.Show("Mã không được có kí tự đặc biệt hoặc khoảng trắng");
                     txtmanhaxuatban.Focus();
                     return;
                 }
@@ -163,6 +193,7 @@ namespace QuanLyThuVien.GiaoDien
                 {
                     MessageBox.Show("Chưa điền số điện thoại");
                     txtsodienthoai.Focus();
+                    txtsodienthoai.Select(txtsodienthoai.Text.Length, 0);
                     return;
                 }
                 if (txtsodienthoai.Text.Length != 10 || txtsodienthoai.Text.Length < 10 || txtsodienthoai.Text.Length > 10)
@@ -177,15 +208,18 @@ namespace QuanLyThuVien.GiaoDien
                     MessageBox.Show("Số điện thoại phải là số");
                     return;
                 }
-                if (HasSpecialChars(txtsodienthoai.Text.ToString()))
+                if (HasSpecialChars(txtsodienthoai.Text.ToString())==true)
                 {
                     MessageBox.Show("Số điện thoại không có khoảng trắng hoặc kí tự đặc biệt");
+                    txtsodienthoai.Focus();
+                    txtsodienthoai.Select(txtsodienthoai.Text.Length, 0);
                     return;
                 }
                 if (isEmail(txtemail.Text) == false)
                 {
                     MessageBox.Show("Đây không phải là email");
                     txtemail.Focus();
+                    txtemail.Select(txtemail.Text.Length, 0);
                     return;
                 }
                 else
@@ -211,12 +245,95 @@ namespace QuanLyThuVien.GiaoDien
                 NHAXUATBAN nHAXUATBAN = dc.NHAXUATBANs.Find(manhanxuatban);
                 if (manhanxuatban != null)
                 {
-                    nHAXUATBAN.TenNhaXuatBan = txttennhaxuatban.Text;
-                    nHAXUATBAN.DiaChi = txtdiachi.Text;
-                    nHAXUATBAN.Email = txtemail.Text;
-                    nHAXUATBAN.DiaChiWebsite = txtdiachiweb.Text;
-                    nHAXUATBAN.SoDienThoai = int.Parse(txtsodienthoai.Text);
-                    dc.SaveChanges();
+                    Regex trimmer = new Regex(@"\s\s+"); // Xóa khoảng trắng thừa trong chuỗi
+                    txttennhaxuatban.Text = trimmer.Replace(txttennhaxuatban.Text, " ");
+                    txtdiachi.Text = trimmer.Replace(txtdiachi.Text, " ");
+                    var isNumeric = int.TryParse(txtsodienthoai.Text, out int n);
+                    if (RemoteFileExists(txtdiachiweb.Text) == false)
+                    {
+                        MessageBox.Show("Website này không tồn tại");
+                        txtdiachiweb.Focus();
+                        txtdiachiweb.Select(txtdiachiweb.Text.Length, 0);
+                        return;
+                    }
+                    if (HasSpecialChars(txtmanhaxuatban.Text) == true)
+                    {
+                        MessageBox.Show("Mã không được có kí tự đặc biệt");
+                        txtmanhaxuatban.Focus();
+                        return;
+                    }
+                    if (String.IsNullOrWhiteSpace(txtmanhaxuatban.Text) == true)
+                    {
+                        MessageBox.Show("Mã chưa điền");
+                        txtmanhaxuatban.Focus();
+                        return;
+                    }
+                    if (String.IsNullOrWhiteSpace(txttennhaxuatban.Text) == true)
+                    {
+                        MessageBox.Show("Tên chưa điền");
+                        txttennhaxuatban.Focus();
+                        return;
+                    }
+                    if (String.IsNullOrWhiteSpace(txtdiachi.Text) == true)
+                    {
+                        MessageBox.Show("Địa chỉ chưa điền");
+                        txtdiachi.Focus();
+                        return;
+                    }
+                    if (String.IsNullOrWhiteSpace(txtdiachiweb.Text) == true)
+                    {
+                        MessageBox.Show("Chưa điền địa chỉ website");
+                        txtdiachiweb.Focus();
+                        return;
+                    }
+                    if (String.IsNullOrWhiteSpace(txtemail.Text) == true)
+                    {
+                        MessageBox.Show("Chưa điền địa chỉ email");
+                        txtemail.Focus();
+                        return;
+                    }
+                    if (String.IsNullOrWhiteSpace(txtsodienthoai.Text) == true)
+                    {
+                        MessageBox.Show("Chưa điền số điện thoại");
+                        txtsodienthoai.Focus();
+                        txtsodienthoai.Select(txtsodienthoai.Text.Length, 0);
+                        return;
+                    }
+                    if (txtsodienthoai.Text.Length != 10 || txtsodienthoai.Text.Length < 10 || txtsodienthoai.Text.Length > 10)
+                    {
+                        MessageBox.Show("Số Điện Thoại phải đủ 10 số");
+                        txtsodienthoai.Focus();
+                        txtsodienthoai.Select(txtsodienthoai.Text.Length, 0);
+                        return;
+                    }
+                    if (isNumeric == false)
+                    {
+                        MessageBox.Show("Số điện thoại phải là số");
+                        return;
+                    }
+                    if (HasSpecialChars(txtsodienthoai.Text.ToString()) == true)
+                    {
+                        MessageBox.Show("Số điện thoại không có khoảng trắng hoặc kí tự đặc biệt");
+                        txtsodienthoai.Focus();
+                        txtsodienthoai.Select(txtsodienthoai.Text.Length, 0);
+                        return;
+                    }
+                    if (isEmail(txtemail.Text) == false)
+                    {
+                        MessageBox.Show("Đây không phải là email");
+                        txtemail.Focus();
+                        txtemail.Select(txtemail.Text.Length, 0);
+                        return;
+                    }
+                    else
+                    {
+                        nHAXUATBAN.TenNhaXuatBan = txttennhaxuatban.Text;
+                        nHAXUATBAN.DiaChi = txtdiachi.Text;
+                        nHAXUATBAN.Email = txtemail.Text;
+                        nHAXUATBAN.DiaChiWebsite = txtdiachiweb.Text;
+                        nHAXUATBAN.SoDienThoai = int.Parse(txtsodienthoai.Text);
+                        dc.SaveChanges();
+                    }
                 }
                 hienthi();
             }
@@ -227,6 +344,12 @@ namespace QuanLyThuVien.GiaoDien
                 {
                     string manhanxuatban = dgNhaXuatBan.SelectedValue.ToString();
                     NHAXUATBAN nHAXUATBAN = dc.NHAXUATBANs.Find(manhanxuatban);
+                    var ds = dc.SACHes.Where(x => x.MaNhaXuatBan == manhanxuatban).ToList();
+                    if (ds.Count > 0)
+                    {
+                        MessageBox.Show("Không thể nhà xuất bản này");
+                        return;
+                    }
                     if (nHAXUATBAN != null)
                     {
                         dc.NHAXUATBANs.Remove(nHAXUATBAN);
