@@ -148,8 +148,8 @@ namespace QuanLyThuVien.GiaoDien
                     }
                     else
                     {
-                        tHELOAI.TenTheLoai = txttentheloai.Text;
-                        tHELOAI.MoTaTheLoai = txtmota.Text;
+                        tHELOAI.TenTheLoai = txttentheloai.Text.Trim();
+                        tHELOAI.MoTaTheLoai = txtmota.Text.Trim();
                         dc.SaveChanges();
                     }
                 }

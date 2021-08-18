@@ -32,13 +32,12 @@
             <TextBox Grid.Column="1" Grid.Row="3" Name="txttenkhu"/>
             <WrapPanel Grid.Row="1" Grid.Column="2">
                 <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click" />
-                <RadioButton Content="Sửa" IsChecked="True" Name="rdoSua" Click="RdoSua_Click" />
-                <RadioButton Content="Xóa" IsChecked="True" Name="rdoXoa" Click="RdoXoa_Click" />
+                <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click" />
+                <RadioButton Content="Xóa" Name="rdoXoa" Click="RdoXoa_Click" />
             </WrapPanel>
-            <Button Grid.Column="1" Grid.Row="5" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
-
         </Grid>
-        <DataGrid Name="dgkhu" AutoGenerateColumns="False"  SelectedValuePath="MaKhu" SelectionChanged="Dgkhu_SelectionChanged" SelectionMode="Single" Margin="-2,0,2,0" >
+        <Button Grid.Column="1" Grid.Row="5" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
+        <DataGrid Name="dgkhu" AutoGenerateColumns="False"  SelectedValuePath="MaKhu" SelectionChanged="Dgkhu_SelectionChanged" SelectionMode="Single" Margin="-2,0,2,0" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Khu" Binding="{Binding MaKhu}"/>
                 <DataGridTextColumn Header="Tên Khu" Binding="{Binding TenKhu}"/>

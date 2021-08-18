@@ -327,11 +327,11 @@ namespace QuanLyThuVien.GiaoDien
                     }
                     else
                     {
-                        nHAXUATBAN.TenNhaXuatBan = txttennhaxuatban.Text;
-                        nHAXUATBAN.DiaChi = txtdiachi.Text;
-                        nHAXUATBAN.Email = txtemail.Text;
-                        nHAXUATBAN.DiaChiWebsite = txtdiachiweb.Text;
-                        nHAXUATBAN.SoDienThoai = int.Parse(txtsodienthoai.Text);
+                        nHAXUATBAN.TenNhaXuatBan = txttennhaxuatban.Text.Trim();
+                        nHAXUATBAN.DiaChi = txtdiachi.Text.Trim();
+                        nHAXUATBAN.Email = txtemail.Text.Trim();
+                        nHAXUATBAN.DiaChiWebsite = txtdiachiweb.Text.Trim();
+                        nHAXUATBAN.SoDienThoai = int.Parse(txtsodienthoai.Text.Trim());
                         dc.SaveChanges();
                     }
                 }

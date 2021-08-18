@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -38,8 +39,10 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void RdoThem_Click(object sender, RoutedEventArgs e)
         {
+            clear();
             txtmavitri.IsReadOnly = false;
             txttenke.IsReadOnly = false;
+            cmbmakhu.IsEnabled = true;
             
         }
 
@@ -47,9 +50,20 @@ namespace QuanLyThuVien.GiaoDien
         {
             txtmavitri.IsReadOnly = true;
             txttenke.IsReadOnly = false;
+            cmbmakhu.IsEnabled = true;
            
         }
-
+        private void clear()
+        {
+            txtmavitri.Text = "";
+            txttenke.Text = "";
+            cmbmakhu.Text = " ";
+            txtmavitri.Focus();
+        }
+        private bool HasSpecialChars(string yourString)
+        {
+            return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
+        }
         private void Btnthuchien_Click(object sender, RoutedEventArgs e)
         {
             if (rdoThem.IsChecked == true)
@@ -60,13 +74,37 @@ namespace QuanLyThuVien.GiaoDien
                     MessageBox.Show("Trùng mã");
                     return;
                 }
-                KE kE = new KE();
-                kE.MaKe = txtmavitri.Text;
-                kE.TenKe = txttenke.Text;
-                kE.MaKhu = cmbmakhu.SelectedValue.ToString();
-                dc.KEs.Add(kE);
-                dc.SaveChanges();
-                hienthi();
+                Regex trimmer = new Regex(@"\s\s+"); // Xóa khoảng trắng thừa trong chuỗi
+                txttenke.Text = trimmer.Replace(txttenke.Text, " ");               
+                if (HasSpecialChars(txtmavitri.Text) == true)
+                {
+                    MessageBox.Show("Mã không được có kí tự đặc biệt hoặc khoảng trắng");
+                    txtmavitri.Focus();
+                    txtmavitri.Select(txtmavitri.Text.Length, 0);
+                    return;
+                }
+                if (String.IsNullOrWhiteSpace(txtmavitri.Text) == true)
+                {
+                    MessageBox.Show("Mã chưa điền");
+                    txtmavitri.Focus();
+                    return;
+                }
+                if (String.IsNullOrWhiteSpace(txttenke.Text) == true)
+                {
+                    MessageBox.Show("Tên chưa điền");
+                    txttenke.Focus();
+                    return;
+                }             
+                else
+                {
+                    KE kE = new KE();
+                    kE.MaKe = txtmavitri.Text.Trim();
+                    kE.TenKe = txttenke.Text.Trim();
+                    kE.MaKhu = cmbmakhu.SelectedValue.ToString();
+                    dc.KEs.Add(kE);
+                    dc.SaveChanges();
+                    hienthi();
+                }
             }
             else if (rdoSua.IsChecked == true)
             {
@@ -74,9 +112,33 @@ namespace QuanLyThuVien.GiaoDien
                 KE kE = dc.KEs.Find(make);
                 if (make != null)
                 {
-                    kE.TenKe = txttenke.Text;
-                    kE.MaKhu = cmbmakhu.SelectedValue.ToString();
-                    dc.SaveChanges();
+                    Regex trimmer = new Regex(@"\s\s+"); // Xóa khoảng trắng thừa trong chuỗi
+                    txttenke.Text = trimmer.Replace(txttenke.Text, " ");
+                    if (HasSpecialChars(txtmavitri.Text) == true)
+                    {
+                        MessageBox.Show("Mã không được có kí tự đặc biệt hoặc khoảng trắng");
+                        txtmavitri.Focus();
+                        txtmavitri.Select(txtmavitri.Text.Length, 0);
+                        return;
+                    }
+                    if (String.IsNullOrWhiteSpace(txtmavitri.Text) == true)
+                    {
+                        MessageBox.Show("Mã chưa điền");
+                        txtmavitri.Focus();
+                        return;
+                    }
+                    if (String.IsNullOrWhiteSpace(txttenke.Text) == true)
+                    {
+                        MessageBox.Show("Tên chưa điền");
+                        txttenke.Focus();
+                        return;
+                    }
+                    else
+                    {
+                        kE.TenKe = txttenke.Text;
+                        kE.MaKhu = cmbmakhu.SelectedValue.ToString();
+                        dc.SaveChanges();
+                    }
                 }
                 hienthi();
             }
@@ -87,6 +149,12 @@ namespace QuanLyThuVien.GiaoDien
                 {
                     string make = dgViTri.SelectedValue.ToString();
                     KE kE = dc.KEs.Find(make);
+                    var ds = dc.SACHes.Where(x => x.MaKe == make).ToList();
+                    if (ds.Count > 0)
+                    {
+                        MessageBox.Show("Kệ này không thể xóa được");
+                        return;
+                    }
                     if (kE != null)
                     {
                         dc.KEs.Remove(kE);
@@ -123,7 +191,8 @@ namespace QuanLyThuVien.GiaoDien
         private void RdoXoa_Click(object sender, RoutedEventArgs e)
         {
             txtmavitri.IsReadOnly = true;
-            txttenke.IsReadOnly = true;          
+            txttenke.IsReadOnly = true;
+            cmbmakhu.IsEnabled = false;
         }
 
        

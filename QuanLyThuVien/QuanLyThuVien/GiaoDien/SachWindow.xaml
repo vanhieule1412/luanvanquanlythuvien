@@ -34,10 +34,10 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <WrapPanel Grid.Row="0" Grid.Column="1">
-                <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" />
-                <RadioButton Content="Sửa" Name="rdoSua" />
-                <RadioButton Content="Xóa" Name="rdoXoa" />
+            <WrapPanel Grid.Row="0" Grid.Column="2">
+                <RadioButton Content="Thêm " IsChecked="True" Name="rdoThem" Click="RdoThem_Click" />
+                <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click"/>
+                <RadioButton Content="Xóa" Name="rdoXoa" Click="RdoXoa_Click"/>
             </WrapPanel>
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Mã sách"/>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Tên sách"/>
@@ -45,9 +45,9 @@
             <TextBlock Grid.Column="0" Grid.Row="4" Text="Tác giả"/>
             <TextBlock Grid.Column="0" Grid.Row="5" Text="Năm xuất bản"/>
             <TextBlock Grid.Column="0" Grid.Row="6" Text="Người dịch"/>
-            <TextBlock Grid.Column="0" Grid.Row="7" Text="Mã thể loại"/>
-            <TextBlock Grid.Column="0" Grid.Row="8" Text="Mã nhà xuất bản"/>
-            <TextBlock Grid.Column="0" Grid.Row="9" Text="Mã kệ"/>
+            <TextBlock Grid.Column="0" Grid.Row="7" Text="Tên thể loại"/>
+            <TextBlock Grid.Column="0" Grid.Row="8" Text="Tên nhà xuất bản"/>
+            <TextBlock Grid.Column="0" Grid.Row="9" Text="Tên kệ"/>
             <TextBlock Grid.Column="0" Grid.Row="10" Text="Nội Dung Tóm Tắt"/>
             <TextBlock Grid.Column="0" Grid.Row="11" Text="Giá"/>
             <TextBlock Grid.Column="0" Grid.Row="12" Text="Hình"/>
@@ -57,9 +57,9 @@
             <TextBox Grid.Column="1" Grid.Row="4" Name="txttacgia"/>
             <TextBox Grid.Column="1" Grid.Row="5" Name="txtnamxuatban"/>
             <TextBox Grid.Column="1" Grid.Row="6" Name="txtnguoidich"/>
-            <ComboBox Grid.Column="1" Grid.Row="7" Name="cmbMatheloai" SelectedValuePath="MaTheLoai" DisplayMemberPath="MaTheLoai"/>
-            <ComboBox Grid.Column="1" Grid.Row="8" Name="cmbManhaxuatban" SelectedValuePath="MaNhaXuatBan" DisplayMemberPath="MaNhaXuatBan"/>
-            <ComboBox Grid.Column="1" Grid.Row="9" Name="cmbMake" SelectedValuePath="MaKe" DisplayMemberPath="MaKe"/>
+            <ComboBox Grid.Column="1" Grid.Row="7" Name="cmbMatheloai" SelectedValuePath="MaTheLoai" DisplayMemberPath="TenTheLoai"/>
+            <ComboBox Grid.Column="1" Grid.Row="8" Name="cmbManhaxuatban" SelectedValuePath="MaNhaXuatBan" DisplayMemberPath="TenNhaXuatBan"/>
+            <ComboBox Grid.Column="1" Grid.Row="9" Name="cmbMake" SelectedValuePath="MaKe" DisplayMemberPath="TenKe"/>
             <TextBox Grid.Column="1" Grid.Row="10" Name="txtnoidungtt" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"/>
             <TextBox Grid.Column="1" Grid.Row="11" Name="txtgia"/>
             <Image Grid.Column="1" Grid.Row="12" Name="imghinh" Height="150" Width="130" />
@@ -67,18 +67,18 @@
                 <Button Content="Chọn Hình" Name="btnChonhinh" Click="BtnChonhinh_Click" />
                 <Button Content="Bỏ chọn hình" Name="btnBohinh" Click="BtnBohinh_Click" />
             </StackPanel>
-            <WrapPanel Grid.Column="2" Grid.Row="7">
-                <TextBlock Text="Tên thể loại:"/>
-                <TextBlock Text="{Binding ElementName=cmbMatheloai,Path=SelectedItem.TenTheLoai}"/>
+            <!--<WrapPanel Grid.Column="2" Grid.Row="7">
+                <TextBlock Text="Mã thể loại:"/>
+                <TextBlock Text="{Binding ElementName=cmbMatheloai,Path=SelectedItem.MaTheLoai}"/>
             </WrapPanel>
             <WrapPanel Grid.Column="2" Grid.Row="8">
-                <TextBlock Text="Tên nhà xuất bản:"/>
-                <TextBlock Text="{Binding ElementName=cmbManhaxuatban,Path=SelectedItem.TenNhaXuatBan}"/>
+                <TextBlock Text="Mã nhà xuất bản:"/>
+                <TextBlock Text="{Binding ElementName=cmbManhaxuatban,Path=SelectedItem.MaNhaXuatBan}"/>
             </WrapPanel>
             <WrapPanel Grid.Column="2" Grid.Row="9">
-                <TextBlock Text="Tên kệ:"/>
-                <TextBlock Text="{Binding ElementName=cmbMake,Path=SelectedItem.TenKe}"/>
-            </WrapPanel>
+                <TextBlock Text="Mã kệ:"/>
+                <TextBlock Text="{Binding ElementName=cmbMake,Path=SelectedItem.MaKe}"/>
+            </WrapPanel>-->
         </Grid>
         <StackPanel>
             <Button Content="Thực hiện" Name="btnthuchien" Click="Btnthuchien_Click"/>
@@ -99,7 +99,7 @@
                 <DataGridTextColumn Header="Tên kệ" Binding="{Binding KE.TenKe}"/>
                 <DataGridTextColumn Header="Tên khu" Binding="{Binding KE.KHU.TenKhu}"/>
                 <DataGridTextColumn Header="Nội dung tóm tắt" Binding="{Binding NoiDungTomTat}"/>
-                <DataGridTextColumn Header="Giá" Binding="{Binding Gia}"/>
+                <DataGridTextColumn Header="Giá" Binding="{Binding Gia,StringFormat='{}{0:#,##0.## đ}'}"/>
                 <DataGridTextColumn Header="Tên file hình" Binding="{Binding HinhAnh}"/>
             </DataGrid.Columns>
 

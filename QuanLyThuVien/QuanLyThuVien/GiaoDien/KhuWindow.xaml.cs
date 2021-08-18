@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,29 +37,66 @@ namespace QuanLyThuVien.GiaoDien
 
         private void RdoThem_Click(object sender, RoutedEventArgs e)
         {
-
+            txtmakhu.IsReadOnly = false;
+            txttenkhu.IsReadOnly = false;
+           
         }
 
         private void RdoSua_Click(object sender, RoutedEventArgs e)
         {
-
+            txtmakhu.IsReadOnly = true;
+            txttenkhu.IsReadOnly = false;
         }
 
         private void RdoXoa_Click(object sender, RoutedEventArgs e)
         {
-
+            txtmakhu.IsReadOnly = true;
+            txttenkhu.IsReadOnly = true;
         }
-
+        private bool HasSpecialChars(string yourString)
+        {
+            return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
+        }
         private void Btnthuchien_Click(object sender, RoutedEventArgs e)
         {
             if (rdoThem.IsChecked == true)
             {
-                KHU kHU = new KHU();
-                kHU.MaKhu = txtmakhu.Text;
-                kHU.TenKhu = txttenkhu.Text;
-                dc.KHUs.Add(kHU);
-                dc.SaveChanges();
-                hienthi();
+                KHU k = dc.KHUs.Find(txtmakhu.Text);
+                if (k != null)
+                {
+                    MessageBox.Show("Trùng mã");
+                    return;
+                }
+                Regex trimmer = new Regex(@"\s\s+"); // Xóa khoảng trắng thừa trong chuỗi
+                txttenkhu.Text = trimmer.Replace(txttenkhu.Text, " ");
+                if (HasSpecialChars(txtmakhu.Text) == true)
+                {
+                    MessageBox.Show("Mã không được có kí tự đặc biệt hoặc khoảng trắng");
+                    txtmakhu.Focus();
+                    txtmakhu.Select(txtmakhu.Text.Length, 0);
+                    return;
+                }
+                if (String.IsNullOrWhiteSpace(txtmakhu.Text) == true)
+                {
+                    MessageBox.Show("Mã chưa điền");
+                    txtmakhu.Focus();
+                    return;
+                }
+                if (String.IsNullOrWhiteSpace(txttenkhu.Text) == true)
+                {
+                    MessageBox.Show("Tên chưa điền");
+                    txttenkhu.Focus();
+                    return;
+                }
+                else
+                {
+                    KHU kHU = new KHU();
+                    kHU.MaKhu = txtmakhu.Text.Trim();
+                    kHU.TenKhu = txttenkhu.Text.Trim();
+                    dc.KHUs.Add(kHU);
+                    dc.SaveChanges();
+                    hienthi();
+                }
             }
             else if (rdoSua.IsChecked == true)
             {
@@ -66,7 +104,18 @@ namespace QuanLyThuVien.GiaoDien
                 KHU kHU = dc.KHUs.Find(makhu);
                 if (makhu != null)
                 {
-                    kHU.TenKhu = txttenkhu.Text;
+                    Regex trimmer = new Regex(@"\s\s+"); // Xóa khoảng trắng thừa trong chuỗi
+                    txttenkhu.Text = trimmer.Replace(txttenkhu.Text, " ");
+                    if (String.IsNullOrWhiteSpace(txttenkhu.Text) == true)
+                    {
+                        MessageBox.Show("Tên chưa điền");
+                        txttenkhu.Focus();
+                        return;
+                    }
+                    else
+                    {
+                        kHU.TenKhu = txttenkhu.Text;
+                    }
                     dc.SaveChanges();
                 }
                 hienthi();
@@ -78,6 +127,12 @@ namespace QuanLyThuVien.GiaoDien
                 {
                     string makhu = dgkhu.SelectedValue.ToString();
                     KHU kHU = dc.KHUs.Find(makhu);
+                    var ds = dc.KEs.Where(x => x.MaKhu == makhu ).ToList();
+                    if (ds.Count > 0)
+                    {
+                        MessageBox.Show("Khu này không thể xóa được");
+                        return;
+                    }
                     if (kHU != null)
                     {
                         dc.KHUs.Remove(kHU);
