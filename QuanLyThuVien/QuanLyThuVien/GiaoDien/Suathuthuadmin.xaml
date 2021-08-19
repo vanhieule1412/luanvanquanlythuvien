@@ -1,13 +1,13 @@
-﻿<Window x:Class="QuanLyThuVien.GiaoDien.TaiKhoanThuThuWindow"
+﻿<Window x:Class="QuanLyThuVien.GiaoDien.Suathuthuadmin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
         mc:Ignorable="d"
-        Title="TaiKhoanThuThuWindow" Height="450" Width="800"
-        Loaded="Window_Loaded"
+        Title="Suathuthuadmin" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
         >
     <StackPanel>
         <Grid>
@@ -25,18 +25,16 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Tên tài khoản" Name="tbltentk"/>
+            <Button Name="btndoimatkhau" Grid.Column="1" Grid.Row="1" Content="Đổi Mật Khẩu" Background="White" FontStyle="Italic" FontWeight="Bold" Click="Btndoimatkhau_Click"/>
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Mật Khẩu"/>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Trạng thái"/>
-            <TextBlock Grid.Column="0" Grid.Row="3" Text="Mã thủ thư" Name="tblmathuthu"/>
-            <TextBox Grid.Column="1" Grid.Row="0" Name="txttenthuthu"/>
-            <PasswordBox Grid.Column="1" Grid.Row="1" Name="txtmatkhau"/>
+            <PasswordBox Grid.Column="1" Grid.Row="1" Name="txtmatkhau" Visibility="Hidden"/>
             <ComboBox Grid.Column="1" Grid.Row="2" Name="cmbtrangthai" SelectedItem="TrangThai">
                 <ComboBoxItem Name="cmbhoatdong" IsSelected="True" Content="Hoạt Động"/>
                 <ComboBoxItem Name="cmbkhonghoatdong" Content="Không hoạt động"/>
             </ComboBox>
-            <TextBox Grid.Column="1" Grid.Row="3" Name="txtmathuthu" IsReadOnly="True"/>
         </Grid>
-        <Button Content="Tạo" Name="txttaotaikhoan" Click="Txttaotaikhoan_Click"/>
+        <Label/>
+        <Button Content="Tạo" Name="btncapnhat" Click="Btncapnhat_Click"/>
     </StackPanel>
 </Window>

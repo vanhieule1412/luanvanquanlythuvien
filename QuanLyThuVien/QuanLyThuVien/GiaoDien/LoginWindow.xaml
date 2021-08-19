@@ -16,7 +16,8 @@
         <PasswordBox Name="txtmatkhau" Width="200"/>
         <WrapPanel HorizontalAlignment="Center">
             <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click"/>
-            
+            <Label/>
+            <Label/>
             <Button Name="btntrolai" Content="Trở lại" Click="Btntrolai_Click" />
         </WrapPanel>
         

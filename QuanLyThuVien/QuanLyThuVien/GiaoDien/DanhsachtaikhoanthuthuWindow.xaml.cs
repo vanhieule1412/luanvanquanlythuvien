@@ -27,9 +27,28 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-                dgtaikhoanthuthu.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
+           dgtaikhoanthuthu.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
             
 
+        }
+
+        private void Btnsuataikhoan_Click(object sender, RoutedEventArgs e)
+        {
+
+            GiaoDien.Suathuthuadmin f = new Suathuthuadmin();
+            f.chucnang = KieuChucNang.suaadmin;
+            f.tAIKHOANTHUTHU = dc.TAIKHOANTHUTHUs.Find(int.Parse(dgtaikhoanthuthu.SelectedValue.ToString()));
+            if (f.ShowDialog() == true)
+            {
+                TAIKHOANTHUTHU tt = dc.TAIKHOANTHUTHUs.Find(f.tAIKHOANTHUTHU.MaTaiKhoai);
+                if (tt != null)
+                {
+                    tt.TrangThai = f.tAIKHOANTHUTHU.TrangThai;
+                    tt.MatKhau = f.tAIKHOANTHUTHU.MatKhau;
+                    dc.SaveChanges();
+                    dgtaikhoanthuthu.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
+                }
+            }
         }
     }
 }

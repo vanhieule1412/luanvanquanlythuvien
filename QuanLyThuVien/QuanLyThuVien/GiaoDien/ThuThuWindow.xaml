@@ -27,14 +27,14 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Mã Thủ Thư"/>
+            <TextBlock Grid.Column="0" Grid.Row="0" Name="tblmathuthu" Text="Mã Thủ Thư" Visibility="Hidden"/>
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Tên Thủ Thư"/>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Năm Sinh"/>
             <TextBlock Grid.Column="0" Grid.Row="3" Text="Số Điện Thoại"/>
             <TextBlock Grid.Column="0" Grid.Row="4" Text="Giới tính"/>
             <TextBlock Grid.Column="0" Grid.Row="5" Text="Email"/>
             <TextBlock Grid.Column="0" Grid.Row="6" Text="CMND"/>
-            <TextBox Grid.Column="1" Grid.Row="0" Name="txtmathuthu"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Name="txtmathuthu" Visibility="Hidden"/>
             <TextBox Grid.Column="1" Grid.Row="1" Name="txttenthuthu"/>
             <DatePicker SelectedDateFormat="Short" Grid.Column="1" Grid.Row="2" Name="dpnamsinh"  />
             <TextBox Grid.Column="1" Grid.Row="3" Name="txtsodienthoai"/> 
@@ -57,8 +57,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Thủ thư" Binding="{Binding MaThuThu}"/>
                 <DataGridTextColumn Header="Tên Thủ Thư" Binding="{Binding TenThuThu}"/>
-                <DataGridTextColumn Header="Năm Sinh" Binding="{Binding NamSinh ,StringFormat='dd/MM/yyyy hh:mm:ss'}"/>
-                <DataGridTextColumn Header="Số Điện Thoại" Binding="{Binding SoDienThoai}"/>
+                <DataGridTextColumn Header="Năm Sinh" Binding="{Binding NamSinh ,StringFormat='dd/MM/yyyy'}"/>
+                <DataGridTextColumn Header="Số Điện Thoại" Binding="{Binding SoDienThoai }"/>
                 <DataGridTextColumn Header="Giới tính" Binding="{Binding GioiTinh}"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="CMND" Binding="{Binding CMND}"/>

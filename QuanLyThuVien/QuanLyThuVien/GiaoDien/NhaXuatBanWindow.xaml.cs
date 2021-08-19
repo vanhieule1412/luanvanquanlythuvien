@@ -41,7 +41,7 @@ namespace QuanLyThuVien.GiaoDien
                 txtdiachi.Text = nHAXUATBAN.DiaChi;
                 txtemail.Text = nHAXUATBAN.Email;
                 txtdiachiweb.Text = nHAXUATBAN.DiaChiWebsite;
-                txtsodienthoai.Text =0 + nHAXUATBAN.SoDienThoai.ToString();
+                txtsodienthoai.Text = nHAXUATBAN.SoDienThoai.ToString();
             }
            
             
@@ -231,7 +231,7 @@ namespace QuanLyThuVien.GiaoDien
                     nHAXUATBAN.Email = txtemail.Text.Replace(" ", String.Empty).Trim();
                     nHAXUATBAN.DiaChiWebsite = txtdiachiweb.Text.Trim();
                     //nHAXUATBAN.SoDienThoai = int.Parse(txtsodienthoai.Text.Replace(" ",String.Empty).ToString().Trim());                    
-                    nHAXUATBAN.SoDienThoai = int.Parse(txtsodienthoai.Text.ToString());
+                    nHAXUATBAN.SoDienThoai = txtsodienthoai.Text;
                     dc.NHAXUATBANs.Add(nHAXUATBAN);
                     dc.SaveChanges();
                     clear();
@@ -331,7 +331,7 @@ namespace QuanLyThuVien.GiaoDien
                         nHAXUATBAN.DiaChi = txtdiachi.Text.Trim();
                         nHAXUATBAN.Email = txtemail.Text.Trim();
                         nHAXUATBAN.DiaChiWebsite = txtdiachiweb.Text.Trim();
-                        nHAXUATBAN.SoDienThoai = int.Parse(txtsodienthoai.Text.Trim());
+                        nHAXUATBAN.SoDienThoai = txtsodienthoai.Text.Trim();
                         dc.SaveChanges();
                     }
                 }

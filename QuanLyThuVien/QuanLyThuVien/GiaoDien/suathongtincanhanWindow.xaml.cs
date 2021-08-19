@@ -54,10 +54,10 @@ namespace QuanLyThuVien.GiaoDien
             TAIKHOANDOCGIA aIKHOANDOCGIA= dc.TAIKHOANDOCGIAs.Find(int.Parse(TAIKHOANDOCGIA.MaTaiKhoaiDocGia.ToString()));
             if (TAIKHOANDOCGIA.MaTaiKhoaiDocGia.ToString() != null)
             {
-                aIKHOANDOCGIA.DOCGIA.SoDienThoai = int.Parse(txtsodienthoai.Text);
+                aIKHOANDOCGIA.DOCGIA.SoDienThoai = txtsodienthoai.Text;
                 aIKHOANDOCGIA.DOCGIA.Email = txtemail.Text;
                 aIKHOANDOCGIA.DOCGIA.DiaChi = txtdiachi.Text;
-                aIKHOANDOCGIA.DOCGIA.CMND = int.Parse(txtcmnd.Text);
+                aIKHOANDOCGIA.DOCGIA.CMND = txtcmnd.Text;
                 aIKHOANDOCGIA.MatKhau = Encrypt(txtmatkhua.Password) ;
                 MessageBox.Show("Sửa thành công");
                 dc.SaveChanges();

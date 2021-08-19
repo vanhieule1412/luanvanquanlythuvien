@@ -227,7 +227,8 @@ namespace QuanLyThuVien
 
         private void Mnshutdown_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            //System.Windows.Application.Current.Shutdown();
+            Environment.Exit(-1);
         }     
         private void Mnlichsu_Click(object sender, RoutedEventArgs e)
         {

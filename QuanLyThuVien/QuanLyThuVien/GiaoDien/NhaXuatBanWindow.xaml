@@ -51,7 +51,7 @@
                 <DataGridTextColumn Header="Địa chỉ" Binding="{Binding DiaChi}"/>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Địa chỉ Website" Binding="{Binding DiaChiWebsite}"/>
-                <DataGridTextColumn Header="Số Điện Thoại" Binding="{Binding SoDienThoai}"/>
+                <DataGridTextColumn Header="Số Điện Thoại" Binding="{Binding SoDienThoai }"/>
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

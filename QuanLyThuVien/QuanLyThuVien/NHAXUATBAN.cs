@@ -25,7 +25,7 @@ namespace QuanLyThuVien
         public string DiaChi { get; set; }
         public string Email { get; set; }
         public string DiaChiWebsite { get; set; }
-        public Nullable<int> SoDienThoai { get; set; }
+        public string SoDienThoai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SACH> SACHes { get; set; }

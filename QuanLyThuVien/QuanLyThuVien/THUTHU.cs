@@ -23,10 +23,10 @@ namespace QuanLyThuVien
         public string MaThuThu { get; set; }
         public string TenThuThu { get; set; }
         public System.DateTime NamSinh { get; set; }
-        public int SoDienThoai { get; set; }
+        public string SoDienThoai { get; set; }
         public string GioiTinh { get; set; }
         public string Email { get; set; }
-        public Nullable<int> CMND { get; set; }
+        public string CMND { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TAIKHOANTHUTHU> TAIKHOANTHUTHUs { get; set; }

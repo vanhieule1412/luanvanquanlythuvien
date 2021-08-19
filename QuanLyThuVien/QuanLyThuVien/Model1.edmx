@@ -24,10 +24,10 @@
           <Property Name="MaDocGia" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TenDocGia" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NamSinh" Type="date" Nullable="false" />
-          <Property Name="SoDienThoai" Type="int" />
+          <Property Name="SoDienThoai" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="CMND" Type="int" />
+          <Property Name="CMND" Type="nvarchar" MaxLength="50" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
           <Property Name="MaTaiKhoai" Type="int" Nullable="false" />
         </EntityType>
@@ -55,7 +55,7 @@
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="200" />
           <Property Name="DiaChiWebsite" Type="nvarchar" MaxLength="255" />
-          <Property Name="SoDienThoai" Type="int" />
+          <Property Name="SoDienThoai" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PHIEUMUON">
           <Key>
@@ -145,10 +145,10 @@
           <Property Name="MaThuThu" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="TenThuThu" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="NamSinh" Type="date" Nullable="false" />
-          <Property Name="SoDienThoai" Type="int" Nullable="false" />
+          <Property Name="SoDienThoai" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
-          <Property Name="CMND" Type="int" />
+          <Property Name="CMND" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FKCHITIETPHI151328">
           <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
@@ -415,10 +415,10 @@
           <Property Name="MaDocGia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenDocGia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NamSinh" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="SoDienThoai" Type="Int32" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CMND" Type="Int32" />
+          <Property Name="CMND" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="MaTaiKhoai" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TAIKHOANTHUTHU" Relationship="Self.FKDOCGIA564624" FromRole="DOCGIA" ToRole="TAIKHOANTHUTHU" />
@@ -451,7 +451,7 @@
           <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="DiaChiWebsite" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SoDienThoai" Type="Int32" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="SACHes" Relationship="Self.FKSACH752561" FromRole="NHAXUATBAN" ToRole="SACH" />
         </EntityType>
         <EntityType Name="PHIEUMUON">
@@ -561,10 +561,10 @@
           <Property Name="MaThuThu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenThuThu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NamSinh" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="SoDienThoai" Type="Int32" Nullable="false" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CMND" Type="Int32" />
+          <Property Name="CMND" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="TAIKHOANTHUTHUs" Relationship="Self.FKTAIKHOANTH192785" FromRole="THUTHU" ToRole="TAIKHOANTHUTHU" />
         </EntityType>
         <Association Name="FKCHITIETPHI151328">

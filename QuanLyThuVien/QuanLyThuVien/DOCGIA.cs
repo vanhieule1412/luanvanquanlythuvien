@@ -23,10 +23,10 @@ namespace QuanLyThuVien
         public string MaDocGia { get; set; }
         public string TenDocGia { get; set; }
         public System.DateTime NamSinh { get; set; }
-        public Nullable<int> SoDienThoai { get; set; }
+        public string SoDienThoai { get; set; }
         public string Email { get; set; }
         public string GioiTinh { get; set; }
-        public Nullable<int> CMND { get; set; }
+        public string CMND { get; set; }
         public string DiaChi { get; set; }
         public int MaTaiKhoai { get; set; }
     

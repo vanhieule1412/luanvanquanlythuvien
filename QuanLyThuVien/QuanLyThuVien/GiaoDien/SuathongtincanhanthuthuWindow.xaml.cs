@@ -73,9 +73,9 @@ namespace QuanLyThuVien.GiaoDien
             TAIKHOANTHUTHU aIKHOANTHUTHU = dc.TAIKHOANTHUTHUs.Find(int.Parse(TAIKHOANTHUTHU.MaTaiKhoai.ToString()));
             if (TAIKHOANTHUTHU.MaTaiKhoai.ToString() != null)
             {
-                aIKHOANTHUTHU.THUTHU.SoDienThoai = int.Parse(txtsodienthoai.Text);
+                aIKHOANTHUTHU.THUTHU.SoDienThoai = txtsodienthoai.Text;
                 aIKHOANTHUTHU.THUTHU.Email = txtemail.Text;
-                aIKHOANTHUTHU.THUTHU.CMND = int.Parse(txtcmnd.Text);
+                aIKHOANTHUTHU.THUTHU.CMND = txtcmnd.Text;
                 aIKHOANTHUTHU.MatKhau = Encrypt(txtmatkhua.Password);
                 MessageBox.Show("Sửa thành công");
                 dc.SaveChanges();
