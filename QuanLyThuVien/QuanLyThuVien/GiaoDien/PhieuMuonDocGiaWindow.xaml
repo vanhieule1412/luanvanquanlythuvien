@@ -35,8 +35,8 @@
                 <TextBlock Grid.Column="0" Grid.Row="5" Text="Đã trả"/>
                 <TextBlock Grid.Column="0" Grid.Row="6" Text="Mã Tài khoản thu thư"/>-->
                 <TextBlock Grid.Column="0" Grid.Row="7" Text="Mã thẻ độc giả"/>
-                <DatePicker Grid.Column="1" Grid.Row="1" Name="dpNgaymuon"  Text="{Binding Path=SelectedDate,  StringFormat={}{0:dd-MM-yyyy}, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}"/>
-                <DatePicker Grid.Column="1" Grid.Row="2" Name="dpNgaytradukien" Text="{Binding Path=SelectedDate,  StringFormat={}{0:dd-MM-yyyy}, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}"/>
+                <DatePicker Grid.Column="1" Grid.Row="1" Name="dpNgaymuon" IsEnabled="False"  Text="{Binding Path=SelectedDate ,  StringFormat={}{0:dd-MM-yyyy}, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}"/>
+                <DatePicker Grid.Column="1" Grid.Row="2" Name="dpNgaytradukien" IsEnabled="False" Text="{Binding Path=SelectedDate,  StringFormat={}{0:dd-MM-yyyy}, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}"/>
                 <!--<WrapPanel Grid.Column="1" Grid.Row="3">
                     <RadioButton Name="rdbduocmuon" Content="Được mượn" />
                     <RadioButton Name="rdbkhongduocmuon" Content="Không được mượn"  IsChecked="True"/>
@@ -48,7 +48,11 @@
                 </WrapPanel>
 
                 <ComboBox Grid.Column="1" Grid.Row="6" Name="cmbmataikhoan" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="MaTaiKhoai" Text=" "/>-->
-                <ComboBox Grid.Column="1" Grid.Row="7" Name="cmbthedocgia" SelectedValuePath="MaTheDocGia" DisplayMemberPath="MaTheDocGia"/>
+                <TextBox Grid.Column="1" Grid.Row="7" Name="txtmathedocgia" />
+                <!--<WrapPanel Grid.Column="2" Grid.Row="7">
+                    <TextBlock Text="Tên Đọc Giả: "/>
+                    <TextBlock Text="{Binding ElementName=cmbthedocgia,Path=SelectedItem.TenDocGia}"/>
+                </WrapPanel>-->
                 <Button Grid.Column="2" Grid.Row="0" Name="btnLapPM" Content="Lập phiếu mượn" Click="BtnLapPM_Click" Height="21" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
@@ -77,7 +81,7 @@
                     <!--<TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding ElementName=cmbMasach,Path=SelectedItem.TenSach}"/>
                     <TextBox Grid.Row="1" Grid.Column="2" IsReadOnly="True" Text="{Binding ElementName=cmbMasach,Path=SelectedItem.TacGia}"/>-->
                     <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding ElementName=cmbMasach,Path=SelectedItem.NamXuatBan}"/>
-                    <ComboBox Grid.Row="1" Grid.Column="2" IsReadOnly="True" Name="cmbtinhtrang" >
+                    <ComboBox Grid.Row="1" Grid.Column="2" IsReadOnly="True" Name="cmbtinhtrang" IsEnabled="False" >
                         <ComboBoxItem Name="cmbhoanchinh" Content="Hoàn chỉnh" IsSelected="True"/>
                     </ComboBox>
                     <TextBlock Grid.Row="0" Grid.Column="2" Text="Tình trạng"/>

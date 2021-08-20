@@ -20,6 +20,14 @@
                     <DataGridTextColumn Header="Mã độc giả" Binding="{Binding MaDocGia}"/>
                     <DataGridTextColumn Header="Tên độc giả" Binding="{Binding DOCGIA.TenDocGia}"/>
                     <DataGridTextColumn Header="Mã tài khoản của thủ thư" Binding="{Binding MaTaiKhoai}"/>
+                    <DataGridTextColumn Header="Tên tài khoản của thủ thư" Binding="{Binding TAIKHOANTHUTHU.TenTaiKhoai}"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btnsuathongtintaikhoan" Content="Cập nhật" Click="Btnsuathongtintaikhoan_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

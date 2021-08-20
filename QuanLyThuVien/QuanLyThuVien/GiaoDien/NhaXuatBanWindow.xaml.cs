@@ -129,8 +129,17 @@ namespace QuanLyThuVien.GiaoDien
                 return false;
             }
         }
-
-            private void Btnthuchien_Click(object sender, RoutedEventArgs e)
+        private bool IsInt(string sVal)
+        {
+            foreach (char c in sVal)
+            {
+                int iN = (int)c;
+                if ((iN > 57) || (iN < 48))
+                    return false;
+            }
+            return true;
+        }
+        private void Btnthuchien_Click(object sender, RoutedEventArgs e)
             {
             if (rdoThem.IsChecked == true)
             {               
@@ -138,7 +147,6 @@ namespace QuanLyThuVien.GiaoDien
                 Regex trimmer = new Regex(@"\s\s+"); // Xóa khoảng trắng thừa trong chuỗi
                 txttennhaxuatban.Text = trimmer.Replace(txttennhaxuatban.Text, " ");
                 txtdiachi.Text = trimmer.Replace(txtdiachi.Text, " ");
-                var isNumeric = int.TryParse(txtsodienthoai.Text, out int n);
                 if (hAXUATBAN != null)
                 {
                     MessageBox.Show("Mã bị trùng");
@@ -203,7 +211,7 @@ namespace QuanLyThuVien.GiaoDien
                     txtsodienthoai.Select(txtsodienthoai.Text.Length, 0);
                     return;
                 }
-                if (isNumeric == false)
+                if (IsInt(txtsodienthoai.Text) == false)
                 {
                     MessageBox.Show("Số điện thoại phải là số");
                     return;

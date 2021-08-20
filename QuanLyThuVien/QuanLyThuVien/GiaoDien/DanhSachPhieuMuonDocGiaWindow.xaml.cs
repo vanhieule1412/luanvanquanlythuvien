@@ -22,6 +22,7 @@ namespace QuanLyThuVien.GiaoDien
     {
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         public PHIEUMUON pHIEUMUON;
+        
         public DanhSachPhieuMuonDocGiaWindow()
         {
             InitializeComponent();

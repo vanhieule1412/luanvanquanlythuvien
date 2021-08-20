@@ -38,5 +38,23 @@ namespace QuanLyThuVien.GiaoDien
             f.ShowDialog();
             f.Close();
         }
+
+        private void Btnsuathongtintaikhoan_Click(object sender, RoutedEventArgs e)
+        {
+            GiaoDien.SuadocgiathuthuWindow f = new SuadocgiathuthuWindow();
+            f.chucnang = KieuChucNang.suathuthu;
+            f.tAIKHOANDOCGIA = dc.TAIKHOANDOCGIAs.Find(int.Parse(dgtaikhoandocgia.SelectedValue.ToString()));
+            if (f.ShowDialog() == true)
+            {
+                TAIKHOANDOCGIA dg = dc.TAIKHOANDOCGIAs.Find(f.tAIKHOANDOCGIA.MaTaiKhoaiDocGia);
+                if (dg != null)
+                {
+                    dg.TrangThai = f.tAIKHOANDOCGIA.TrangThai;
+                    dg.MatKhau = f.tAIKHOANDOCGIA.MatKhau;
+                    dc.SaveChanges();
+                    dgtaikhoandocgia.ItemsSource = dc.TAIKHOANDOCGIAs.ToList();
+                }
+            }
+        }
     }
 }

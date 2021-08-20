@@ -36,6 +36,7 @@ namespace QuanLyThuVien.GiaoDien
                 txtmatkdocgia.Text = TAIKHOANDOCGIA.MaTaiKhoaiDocGia.ToString();
                 txttendocgia.Text = TAIKHOANDOCGIA.DOCGIA.TenDocGia;
                 dpnamsinh.SelectedDate = TAIKHOANDOCGIA.DOCGIA.NamSinh;
+            cmbmataikhoanthuthu.SelectedValue = TAIKHOANDOCGIA.MaTaiKhoai;
                 DateTime ngaytao = DateTime.Now;
                 dtpngaytao.SelectedDate = ngaytao;
                 DateTime ngayhet = ngaytao.AddYears(1);
@@ -65,8 +66,11 @@ namespace QuanLyThuVien.GiaoDien
         private void Btntaotaikhoan_Click(object sender, RoutedEventArgs e)
         {              
                 string s = PhatSinhTuDong(dc);
-                THEDOCGIA tHEDOCGIA = new THEDOCGIA();
-                tHEDOCGIA.MaTheDocGia = s;
+            string randownumber;
+            Random rd = new Random();
+            randownumber = rd.Next(1, 100).ToString();
+            THEDOCGIA tHEDOCGIA = new THEDOCGIA();
+                tHEDOCGIA.MaTheDocGia = s + randownumber;
                 tHEDOCGIA.NgayTheDuocTao = dtpngaytao.SelectedDate.Value;
                 tHEDOCGIA.NgayTheDuocGiaHan = dtpngayhethan.SelectedDate.Value;
                 tHEDOCGIA.TenDocGia = txttendocgia.Text;

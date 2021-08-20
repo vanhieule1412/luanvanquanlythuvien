@@ -24,18 +24,19 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <Label/>
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Ngày tạo"/>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Ngày hết hạn"/>
             <TextBlock Grid.Column="0" Grid.Row="3" Text="Tên độc giả"/>
             <TextBlock Grid.Column="0" Grid.Row="4" Text="Năm sinh"/>
             <TextBlock Grid.Column="0" Grid.Row="5" Text="Mã tài khoản độc giả"/>
             <TextBlock Grid.Column="0" Grid.Row="6" Text="Tên tài khoản thủ thư"/>
-            <DatePicker Grid.Column="1" Grid.Row="1" Name="dtpngaytao"/>
-            <DatePicker Grid.Column="1" Grid.Row="2" Name="dtpngayhethan"/>
-            <TextBox Grid.Column="1" Grid.Row="3" Name="txttendocgia"/>
-            <DatePicker Grid.Column="1" Grid.Row="4" Name="dpnamsinh" />
-            <TextBox Grid.Column="1" Grid.Row="5" Name="txtmatkdocgia"/>
-            <ComboBox Grid.Column="1" Grid.Row="6" Name="cmbmataikhoanthuthu" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="TenTaiKhoai"/>
+            <DatePicker Grid.Column="1" Grid.Row="1" Name="dtpngaytao" IsEnabled="False"/>
+            <DatePicker Grid.Column="1" Grid.Row="2" Name="dtpngayhethan" IsEnabled="False"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Name="txttendocgia" IsReadOnly="True"/>
+            <DatePicker Grid.Column="1" Grid.Row="4" Name="dpnamsinh" IsEnabled="False"/>
+            <TextBox Grid.Column="1" Grid.Row="5" Name="txtmatkdocgia" IsReadOnly="True"/>
+            <ComboBox Grid.Column="1" Grid.Row="6" Name="cmbmataikhoanthuthu" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="TenTaiKhoai" IsEnabled="False"/>
             <WrapPanel Grid.Column="2" Grid.Row="6">
                 <TextBlock Text="Mã tài khoản thủ thư: "/>
                 <TextBlock Text="{Binding ElementName=cmbmataikhoanthuthu,Path=SelectedItem.MaTaiKhoai}"/>

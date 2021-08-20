@@ -19,7 +19,7 @@ namespace QuanLyThuVien.GiaoDien
     /// <summary>
     /// Interaction logic for TaiKhoanThuThuWindow.xaml
     /// </summary>
-    public enum KieuChucNang {Them,Sua,suaadmin}
+    public enum KieuChucNang {Them,Sua,suaadmin,suathuthu}
     public partial class TaiKhoanThuThuWindow : Window
     {
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();

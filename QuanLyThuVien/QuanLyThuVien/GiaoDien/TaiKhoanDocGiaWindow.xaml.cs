@@ -36,30 +36,84 @@ namespace QuanLyThuVien.GiaoDien
             {
                 txtmataikhoanthuthu.Text = DOCGIA.MaTaiKhoai.ToString();
                 txtmadocgia.Text = DOCGIA.MaDocGia;
+                txtmatkhau.Password = RemoveUnicode(DOCGIA.TenDocGia);
+                txtmatkhau.Password = txtmatkhau.Password.Replace(" ", "");
             }
+        }
+        public static string RemoveUnicode(string text)
+        {
+            string[] arr1 = new string[] { "á", "à", "ả", "ã", "ạ", "â", "ấ", "ầ", "ẩ", "ẫ", "ậ", "ă", "ắ", "ằ", "ẳ", "ẵ", "ặ",
+            "đ",
+            "é","è","ẻ","ẽ","ẹ","ê","ế","ề","ể","ễ","ệ",
+            "í","ì","ỉ","ĩ","ị",
+            "ó","ò","ỏ","õ","ọ","ô","ố","ồ","ổ","ỗ","ộ","ơ","ớ","ờ","ở","ỡ","ợ",
+            "ú","ù","ủ","ũ","ụ","ư","ứ","ừ","ử","ữ","ự",
+            "ý","ỳ","ỷ","ỹ","ỵ",};
+            string[] arr2 = new string[] { "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a",
+    "d",
+    "e","e","e","e","e","e","e","e","e","e","e",
+    "i","i","i","i","i",
+    "o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o","o",
+    "u","u","u","u","u","u","u","u","u","u","u",
+    "y","y","y","y","y",};
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                text = text.Replace(arr1[i], arr2[i]);
+                text = text.Replace(arr1[i].ToUpper(), arr2[i].ToUpper());
+            }
+            return text;
         }
         public string Encrypt(string decrypted)
         {
-            byte[] data = UTF8Encoding.UTF8.GetBytes(decrypted);
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            TripleDESCryptoServiceProvider tripDES = new TripleDESCryptoServiceProvider();
-            tripDES.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(decrypted));
-            tripDES.Mode = CipherMode.ECB;
+            MD5 md5 = new MD5CryptoServiceProvider();
 
-            ICryptoTransform transform = tripDES.CreateEncryptor();
-            byte[] result = transform.TransformFinalBlock(data, 0, data.Length);
-            return Convert.ToBase64String(result);
+            //compute hash from the bytes of text  
+            md5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(decrypted));
+
+            //get hash result after compute it  
+            byte[] result = md5.Hash;
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < result.Length; i++)
+            {
+                //change it into 2 hexadecimal digits  
+                //for each byte  
+                strBuilder.Append(result[i].ToString("x2"));
+            }
+
+            return strBuilder.ToString();
         }
         private void Txttaotaikhoan_Click(object sender, RoutedEventArgs e)
         {
-            tAIKHOANDOCGIA = new TAIKHOANDOCGIA();
-            tAIKHOANDOCGIA.TenTaiKhoan = txttentaikhoandocgia.Text;
-            tAIKHOANDOCGIA.MatKhau =Encrypt(txtmatkhau.Text);
-            tAIKHOANDOCGIA.TrangThai = cmbtrangthai.SelectionBoxItem.ToString();
-            tAIKHOANDOCGIA.MaTaiKhoai =int.Parse( txtmataikhoanthuthu.Text);
-            tAIKHOANDOCGIA.MaDocGia = txtmadocgia.Text;
-            this.DialogResult = true;
-            this.Close();
+            if (String.IsNullOrWhiteSpace(txttentaikhoandocgia.Text) == true)
+            {
+                MessageBox.Show("Tên chưa điền");
+                txttentaikhoandocgia.Focus();
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(txtmatkhau.Password) == true)
+            {
+                MessageBox.Show("Mật khẩu chưa điền");
+                txtmatkhau.Focus();
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(cmbtrangthai.Text) == true)
+            {
+                MessageBox.Show("Trạng thái chưa điền");
+                cmbtrangthai.Focus();
+                return;
+            }
+            else
+            {
+                tAIKHOANDOCGIA = new TAIKHOANDOCGIA();
+                tAIKHOANDOCGIA.TenTaiKhoan = txttentaikhoandocgia.Text;
+                tAIKHOANDOCGIA.MatKhau = Encrypt(txtmatkhau.Password);
+                tAIKHOANDOCGIA.TrangThai = cmbtrangthai.SelectionBoxItem.ToString();
+                tAIKHOANDOCGIA.MaTaiKhoai = int.Parse(txtmataikhoanthuthu.Text);
+                tAIKHOANDOCGIA.MaDocGia = txtmadocgia.Text;
+                this.DialogResult = true;
+                this.Close();
+            }
         }
     }
 }

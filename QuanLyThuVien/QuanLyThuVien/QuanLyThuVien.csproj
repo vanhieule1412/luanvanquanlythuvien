@@ -112,6 +112,9 @@
     <Compile Include="GiaoDien\SuachitietphieumuonWindow.xaml.cs">
       <DependentUpon>SuachitietphieumuonWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GiaoDien\SuadocgiathuthuWindow.xaml.cs">
+      <DependentUpon>SuadocgiathuthuWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GiaoDien\SuathongtincanhanthuthuWindow.xaml.cs">
       <DependentUpon>SuathongtincanhanthuthuWindow.xaml</DependentUpon>
     </Compile>
@@ -237,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GiaoDien\SuachitietphieumuonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GiaoDien\SuadocgiathuthuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

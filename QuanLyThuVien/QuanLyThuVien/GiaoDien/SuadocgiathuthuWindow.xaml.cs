@@ -16,15 +16,15 @@ using System.Windows.Shapes;
 namespace QuanLyThuVien.GiaoDien
 {
     /// <summary>
-    /// Interaction logic for Suathuthuadmin.xaml
+    /// Interaction logic for SuadocgiathuthuWindow.xaml
     /// </summary>
-    public partial class Suathuthuadmin : Window
+    public partial class SuadocgiathuthuWindow : Window
     {
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         public KieuChucNang chucnang;
-        public TAIKHOANTHUTHU tAIKHOANTHUTHU;
+        public TAIKHOANDOCGIA tAIKHOANDOCGIA;
 
-        public Suathuthuadmin()
+        public SuadocgiathuthuWindow()
         {
             InitializeComponent();
         }
@@ -48,16 +48,17 @@ namespace QuanLyThuVien.GiaoDien
 
             return strBuilder.ToString();
         }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (chucnang == KieuChucNang.suaadmin)
+            if (chucnang == KieuChucNang.suathuthu)
             {
                 //txtmatkhau.Password = tAIKHOANTHUTHU.MatKhau;
-                if (tAIKHOANTHUTHU.TrangThai == "Không hoạt động")
+                if (tAIKHOANDOCGIA.TrangThai == "Không hoạt động")
                 {
                     cmbkhonghoatdong.IsSelected = true;
                 }
-                else if (tAIKHOANTHUTHU.TrangThai == "Hoạt Động")
+                else if (tAIKHOANDOCGIA.TrangThai == "Hoạt Động")
                 {
                     cmbhoatdong.IsSelected = true;
                 }
@@ -66,33 +67,35 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Btncapnhat_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(txtmatkhau.Password)==true)
+            if (String.IsNullOrWhiteSpace(txtmatkhau.Password) == true)
             {
                 this.Close();
                 return;
             }
             else
             {
-                tAIKHOANTHUTHU.MatKhau = Encrypt(txtmatkhau.Password.Trim());
-                tAIKHOANTHUTHU.TrangThai = cmbtrangthai.SelectionBoxItem.ToString();
+                tAIKHOANDOCGIA.MatKhau = Encrypt(txtmatkhau.Password.Trim());
+                tAIKHOANDOCGIA.TrangThai = cmbtrangthai.SelectionBoxItem.ToString();
                 this.DialogResult = true;
                 this.Close();
-
             }
+
         }
 
         private void Btndoimatkhau_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Bạn có muốn đổi mật khẩu", "Thông báo", MessageBoxButton.YesNo);
+
+            MessageBoxResult result = MessageBox.Show("Bạn có muốn đổi mật khẩu","Thông báo", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes)
             {
                 btndoimatkhau.Visibility = Visibility.Hidden;
                 txtmatkhau.Visibility = Visibility.Visible;
             }
-            else if (result == MessageBoxResult.No)
+            else if(result == MessageBoxResult.No)
             {
                 return;
             }
+            
         }
     }
 }

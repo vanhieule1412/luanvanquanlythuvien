@@ -37,6 +37,10 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Btncapnhat_Click(object sender, RoutedEventArgs e)
         {
+            if (rdoSua.IsChecked == false)
+            {
+                return;
+            }
             if (rdoSua.IsChecked == true)
             {
                 string mathe = txtmathedocgia.Text;
@@ -50,34 +54,53 @@ namespace QuanLyThuVien.GiaoDien
                     tHEDOCGIA.MaTaiKhoai = int.Parse(cmbmataikhoanthuthu.SelectedValue.ToString());
                     tHEDOCGIA.MaTaiKhoaiDocGia = int.Parse(txtmatkdocgia.Text);
                     dc.SaveChanges();
+                    MessageBox.Show("Gia Hạn thành công");
                 }
                 hienthi();
             }
-            else if (rdoXoa.IsChecked == true)
-            {
-                if (dgthedocgia.SelectedItem == null) return;
-                else
-                {
-                    string mathe = dgthedocgia.SelectedValue.ToString();
-                    THEDOCGIA tHEDOCGIA = dc.THEDOCGIAs.Find(mathe);
-                    if (tHEDOCGIA != null)
-                    {
-                        dc.THEDOCGIAs.Remove(tHEDOCGIA);
-                        dc.SaveChanges();
-                        hienthi();
-                    }
-                }
-            }
+            //else if (rdoXoa.IsChecked == true)
+            //{
+            //    if (dgthedocgia.SelectedItem == null) return;
+            //    else
+            //    {
+            //        string mathe = dgthedocgia.SelectedValue.ToString();
+            //        THEDOCGIA tHEDOCGIA = dc.THEDOCGIAs.Find(mathe);
+            //        if (tHEDOCGIA != null)
+            //        {
+            //            dc.THEDOCGIAs.Remove(tHEDOCGIA);
+            //            dc.SaveChanges();
+            //            hienthi();
+            //        }
+            //    }
+            //}
         }
-
         private void RdoSua_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBoxResult result = MessageBox.Show("Bạn có muốn gian hạn thêm không", "Thông báo", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                DateTime ngaytao = dtpngayhethan.SelectedDate.Value;
+                dtpngaytao.SelectedDate = ngaytao;
+                DateTime ngayhet = ngaytao.AddYears(1);
+                dtpngayhethan.SelectedDate = ngayhet;
+            }
+            else if (result == MessageBoxResult.No)
+            {
+                return;
+            }
+            
         }
 
         private void RdoXoa_Click(object sender, RoutedEventArgs e)
         {
-
+            string mathe = txtmathedocgia.Text;
+            THEDOCGIA tHEDOCGIA = dc.THEDOCGIAs.Find(mathe);
+            dtpngaytao.IsEnabled = false;
+            dtpngayhethan.IsEnabled = false;
+            txttendocgia.IsReadOnly = true;
+            dpnamsinh.IsEnabled = false;
+            cmbmataikhoanthuthu.IsEnabled = false;
+            txtmatkdocgia.IsReadOnly = true;
         }
 
         private void Dgthedocgia_SelectionChanged(object sender, SelectionChangedEventArgs e)

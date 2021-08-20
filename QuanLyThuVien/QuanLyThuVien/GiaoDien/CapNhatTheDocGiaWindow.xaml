@@ -25,37 +25,37 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Mã thẻ độc giả" Name="tblmathe"/>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Mã thẻ độc giả" Name="tblmathe" />
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Ngày tạo"/>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Ngày hết hạn"/>
             <TextBlock Grid.Column="0" Grid.Row="3" Text="Tên độc giả"/>
             <TextBlock Grid.Column="0" Grid.Row="4" Text="Năm sinh"/>
             <TextBlock Grid.Column="0" Grid.Row="5" Text="Mã tài khoản độc giả"/>
             <TextBlock Grid.Column="0" Grid.Row="6" Text="Tên tài khoản thủ thư"/>
-            <TextBox Grid.Column="1" Grid.Row="0" Name="txtmathedocgia"/>
-            <DatePicker Grid.Column="1" Grid.Row="1" Name="dtpngaytao"/>
-            <DatePicker Grid.Column="1" Grid.Row="2" Name="dtpngayhethan"/>
-            <TextBox Grid.Column="1" Grid.Row="3" Name="txttendocgia"/>
-            <DatePicker Grid.Column="1" Grid.Row="4" Name="dpnamsinh" />
-            <TextBox Grid.Column="1" Grid.Row="5" Name="txtmatkdocgia"/>
-            <ComboBox Grid.Column="1" Grid.Row="6" Name="cmbmataikhoanthuthu" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="TenTaiKhoai"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Name="txtmathedocgia" IsReadOnly="True"/>
+            <DatePicker Grid.Column="1" Grid.Row="1" Name="dtpngaytao" IsEnabled="False"/>
+            <DatePicker Grid.Column="1" Grid.Row="2" Name="dtpngayhethan" IsEnabled="False"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Name="txttendocgia" IsReadOnly="True"/>
+            <DatePicker Grid.Column="1" Grid.Row="4" Name="dpnamsinh" IsEnabled="False"/>
+            <TextBox Grid.Column="1" Grid.Row="5" Name="txtmatkdocgia" IsReadOnly="True"/>
+            <ComboBox Grid.Column="1" Grid.Row="6" Name="cmbmataikhoanthuthu" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="TenTaiKhoai" IsEnabled="False"/>
             <WrapPanel Grid.Column="2" Grid.Row="6">
                 <TextBlock Text="Mã tài khoản thủ thư: "/>
                 <TextBlock Text="{Binding ElementName=cmbmataikhoanthuthu,Path=SelectedItem.MaTaiKhoai}"/>
             </WrapPanel>
             <WrapPanel Grid.Row="0" Grid.Column="2">
-                <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click" />
-                <RadioButton Content="Xóa" Name="rdoXoa" Click="RdoXoa_Click" />
+                <RadioButton Content="Gia Hạn" Name="rdoSua" Click="RdoSua_Click" />
+                <!--<RadioButton Content="Xóa" Name="rdoXoa" Click="RdoXoa_Click" />-->
             </WrapPanel>
         </Grid>
         <Button Content="Cập nhật" Name="btncapnhat" Click="Btncapnhat_Click" />
         <DataGrid Name="dgthedocgia" AutoGenerateColumns="False" SelectedValuePath="MaTheDocGia" SelectionChanged="Dgthedocgia_SelectionChanged" CanUserAddRows="False" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã thẻ độc giả" Binding="{Binding MaTheDocGia}"/>
-                <DataGridTextColumn Header="Ngày tạo thẻ" Binding="{Binding NgayTheDuocTao}"/>
-                <DataGridTextColumn Header="Ngày hết hạn" Binding="{Binding NgayTheDuocGiaHan}"/>
+                <DataGridTextColumn Header="Ngày tạo thẻ" Binding="{Binding NgayTheDuocTao ,StringFormat='dd/MM/yyyy'}"/>
+                <DataGridTextColumn Header="Ngày hết hạn" Binding="{Binding NgayTheDuocGiaHan ,StringFormat='dd/MM/yyyy'}"/>
                 <DataGridTextColumn Header="Tên Độc Giả" Binding="{Binding TenDocGia}" />
-                <DataGridTextColumn Header="Năm sinh" Binding="{Binding NamSinh}"/>
+                <DataGridTextColumn Header="Năm sinh" Binding="{Binding NamSinh ,StringFormat='dd/MM/yyyy'}"/>
                 <DataGridTextColumn Header="Mã tài khoản độc giả" Binding="{Binding TAIKHOANDOCGIA.MaTaiKhoaiDocGia}"/>
                 <DataGridTextColumn Header="Tên tài khoản độc giả" Binding="{Binding TAIKHOANDOCGIA.TenTaiKhoan}"/>
                 <DataGridTextColumn Header="Mã tài khoản thủ thư" Binding="{Binding TAIKHOANTHUTHU.MaTaiKhoai}"/>

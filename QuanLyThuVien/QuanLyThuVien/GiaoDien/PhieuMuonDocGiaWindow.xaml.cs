@@ -21,6 +21,7 @@ namespace QuanLyThuVien.GiaoDien
     {
         UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         private PHIEUMUON PM = new PHIEUMUON();
+        public LichSu ls;
         public PhieuMuonDocGiaWindow()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace QuanLyThuVien.GiaoDien
         {
             cmbMasach.ItemsSource = dc.SACHes.ToList();
             //cmbmataikhoan.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
-            cmbthedocgia.ItemsSource = dc.THEDOCGIAs.ToList();
+                    
             DateTime ngaymuon = DateTime.Now;
             dpNgaymuon.SelectedDate = ngaymuon;
             DateTime ngaytra = ngaymuon.AddDays(30);
@@ -60,28 +61,61 @@ namespace QuanLyThuVien.GiaoDien
             //    MessageBox.Show("Trùng mã");
             //    return;
             //}
-            PHIEUMUON x = new PHIEUMUON();
-            x.MaPhieuMuon = s;
-            //x.MaPhieuMuon = txtmaphieumuon.Text;
-            x.NgayMuon = dpNgaymuon.SelectedDate.Value;
-            x.NgayTraDukien = dpNgaytradukien.SelectedDate.Value;
-            x.DaTra = false;
-            x.MaTheDocGia = cmbthedocgia.SelectedValue.ToString();
-            foreach (CHITIETPHIEUMUON t in PM.CHITIETPHIEUMUONs)
-            {
-                CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
-                ct.MaPhieuMuon = t.MaPhieuMuon;
-                ct.MaSach = t.MaSach;
-                ct.TienPhat = 0;
-                ct.TinhTrang = t.TinhTrang;
-                ct.SoLuongSachMuon = t.SoLuongSachMuon;
-                x.CHITIETPHIEUMUONs.Add(ct);
-            }
-            dc.PHIEUMUONs.Add(x);
-            dc.SaveChanges();
-            hienthi();
-            MessageBox.Show("Phiếu mượn " + s + " thêm thành công");
-            this.Close();
+            //if (txtmathedocgia.Text != null)
+            //{
+            //    foreach (var a in dc.THEDOCGIAs)
+            //    {
+            //        if (txtmathedocgia.Text != a.MaTheDocGia)
+            //        {
+            //            MessageBox.Show("Mã thẻ không hợp lệ");
+            //            return;
+            //        }
+            //        else {
+            //            x.MaTheDocGia = txtmathedocgia.Text;
+            //        }
+            //    }
+            //}
+            
+                PHIEUMUON x = new PHIEUMUON();
+                x.MaPhieuMuon = s;
+                if (txtmathedocgia.Text != null)
+                {
+                    foreach (var a in dc.THEDOCGIAs)
+                    {
+                        if (txtmathedocgia.Text != a.MaTheDocGia)
+                        {
+                            MessageBox.Show("Mã thẻ không hợp lệ");
+                            return;
+                        }
+                        else
+                        {
+                            x.MaTheDocGia = txtmathedocgia.Text;
+                        }
+                    }
+                }
+                //x.MaPhieuMuon = txtmaphieumuon.Text;
+                x.NgayMuon = dpNgaymuon.SelectedDate.Value;
+                x.NgayTraDukien = dpNgaytradukien.SelectedDate.Value;
+                x.DaTra = false;
+                //x.MaTheDocGia = txtmathedocgia.Text;
+                foreach (CHITIETPHIEUMUON t in PM.CHITIETPHIEUMUONs)
+                {
+                    CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
+                    ct.MaPhieuMuon = t.MaPhieuMuon;
+                    ct.MaSach = t.MaSach;
+                    ct.TienPhat = 0;
+                    ct.TinhTrang = t.TinhTrang;
+                    ct.SoLuongSachMuon = t.SoLuongSachMuon;
+                    x.CHITIETPHIEUMUONs.Add(ct);
+                }
+                dc.PHIEUMUONs.Add(x);
+                dc.SaveChanges();
+                hienthi();
+                MessageBox.Show("Phiếu mượn " + s + " thêm thành công");
+                this.Close();
+            
+            
+           
            
 
         }
