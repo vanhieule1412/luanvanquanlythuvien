@@ -113,6 +113,11 @@ namespace QuanLyThuVien.GiaoDien
                 }
                 pm.NgayTraThat = dpngaytrathat.SelectedDate;
                 txttienphat.Text = pm.TienPhat.ToString();
+                foreach (var b in dc.PHIEUMUONs.Where(x => x.MaPhieuMuon == pm.MaPhieuMuon))
+                {
+                    b.TienPhatTong += pm.TienPhat;
+                  
+                }
                 dc.SaveChanges();
                 hienthi();
             }

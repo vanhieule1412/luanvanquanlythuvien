@@ -136,7 +136,7 @@
                 <DataGridTextColumn Header="Tên kệ" Binding="{Binding KE.TenKe}"/>
                 <DataGridTextColumn Header="Tên khu" Binding="{Binding KE.KHU.TenKhu}"/>
                 <DataGridTextColumn Header="Nội dung tóm tắt" Binding="{Binding NoiDungTomTat}"/>
-                <DataGridTextColumn Header="Giá" Binding="{Binding Gia}"/>
+                <DataGridTextColumn Header="Giá" Binding="{Binding Gia ,StringFormat='{}{0:#,##0.## đ}'}"/>
                 <DataGridTextColumn Header="Tên file hình" Binding="{Binding HinhAnh}"/>
             </DataGrid.Columns>
         </DataGrid>

@@ -45,7 +45,7 @@
             <TextBlock Grid.Row="6" Grid.Column="0" Text="Mã chi tiết"/>
             <TextBox Grid.Row="0" Grid.Column="1" Name="txtmasach" IsReadOnly="True"/>
             <TextBox Grid.Row="1" Grid.Column="1" Name="txtmaphieumuon" IsReadOnly="True"/>
-            <DatePicker Grid.Row="2" Grid.Column="1" Name="dpngaytrathat" IsEnabled="False" />
+            <DatePicker Grid.Row="2" Grid.Column="1" Name="dpngaytrathat"  />
             <TextBox Grid.Row="3" Grid.Column="1" Name="txttienphat" IsReadOnly="True"/>
             <ComboBox Grid.Row="4" Grid.Column="1" Name="cmbtinhtrang" SelectedItem="TinhTrang">
                 <ComboBoxItem Name="cmbhoanchinh" Content="Hoàn chỉnh"/>
@@ -64,8 +64,8 @@
                 <DataGridTextColumn Header="Tên Sách" Binding="{Binding SACH.TenSach}"/>
                 <DataGridTextColumn Header="Mã phiếu mượn" Binding="{Binding MaPhieuMuon}"/>
                 <DataGridTextColumn Header="Tình trạng" Binding="{Binding TinhTrang}"/>
-                <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat}"/>
-                <DataGridTextColumn Header="Tiền Phạt" Binding="{Binding TienPhat}"/>
+                <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat  ,StringFormat='dd/MM/yyyy'}"/>
+                <DataGridTextColumn Header="Tiền Phạt" Binding="{Binding TienPhat ,StringFormat='{}{0:#,##0.## đ}'}"/>
                 <DataGridTextColumn Header="Số lượng sách mượn" Binding="{Binding SoLuongSachMuon}"/>
                 <!--<DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

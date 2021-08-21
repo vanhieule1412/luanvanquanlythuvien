@@ -71,19 +71,19 @@ namespace QuanLyThuVien.GiaoDien
             if (s != null)
             {
              
-                foreach (var b in dc.CHITIETPHIEUMUONs.Where(x => x.MaPhieuMuon == s.MaPhieuMuon))
-                {
-                    double tong = b.TienPhat.Value + b.TienPhat.Value;
-                    if (b.NgayTraThat != null && b.TienPhat != 0 && s.TienPhatTong != tong)
-                    {
-                        s.TienPhatTong += b.TienPhat.Value;
-                        txttienphattong.Text = s.TienPhatTong.ToString();
-                    }
-                    else
-                    {
-                        txttienphattong.Text = s.TienPhatTong.ToString();
-                    }
-                }
+                //foreach (var b in dc.CHITIETPHIEUMUONs.Where(x => x.MaPhieuMuon == s.MaPhieuMuon))
+                //{
+                //    double tong = b.TienPhat.Value + b.TienPhat.Value;
+                //    if (b.NgayTraThat != null && b.TienPhat != 0 && s.TienPhatTong != tong)
+                //    {
+                //        s.TienPhatTong += b.TienPhat.Value;
+                //        txttienphattong.Text = s.TienPhatTong.ToString();
+                //    }
+                //    else
+                //    {
+                //        txttienphattong.Text = s.TienPhatTong.ToString();
+                //    }
+                //}
                 txtmaphieumuon.Text = s.MaPhieuMuon;
                 dpNgayMuon.SelectedDate = s.NgayMuon;
                 dpNgayTra.SelectedDate = s.NgayTraDukien;
@@ -107,6 +107,7 @@ namespace QuanLyThuVien.GiaoDien
                 {
                     ckbdatra.IsChecked = false;
                 }
+                dc.SaveChanges();
             }
             else
             {

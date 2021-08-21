@@ -48,7 +48,6 @@
                     <RadioButton  Name="rdbdatra" Content="Đã trả"/>
                     <RadioButton  Name="rdbchuatra" Content="Chưa trả" IsChecked="True"/>
                 </WrapPanel>
-
                 <TextBox Grid.Column="1" Grid.Row="6" Name="txtmataikhoan"/>
                 <TextBox Grid.Column="1" Grid.Row="7" Name="txtthedocgia"/>
                 <Button Grid.Column="2" Grid.Row="0" Name="btnDuyetPM" Content="Duyệt phiếu mượn" Click="BtnDuyetPM_Click" Height="21" VerticalAlignment="Top"/>
