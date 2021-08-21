@@ -52,48 +52,56 @@ namespace QuanLyThuVien.GiaoDien
             }
             return s;
         }
+        private bool HasSpecialChars(string yourString)
+        {
+            return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
+        }
+        private bool ktmathetontai(string n)
+        {
+            foreach (var a in dc.THEDOCGIAs)
+            {
+                if (a.MaTheDocGia == n)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         private void BtnLapPM_Click(object sender, RoutedEventArgs e)
         {
             string s = PhatSinhTuDong(dc);
-            //PHIEUMUON k = dc.PHIEUMUONs.Find(txtmaphieumuon.Text);
-            //if (k != null)
-            //{
-            //    MessageBox.Show("Trùng mã");
-            //    return;
-            //}
-            //if (txtmathedocgia.Text != null)
-            //{
-            //    foreach (var a in dc.THEDOCGIAs)
-            //    {
-            //        if (txtmathedocgia.Text != a.MaTheDocGia)
-            //        {
-            //            MessageBox.Show("Mã thẻ không hợp lệ");
-            //            return;
-            //        }
-            //        else {
-            //            x.MaTheDocGia = txtmathedocgia.Text;
-            //        }
-            //    }
-            //}
-            
-                PHIEUMUON x = new PHIEUMUON();
-                x.MaPhieuMuon = s;
-                if (txtmathedocgia.Text != null)
-                {
-                    foreach (var a in dc.THEDOCGIAs)
-                    {
-                        if (txtmathedocgia.Text != a.MaTheDocGia)
-                        {
-                            MessageBox.Show("Mã thẻ không hợp lệ");
-                            return;
-                        }
-                        else
-                        {
-                            x.MaTheDocGia = txtmathedocgia.Text;
-                        }
-                    }
-                }
-                //x.MaPhieuMuon = txtmaphieumuon.Text;
+            PHIEUMUON x = new PHIEUMUON();
+            x.MaPhieuMuon = s.Trim();
+            if (cmbMasach.SelectedItem == null)
+            {
+                MessageBox.Show("Chưa chọn sách");
+                return;
+            }
+            if (HasSpecialChars(txtmathedocgia.Text) == true)
+            {
+                MessageBox.Show("Mã thẻ không có khoảng trắng hoặc kí tự đặc biệt");
+                txtmathedocgia.Focus();
+                txtmathedocgia.Select(txtmathedocgia.Text.Length, 0);
+                return;
+            }
+            if (dgChitiet.ItemsSource == null)
+            {
+                MessageBox.Show("Chưa chọn sách");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(txtmathedocgia.Text) == true)
+            {
+                MessageBox.Show("Mã thẻ không để trắng");
+                return;
+            }
+            if (ktmathetontai(txtmathedocgia.Text) == false)
+            {
+                MessageBox.Show("Mã thẻ không hợp lệ");
+                return;
+            }
+            else
+            {
+                x.MaTheDocGia = txtmathedocgia.Text.Trim().ToUpper();
                 x.NgayMuon = dpNgaymuon.SelectedDate.Value;
                 x.NgayTraDukien = dpNgaytradukien.SelectedDate.Value;
                 x.DaTra = false;
@@ -113,11 +121,9 @@ namespace QuanLyThuVien.GiaoDien
                 hienthi();
                 MessageBox.Show("Phiếu mượn " + s + " thêm thành công");
                 this.Close();
+            }
+            //x.MaPhieuMuon = txtmaphieumuon.Text;
             
-            
-           
-           
-
         }
 
         private void BtnXoa_Click(object sender, RoutedEventArgs e)
@@ -172,10 +178,19 @@ namespace QuanLyThuVien.GiaoDien
                 ct.SACH = cmbMasach.SelectedItem as SACH;
                 ct.MaSach = ct.SACH.MaSach;
                 ct.SoLuongSachMuon = int.Parse(txtSoluongsachmuon.Text);
-                sACH.SoLuong -= ct.SoLuongSachMuon;
+                if (sACH.SoLuong != 0)
+                {
+                    sACH.SoLuong -= ct.SoLuongSachMuon;
+                }
+                else
+                {
+                    MessageBox.Show("Sách đã hết");
+                    return;
+                }
                 PM.CHITIETPHIEUMUONs.Add(ct);
             }
-            else {
+            else
+            {
                 sACH.SoLuong += temp.SoLuongSachMuon;
             }
             var kq = getChitietphieumuon(PM);

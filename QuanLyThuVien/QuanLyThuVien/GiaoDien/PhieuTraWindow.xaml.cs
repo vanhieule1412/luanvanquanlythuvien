@@ -31,13 +31,18 @@ namespace QuanLyThuVien.GiaoDien
 
             var filteredsach = dc.PHIEUMUONs.Where(x => x.DaTra == false);
             dgphieutra.ItemsSource = null;
-            dgphieutra.ItemsSource = filteredsach.ToList();           
+            dgphieutra.ItemsSource = filteredsach.ToList();
+            dgphieutra.ItemsSource = filteredsach.ToList();
+
             cmbMaDocGia.ItemsSource = dc.THEDOCGIAs.ToList();
             cmbMaThuThu.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
         }
        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            var filtered = dc.PHIEUMUONs.Where(x => x.TrangThai == true);
+            dgphieutra.ItemsSource = null;
+            dgphieutra.ItemsSource = filtered.ToList();
             hienthi();
         }
 
@@ -84,14 +89,15 @@ namespace QuanLyThuVien.GiaoDien
                 dpNgayTra.SelectedDate = s.NgayTraDukien;
                 cmbMaDocGia.SelectedValue = s.MaTheDocGia;
                 cmbMaThuThu.Text = s.MaTaiKhoai.ToString();
-                if (s.TrangThai.ToString() == "Được mượn")
+                if (s.TrangThai == true)
                 {
                     cmbduocmuon.IsSelected = true;
                 }
-                else
+                else if(s.TrangThai == false)
                 {
                     cmbkhongduocmuon.IsSelected = true;
                 }
+                cmbtrangthai.SelectedItem = s.TrangThai.ToString();
                 txttienphattong.Text = s.TienPhatTong.ToString();
                 if (s.DaTra == true)
                 {
@@ -112,9 +118,18 @@ namespace QuanLyThuVien.GiaoDien
         {          
             GiaoDien.SuachitietphieumuonWindow f = new SuachitietphieumuonWindow();
             f.chucnang = ChucNang.Sua;
-            f.PHIEUMUON = dc.PHIEUMUONs.Find(dgphieutra.SelectedValue.ToString());            
-            this.Close();
-            f.ShowDialog();      
+            if (cmbkhongduocmuon.IsSelected == true)
+            {
+                MessageBox.Show("Phiếu mượn này không hợp lý");
+                return;
+            }
+            else
+            {
+                f.PHIEUMUON = dc.PHIEUMUONs.Find(dgphieutra.SelectedValue.ToString());
+                this.Close();
+                f.ShowDialog();
+            }
+                  
         }
 
         private void Btnxacnhan_Click(object sender, RoutedEventArgs e)
@@ -124,6 +139,7 @@ namespace QuanLyThuVien.GiaoDien
             if (mapt != null)
             {
                 pHIEUMUON.DaTra = ckbdatra.IsChecked;
+
                 dc.SaveChanges();
                 MessageBox.Show("Trả thành công");
             }

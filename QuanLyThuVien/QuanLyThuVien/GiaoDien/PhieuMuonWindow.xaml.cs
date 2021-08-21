@@ -42,8 +42,6 @@ namespace QuanLyThuVien.GiaoDien
             //dgphieumuon.ItemsSource = dc.PHIEUMUONs.ToList();
          
             cmbMasach.ItemsSource = dc.SACHes.ToList();
-            cmbmataikhoan.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
-            cmbthedocgia.ItemsSource = dc.THEDOCGIAs.ToList();
             DateTime ngaymuon = DateTime.Now;
             dpNgaymuon.SelectedDate = ngaymuon;
             DateTime ngaytra = ngaymuon.AddDays(30);
@@ -56,49 +54,137 @@ namespace QuanLyThuVien.GiaoDien
         {
             hienthi();            
         }
-
+        private bool HasSpecialChars(string yourString)
+        {
+            return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
+        }
+        private bool ktmatktontai(int n)
+        {
+            foreach (var a in dc.TAIKHOANTHUTHUs)
+            {
+                if (a.MaTaiKhoai == n)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool ktmathetontai(string n)
+        {
+            foreach (var a in dc.THEDOCGIAs)
+            {
+                if (a.MaTheDocGia == n)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool IsInt(string sVal)
+        {
+            foreach (char c in sVal)
+            {
+                int iN = (int)c;
+                if ((iN > 57) || (iN < 48))
+                    return false;
+            }
+            return true;
+        }
         private void BtnLapPM_Click(object sender, RoutedEventArgs e)
         {
             string s = PhatSinhTuDong(dc);          
             PHIEUMUON x = new PHIEUMUON();
-
-            x.MaPhieuMuon=s;
-            x.NgayMuon = dpNgaymuon.SelectedDate.Value ;
-            x.NgayTraDukien = dpNgaytradukien.SelectedDate.Value;
-            if (rdbduocmuon.IsChecked == true)
+            if (cmbMasach.SelectedItem == null)
             {
-                x.TrangThai = true;
+                MessageBox.Show("Chưa chọn sách");
+                return;
+            }
+            if (HasSpecialChars(txtthedocgia.Text) == true)
+            {
+                MessageBox.Show("Mã thẻ không có khoảng trắng hoặc kí tự đặc biệt");
+                txtthedocgia.Focus();
+                txtthedocgia.Select(txtthedocgia.Text.Length, 0);
+                return;
+            }
+            if (HasSpecialChars(txtmataikhoan.Text) == true)
+            {
+                MessageBox.Show("Mã tài khoản không có khoảng trắng hoặc kí tự đặc biệt");
+                txtmataikhoan.Focus();
+                txtmataikhoan.Select(txtmataikhoan.Text.Length, 0);
+                return;
+            }
+            if (dgChitiet.ItemsSource == null)
+            {
+                MessageBox.Show("Chưa chọn sách");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(txtthedocgia.Text) == true)
+            {
+                MessageBox.Show("Mã thẻ không để trắng");
+                txtthedocgia.Focus();
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(txtmataikhoan.Text) == true)
+            {
+                MessageBox.Show("Mã tài khoản không để trắng");
+                txtmataikhoan.Focus();
+                return;
+            }
+            if (ktmathetontai(txtthedocgia.Text) == false)
+            {
+                MessageBox.Show("Mã thẻ không hợp lệ");
+                return;
+            }
+            if (ktmatktontai(int.Parse(txtmataikhoan.Text)) == false)
+            {
+                MessageBox.Show("Mã tài khoản không hợp lệ");
+                return;
+            }
+            if (IsInt(txtmataikhoan.Text) == false)
+            {
+                MessageBox.Show("Mã tài khoản phải là số");
+                return;
             }
             else
             {
-                x.TrangThai = false;
+                x.MaPhieuMuon = s.Trim();
+                x.NgayMuon = dpNgaymuon.SelectedDate.Value;
+                x.NgayTraDukien = dpNgaytradukien.SelectedDate.Value;
+                if (rdbduocmuon.IsChecked == true)
+                {
+                    x.TrangThai = true;
+                }
+                else
+                {
+                    x.TrangThai = false;
+                }
+                if (rdbdatra.IsChecked == true)
+                {
+                    x.DaTra = true;
+                }
+                else
+                {
+                    x.DaTra = false;
+                }
+                x.TienPhatTong = 0;
+                x.MaTaiKhoai = int.Parse(txtmataikhoan.Text);
+                x.MaTheDocGia = txtthedocgia.Text;
+                foreach (CHITIETPHIEUMUON t in PM.CHITIETPHIEUMUONs)
+                {
+                    CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
+                    ct.MaPhieuMuon = t.MaPhieuMuon;
+                    ct.MaSach = t.MaSach;
+                    ct.TienPhat = 0;
+                    ct.TinhTrang = t.TinhTrang;
+                    ct.SoLuongSachMuon = t.SoLuongSachMuon;
+                    x.CHITIETPHIEUMUONs.Add(ct);
+                }
+                dc.PHIEUMUONs.Add(x);
+                dc.SaveChanges();
+                hienthi();
+                MessageBox.Show("Phiếu mượn " + s + " thêm thành công");
+                this.Close();
             }
-            if (rdbdatra.IsChecked == true)
-            {
-                x.DaTra = true;
-            }
-            else
-            {
-                x.DaTra = false;
-            }
-            x.TienPhatTong = int.Parse(txttienphattong.Text.ToString());
-            x.MaTaiKhoai =int.Parse(cmbmataikhoan.SelectedValue.ToString());
-            x.MaTheDocGia = cmbthedocgia.SelectedValue.ToString();
-            foreach (CHITIETPHIEUMUON t in PM.CHITIETPHIEUMUONs)
-            {
-                CHITIETPHIEUMUON ct = new CHITIETPHIEUMUON();
-                ct.MaPhieuMuon = t.MaPhieuMuon;
-                ct.MaSach = t.MaSach;
-                ct.TienPhat = 0;
-                ct.TinhTrang = t.TinhTrang;
-                ct.SoLuongSachMuon  = t.SoLuongSachMuon;
-                x.CHITIETPHIEUMUONs.Add(ct);
-            }
-            dc.PHIEUMUONs.Add(x);
-            dc.SaveChanges();
-            hienthi();
-            MessageBox.Show("Phiếu mượn "+s+" thêm thành công");
-            this.Close();
         }
         string PhatSinhTuDong(UngDungQuanLyThuVienEntities dc)
         {
@@ -144,7 +230,15 @@ namespace QuanLyThuVien.GiaoDien
                 ct.MaSach = ct.SACH.MaSach;
                 ct.TinhTrang = cmbtinhtrang.SelectionBoxItem.ToString();
                 ct.SoLuongSachMuon = int.Parse(txtSoluongsachmuon.Text);
-                sACH.SoLuong -= ct.SoLuongSachMuon;
+                if (sACH.SoLuong != 0)
+                {
+                    sACH.SoLuong -= ct.SoLuongSachMuon;
+                }
+                else
+                {
+                    MessageBox.Show("Sách đã hết");
+                    return;
+                }
                 PM.CHITIETPHIEUMUONs.Add(ct);
             }
             else

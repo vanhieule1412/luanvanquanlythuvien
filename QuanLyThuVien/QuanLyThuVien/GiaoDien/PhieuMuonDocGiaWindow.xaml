@@ -81,7 +81,7 @@
                     <!--<TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding ElementName=cmbMasach,Path=SelectedItem.TenSach}"/>
                     <TextBox Grid.Row="1" Grid.Column="2" IsReadOnly="True" Text="{Binding ElementName=cmbMasach,Path=SelectedItem.TacGia}"/>-->
                     <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding ElementName=cmbMasach,Path=SelectedItem.NamXuatBan}"/>
-                    <ComboBox Grid.Row="1" Grid.Column="2" IsReadOnly="True" Name="cmbtinhtrang" IsEnabled="False" >
+                    <ComboBox Grid.Row="1" Grid.Column="2" IsReadOnly="True" Name="cmbtinhtrang">
                         <ComboBoxItem Name="cmbhoanchinh" Content="Hoàn chỉnh" IsSelected="True"/>
                     </ComboBox>
                     <TextBlock Grid.Row="0" Grid.Column="2" Text="Tình trạng"/>

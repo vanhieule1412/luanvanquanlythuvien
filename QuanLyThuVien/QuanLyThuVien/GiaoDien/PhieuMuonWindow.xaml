@@ -35,20 +35,19 @@
                 <TextBlock Grid.Column="0" Grid.Row="5" Text="Đã trả"/>
                 <TextBlock Grid.Column="0" Grid.Row="6" Text="Mã Tài khoản thu thư"/>
                 <TextBlock Grid.Column="0" Grid.Row="7" Text="Mã thẻ độc giả"/>
-                <DatePicker Grid.Column="1" Grid.Row="1" Name="dpNgaymuon"/>
-                <DatePicker Grid.Column="1" Grid.Row="2" Name="dpNgaytradukien"/>
+                <DatePicker Grid.Column="1" Grid.Row="1" Name="dpNgaymuon" IsEnabled="False"/>
+                <DatePicker Grid.Column="1" Grid.Row="2" Name="dpNgaytradukien" IsEnabled="False"/>
                 <WrapPanel Grid.Column="1" Grid.Row="3">
                     <RadioButton Name="rdbduocmuon" Content="Được mượn" />
                     <RadioButton Name="rdbkhongduocmuon" Content="Không được mượn"  IsChecked="True"/>
                 </WrapPanel>
-                <TextBox Grid.Column="1" Grid.Row="4" Name="txttienphattong" Text="0"/>
-                <WrapPanel Grid.Column="1" Grid.Row="5">
+                <TextBox Grid.Column="1" Grid.Row="4" Name="txttienphattong" IsReadOnly="True"/>
+                <WrapPanel Grid.Column="1" Grid.Row="5" IsEnabled="False">
                     <RadioButton  Name="rdbdatra" Content="Đã trả"/>
                     <RadioButton  Name="rdbchuatra" Content="Chưa trả" IsChecked="True"/>
                 </WrapPanel>
-                
-                <ComboBox Grid.Column="1" Grid.Row="6" Name="cmbmataikhoan" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="MaTaiKhoai" Text=" "/>
-                <ComboBox Grid.Column="1" Grid.Row="7" Name="cmbthedocgia" SelectedValuePath="MaTheDocGia" DisplayMemberPath="MaTheDocGia"/>
+                <TextBox Grid.Column="1" Grid.Row="6" Name="txtmataikhoan"/>
+                <TextBox Grid.Column="1" Grid.Row="7" Name="txtthedocgia" />
                 <Button Grid.Column="2" Grid.Row="0" Name="btnLapPM" Content="Lập phiếu mượn" Click="BtnLapPM_Click" Height="21" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
@@ -86,7 +85,7 @@
                         <ComboBoxItem Name="cmbbimat" Content="Bị mất"/>
                     </ComboBox>
                     <!--<TextBox Grid.Row="1" Grid.Column="4" Name="txttinhtrang" />-->
-                    <TextBox Grid.Row="1" Grid.Column="4" Name="txtSoluongsachmuon" Text="1"/>
+                    <TextBox Grid.Row="1" Grid.Column="4" Name="txtSoluongsachmuon" Text="1" IsEnabled="False"/>
 
                 </Grid>
                 <DataGrid Name="dgChitiet" AutoGenerateColumns="False" SelectedValuePath="MaSach">

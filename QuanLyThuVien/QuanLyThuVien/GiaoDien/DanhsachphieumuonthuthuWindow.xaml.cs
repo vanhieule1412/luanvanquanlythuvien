@@ -21,6 +21,7 @@ namespace QuanLyThuVien.GiaoDien
     public partial class DanhsachphieumuonthuthuWindow : Window
     {
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
+        PHIEUMUON PM = new PHIEUMUON();
         public DanhsachphieumuonthuthuWindow()
         {
             InitializeComponent();
@@ -33,8 +34,7 @@ namespace QuanLyThuVien.GiaoDien
             var filteredsach = dc.PHIEUMUONs.Where(x => x.TrangThai == false);
             dgphieumuon.ItemsSource = null;
             dgphieumuon.ItemsSource = filteredsach.ToList();
-            cmbthedocgia.ItemsSource = dc.THEDOCGIAs.ToList();
-            cmbmataikhoan.ItemsSource = dc.TAIKHOANTHUTHUs.ToList();
+           
 
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -59,28 +59,82 @@ namespace QuanLyThuVien.GiaoDien
             });
             dg.ItemsSource = kq.ToList();
         }
-
+        private bool ktmatktontai(int n)
+        {
+            foreach (var a in dc.TAIKHOANTHUTHUs)
+            {
+                if (a.MaTaiKhoai == n)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool IsInt(string sVal)
+        {
+            foreach (char c in sVal)
+            {
+                int iN = (int)c;
+                if ((iN > 57) || (iN < 48))
+                    return false;
+            }
+            return true;
+        }
+        private bool HasSpecialChars(string yourString)
+        {
+            return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
+        }
         private void BtnDuyetPM_Click(object sender, RoutedEventArgs e)
         {
             string ma = txtmaphieumuon.Text;
             PHIEUMUON pHIEUMUON = dc.PHIEUMUONs.Find(ma);
             if (ma != null)
             {
-                pHIEUMUON.NgayMuon = dpNgaymuon.SelectedDate.Value;
-                pHIEUMUON.NgayTraDukien = dpNgaytradukien.SelectedDate.Value;
-                if (rdbduocmuon.IsChecked == true)
+                if (HasSpecialChars(txtmataikhoan.Text) == true)
                 {
-                    pHIEUMUON.TrangThai = true;
+                    MessageBox.Show("Mã tài khoản không có khoảng trắng hoặc kí tự đặc biệt");
+                    txtmataikhoan.Focus();
+                    txtmataikhoan.Select(txtmataikhoan.Text.Length, 0);
+                    return;
+                }
+                if (String.IsNullOrWhiteSpace(txtthedocgia.Text) == true)
+                {
+                    MessageBox.Show("Chưa chọn phiếu mượn cần duyệt");
+                    return;
+                }
+                if (String.IsNullOrWhiteSpace(txtmataikhoan.Text) == true)
+                {
+                    MessageBox.Show("Mã tài khoản không để trống");
+                    return;
+                }
+                if (ktmatktontai(int.Parse(txtmataikhoan.Text)) == false)
+                {
+                    MessageBox.Show("Mã tài khoản không hợp lệ");
+                    return;
+                }
+                if (IsInt(txtmataikhoan.Text) == false)
+                {
+                    MessageBox.Show("Mã tài khoản phải là số");
+                    return;
                 }
                 else
                 {
-                    pHIEUMUON.TrangThai = false;
+                    if (rdbduocmuon.IsChecked == true)
+                    {
+                        pHIEUMUON.TrangThai = true;
+                    }
+                    else
+                    {
+                        pHIEUMUON.TrangThai = false;
+                    }
+                    
+                    pHIEUMUON.TienPhatTong = 0;
+                    pHIEUMUON.MaTaiKhoai = int.Parse(txtmataikhoan.Text);
+                    dc.SaveChanges();
+                    hienthi();
                 }
-                pHIEUMUON.MaTaiKhoai = int.Parse(cmbmataikhoan.SelectedValue.ToString());
-
-                dc.SaveChanges();
-                hienthi();
             }
+          
         }
 
         private void Dgphieumuon_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -106,8 +160,8 @@ namespace QuanLyThuVien.GiaoDien
                 {
                     rdbchuatra.IsChecked = true;
                 }
-                cmbmataikhoan.SelectedValue = pHIEUMUON.MaTaiKhoai;
-                cmbthedocgia.SelectedValue = pHIEUMUON.MaTheDocGia;
+                txtmataikhoan.Text = pHIEUMUON.MaTaiKhoai.ToString();
+                txtthedocgia.Text = pHIEUMUON.MaTheDocGia;
                
 
             }
@@ -118,11 +172,12 @@ namespace QuanLyThuVien.GiaoDien
                 dpNgaytradukien.SelectedDate = null;
                 rdbchuatra.IsChecked = true;
                 rdbkhongduocmuon.IsChecked = true;
-                cmbmataikhoan.SelectedValue = null;
-                cmbthedocgia.SelectedValue = null;
+                txtmataikhoan.Text = "";
+                txtthedocgia.Text = "";
                 return;
             }
 
         }
+      
     }
 }

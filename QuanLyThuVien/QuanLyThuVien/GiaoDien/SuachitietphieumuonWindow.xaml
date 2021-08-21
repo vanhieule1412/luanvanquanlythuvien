@@ -11,14 +11,15 @@
         >
 
     <StackPanel>
-        <Button HorizontalAlignment="Right" Name="btnback" Click="Btnback_Click">
+        <!--<Button HorizontalAlignment="Right" Name="btnback" Click="Btnback_Click">
             <Image Name="img" Source="back.png" Width="24" Height="24" Opacity="1" />
-        </Button>
+        </Button>-->
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="264*"/>
+                <ColumnDefinition Width="264*"/>
+                <ColumnDefinition Width="251*"/>
+                <ColumnDefinition Width="13*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -42,18 +43,19 @@
             <TextBlock Grid.Row="4" Grid.Column="0" Text="Tình trạng"/>
             <TextBlock Grid.Row="5" Grid.Column="0" Text="Số lượng sách mượn"/>
             <TextBlock Grid.Row="6" Grid.Column="0" Text="Mã chi tiết"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Name="txtmasach"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Name="txtmaphieumuon"/>
-            <DatePicker Grid.Row="2" Grid.Column="1" Name="dpngaytrathat"/>
-            <TextBox Grid.Row="3" Grid.Column="1" Name="txttienphat"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Name="txtmasach" IsReadOnly="True"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Name="txtmaphieumuon" IsReadOnly="True"/>
+            <DatePicker Grid.Row="2" Grid.Column="1" Name="dpngaytrathat" IsEnabled="False" />
+            <TextBox Grid.Row="3" Grid.Column="1" Name="txttienphat" IsReadOnly="True"/>
             <ComboBox Grid.Row="4" Grid.Column="1" Name="cmbtinhtrang" SelectedItem="TinhTrang">
                 <ComboBoxItem Name="cmbhoanchinh" Content="Hoàn chỉnh"/>
                 <ComboBoxItem Name="cmbbihu" Content="Bị hư hại"/>
+                <ComboBoxItem Name="cmbbihunhe" Content="Bị hư hại nhẹ"/>
                 <ComboBoxItem Name="cmbbimat" Content="Bị mất"/>
             </ComboBox>
-            <TextBox Grid.Row="5" Grid.Column="1" Name="txtsoluongchitiet"/>
+            <TextBox Grid.Row="5" Grid.Column="1" Name="txtsoluongchitiet" IsReadOnly="True"/>
             <TextBox Grid.Row="6" Grid.Column="1" Name="txtmact" IsReadOnly="True"/>
-           
+
         </Grid>
         <Button Name="btnthuchienchitiet" Content="Thực hiện" Click="Btnthuchienchitiet_Click"/>
         <DataGrid Name="dgchitietphieumuon" AutoGenerateColumns="False" SelectedValuePath="MaMuonTra" SelectionChanged="Dgchitietphieumuon_SelectionChanged" CanUserAddRows="False">

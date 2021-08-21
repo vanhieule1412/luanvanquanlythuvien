@@ -37,16 +37,16 @@
                 <TextBlock Grid.Column="0" Grid.Row="2" Text="Mã độc giả"/>
                 <TextBlock Grid.Column="0" Grid.Row="0" Text="Mã Phiếu mượn"/>
                 <TextBlock Grid.Column="0" Grid.Row="8" Text="Đã trả"/>
-                <ComboBox Grid.Column="1" Grid.Row="1" Name="cmbMaThuThu" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="MaTaiKhoai"/>
-                <ComboBox Grid.Column="1" Grid.Row="2" Name="cmbMaDocGia" SelectedValuePath="MaTheDocGia" DisplayMemberPath="MaTheDocGia"/>
-                <DatePicker Grid.Column="1" Grid.Row="6" Name="dpNgayMuon" Height="24" VerticalAlignment="Top"/>
-                <DatePicker Grid.Column="1" Grid.Row="7" Name="dpNgayTra"/>
-                <ComboBox Grid.Column="1" Grid.Row="3" Name="cmbtrangthai" SelectedItem="TrangThai">
+                <ComboBox Grid.Column="1" Grid.Row="1" IsEnabled="False" Name="cmbMaThuThu" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="MaTaiKhoai"/>
+                <ComboBox Grid.Column="1" Grid.Row="2" IsEnabled="False" Name="cmbMaDocGia" SelectedValuePath="MaTheDocGia" DisplayMemberPath="MaTheDocGia"/>
+                <DatePicker Grid.Column="1" Grid.Row="6" IsEnabled="False" Name="dpNgayMuon" Height="24" VerticalAlignment="Top"/>
+                <DatePicker Grid.Column="1" Grid.Row="7" IsEnabled="False" Name="dpNgayTra"/>
+                <ComboBox Grid.Column="1" Grid.Row="3" Name="cmbtrangthai" IsEnabled="False" SelectedItem="TrangThai">
                     <ComboBoxItem Name="cmbduocmuon" Content="Được mượn"  />
-                    <ComboBoxItem Name="cmbkhongduocmuon" Content="Không được mượn" IsSelected="True"/>
+                    <ComboBoxItem Name="cmbkhongduocmuon" Content="Không được mượn"/>
                 </ComboBox>
                 <CheckBox Name="ckbdatra" Grid.Column="1" Grid.Row="8"/>
-                <TextBox Grid.Column="1" Grid.Row="4" Name="txttienphattong" Text="0"/>
+                <TextBox Grid.Column="1" Grid.Row="4" Name="txttienphattong" IsReadOnly="True" Text="0"/>
                 
                 <WrapPanel Grid.Column="2" Grid.Row="1">
                     <TextBlock Text="Tên thủ thư: "/>
@@ -59,7 +59,7 @@
                 <WrapPanel Grid.Column="2" Grid.Row="4" HorizontalAlignment="Center">
                     <CheckBox Name="ckbchopheptra" Content="Cho phép trả" Click="Ckbchopheptra_Click"/>
                 </WrapPanel>
-                <TextBox Grid.Column="1" Grid.Row="0" Name="txtmaphieumuon"/>
+                <TextBox Grid.Column="1" Grid.Row="0" Name="txtmaphieumuon" IsReadOnly="True"/>
             </Grid>
         </GroupBox>
         <Button Grid.Column="0" Grid.Row="0" Name="btnlapphieutra" Content="Thông tin chi tiết của phiếu mượn" Visibility="Visible" Click="Btnlapphieutra_Click"/>

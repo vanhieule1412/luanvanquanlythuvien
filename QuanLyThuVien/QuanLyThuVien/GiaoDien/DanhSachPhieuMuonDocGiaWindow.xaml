@@ -15,10 +15,10 @@
             <DataGrid Name="dgphieumuon" AutoGenerateColumns="False" Height="230" LoadingRowDetails="Dgphieumuon_LoadingRowDetails" CanUserAddRows="False" CanUserSortColumns="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã Phiếu Mượn" Binding="{Binding MaPhieuMuon}"/>
-                    <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon}"/>
-                    <DataGridTextColumn Header="Ngày trả dự kiến" Binding="{Binding NgayTraDukien}"/>
+                    <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon ,StringFormat='dd/MM/yyyy'}"/>
+                    <DataGridTextColumn Header="Ngày trả dự kiến" Binding="{Binding NgayTraDukien ,StringFormat='dd/MM/yyyy'}"/>
                     <DataGridCheckBoxColumn Header="Trạng thái" Binding="{Binding TrangThai}"/>
-                    <DataGridTextColumn Header="Tiền phạt tổng" Binding="{Binding TienPhatTong}"/>
+                    <DataGridTextColumn Header="Tiền phạt tổng" Binding="{Binding TienPhatTong ,StringFormat='{}{0:#,##0.## đ}'}"/>
                     <DataGridCheckBoxColumn Header="Đã trả" Binding="{Binding DaTra}"/>
                     <DataGridTextColumn Header="Mã tài khoản thủ thư" Binding="{Binding MaTaiKhoai}"/>
                     <DataGridTextColumn Header="Tên tài khoản thủ thư" Binding="{Binding TAIKHOANTHUTHU.TenTaiKhoai}"/>
@@ -35,16 +35,14 @@
                                     <DataGridTextColumn Header="Tác Giả" Binding="{Binding TacGia}"/>
                                     <DataGridTextColumn Header="Năm Xuất Bản" Binding="{Binding NamXuatBan}"/>
                                     <DataGridTextColumn Header="Tình trạng" Binding="{Binding TinhTrang}"/>
-                                    <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat}"/>
-                                    <DataGridTextColumn Header="Tiền Phạt" Binding="{Binding TienPhat}"/>
+                                    <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat ,StringFormat='dd/MM/yyyy'}"/>
+                                    <DataGridTextColumn Header="Tiền Phạt" Binding="{Binding TienPhat ,StringFormat='{}{0:#,##0.## đ}'}"/>
                                     <DataGridTextColumn Header="Số lượng sách mượn" Binding="{Binding SoLuongSachMuon}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>
-
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>
-
             </DataGrid>
         </GroupBox>
     </StackPanel>
