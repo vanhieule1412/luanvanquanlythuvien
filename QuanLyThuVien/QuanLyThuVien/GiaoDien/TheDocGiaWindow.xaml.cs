@@ -64,12 +64,20 @@ namespace QuanLyThuVien.GiaoDien
         }
 
         private void Btntaotaikhoan_Click(object sender, RoutedEventArgs e)
-        {              
-                string s = PhatSinhTuDong(dc);
+        {
+            DateTime date = DateTime.Now;
+            var ds = dc.THEDOCGIAs.Where(x => x.MaTheDocGia == txtmatkdocgia.Text).ToList();
+            if (ds.Count > 0 && dtpngayhethan.SelectedDate > date)
+            {
+                MessageBox.Show("Thể loại này không thể xóa được");
+                return;
+            }
+            string s = PhatSinhTuDong(dc);
             string randownumber;
-            Random rd = new Random();
+            Random rd = new Random();            
             randownumber = rd.Next(1, 100).ToString();
             THEDOCGIA tHEDOCGIA = new THEDOCGIA();
+
                 tHEDOCGIA.MaTheDocGia = s + randownumber;
                 tHEDOCGIA.NgayTheDuocTao = dtpngaytao.SelectedDate.Value;
                 tHEDOCGIA.NgayTheDuocGiaHan = dtpngayhethan.SelectedDate.Value;

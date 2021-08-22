@@ -30,13 +30,36 @@ namespace QuanLyThuVien.GiaoDien
             dgtaikhoandocgia.ItemsSource = dc.TAIKHOANDOCGIAs.ToList();
 
         }
+        private bool ktcodulieu(int n)
+        {
+            foreach (var a in dc.THEDOCGIAs)
+            {
+                if (a.MaTaiKhoaiDocGia == n)
+                {
+                    return true;
+                }
 
+            }
+            return false;
+        }
         private void BtnTaoTheDocGia_Click(object sender, RoutedEventArgs e)
         {
-            GiaoDien.TheDocGiaWindow f = new TheDocGiaWindow();
-            f.TAIKHOANDOCGIA = dc.TAIKHOANDOCGIAs.Find(int.Parse(dgtaikhoandocgia.SelectedValue.ToString()));         
-            f.ShowDialog();
-            f.Close();
+            DateTime time = DateTime.Now;
+            GiaoDien.TheDocGiaWindow f = new TheDocGiaWindow();            
+            f.TAIKHOANDOCGIA = dc.TAIKHOANDOCGIAs.Find(int.Parse(dgtaikhoandocgia.SelectedValue.ToString()));
+            if (ktcodulieu(f.TAIKHOANDOCGIA.MaTaiKhoaiDocGia) == false)
+            {
+                f.ShowDialog();
+                f.Close();
+            }
+            else
+            {
+                MessageBox.Show("Tài khoản này đã tạo thẻ");
+                return;
+            }
+
+       
+            
         }
 
         private void Btnsuathongtintaikhoan_Click(object sender, RoutedEventArgs e)

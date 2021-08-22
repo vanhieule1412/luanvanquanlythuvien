@@ -145,7 +145,7 @@
     <Property Name="NgayTheDuocGiaHan" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="TenDocGia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="NamSinh" Type="DateTime" Precision="0" />
-    <Property Name="MaTaiKhoaiDocGia" Type="Int32" Nullable="false" />
+    <Property Name="MaTaiKhoaiDocGia" Type="Int32" />
     <Property Name="MaTaiKhoai" Type="Int32" />
     <NavigationProperty Name="PHIEUMUONs" Relationship="Self.FKPHIEUMUON685748" FromRole="THEDOCGIA" ToRole="PHIEUMUON" />
     <NavigationProperty Name="TAIKHOANDOCGIA" Relationship="Self.FKTHEDOCGIA53631" FromRole="THEDOCGIA" ToRole="TAIKHOANDOCGIA" />
@@ -306,7 +306,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FKTHEDOCGIA53631">
-    <End Role="TAIKHOANDOCGIA" Type="Self.TAIKHOANDOCGIA" Multiplicity="1" />
+    <End Role="TAIKHOANDOCGIA" Type="Self.TAIKHOANDOCGIA" Multiplicity="0..1" />
     <End Role="THEDOCGIA" Type="Self.THEDOCGIA" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TAIKHOANDOCGIA">

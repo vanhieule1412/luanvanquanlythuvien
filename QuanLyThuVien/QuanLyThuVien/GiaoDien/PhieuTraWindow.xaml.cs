@@ -70,7 +70,7 @@ namespace QuanLyThuVien.GiaoDien
             PHIEUMUON s = dgphieutra.SelectedItem as PHIEUMUON;
             if (s != null)
             {
-             
+
                 //foreach (var b in dc.CHITIETPHIEUMUONs.Where(x => x.MaPhieuMuon == s.MaPhieuMuon))
                 //{
                 //    double tong = b.TienPhat.Value + b.TienPhat.Value;
@@ -107,7 +107,7 @@ namespace QuanLyThuVien.GiaoDien
                 {
                     ckbdatra.IsChecked = false;
                 }
-                dc.SaveChanges();
+                //dc.SaveChanges();
             }
             else
             {
@@ -139,8 +139,17 @@ namespace QuanLyThuVien.GiaoDien
             PHIEUMUON pHIEUMUON = dc.PHIEUMUONs.Find(mapt);
             if (mapt != null)
             {
+                if (String.IsNullOrWhiteSpace(txtmaphieumuon.Text) == true)
+                {
+                    MessageBox.Show("Chưa chọn phiếu mượn cần trả");
+                    return;
+                }
+                if (ckbdatra.IsChecked == false)
+                {
+                    MessageBox.Show("Chưa xác nhận đã trả");
+                    return;
+                }
                 pHIEUMUON.DaTra = ckbdatra.IsChecked;
-
                 dc.SaveChanges();
                 MessageBox.Show("Trả thành công");
             }
@@ -149,16 +158,21 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Ckbchopheptra_Click(object sender, RoutedEventArgs e)
         {
+
             if (ckbchopheptra.IsChecked == true)
             {
+
+                ckbdatra.IsEnabled = true;
                 btnlapphieutra.Visibility = Visibility.Collapsed;
                 btnxacnhan.Visibility = Visibility.Visible;
             }
             else
             {
+                ckbdatra.IsEnabled = false;
                 btnlapphieutra.Visibility = Visibility.Visible;
                 btnxacnhan.Visibility = Visibility.Collapsed;
             }
+            
         }
     }
 }

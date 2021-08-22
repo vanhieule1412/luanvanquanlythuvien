@@ -25,7 +25,7 @@ namespace QuanLyThuVien
         public System.DateTime NgayTheDuocGiaHan { get; set; }
         public string TenDocGia { get; set; }
         public Nullable<System.DateTime> NamSinh { get; set; }
-        public int MaTaiKhoaiDocGia { get; set; }
+        public Nullable<int> MaTaiKhoaiDocGia { get; set; }
         public Nullable<int> MaTaiKhoai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

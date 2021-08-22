@@ -45,7 +45,7 @@
             </WrapPanel>
             <WrapPanel Grid.Row="0" Grid.Column="2">
                 <RadioButton Content="Gia Hạn" Name="rdoSua" Click="RdoSua_Click" />
-                <!--<RadioButton Content="Xóa" Name="rdoXoa" Click="RdoXoa_Click" />-->
+                <!--<RadioButton Content="Khóa" Name="rdoXoa" Click="RdoXoa_Click" />-->
             </WrapPanel>
         </Grid>
         <Button Content="Cập nhật" Name="btncapnhat" Click="Btncapnhat_Click" />

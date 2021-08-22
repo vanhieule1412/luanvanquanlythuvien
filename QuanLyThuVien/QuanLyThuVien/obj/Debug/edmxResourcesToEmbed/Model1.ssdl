@@ -122,7 +122,7 @@
     <Property Name="NgayTheDuocGiaHan" Type="date" Nullable="false" />
     <Property Name="TenDocGia" Type="nvarchar" MaxLength="100" />
     <Property Name="NamSinh" Type="date" />
-    <Property Name="MaTaiKhoaiDocGia" Type="int" Nullable="false" />
+    <Property Name="MaTaiKhoaiDocGia" Type="int" />
     <Property Name="MaTaiKhoai" Type="int" />
   </EntityType>
   <EntityType Name="THELOAI">
@@ -302,7 +302,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FKTHEDOCGIA53631">
-    <End Role="TAIKHOANDOCGIA" Type="Self.TAIKHOANDOCGIA" Multiplicity="1" />
+    <End Role="TAIKHOANDOCGIA" Type="Self.TAIKHOANDOCGIA" Multiplicity="0..1" />
     <End Role="THEDOCGIA" Type="Self.THEDOCGIA" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TAIKHOANDOCGIA">

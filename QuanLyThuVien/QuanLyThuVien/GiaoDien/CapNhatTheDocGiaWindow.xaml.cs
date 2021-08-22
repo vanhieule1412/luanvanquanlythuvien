@@ -37,10 +37,7 @@ namespace QuanLyThuVien.GiaoDien
 
         private void Btncapnhat_Click(object sender, RoutedEventArgs e)
         {
-            if (rdoSua.IsChecked == false)
-            {
-                return;
-            }
+           
             if (rdoSua.IsChecked == true)
             {
                 string mathe = txtmathedocgia.Text;
@@ -60,18 +57,15 @@ namespace QuanLyThuVien.GiaoDien
             }
             //else if (rdoXoa.IsChecked == true)
             //{
-            //    if (dgthedocgia.SelectedItem == null) return;
-            //    else
+            //    string mathe = txtmathedocgia.Text;
+            //    THEDOCGIA tHEDOCGIA = dc.THEDOCGIAs.Find(mathe);
+            //    if (mathe != null)
             //    {
-            //        string mathe = dgthedocgia.SelectedValue.ToString();
-            //        THEDOCGIA tHEDOCGIA = dc.THEDOCGIAs.Find(mathe);
-            //        if (tHEDOCGIA != null)
-            //        {
-            //            dc.THEDOCGIAs.Remove(tHEDOCGIA);
-            //            dc.SaveChanges();
-            //            hienthi();
-            //        }
+            //        tHEDOCGIA.MaTaiKhoaiDocGia = int.Parse(txtmatkdocgia.Text);
+            //        dc.SaveChanges();
+            //        MessageBox.Show("Đã khóa thành công");
             //    }
+            //    hienthi();
             //}
         }
         private void RdoSua_Click(object sender, RoutedEventArgs e)
@@ -93,28 +87,47 @@ namespace QuanLyThuVien.GiaoDien
 
         private void RdoXoa_Click(object sender, RoutedEventArgs e)
         {
+            
             string mathe = txtmathedocgia.Text;
             THEDOCGIA tHEDOCGIA = dc.THEDOCGIAs.Find(mathe);
-            dtpngaytao.IsEnabled = false;
-            dtpngayhethan.IsEnabled = false;
-            txttendocgia.IsReadOnly = true;
-            dpnamsinh.IsEnabled = false;
-            cmbmataikhoanthuthu.IsEnabled = false;
-            txtmatkdocgia.IsReadOnly = true;
+            DateTime time = DateTime.Now;
+            if (mathe != null)
+            {
+                //if (dtpngayhethan.SelectedDate < time)
+                //{
+                //    txtmatkdocgia.IsReadOnly = false;
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Không đủ điều kiện để khóa");
+                //    return;
+                //}
+                hienthi();
+                dtpngaytao.IsEnabled = false;
+                dtpngayhethan.IsEnabled = false;
+                txttendocgia.IsReadOnly = true;
+                dpnamsinh.IsEnabled = false;
+                cmbmataikhoanthuthu.IsEnabled = false;
+                txtmatkdocgia.IsReadOnly = true;
+            }
+
+           
         }
 
         private void Dgthedocgia_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+          
             THEDOCGIA tHEDOCGIA = dgthedocgia.SelectedItem as THEDOCGIA;
             if (tHEDOCGIA != null)
             {
-                txtmathedocgia.Text = tHEDOCGIA.MaTheDocGia;
-                dtpngaytao.SelectedDate = tHEDOCGIA.NgayTheDuocTao;
-                dtpngayhethan.SelectedDate = tHEDOCGIA.NgayTheDuocGiaHan;
-                txttendocgia.Text = tHEDOCGIA.TenDocGia;
-                dpnamsinh.SelectedDate = tHEDOCGIA.NamSinh;
-                txtmatkdocgia.Text = tHEDOCGIA.MaTaiKhoaiDocGia.ToString();
-                cmbmataikhoanthuthu.SelectedValue = tHEDOCGIA.MaTaiKhoai;
+                    txtmathedocgia.Text = tHEDOCGIA.MaTheDocGia;
+                    dtpngaytao.SelectedDate = tHEDOCGIA.NgayTheDuocTao;
+                    dtpngayhethan.SelectedDate = tHEDOCGIA.NgayTheDuocGiaHan;
+                    txttendocgia.Text = tHEDOCGIA.TenDocGia;
+                    dpnamsinh.SelectedDate = tHEDOCGIA.NamSinh;
+                    txtmatkdocgia.Text = tHEDOCGIA.MaTaiKhoaiDocGia.ToString();
+                    cmbmataikhoanthuthu.SelectedValue = tHEDOCGIA.MaTaiKhoai;
+                
                 hienthi();
             }
         }
