@@ -64,11 +64,104 @@ namespace QuanLyThuVien.GiaoDien
             string result = new String(decodedChar);
             return result;
         }
+        private void dangnhapthuthu(string n,string m)
+        {
+            foreach (var a in dc.TAIKHOANTHUTHUs)
+            {
+                var mk = Encrypt(txtmatkhau.Password);
+                if (txttaikhoan.Text == a.TenTaiKhoai && mk == a.MatKhau )
+                {
+
+                    usename = txttaikhoan.Text;
+                    MainWindow formmain = new MainWindow();
+                    this.Close();
+                    formmain.tbltentaikhoan.Text = usename;
+                    formmain.tblmataikhoan.Text = a.MaTaiKhoai.ToString();
+                    formmain.btndangnhap.Visibility = Visibility.Collapsed;
+                    formmain.menu.Visibility = Visibility.Visible;
+                    formmain.mnthedocgia.Visibility = Visibility.Collapsed;
+                    formmain.mnsuattcanhanthuthu.Visibility = Visibility.Visible;
+                    formmain.menuquanly.Visibility = Visibility.Visible;
+                    formmain.mndocgia.Visibility = Visibility.Visible;
+                    formmain.mnsach.Visibility = Visibility.Visible;
+                    formmain.mnvitri.Visibility = Visibility.Visible;
+                    formmain.mnlapPMDG.Visibility = Visibility.Collapsed;
+                    formmain.ShowDialog();
+
+                }
+             
+            }
+        }
+        private void dangnhapdocgia(string n, string m)
+        {
+            foreach (var b in dc.TAIKHOANDOCGIAs)
+            {
+                var mk = Encrypt(txtmatkhau.Password);
+                if (txttaikhoan.Text == b.TenTaiKhoan && mk == b.MatKhau)
+                {
+                    usename = txttaikhoan.Text;
+                    MainWindow formmain = new MainWindow();
+                    this.Close();
+                    formmain.tbltentaikhoan.Text = usename;
+                    formmain.tblmataikhoan.Text = b.MaTaiKhoaiDocGia.ToString();
+
+                    foreach (var a in dc.THEDOCGIAs)
+                    {
+                        formmain.tblthedocgia.Text = a.MaTheDocGia;
+                    }
+                    formmain.btndangnhap.Visibility = Visibility.Collapsed;
+                    formmain.mnduyetPM.Visibility = Visibility.Collapsed;
+                    formmain.menu.Visibility = Visibility.Visible;
+                    formmain.mnlistlichsu.Visibility = Visibility.Visible;
+                    formmain.mnlichsutra.Visibility = Visibility.Visible;
+                    formmain.mnsuattcanhan.Visibility = Visibility.Visible;
+                    formmain.mnlichsu.Visibility = Visibility.Visible;
+                    formmain.menuquanly.Visibility = Visibility.Visible;
+                    formmain.mnlapPM.Visibility = Visibility.Collapsed;
+                    formmain.mnphieutra.Visibility = Visibility.Collapsed;
+                    formmain.ShowDialog();
+                }
+            }
+        }
+        private bool timtktt(string n, string m)
+        {
+            foreach (var a in dc.TAIKHOANTHUTHUs)
+            {
+                if (a.TenTaiKhoai == n && a.MatKhau == m)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool timtkdg(string n, string m)
+        {
+            foreach (var a in dc.TAIKHOANDOCGIAs)
+            {
+                if (a.TenTaiKhoan == n && a.MatKhau == m)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private bool kttinhtrang(string tt)
+        {
+            foreach (var a in dc.TAIKHOANTHUTHUs)
+            {
+                if (a.TrangThai == tt)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         private void Btndangnhap_Click(object sender, RoutedEventArgs e)
         {
-           
+
             if (txttaikhoan.Text == "admin" && txtmatkhau.Password == "admin")
             {
+
                 usename = txttaikhoan.Text;
                 MainWindow mainf = new MainWindow();
                 this.Close();
@@ -82,60 +175,25 @@ namespace QuanLyThuVien.GiaoDien
                 mainf.mnphieumuon.Visibility = Visibility.Collapsed;
                 mainf.mnphieutra.Visibility = Visibility.Collapsed;
                 mainf.ShowDialog();
+
+
             }
-            else
+            else if (timtktt(txttaikhoan.Text, Encrypt(txtmatkhau.Password)) == true && (timtkdg(txttaikhoan.Text, Encrypt(txtmatkhau.Password)) == false))
             {
-                foreach (var a in dc.TAIKHOANTHUTHUs)
-                {
-                    var mk = Encrypt(txtmatkhau.Password);
-                    if (txttaikhoan.Text == a.TenTaiKhoai && mk == a.MatKhau)
-                    {
-                        usename = txttaikhoan.Text;
-                        MainWindow formmain = new MainWindow();
-                        this.Close();
-                        formmain.tbltentaikhoan.Text = usename;
-                        formmain.tblmataikhoan.Text = a.MaTaiKhoai.ToString();                      
-                        formmain.btndangnhap.Visibility = Visibility.Collapsed;
-                        formmain.menu.Visibility = Visibility.Visible;
-                        formmain.mnthedocgia.Visibility = Visibility.Collapsed;
-                        formmain.mnsuattcanhanthuthu.Visibility = Visibility.Visible;
-                        formmain.menuquanly.Visibility = Visibility.Visible;
-                        formmain.mndocgia.Visibility = Visibility.Visible;
-                        formmain.mnsach.Visibility = Visibility.Visible;
-                        formmain.mnvitri.Visibility = Visibility.Visible;
-                        formmain.mnlapPMDG.Visibility = Visibility.Collapsed;
-                        formmain.ShowDialog();                        
-                    }
-                }
-                foreach (var b in dc.TAIKHOANDOCGIAs)
-                {
-                    var mk = Encrypt(txtmatkhau.Password);
-                    if (txttaikhoan.Text == b.TenTaiKhoan && mk == b.MatKhau)
-                    {
-                        usename = txttaikhoan.Text;
-                        MainWindow formmain = new MainWindow();
-                        this.Close();
-                        formmain.tbltentaikhoan.Text = usename;
-                        formmain.tblmataikhoan.Text = b.MaTaiKhoaiDocGia.ToString();
-                    
-                        foreach (var a in dc.THEDOCGIAs)
-                        {                           
-                            formmain.tblthedocgia.Text = a.MaTheDocGia;
-                        }                        
-                        formmain.btndangnhap.Visibility = Visibility.Collapsed;
-                        formmain.mnduyetPM.Visibility = Visibility.Collapsed;
-                        formmain.menu.Visibility = Visibility.Visible;
-                        formmain.mnlistlichsu.Visibility = Visibility.Visible;
-                        formmain.mnlichsutra.Visibility = Visibility.Visible;
-                        formmain.mnsuattcanhan.Visibility = Visibility.Visible;
-                        formmain.mnlichsu.Visibility = Visibility.Visible;
-                        formmain.menuquanly.Visibility = Visibility.Visible;
-                        formmain.mnlapPM.Visibility = Visibility.Collapsed;
-                        formmain.mnphieutra.Visibility = Visibility.Collapsed;
-                        formmain.ShowDialog();
-                    }
-                }
+                dangnhapthuthu(txttaikhoan.Text, txtmatkhau.Password);
+
             }
+            else if (timtktt(txttaikhoan.Text, Encrypt(txtmatkhau.Password)) == false && (timtkdg(txttaikhoan.Text, Encrypt(txtmatkhau.Password)) == false))
+            {
+                MessageBox.Show("Nhập sai tài khoản hoặc mật khẩu");
+                return;
+            }
+            else if (timtktt(txttaikhoan.Text, Encrypt(txtmatkhau.Password)) == false && (timtkdg(txttaikhoan.Text, Encrypt(txtmatkhau.Password)) == true))
+            {
+                dangnhapdocgia(txttaikhoan.Text, txtmatkhau.Password);
+
+            }
+            
         }
 
         private void Btntrolai_Click(object sender, RoutedEventArgs e)
