@@ -36,6 +36,9 @@ namespace QuanLyThuVien.GiaoDien
             DateTime ngaytra = ngaymuon.AddDays(30);
             dpNgaytradukien.SelectedDate = ngaytra;
         }
+        
+       
+
         private string PhatSinhTuDong(UngDungQuanLyThuVienEntities dc)
         {
             string s = "";
@@ -69,6 +72,7 @@ namespace QuanLyThuVien.GiaoDien
         }
         private void BtnLapPM_Click(object sender, RoutedEventArgs e)
         {
+            DateTime time = DateTime.Now;
             string s = PhatSinhTuDong(dc);
             PHIEUMUON x = new PHIEUMUON();
             x.MaPhieuMuon = s.Trim();
@@ -77,6 +81,8 @@ namespace QuanLyThuVien.GiaoDien
                 MessageBox.Show("Chưa chọn sách");
                 return;
             }
+         
+            
             if (HasSpecialChars(txtmathedocgia.Text) == true)
             {
                 MessageBox.Show("Mã thẻ không có khoảng trắng hoặc kí tự đặc biệt");

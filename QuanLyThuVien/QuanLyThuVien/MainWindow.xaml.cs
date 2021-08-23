@@ -258,13 +258,42 @@ namespace QuanLyThuVien
             this.ShowDialog();
         }
 
-       
 
+        private bool ktthe(string ma)
+        {
+            foreach (var a in dc.THEDOCGIAs)
+            {
+                if (a.MaTheDocGia == ma)
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
         private void btnlapPMDG_Click(object sender, RoutedEventArgs e)
         {
+            DateTime time = DateTime.Now;
             GiaoDien.DanhSachPhieuMuonDocGiaWindow f = new GiaoDien.DanhSachPhieuMuonDocGiaWindow();
-            f.ShowDialog();
-            f.Close();
+            foreach (var a in dc.THEDOCGIAs)
+            {
+                if (tblthedocgia.Text == a.MaTheDocGia)
+                {
+                    TimeSpan kt = a.NgayTheDuocGiaHan - time;
+
+                    if (kt.Days < 0)
+                    {
+                        MessageBox.Show("Thẻ Độc giả này đã hết hạn");
+                        return;
+                    }
+                    else
+                    {
+                        f.ShowDialog();
+                        f.Close();
+                    }
+                }
+            }       
+
 
         }
 
