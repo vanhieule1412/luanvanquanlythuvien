@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
         >
-    <StackPanel>
+    <StackPanel Margin="0,0,0,-2">
         <Label Content="Quản lý phiếu trả" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
         <Label/>
         <GroupBox Header="Thông tin phiếu trả">
@@ -68,7 +68,7 @@
    
         
         <GroupBox Header="Danh sách phiếu trả">
-            <DataGrid Name="dgphieutra" IsReadOnly="True" AutoGenerateColumns="False" Height="140" LoadingRowDetails="Dgphieutra_LoadingRowDetails" CanUserAddRows="False"  SelectedValuePath="MaPhieuMuon" SelectionChanged="Dgphieutra_SelectionChanged">
+            <DataGrid Name="dgphieutra" IsReadOnly="True" AutoGenerateColumns="False" LoadingRowDetails="Dgphieutra_LoadingRowDetails" CanUserAddRows="False"  SelectedValuePath="MaPhieuMuon" SelectionChanged="Dgphieutra_SelectionChanged" Margin="0,0,0,-150">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã Phiếu Mượn" Binding="{Binding MaPhieuMuon}"/>
                     <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon ,StringFormat='dd/MM/yyyy'}"/>

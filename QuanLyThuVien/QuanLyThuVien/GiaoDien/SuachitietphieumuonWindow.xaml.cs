@@ -53,6 +53,7 @@ namespace QuanLyThuVien.GiaoDien
             //GiaoDien.SuaPhieuTraWindow f = new GiaoDien.SuaPhieuTraWindow();
             //f.ChucNang = ChucNang.Sua;
             //f.phieutra = dc.CHITIETPHIEUMUONs.Find(dgchitietphieumuon.SelectedValue);
+            double tongtienphat = 0;
             string ma = txtmasach.Text;
             string mapm = txtmaphieumuon.Text;
             SACH sACH = dc.SACHes.Find(ma);
@@ -70,48 +71,59 @@ namespace QuanLyThuVien.GiaoDien
             }
             if (pm != null)
             {
-
                 var sachnuagia = pm.SACH.Gia / 2;
-                TimeSpan timepm = pm.PHIEUMUON.NgayTraDukien - pm.PHIEUMUON.NgayMuon;
-                TimeSpan time = dpngaytrathat.SelectedDate.Value - pm.PHIEUMUON.NgayTraDukien;
-                int tong = timepm.Days;
+                TimeSpan time = pm.PHIEUMUON.NgayTraDukien - dpngaytrathat.SelectedDate.Value  ;
+                
                 int Tongsongay = time.Days;
                 pm.TinhTrang = cmbtinhtrang.SelectionBoxItem.ToString();
-                if ((pm.TinhTrang == "Bị hư hại" || pm.TinhTrang == "Bị mất") && Tongsongay == 0)
-                {
-                    pm.TienPhat = pm.SACH.Gia + 100000;
-                    //txttienphat.Text = pm.TienPhat.ToString();
-                }
-                else if (dpngaytrathat.SelectedDate < pm.PHIEUMUON.NgayMuon)
+                //if ((pm.TinhTrang == "Bị hư hại" || pm.TinhTrang == "Bị mất") && Tongsongay == 0)
+                //{
+                //    pm.TienPhat = pm.SACH.Gia + 100000;
+                //     tongtienphat = (double)pm.TienPhat;
+                //    //txttienphat.Text = pm.TienPhat.ToString();
+                //}
+                if (dpngaytrathat.SelectedDate < pm.PHIEUMUON.NgayMuon)
                 {
                     MessageBox.Show("Ngày trả thật không được trước ngày mượn");
                     return;
                 }
-                else if ((pm.TinhTrang == "Bị hư hại" || pm.TinhTrang == "Bị mất") && Tongsongay > 0)
-                {
-                    pm.TienPhat = (Tongsongay * 10000) + pm.SACH.Gia + 100000;
-                }
-                else if ((pm.TinhTrang == "Bị hư hại nhẹ") && Tongsongay > 0)
-                {
-                    pm.TienPhat = (Tongsongay * 10000) + sachnuagia;
-                }
-                else if ((pm.TinhTrang == "Bị hư hại nhẹ") && Tongsongay == 0)
-                {
-                    pm.TienPhat = sachnuagia;
-                }
-                //else if (((pm.TinhTrang == "Bị hư hại nhẹ") && Tongsongay < 0))
-                //{
-                //    pm.TienPhat = sachnuagia;
-                //}
-                else if ((pm.TinhTrang == "Hoàn chỉnh") && Tongsongay == 0)
+                else if ((pm.TinhTrang == "Hoàn chỉnh") && Tongsongay >= 0)
                 {
                     pm.TienPhat = 0;
+                    tongtienphat = 0;
                 }
-                else if ((pm.TinhTrang == "Hoàn chỉnh") && Tongsongay > 0)
+                else if ((pm.TinhTrang == "Hoàn chỉnh") && Tongsongay < 0)
                 {
-                    pm.TienPhat = Tongsongay * 10000;
+                    pm.TienPhat = System.Math.Abs(Tongsongay) * 10000;
+                    tongtienphat = 0;
                 }
+                else if ((pm.TinhTrang == "Bị hư hại" || pm.TinhTrang == "Bị mất") && Tongsongay >= 0)
+                {
+                    pm.TienPhat =  pm.SACH.Gia + 100000;
+                    tongtienphat = (double)pm.TienPhat;
+                }
+                else if ((pm.TinhTrang == "Bị hư hại" || pm.TinhTrang == "Bị mất") && Tongsongay < 0)
+                {
+                    pm.TienPhat = (System.Math.Abs(Tongsongay) * 10000)+ pm.SACH.Gia + 100000;
+                    tongtienphat = (double)pm.TienPhat;
+                }
+                else if ((pm.TinhTrang == "Bị hư hại nhẹ") && Tongsongay >= 0)
+                {
+                    pm.TienPhat = sachnuagia;
+                    tongtienphat = (double)pm.TienPhat;
+                }
+                else if ((pm.TinhTrang == "Bị hư hại nhẹ") && Tongsongay < 0)
+                {
+                    pm.TienPhat = (System.Math.Abs(Tongsongay) * 10000) + sachnuagia;
+                    tongtienphat = (double)pm.TienPhat;
+                }
+
+
                 if (dpngaytrathat.SelectedDate != null && cmbhoanchinh.IsSelected)
+                {
+                    sACH.SoLuong += pm.SoLuongSachMuon;
+                }
+                else if (dpngaytrathat.SelectedDate != null && cmbbihunhe.IsSelected)
                 {
                     sACH.SoLuong += pm.SoLuongSachMuon;
                 }
@@ -119,8 +131,10 @@ namespace QuanLyThuVien.GiaoDien
                 txttienphat.Text = pm.TienPhat.ToString();
                 foreach (var b in dc.PHIEUMUONs.Where(x => x.MaPhieuMuon == pm.MaPhieuMuon))
                 {
-                    //b.TienPhatTong = 0;
-                    b.TienPhatTong += pm.TienPhat;
+                    if (b.MaPhieuMuon == pm.MaPhieuMuon)
+                    {
+                        b.TienPhatTong += tongtienphat;
+                    }
                 }
                 dc.SaveChanges();
                 hienthi();
