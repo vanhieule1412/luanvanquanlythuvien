@@ -85,34 +85,34 @@ namespace QuanLyThuVien.GiaoDien
             
         }
 
-        private void RdoXoa_Click(object sender, RoutedEventArgs e)
-        {
+        //private void RdoXoa_Click(object sender, RoutedEventArgs e)
+        //{
             
-            string mathe = txtmathedocgia.Text;
-            THEDOCGIA tHEDOCGIA = dc.THEDOCGIAs.Find(mathe);
-            DateTime time = DateTime.Now;
-            if (mathe != null)
-            {
-                //if (dtpngayhethan.SelectedDate < time)
-                //{
-                //    txtmatkdocgia.IsReadOnly = false;
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Không đủ điều kiện để khóa");
-                //    return;
-                //}
-                hienthi();
-                dtpngaytao.IsEnabled = false;
-                dtpngayhethan.IsEnabled = false;
-                txttendocgia.IsReadOnly = true;
-                dpnamsinh.IsEnabled = false;
-                cmbmataikhoanthuthu.IsEnabled = false;
-                txtmatkdocgia.IsReadOnly = true;
-            }
+        //    string mathe = txtmathedocgia.Text;
+        //    THEDOCGIA tHEDOCGIA = dc.THEDOCGIAs.Find(mathe);
+        //    DateTime time = DateTime.Now;
+        //    if (mathe != null)
+        //    {
+        //        //if (dtpngayhethan.SelectedDate < time)
+        //        //{
+        //        //    txtmatkdocgia.IsReadOnly = false;
+        //        //}
+        //        //else
+        //        //{
+        //        //    MessageBox.Show("Không đủ điều kiện để khóa");
+        //        //    return;
+        //        //}
+        //        hienthi();
+        //        dtpngaytao.IsEnabled = false;
+        //        dtpngayhethan.IsEnabled = false;
+        //        txttendocgia.IsReadOnly = true;
+        //        dpnamsinh.IsEnabled = false;
+        //        cmbmataikhoanthuthu.IsEnabled = false;
+        //        txtmatkdocgia.IsReadOnly = true;
+        //    }
 
            
-        }
+        //}
 
         private void Dgthedocgia_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

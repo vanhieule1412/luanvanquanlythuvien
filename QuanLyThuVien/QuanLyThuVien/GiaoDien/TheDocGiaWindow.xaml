@@ -9,6 +9,7 @@
         Loaded="Window_Loaded" WindowStartupLocation="CenterScreen"
         >
     <StackPanel>
+        <Label Content="Thông tin của thẻ độc giả" FontWeight="Bold" HorizontalContentAlignment="Center" FontSize="20"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>

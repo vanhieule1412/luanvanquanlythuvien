@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="500" Width="1060"
          WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
         ResizeMode="CanResizeWithGrip"      
         >
     <StackPanel>
+        <Label Content="Quản lý thư viện" HorizontalContentAlignment="Center" FontStyle="Italic" FontWeight="Bold" FontSize="20" Background="Gray" Width="1052" />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
@@ -25,7 +26,7 @@
                         <ColumnDefinition Width="49*"/>
                         <ColumnDefinition Width="13*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click" Visibility="Visible" Grid.ColumnSpan="2"/>
+                    <Button Width="200" Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click" Visibility="Visible" Grid.ColumnSpan="2"/>
                 </Grid>
             </WrapPanel>
             <Menu HorizontalAlignment="Right" Visibility="Collapsed" Name="menu" Grid.Column="1">
@@ -58,8 +59,8 @@
                             <Image Source="shut.png" Width="10" Height="10"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    
-                  
+
+
                 </MenuItem>
             </Menu>
             <DockPanel Grid.Column="0"  Name="menuquanly" HorizontalAlignment="Left" Visibility="Collapsed">
@@ -94,7 +95,7 @@
                     <MenuItem Header="Sửa thông tin cá nhân" Click="Mnsuattcanhanthuthu_Click" Name="mnsuattcanhanthuthu" Visibility="Collapsed"/>
                     <MenuItem Header="Sửa thông tin cá nhân" Click="Mnsuattcanhan_Click" Name="mnsuattcanhan" Visibility="Collapsed"/>
                     <MenuItem Header="Phiếu trả" Click="Btnphieutra_Click" Name="mnphieutra" Visibility="Visible"/>
-                   
+
                 </Menu>
             </DockPanel>
         </Grid>
@@ -102,8 +103,6 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -113,14 +112,15 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="2" Text="Tìm kiếm"/>
-            <TextBox Grid.Column="0" Grid.Row="3" Name="txttimkiem" TextChanged="Txttimkiem_TextChanged"/>
-            <ComboBox Grid.Column="1" Grid.Row="3">
+            <Image Grid.Column="1" Grid.Row="1" Name="imghinh" Height="200" Width="300" />
+            <TextBlock Grid.Column="1" Grid.Row="2" Text="Tìm kiếm"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Name="txttimkiem" TextChanged="Txttimkiem_TextChanged"/>
+            <ComboBox Grid.Column="2" Grid.Row="3">
                 <ComboBoxItem Name="cmbtimten" IsSelected="True" Content="Tìm theo tên sách"/>
                 <ComboBoxItem Name="cmbtimnamxuatban" Content="Tìm theo năm xuất bản"/>
             </ComboBox>
         </Grid>
-        <DataGrid Name="dgtimkiem" AutoGenerateColumns="False" SelectedValuePath="MaSach" SelectionChanged="Dgtimkiem_SelectionChanged" CanUserAddRows="False" >
+        <DataGrid Name="dgtimkiem" AutoGenerateColumns="False" SelectedValuePath="MaSach" SelectionChanged="Dgtimkiem_SelectionChanged" CanUserAddRows="False" SelectionUnit="FullRow" SelectionMode="Single" IsReadOnly="True" Height="150">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}" />
                 <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
@@ -128,16 +128,16 @@
                 <DataGridTextColumn Header="Tác Giả" Binding="{Binding TacGia}"/>
                 <DataGridTextColumn Header="Năm xuất bản" Binding="{Binding NamXuatBan}"/>
                 <DataGridTextColumn Header="Người dịch" Binding="{Binding NguoiDich}"/>
-                <DataGridTextColumn Header="Mã thể loại" Binding="{Binding MaTheLoai}"/>
+                <!--<DataGridTextColumn Header="Mã thể loại" Binding="{Binding MaTheLoai}"/>-->
                 <DataGridTextColumn Header="Tên thể loại" Binding="{Binding THELOAI.TenTheLoai}"/>
-                <DataGridTextColumn Header="Mã nhà xuất bản" Binding="{Binding MaNhaXuatBan}"/>
+                <!--<DataGridTextColumn Header="Mã nhà xuất bản" Binding="{Binding MaNhaXuatBan}"/>-->
                 <DataGridTextColumn Header="Tên nhà xuất bản" Binding="{Binding NHAXUATBAN.TenNhaXuatBan}"/>
-                <DataGridTextColumn Header="Mã kệ" Binding="{Binding MaKe}"/>
+                <!--<DataGridTextColumn Header="Mã kệ" Binding="{Binding MaKe}"/>-->
                 <DataGridTextColumn Header="Tên kệ" Binding="{Binding KE.TenKe}"/>
                 <DataGridTextColumn Header="Tên khu" Binding="{Binding KE.KHU.TenKhu}"/>
                 <DataGridTextColumn Header="Nội dung tóm tắt" Binding="{Binding NoiDungTomTat}"/>
                 <DataGridTextColumn Header="Giá" Binding="{Binding Gia ,StringFormat='{}{0:#,##0.## đ}'}"/>
-                <DataGridTextColumn Header="Tên file hình" Binding="{Binding HinhAnh}"/>
+                <!--<DataGridTextColumn Header="Tên file hình" Binding="{Binding HinhAnh}"/>-->
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

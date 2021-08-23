@@ -9,6 +9,8 @@
         WindowStartupLocation="CenterScreen"
         >
     <StackPanel>
+        <Label Content="Quản lý nhà xuất bản" FontWeight="Bold" HorizontalContentAlignment="Center" FontSize="20"/>
+        <GroupBox Header="Thông tin nhà xuất bản">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -43,8 +45,10 @@
                 <RadioButton Content="Xóa" Name="rdoXoa" Click="RdoXoa_Click"/>
             </WrapPanel>
         </Grid>
+        </GroupBox>
         <Button Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
-        <DataGrid Name="dgNhaXuatBan" AutoGenerateColumns="False" SelectedValuePath="MaNhaXuatBan" SelectionChanged="DgNhaXuatBan_SelectionChanged" CanUserAddRows="False" Width="805">
+        <GroupBox Header="Danh sách các nhà xuất bản">
+        <DataGrid Name="dgNhaXuatBan" AutoGenerateColumns="False" IsReadOnly="True" SelectedValuePath="MaNhaXuatBan" SelectionChanged="DgNhaXuatBan_SelectionChanged" CanUserAddRows="False" Width="805">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã nhà xuất bản" Binding="{Binding MaNhaXuatBan}"/>
                 <DataGridTextColumn Header="Tên nhà xuất bản" Binding="{Binding TenNhaXuatBan}"/>
@@ -54,5 +58,6 @@
                 <DataGridTextColumn Header="Số Điện Thoại" Binding="{Binding SoDienThoai }"/>
             </DataGrid.Columns>
         </DataGrid>
+        </GroupBox>
     </StackPanel>
 </Window>

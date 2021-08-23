@@ -10,6 +10,8 @@
         Loaded="Window_Loaded"
         >
     <StackPanel>
+        <Label Content="Lập phiếu mượn" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <Label/>
         <GroupBox Header="Thông tin phiếu mượn">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -48,7 +50,7 @@
                 </WrapPanel>
                 <TextBox Grid.Column="1" Grid.Row="6" Name="txtmataikhoan"/>
                 <TextBox Grid.Column="1" Grid.Row="7" Name="txtthedocgia" />
-                <Button Grid.Column="2" Grid.Row="0" Name="btnLapPM" Content="Lập phiếu mượn" Click="BtnLapPM_Click" Height="21" VerticalAlignment="Top"/>
+                <Button Grid.Column="2" Grid.Row="1" Name="btnLapPM" Content="Lập phiếu mượn" Click="BtnLapPM_Click" Height="21" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Chi Tiết Phiếu Mượn">

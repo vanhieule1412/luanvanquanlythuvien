@@ -9,6 +9,8 @@
         WindowStartupLocation="CenterScreen"
         >
     <StackPanel>
+        <Label Content="Quản lý độc giả" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <GroupBox Header="Thông tin của độc giả">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -57,10 +59,12 @@
                 <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click" />
             </WrapPanel>
         </Grid>
+        </GroupBox>
         <StackPanel>
             <Button Grid.Column="1" Grid.Row="7" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
         </StackPanel>
-        <DataGrid Name="dgDocGia" AutoGenerateColumns="False" SelectedValuePath="MaDocGia" SelectionChanged="DgDocGia_SelectionChanged" CanUserAddRows="False" >
+        <GroupBox Header="Danh sách các độc giả">
+        <DataGrid Name="dgDocGia" AutoGenerateColumns="False" IsReadOnly="True" SelectedValuePath="MaDocGia" Height="140" SelectionChanged="DgDocGia_SelectionChanged" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Độc Giả" Binding="{Binding MaDocGia}"/>
                 <DataGridTextColumn Header="Tên Độc Giả" Binding="{Binding TenDocGia}"/>
@@ -81,7 +85,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-
+        </GroupBox>
 
 
 

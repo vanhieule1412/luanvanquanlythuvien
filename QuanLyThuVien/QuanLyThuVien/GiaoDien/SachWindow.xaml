@@ -10,7 +10,9 @@
         WindowStartupLocation="CenterScreen"
         >
     <StackPanel>
-        <Grid>
+        <Label Content="Quản lý Sách" FontWeight="Bold" HorizontalContentAlignment="Center" FontSize="30"/>
+        <GroupBox Header="Thông tin quyển sách">
+            <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="2*"/>
@@ -39,6 +41,7 @@
                 <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click"/>
                 <RadioButton Content="Xóa" Name="rdoXoa" Click="RdoXoa_Click"/>
             </WrapPanel>
+           
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Mã sách"/>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Tên sách"/>
             <TextBlock Grid.Column="0" Grid.Row="3" Text="Số lượng"/>
@@ -62,7 +65,7 @@
             <ComboBox Grid.Column="1" Grid.Row="9" Name="cmbMake" SelectedValuePath="MaKe" DisplayMemberPath="TenKe"/>
             <TextBox Grid.Column="1" Grid.Row="10" Name="txtnoidungtt" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"/>
             <TextBox Grid.Column="1" Grid.Row="11" Name="txtgia"/>
-            <Image Grid.Column="1" Grid.Row="12" Name="imghinh" Height="150" Width="130" />
+            <Image Grid.Column="1" Grid.Row="12" Name="imghinh" Height="200" Width="300" />
             <StackPanel Grid.Row="12" Grid.Column="2">
                 <Button Content="Chọn Hình" Name="btnChonhinh" Click="BtnChonhinh_Click" />
                 <Button Content="Bỏ chọn hình" Name="btnBohinh" Click="BtnBohinh_Click" />
@@ -79,11 +82,14 @@
                 <TextBlock Text="Mã kệ:"/>
                 <TextBlock Text="{Binding ElementName=cmbMake,Path=SelectedItem.MaKe}"/>
             </WrapPanel>-->
-        </Grid>
+            </Grid>
+        </GroupBox>
+
         <StackPanel>
             <Button Content="Thực hiện" Name="btnthuchien" Click="Btnthuchien_Click"/>
         </StackPanel>
-        <DataGrid Name="dgSach" AutoGenerateColumns="False" SelectedValuePath="MaSach" SelectionChanged="DgSach_SelectionChanged" CanUserAddRows="False" >
+        <GroupBox Header="Danh sách các quyển sách">
+            <DataGrid Name="dgSach" AutoGenerateColumns="False" SelectedValuePath="MaSach" SelectionChanged="DgSach_SelectionChanged" SelectionUnit="FullRow" SelectionMode="Single" IsReadOnly="True" CanUserAddRows="False" Height="350" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}" />
                 <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
@@ -104,5 +110,6 @@
             </DataGrid.Columns>
 
         </DataGrid>
+        </GroupBox>
     </StackPanel>
 </Window>

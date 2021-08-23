@@ -124,6 +124,11 @@ namespace QuanLyThuVien.GiaoDien
                 MessageBox.Show("Phiếu mượn này không hợp lý");
                 return;
             }
+            else if (String.IsNullOrWhiteSpace(txtmaphieumuon.Text) == true)
+            {
+                MessageBox.Show("Chưa chọn phiếu mượn");
+                return;
+            }
             else
             {
                 f.PHIEUMUON = dc.PHIEUMUONs.Find(dgphieutra.SelectedValue.ToString());

@@ -10,6 +10,8 @@
         WindowStartupLocation="CenterScreen"
         >
     <StackPanel>
+        <Label Content="Quản lý thẻ độc giả" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <Label/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -49,7 +51,7 @@
             </WrapPanel>
         </Grid>
         <Button Content="Cập nhật" Name="btncapnhat" Click="Btncapnhat_Click" />
-        <DataGrid Name="dgthedocgia" AutoGenerateColumns="False" SelectedValuePath="MaTheDocGia" SelectionChanged="Dgthedocgia_SelectionChanged" CanUserAddRows="False" SelectionMode="Single">
+        <DataGrid Name="dgthedocgia" IsReadOnly="True" Height="180" AutoGenerateColumns="False" SelectedValuePath="MaTheDocGia" SelectionChanged="Dgthedocgia_SelectionChanged" CanUserAddRows="False" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã thẻ độc giả" Binding="{Binding MaTheDocGia}"/>
                 <DataGridTextColumn Header="Ngày tạo thẻ" Binding="{Binding NgayTheDuocTao ,StringFormat='dd/MM/yyyy'}"/>

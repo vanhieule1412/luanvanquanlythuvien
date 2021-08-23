@@ -10,25 +10,25 @@
         Loaded="Window_Loaded"
         >
     <StackPanel>
-        <GroupBox Header="Danh Sách Tài Khoản thủ thư">
-            <DataGrid Name="dgtaikhoanthuthu" AutoGenerateColumns="False" SelectedValuePath="MaTaiKhoai" CanUserAddRows="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Mã tài khoản thủ thư" Binding="{Binding MaTaiKhoai}"/>
-                    <DataGridTextColumn Header="Tên tài khoản thủ thư" Binding="{Binding TenTaiKhoai}"/>
-                    <DataGridTextColumn Header="Mật khẩu" Binding="{Binding MatKhau}"/>
-                    <DataGridTextColumn Header="Trạng Thái" Binding="{Binding TrangThai}"/>
-                    <DataGridTextColumn Header="Mã thủ thư" Binding="{Binding MaThuThu}"/>
-                    <DataGridTextColumn Header="Tên thủ thư" Binding="{Binding THUTHU.TenThuThu}"/>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Sửa tài khoản" Name="btnsuataikhoan" Click="Btnsuataikhoan_Click"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-    
-        </GroupBox>
+        <Label Content="Danh sách các tài khoản của thủ thư" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <Label/>
+
+        <DataGrid Name="dgtaikhoanthuthu" IsReadOnly="True" AutoGenerateColumns="False" SelectedValuePath="MaTaiKhoai" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã tài khoản thủ thư" Binding="{Binding MaTaiKhoai}"/>
+                <DataGridTextColumn Header="Tên tài khoản thủ thư" Binding="{Binding TenTaiKhoai}"/>
+                <DataGridTextColumn Header="Mật khẩu" Binding="{Binding MatKhau}"/>
+                <DataGridTextColumn Header="Trạng Thái" Binding="{Binding TrangThai}"/>
+                <DataGridTextColumn Header="Mã thủ thư" Binding="{Binding MaThuThu}"/>
+                <DataGridTextColumn Header="Tên thủ thư" Binding="{Binding THUTHU.TenThuThu}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Sửa tài khoản" Name="btnsuataikhoan" Click="Btnsuataikhoan_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </StackPanel>    
 </Window>

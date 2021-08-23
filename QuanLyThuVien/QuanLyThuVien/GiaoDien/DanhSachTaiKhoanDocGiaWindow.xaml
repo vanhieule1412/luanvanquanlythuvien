@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
         mc:Ignorable="d"
-        Title="DanhSachTaiKhoanDocGiaWindow" Height="450" Width="800"
+        Title="DanhSachTaiKhoanDocGiaWindow" Height="450" Width="900"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
         >
     <StackPanel>
-        <GroupBox Header="Danh sách tài khoản độc giả">
-            <DataGrid Name="dgtaikhoandocgia" AutoGenerateColumns="False" CanUserAddRows="False" SelectedValuePath="MaTaiKhoaiDocGia">
+        <Label Content="Danh sách tài khoản các độc giả" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <Label/>
+        <DataGrid Name="dgtaikhoandocgia" IsReadOnly="True" Height="350"  AutoGenerateColumns="False" CanUserAddRows="False" SelectedValuePath="MaTaiKhoaiDocGia">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã tài khoản độc giả" Binding="{Binding MaTaiKhoaiDocGia}"/>
                     <DataGridTextColumn Header="Tên tài khoản độc giả" Binding="{Binding TenTaiKhoan}"/>
@@ -37,6 +38,6 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-        </GroupBox>
+        
     </StackPanel>
 </Window>

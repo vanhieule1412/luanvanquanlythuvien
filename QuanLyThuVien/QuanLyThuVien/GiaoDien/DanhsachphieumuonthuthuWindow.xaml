@@ -10,6 +10,8 @@
         Loaded="Window_Loaded"
         >
     <StackPanel>
+        <Label Content="Danh sách các phiếu mượn" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <Label/>
         <GroupBox Header="Thông tin phiếu mượn" Name="gbphieumuon">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -53,8 +55,8 @@
                 <Button Grid.Column="2" Grid.Row="0" Name="btnDuyetPM" Content="Duyệt phiếu mượn" Click="BtnDuyetPM_Click" Height="21" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Danh sách phiếu mượn">
-            <DataGrid Name="dgphieumuon" AutoGenerateColumns="False" Height="230" SelectionChanged="Dgphieumuon_SelectionChanged" LoadingRowDetails="Dgphieumuon_LoadingRowDetails" CanUserAddRows="False">
+        <GroupBox Header="Danh sách phiếu mượn chờ duyệt">
+            <DataGrid Name="dgphieumuon" IsReadOnly="True" AutoGenerateColumns="False" Height="170" SelectionChanged="Dgphieumuon_SelectionChanged" LoadingRowDetails="Dgphieumuon_LoadingRowDetails" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã Phiếu Mượn" Binding="{Binding MaPhieuMuon}"/>
                     <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon ,StringFormat='dd/MM/yyyy'}"/>
@@ -70,7 +72,7 @@
                 <DataGrid.RowDetailsTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <DataGrid Name="dgCTPM" AutoGenerateColumns="False">
+                            <DataGrid Name="dgCTPM" AutoGenerateColumns="False" IsReadOnly="True">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}"/>
                                     <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>

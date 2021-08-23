@@ -8,12 +8,15 @@
         Title="SuachitietphieumuonWindow" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
+        Closed="Window_Closed"
         >
 
     <StackPanel>
         <!--<Button HorizontalAlignment="Right" Name="btnback" Click="Btnback_Click">
             <Image Name="img" Source="back.png" Width="24" Height="24" Opacity="1" />
         </Button>-->
+        <Label Content="Phiếu trả" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <GroupBox Header="Thông tin của phiếu mượn">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="264*"/>
@@ -57,8 +60,10 @@
             <TextBox Grid.Row="6" Grid.Column="1" Name="txtmact" IsReadOnly="True"/>
 
         </Grid>
+        </GroupBox>
         <Button Name="btnthuchienchitiet" Content="Thực hiện" Click="Btnthuchienchitiet_Click"/>
-        <DataGrid Name="dgchitietphieumuon" AutoGenerateColumns="False" SelectedValuePath="MaMuonTra" SelectionChanged="Dgchitietphieumuon_SelectionChanged" CanUserAddRows="False">
+        <GroupBox Header="Danh sách các phiếu mượn">
+        <DataGrid Name="dgchitietphieumuon" IsReadOnly="True" AutoGenerateColumns="False" SelectedValuePath="MaMuonTra" SelectionChanged="Dgchitietphieumuon_SelectionChanged" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}"/>
                 <DataGridTextColumn Header="Tên Sách" Binding="{Binding SACH.TenSach}"/>
@@ -76,5 +81,6 @@
                 </DataGridTemplateColumn>-->
             </DataGrid.Columns>
         </DataGrid>
+        </GroupBox>
     </StackPanel>
 </Window>

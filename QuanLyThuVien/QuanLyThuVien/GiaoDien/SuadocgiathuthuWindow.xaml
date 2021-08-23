@@ -10,6 +10,8 @@
         Loaded="Window_Loaded"
         >
     <StackPanel>
+        <Label Content="Thông tin tài khoản của độc giả" FontWeight="Bold" FontSize="20" HorizontalContentAlignment="Center"/>
+        <Label/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

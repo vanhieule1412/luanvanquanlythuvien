@@ -57,12 +57,22 @@ namespace QuanLyThuVien.GiaoDien
             string mapm = txtmaphieumuon.Text;
             SACH sACH = dc.SACHes.Find(ma);
             PHIEUMUON pHIEUMUON = dc.PHIEUMUONs.Find(mapm);
+            if (String.IsNullOrWhiteSpace(txtmact.Text) == true)
+            {
+                MessageBox.Show("Chưa học sách cần trả");
+                return;
+            }
             CHITIETPHIEUMUON pm = dc.CHITIETPHIEUMUONs.Find(int.Parse(txtmact.Text));
-            
+            if (cmbtinhtrang.SelectedValue == null)
+            {
+                MessageBox.Show("Chưa chọn tình trạng của sách trả");
+                return;
+            }
             if (pm != null)
             {
+
                 var sachnuagia = pm.SACH.Gia / 2;
-                TimeSpan timepm = pm.PHIEUMUON.NgayTraDukien - pm.PHIEUMUON.NgayMuon ;
+                TimeSpan timepm = pm.PHIEUMUON.NgayTraDukien - pm.PHIEUMUON.NgayMuon;
                 TimeSpan time = dpngaytrathat.SelectedDate.Value - pm.PHIEUMUON.NgayTraDukien;
                 int tong = timepm.Days;
                 int Tongsongay = time.Days;
@@ -100,7 +110,7 @@ namespace QuanLyThuVien.GiaoDien
                 else if ((pm.TinhTrang == "Hoàn chỉnh") && Tongsongay > 0)
                 {
                     pm.TienPhat = Tongsongay * 10000;
-                }              
+                }
                 if (dpngaytrathat.SelectedDate != null && cmbhoanchinh.IsSelected)
                 {
                     sACH.SoLuong += pm.SoLuongSachMuon;
@@ -115,6 +125,7 @@ namespace QuanLyThuVien.GiaoDien
                 dc.SaveChanges();
                 hienthi();
             }
+           
             //GiaoDien.PhieuTraWindow f = new PhieuTraWindow();
             //this.Close();
             //f.ShowDialog();
@@ -158,6 +169,13 @@ namespace QuanLyThuVien.GiaoDien
             //GiaoDien.PhieuTraWindow f = new PhieuTraWindow();
             //this.Close();
             //f.ShowDialog();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            GiaoDien.PhieuTraWindow f = new PhieuTraWindow();
+            this.Close();
+            f.ShowDialog();
         }
     }
 }

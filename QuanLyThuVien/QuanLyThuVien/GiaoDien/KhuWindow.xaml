@@ -10,6 +10,8 @@
         Loaded="Window_Loaded"
         >
     <StackPanel>
+        <Label Content="Quản lý khu" FontWeight="Bold" FontSize="20" HorizontalContentAlignment="Center"/>
+        <GroupBox Header="Thông tin khu">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -36,14 +38,16 @@
                 <RadioButton Content="Xóa" Name="rdoXoa" Click="RdoXoa_Click" />
             </WrapPanel>
         </Grid>
+        </GroupBox>
         <Button Grid.Column="1" Grid.Row="5" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
-        <DataGrid Name="dgkhu" AutoGenerateColumns="False"  SelectedValuePath="MaKhu" SelectionChanged="Dgkhu_SelectionChanged" SelectionMode="Single" Margin="-2,0,2,0" CanUserAddRows="False">
+        <GroupBox Header="Danh sách các khu">
+        <DataGrid Name="dgkhu" Height="200" IsReadOnly="True" AutoGenerateColumns="False"  SelectedValuePath="MaKhu" SelectionChanged="Dgkhu_SelectionChanged" SelectionMode="Single" Margin="-2,0,2,0" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Khu" Binding="{Binding MaKhu}"/>
                 <DataGridTextColumn Header="Tên Khu" Binding="{Binding TenKhu}"/>
             </DataGrid.Columns>
         </DataGrid>
-
+        </GroupBox>
 
 
 

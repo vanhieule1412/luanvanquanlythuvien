@@ -9,6 +9,8 @@
          WindowStartupLocation="CenterScreen"       
         >
     <StackPanel>
+        <Label Content="Quản lý thủ thư" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="20"/>
+        <GroupBox Header="Thông tin thủ thư">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -49,11 +51,12 @@
                 <RadioButton Content="Sửa" Name="rdoSua" Click="RdoSua_Click"/>
             </WrapPanel>
         </Grid>
+        </GroupBox>
         <StackPanel>
             <Button Grid.Column="1" Grid.Row="9" Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click" />
         </StackPanel>
-
-        <DataGrid Name="dgThuThu" Height="200" AutoGenerateColumns="False" SelectedValuePath="MaThuThu" SelectionChanged="DgThuThu_SelectionChanged"  CanUserAddRows="False">
+        <GroupBox Header="Danh sách các thủ thư">
+        <DataGrid Name="dgThuThu" Height="150" IsReadOnly="True" AutoGenerateColumns="False" SelectedValuePath="MaThuThu" SelectionChanged="DgThuThu_SelectionChanged"  CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã Thủ thư" Binding="{Binding MaThuThu}"/>
                 <DataGridTextColumn Header="Tên Thủ Thư" Binding="{Binding TenThuThu}"/>
@@ -71,6 +74,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        </GroupBox>
 
 
 

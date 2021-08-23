@@ -9,6 +9,8 @@
          WindowStartupLocation="CenterScreen"
         >
     <StackPanel>
+        <Label Content="Quản lý thể loại" FontWeight="Bold" FontSize="20" HorizontalContentAlignment="Center"/>
+        <GroupBox Header="Thông tin thể loại">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -33,15 +35,17 @@
                 <RadioButton Content="Xóa" Name="rdoXoa" Click="RdoXoa_Click"/>
             </WrapPanel>
         </Grid>
+        </GroupBox>
         <Button Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
-        <DataGrid Name="dgTheLoai" AutoGenerateColumns="False" SelectedValuePath="MaTheLoai" SelectionChanged="DgTheLoai_SelectionChanged" CanUserAddRows="False" >
+        <GroupBox Header="Danh sách thể loại">
+        <DataGrid Name="dgTheLoai" IsReadOnly="True" Height="200" AutoGenerateColumns="False" SelectedValuePath="MaTheLoai" SelectionChanged="DgTheLoai_SelectionChanged" CanUserAddRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã thể loại" Binding="{Binding MaTheLoai}"/>
                 <DataGridTextColumn Header="Tên thể loại" Binding="{Binding TenTheLoai}"/>
                 <DataGridTextColumn Header="Mô tả" Width="200" Binding="{Binding MoTaTheLoai}"/>
             </DataGrid.Columns>
         </DataGrid>
-
+        </GroupBox>
 
     </StackPanel>
 </Window>

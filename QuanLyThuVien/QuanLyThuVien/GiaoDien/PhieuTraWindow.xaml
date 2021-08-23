@@ -10,7 +10,8 @@
         Loaded="Window_Loaded"
         >
     <StackPanel>
-      
+        <Label Content="Quản lý phiếu trả" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <Label/>
         <GroupBox Header="Thông tin phiếu trả">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -67,7 +68,7 @@
    
         
         <GroupBox Header="Danh sách phiếu trả">
-            <DataGrid Name="dgphieutra" AutoGenerateColumns="False" Height="230" LoadingRowDetails="Dgphieutra_LoadingRowDetails" CanUserAddRows="False"  SelectedValuePath="MaPhieuMuon" SelectionChanged="Dgphieutra_SelectionChanged">
+            <DataGrid Name="dgphieutra" IsReadOnly="True" AutoGenerateColumns="False" Height="140" LoadingRowDetails="Dgphieutra_LoadingRowDetails" CanUserAddRows="False"  SelectedValuePath="MaPhieuMuon" SelectionChanged="Dgphieutra_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã Phiếu Mượn" Binding="{Binding MaPhieuMuon}"/>
                     <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon ,StringFormat='dd/MM/yyyy'}"/>
@@ -82,20 +83,22 @@
                 </DataGrid.Columns>
                 <DataGrid.RowDetailsTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <DataGrid Name="dgCTPT" AutoGenerateColumns="False">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}"/>
-                                    <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
-                                    <DataGridTextColumn Header="Tác Giả" Binding="{Binding TacGia}"/>
-                                    <DataGridTextColumn Header="Năm Xuất Bản" Binding="{Binding NamXuatBan}"/>
-                                    <DataGridTextColumn Header="Tình trạng" Binding="{Binding TinhTrang}"/>
-                                    <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat ,StringFormat='dd/MM/yyyy'}"/>
-                                    <DataGridTextColumn Header="Tiền Phạt" Binding="{Binding TienPhat ,StringFormat='{}{0:#,##0.## đ}'}"/>
-                                    <DataGridTextColumn Header="Số lượng sách mượn" Binding="{Binding SoLuongSachMuon}"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </StackPanel>
+                        <Expander>
+                            <StackPanel>
+                                <DataGrid Name="dgCTPT" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Mã Sách" Binding="{Binding MaSach}"/>
+                                        <DataGridTextColumn Header="Tên Sách" Binding="{Binding TenSach}"/>
+                                        <DataGridTextColumn Header="Tác Giả" Binding="{Binding TacGia}"/>
+                                        <DataGridTextColumn Header="Năm Xuất Bản" Binding="{Binding NamXuatBan}"/>
+                                        <DataGridTextColumn Header="Tình trạng" Binding="{Binding TinhTrang}"/>
+                                        <DataGridTextColumn Header="Ngày trả thật" Binding="{Binding NgayTraThat ,StringFormat='dd/MM/yyyy'}"/>
+                                        <DataGridTextColumn Header="Tiền Phạt" Binding="{Binding TienPhat ,StringFormat='{}{0:#,##0.## đ}'}"/>
+                                        <DataGridTextColumn Header="Số lượng sách mượn" Binding="{Binding SoLuongSachMuon}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </Expander>
                     </DataTemplate>
                 </DataGrid.RowDetailsTemplate>
             </DataGrid>

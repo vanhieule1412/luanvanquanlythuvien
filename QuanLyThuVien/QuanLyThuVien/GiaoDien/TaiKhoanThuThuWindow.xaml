@@ -10,6 +10,7 @@
         WindowStartupLocation="CenterScreen"
         >
     <StackPanel>
+        <Label Content="Thông tin tài khoản thủ thư" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="20"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

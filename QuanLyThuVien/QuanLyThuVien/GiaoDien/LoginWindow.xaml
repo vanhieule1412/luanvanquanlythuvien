@@ -5,15 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
         mc:Ignorable="d"
-        Title="Đăng nhập" Height="150" Width="250"
+        Title="Đăng nhập" Height="190" Width="250"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
+        ResizeMode="NoResize"
         >
     <StackPanel>
+        <Label Content="Hệ thống đăng nhập" FontWeight="Bold" HorizontalContentAlignment="Center"/>
         <TextBlock Text="Tài khoản" Width="200"/>
         <TextBox Name="txttaikhoan" Width="200"/>
         <TextBlock Text="Mật khẩu" Width="200"/>
         <PasswordBox Name="txtmatkhau" Width="200"/>
+        <Label/>
+        <WrapPanel HorizontalAlignment="Center">
+            <RadioButton Content="Thủ thư" Name="ckbthuthu"/>
+                <Label/>
+            <RadioButton Content="Độc giả" Name="ckbdocgia"/>
+        </WrapPanel>
+        <Label/>
         <WrapPanel HorizontalAlignment="Center">
             <Button Name="btndangnhap" Content="Đăng nhập" Click="Btndangnhap_Click"/>
             <Label/>

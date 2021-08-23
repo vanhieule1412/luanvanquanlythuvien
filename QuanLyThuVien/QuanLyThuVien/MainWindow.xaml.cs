@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -26,10 +27,11 @@ namespace QuanLyThuVien
         
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         public TAIKHOANTHUTHU TAIKHOANTHUTHU;
+        private string path = "";
+        private string tenFileHinh = "";
         public MainWindow()
         {
-            InitializeComponent();
-            
+            InitializeComponent();           
         }
 
         private void Btnquanltheloai_Click(object sender, RoutedEventArgs e)
@@ -109,7 +111,12 @@ namespace QuanLyThuVien
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {          
+        {
+            DirectoryInfo di = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory);
+            di = di.Parent;
+            di = di.Parent;
+            path = di.FullName + @"\Hinhanh\";
+            //dgtimkiem.ItemsSource=dc.SACHes.
             dgtimkiem.ItemsSource = dc.SACHes.ToList();   
         }
 
@@ -185,7 +192,43 @@ namespace QuanLyThuVien
 
         private void Dgtimkiem_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (dgtimkiem.SelectedItem == null) return;
+            SACH s = dgtimkiem.SelectedItem as SACH;
+            if (s != null)
+            {
+                BitmapImage tempBM = imghinh.Source as BitmapImage;
+                if (tempBM != null)
+                {
+                    tempBM.StreamSource.Close();
+                    imghinh.Source = null;
+                }
+                if (s.HinhAnh != "")
+                {
+                    string tenfile = path + s.HinhAnh;
+                    tenFileHinh = tenfile;
+                    if (File.Exists(tenfile))
+                    {
+                        BitmapImage tm = new BitmapImage();
+                        tm.BeginInit();
+                        tm.StreamSource = new FileStream(tenfile, FileMode.Open);
+                        tm.EndInit();
+                        imghinh.Source = tm;
+                    }
+                    else
+                    {
+                        return;
+                    }
 
+                }
+                else
+                {
+                    imghinh.Source = null;
+                }
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void Btndanhsachtaikhoandocgia_Click(object sender, RoutedEventArgs e)
