@@ -56,7 +56,7 @@
             </Grid>
         </GroupBox>
         <GroupBox Header="Danh sách phiếu mượn chờ duyệt">
-            <DataGrid Name="dgphieumuon" IsReadOnly="True" AutoGenerateColumns="False" Height="170" SelectionChanged="Dgphieumuon_SelectionChanged" LoadingRowDetails="Dgphieumuon_LoadingRowDetails" CanUserAddRows="False">
+            <DataGrid Name="dgphieumuon" IsReadOnly="True" AutoGenerateColumns="False" Height="160" SelectionChanged="Dgphieumuon_SelectionChanged" LoadingRowDetails="Dgphieumuon_LoadingRowDetails" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã Phiếu Mượn" Binding="{Binding MaPhieuMuon}"/>
                     <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon ,StringFormat='dd/MM/yyyy'}"/>

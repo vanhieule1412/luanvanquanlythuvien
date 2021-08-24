@@ -227,6 +227,11 @@ namespace QuanLyThuVien.GiaoDien
                     MessageBox.Show("Chưa nhập thể loại");
                     return;
                 }
+                else if (txtnoidungtt.Text.Length >= 225)
+                {
+                    MessageBox.Show("Quá nhiều kí tự");
+                    return;
+                }
                 else if (tenFileHinh == "")
                 {
                     //hv.hinh = "";
@@ -469,6 +474,7 @@ namespace QuanLyThuVien.GiaoDien
         private void BtnChonhinh_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dig = new OpenFileDialog();
+            dig.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             if (dig.ShowDialog() == true)
             {
                 tenFileHinh = dig.FileName;

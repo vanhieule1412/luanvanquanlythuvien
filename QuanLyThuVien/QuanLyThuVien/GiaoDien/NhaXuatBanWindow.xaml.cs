@@ -109,25 +109,36 @@ namespace QuanLyThuVien.GiaoDien
         {
             return yourString.Any(ch => !Char.IsLetterOrDigit(ch));
         }
-        private bool RemoteFileExists(string url)
+        public bool UrlIsValid(string url)
         {
             try
             {
-                //Creating the HttpWebRequest
-                HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
-                //Setting the Request method HEAD, you can also use GET too.
+                HttpWebRequest request = HttpWebRequest.Create(url) as HttpWebRequest;
+                request.Timeout = 5000;
                 request.Method = "HEAD";
-                //Getting the Web Response.
-                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-                //Returns TRUE if the Status code == 200
-                response.Close();
-                return (response.StatusCode == HttpStatusCode.OK);
+
+                using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+                {
+                    int statusCode = (int)response.StatusCode;
+                    if (statusCode >= 100 && statusCode < 400)
+                    {
+                        return true;
+                    }
+                    else if (statusCode >= 500 && statusCode <= 510)
+                    {
+                        return false;
+                    }
+                }
             }
-            catch
+            catch (WebException ex)
             {
-                //Any exception will returns false.
-                return false;
+                if (ex.Status == WebExceptionStatus.ProtocolError) //400 errors
+                {
+                    return false;
+                }
+
             }
+            return false;
         }
         private bool IsInt(string sVal)
         {
@@ -154,13 +165,13 @@ namespace QuanLyThuVien.GiaoDien
                     txtmanhaxuatban.Select(txtmanhaxuatban.Text.Length, 0);                    
                     return;
                 }
-                if (RemoteFileExists(txtdiachiweb.Text) == false)
-                {
-                    MessageBox.Show("Website này không tồn tại");
-                    txtdiachiweb.Focus();
-                    txtdiachiweb.Select(txtdiachiweb.Text.Length, 0);
-                    return;
-                }
+                //if (UrlIsValid(txtdiachiweb.Text) == false)
+                //{
+                //    MessageBox.Show("Website này không tồn tại");
+                //    txtdiachiweb.Focus();
+                //    txtdiachiweb.Select(txtdiachiweb.Text.Length, 0);
+                //    return;
+                //}
                 if (HasSpecialChars(txtmanhaxuatban.Text) == true)
                 {
                     MessageBox.Show("Mã không được có kí tự đặc biệt hoặc khoảng trắng");
@@ -257,7 +268,7 @@ namespace QuanLyThuVien.GiaoDien
                     txttennhaxuatban.Text = trimmer.Replace(txttennhaxuatban.Text, " ");
                     txtdiachi.Text = trimmer.Replace(txtdiachi.Text, " ");
                     var isNumeric = int.TryParse(txtsodienthoai.Text, out int n);
-                    if (RemoteFileExists(txtdiachiweb.Text) == false)
+                    if (UrlIsValid(txtdiachiweb.Text) == false)
                     {
                         MessageBox.Show("Website này không tồn tại");
                         txtdiachiweb.Focus();

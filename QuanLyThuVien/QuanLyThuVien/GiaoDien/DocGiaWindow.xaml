@@ -37,7 +37,7 @@
             <TextBlock Grid.Column="0" Grid.Row="5" Text="Giới tính"/>
             <TextBlock Grid.Column="0" Grid.Row="6" Text="Địa chi"/>
             <TextBlock Grid.Column="0" Grid.Row="7" Text="CMND"/>
-            <TextBlock Grid.Column="0" Grid.Row="8" Text="Tên tài khoản thủ thư"/>
+            <TextBlock Grid.Column="0" Grid.Row="8" Text="Mã tài khoản thủ thư"/>
             <TextBox Grid.Column="1" Grid.Row="0" Name="txtmadocgia" Visibility="Hidden"/>
             <TextBox Grid.Column="1" Grid.Row="1" Name="txttendocgia"/>
             <DatePicker Grid.Column="1" Grid.Row="2" Name="dtpnamsinh"/>
@@ -49,7 +49,7 @@
             </ComboBox>
             <TextBox Grid.Column="1" Grid.Row="6" Name="txtdiachi"/>
             <TextBox Grid.Column="1" Grid.Row="7" Name="txtcmnd"/>
-            <ComboBox Grid.Column="1" Grid.Row="8" Name="cmbmataikhoanthuthu" SelectedValuePath="MaTaiKhoai" DisplayMemberPath="TenTaiKhoai"/>
+            <TextBox Grid.Column="1" Grid.Row="8" Name="cmbmataikhoanthuthu" />
             <!--<WrapPanel Grid.Column="2" Grid.Row="8">
                 <TextBlock Text="Tên tài khoản: "/>
                 <TextBlock Text="{Binding ElementName=cmbmataikhoanthuthu,Path=SelectedItem.TenTaiKhoai}"/>

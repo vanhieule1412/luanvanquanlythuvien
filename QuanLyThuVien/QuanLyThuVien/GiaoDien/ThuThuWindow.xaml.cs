@@ -178,7 +178,7 @@ namespace QuanLyThuVien.GiaoDien
                 }
                 if (txtcmnd.Text.Length != 9 && txtcmnd.Text.Length != 12)
                 {
-                    MessageBox.Show("CMND không hợp lệ");
+                    MessageBox.Show("CMND không hợp lệ phải đủ 9 hoặc 12 số");
                     txtcmnd.Focus();
                     txtcmnd.Select(txtcmnd.Text.Length, 0);
                     return;

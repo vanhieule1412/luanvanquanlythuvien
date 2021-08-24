@@ -48,7 +48,7 @@
         </GroupBox>
         <Button Name="btnthuchien" Content="Thực Hiện" Click="Btnthuchien_Click"/>
         <GroupBox Header="Danh sách các nhà xuất bản">
-        <DataGrid Name="dgNhaXuatBan" AutoGenerateColumns="False" IsReadOnly="True" SelectedValuePath="MaNhaXuatBan" SelectionChanged="DgNhaXuatBan_SelectionChanged" CanUserAddRows="False" Width="805">
+        <DataGrid Name="dgNhaXuatBan" Height="170" AutoGenerateColumns="False" IsReadOnly="True" SelectedValuePath="MaNhaXuatBan" SelectionChanged="DgNhaXuatBan_SelectionChanged" CanUserAddRows="False" Width="800">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã nhà xuất bản" Binding="{Binding MaNhaXuatBan}"/>
                 <DataGridTextColumn Header="Tên nhà xuất bản" Binding="{Binding TenNhaXuatBan}"/>

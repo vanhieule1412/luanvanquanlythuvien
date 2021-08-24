@@ -21,18 +21,21 @@ namespace QuanLyThuVien.GiaoDien
     public partial class DocGiaWindow : Window
     {
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
+
+        public TAIKHOANTHUTHU AIKHOANTHUTHU;
         public DocGiaWindow()
         {
             InitializeComponent();
         }
         private void hienthi()
         {
-            cmbmataikhoanthuthu.ItemsSource =dc.TAIKHOANTHUTHUs.ToList();
+           
+            //cmbmataikhoanthuthu.ItemsSource =dc.TAIKHOANTHUTHUs.ToList();
             dgDocGia.ItemsSource = dc.DOCGIAs.ToList();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           
+            cmbmataikhoanthuthu.Text = AIKHOANTHUTHU.MaTaiKhoai.ToString();
             hienthi();
         }
         private string PhatSinhTuDong(UngDungQuanLyThuVienEntities dc)
@@ -86,7 +89,7 @@ namespace QuanLyThuVien.GiaoDien
             cmbgioitinh.Text = "";
             dtpnamsinh.Text = "";
             txtdiachi.Text = "";
-            cmbmataikhoanthuthu.Text = "";
+            cmbmataikhoanthuthu.Text = AIKHOANTHUTHU.MaTaiKhoai.ToString();
             txttendocgia.Focus();
 
         }
@@ -198,7 +201,7 @@ namespace QuanLyThuVien.GiaoDien
                     dOCGIA.GioiTinh = cmbgioitinh.SelectionBoxItem.ToString();
                     dOCGIA.DiaChi = txtdiachi.Text.Trim();
                     dOCGIA.CMND = txtcmnd.Text.Trim();
-                    dOCGIA.MaTaiKhoai = int.Parse(cmbmataikhoanthuthu.SelectedValue.ToString());
+                    dOCGIA.MaTaiKhoai = int.Parse(cmbmataikhoanthuthu.Text);
                     dc.DOCGIAs.Add(dOCGIA);
                     dc.SaveChanges();
                     clear();
@@ -311,7 +314,7 @@ namespace QuanLyThuVien.GiaoDien
                         dOCGIA.GioiTinh = cmbgioitinh.SelectionBoxItem.ToString();
                         dOCGIA.DiaChi = txtdiachi.Text;
                         dOCGIA.CMND = txtcmnd.Text;
-                        dOCGIA.MaTaiKhoai = int.Parse(cmbmataikhoanthuthu.SelectedValue.ToString());
+                        dOCGIA.MaTaiKhoai = int.Parse(cmbmataikhoanthuthu.Text);
                         dc.SaveChanges();
                     }
                 }
@@ -329,7 +332,7 @@ namespace QuanLyThuVien.GiaoDien
             txtcmnd.IsReadOnly = false;
             cmbgioitinh.IsEnabled = true;
             txtdiachi.IsReadOnly = false;
-            cmbmataikhoanthuthu.IsEnabled = true;
+            cmbmataikhoanthuthu.IsReadOnly = true;
             txttendocgia.Focus();
         }
 
@@ -342,7 +345,7 @@ namespace QuanLyThuVien.GiaoDien
             txtcmnd.IsReadOnly = false;
             cmbgioitinh.IsEnabled = true;
             txtdiachi.IsReadOnly = false;
-            cmbmataikhoanthuthu.IsEnabled = true;
+            cmbmataikhoanthuthu.IsReadOnly = true;
         }
 
         private void RdoXoa_Click(object sender, RoutedEventArgs e)
@@ -379,7 +382,7 @@ namespace QuanLyThuVien.GiaoDien
                 {
                     cmbnu.IsSelected = true;
                 }
-                cmbmataikhoanthuthu.SelectedValue = dOCGIA.MaTaiKhoai.ToString();
+                cmbmataikhoanthuthu.Text = dOCGIA.MaTaiKhoai.ToString();
             }
             else
             {

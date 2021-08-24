@@ -107,7 +107,7 @@ namespace QuanLyThuVien.GiaoDien
                 {
                     ckbdatra.IsChecked = false;
                 }
-                //dc.SaveChanges();
+                dc.SaveChanges();
             }
             else
             {
@@ -178,6 +178,13 @@ namespace QuanLyThuVien.GiaoDien
                 btnxacnhan.Visibility = Visibility.Collapsed;
             }
             
+        }
+
+        private void Txttimkiem_TextChanged(object sender, TextChangedEventArgs e)
+        {
+                var filteredphieutra = dc.PHIEUMUONs.Where(x => x.MaPhieuMuon.ToUpper().Contains(txttimkiem.Text.ToUpper()));
+                dgphieutra.ItemsSource = null;
+                dgphieutra.ItemsSource = filteredphieutra.ToList();
         }
     }
 }

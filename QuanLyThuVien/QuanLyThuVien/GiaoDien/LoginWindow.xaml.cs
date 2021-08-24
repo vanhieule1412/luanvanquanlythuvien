@@ -59,6 +59,17 @@ namespace QuanLyThuVien.GiaoDien
 
             return strBuilder.ToString();
         }
+        private bool ktthedocgia(int n)
+        {
+            foreach (var a in dc.THEDOCGIAs)
+            {
+                if (a.MaTaiKhoaiDocGia == n)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public string Decrypt(string encrypted)
         {
             var encoder = new System.Text.UTF8Encoding();
@@ -125,10 +136,18 @@ namespace QuanLyThuVien.GiaoDien
                         this.Close();
                         formmain.tbltentaikhoan.Text = usename;
                         formmain.tblmataikhoan.Text = b.MaTaiKhoaiDocGia.ToString();
-
+                        
                         foreach (var a in dc.THEDOCGIAs)
                         {
-                            formmain.tblthedocgia.Text = a.MaTheDocGia;
+                            if (ktthedocgia(int.Parse(formmain.tblmataikhoan.Text)) == true)
+                            {
+                                formmain.tblthedocgia.Text = a.MaTheDocGia;
+                            }
+                            else
+                            {
+                                formmain.tblthedocgia.Text = "";
+                            }
+
                         }
                         formmain.btndangnhap.Visibility = Visibility.Collapsed;
                         formmain.mnduyetPM.Visibility = Visibility.Collapsed;

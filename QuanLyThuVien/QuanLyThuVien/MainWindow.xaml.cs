@@ -27,6 +27,7 @@ namespace QuanLyThuVien
         
         private UngDungQuanLyThuVienEntities dc = new UngDungQuanLyThuVienEntities();
         public TAIKHOANTHUTHU TAIKHOANTHUTHU;
+        
         private string path = "";
         private string tenFileHinh = "";
         public MainWindow()
@@ -77,6 +78,7 @@ namespace QuanLyThuVien
         {
             GiaoDien.DocGiaWindow fdocgia = new GiaoDien.DocGiaWindow();
             this.Hide();
+            fdocgia.AIKHOANTHUTHU = dc.TAIKHOANTHUTHUs.Find(int.Parse(tblmataikhoan.Text));
             fdocgia.ShowDialog();
             fdocgia.Close();
             this.ShowDialog();

@@ -5,12 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien.GiaoDien"
         mc:Ignorable="d"
-        Title="PhieuTraWindow" Height="450" Width="800"
+        Title="PhieuTraWindow" Height="600" Width="800"
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
         >
     <StackPanel Margin="0,0,0,-2">
         <Label Content="Quản lý phiếu trả" HorizontalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        <Label/>
+        <TextBlock Text="Tìm kiếm"/>
+        <TextBox Name="txttimkiem" TextChanged="Txttimkiem_TextChanged" Width="60" HorizontalAlignment="Left"/>
         <Label/>
         <GroupBox Header="Thông tin phiếu trả">
             <Grid>
@@ -68,7 +71,7 @@
    
         
         <GroupBox Header="Danh sách phiếu trả">
-            <DataGrid Name="dgphieutra" IsReadOnly="True" AutoGenerateColumns="False" LoadingRowDetails="Dgphieutra_LoadingRowDetails" CanUserAddRows="False"  SelectedValuePath="MaPhieuMuon" SelectionChanged="Dgphieutra_SelectionChanged" Margin="0,0,0,-150">
+            <DataGrid Name="dgphieutra" Height="200" IsReadOnly="True" AutoGenerateColumns="False" LoadingRowDetails="Dgphieutra_LoadingRowDetails" CanUserAddRows="False"  SelectedValuePath="MaPhieuMuon" SelectionChanged="Dgphieutra_SelectionChanged" Margin="0,0,0,-150">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã Phiếu Mượn" Binding="{Binding MaPhieuMuon}"/>
                     <DataGridTextColumn Header="Ngày mượn" Binding="{Binding NgayMuon ,StringFormat='dd/MM/yyyy'}"/>
